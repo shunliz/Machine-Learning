@@ -77,8 +77,8 @@ $$ J(\theta_0,\theta_1)=\sum_{i=1}^{m}(h_\theta(x_i)-y_i)^2 $$
 损失函数对于θ向量的偏导数计算如下：$$\frac {\partial}{\theta}J(\theta)=X^T(X\theta-Y)$$步骤4中θ向量的更新表达式如下：$$\theta=\theta-\alpha X^T(X\theta-Y)$$
 可以看到矩阵法要简洁很多。这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。
 
-  公式1：$\frac {\partial}{X}(XX^T)=2X$
-  公式2：$\frac {\partial}{\theta}(X\theta)=X^T$
+  公式1：$$\frac {\partial}{X}(XX^T)=2X$$
+  公式2：$$\frac {\partial}{\theta}(X\theta)=X^T$$
 
 如果需要熟悉矩阵求导建议参考张贤达的《矩阵分析与应用》一书。
 
