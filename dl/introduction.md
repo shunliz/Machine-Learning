@@ -1,4 +1,6 @@
-[**深度学习**](http://lib.csdn.net/base/deeplearning)**领域的学术研究可以包含四部分**：优化（Optimization），泛化（Generalization），表达（Representation）以及应（Applications）。除了应用（Applications）之外每个部分又可以分成实践和理论两个方面。
+# 深度学习领域的学术研究可以包含四部分：
+
+优化（Optimization），泛化（Generalization），表达（Representation）以及应（Applications）。除了应用（Applications）之外每个部分又可以分成实践和理论两个方面。
 
 ---
 
@@ -21,4 +23,88 @@
 然而，有关表达（Representation）的理论，除了从认知心理学和神经科学借用的一些启发之外，几乎是空白。这主要是因为是否能够存在表达的理论实际上依赖于具体的问题，而面对具体问题的时候目前唯一能做的事情就是去类比现实存在的[智能](http://lib.csdn.net/base/aiplanning)体（人类）是如何解决这一问题的，并设计模型来将它归约为学习[算法](http://lib.csdn.net/base/datastructure)。我直觉上认为，终极的表达理论就像是拉普拉斯幽灵（Laplace’s Demon）一样，如果存在它便无所不知，也因此它的存在会产生矛盾，使得这一理论实际上只能无限逼近。
 
 **应用（Applications）**：深度学习的发展伴随着它对其它领域的革命过程。在过去的数年中，深度学习的应用能力几乎是一种“敢想就能成”的状态。这当然得益于现今各行各业丰富的数据集以及计算机计算能力的提升，同时也要归功于过去近三十年的领域经验。未来，深度学习将继续解决各种识别（Recognition）相关的问题，比如视觉（图像分类、分割，计算摄影学），语音（语音识别），[自然语言](http://lib.csdn.net/base/nlp)（文本理解）；同时，在能够演绎（Ability to Act）的方面如图像文字描述、语音合成、自动翻译、段落总结等也会逐渐出现突破，更可能协助寻找NP难（NP-Hard）问题在限定输入集之后的可行算法。所有的这些都可能是非常好的研究点，能够带来经济和学术双重的利益。
+
+# 深度学习数据集
+
+_\*_先来个不能错过的数据集网站（[深度学习](http://lib.csdn.net/base/deeplearning)者的福音）：\*  
+[http://deeplearning.net/datasets/](http://deeplearning.net/datasets/)\*\*
+
+首先说说几个收集数据集的网站：  
+1、Public Data Sets on Amazon Web Services \(AWS\)  
+[http://aws.amazon.com/datasets](http://aws.amazon.com/datasets)  
+Amazon从2008年开始就为开发者提供几十TB的开发数据。
+
+2、Yahoo! Webscope  
+[http://webscope.sandbox.yahoo.com/index.php](http://webscope.sandbox.yahoo.com/index.php)
+
+3、Konect is a collection of network datasets  
+[http://konect.uni-koblenz.de/](http://konect.uni-koblenz.de/)
+
+4、Stanford Large Network Dataset Collection  
+[http://snap.stanford.edu/data/index.html](http://snap.stanford.edu/data/index.html)
+
+再就是说说几个跟互联网有关的数据集：  
+1、Dataset for “Statistics and Social Network of YouTube Videos”  
+[http://netsg.cs.sfu.ca/youtubedata/](http://netsg.cs.sfu.ca/youtubedata/)
+
+2、1998 World Cup Web Site Access Logs  
+[http://ita.ee.lbl.gov/html/contrib/WorldCup.html](http://ita.ee.lbl.gov/html/contrib/WorldCup.html)  
+这个是1998年世界杯期间的数据集。从1998/04/26 到 1998/07/26 的92天中，发生了 1,352,804,107次请求。
+
+3、Page view statistics for Wikimedia projects  
+[http://dammit.lt/wikistats/](http://dammit.lt/wikistats/)
+
+4、AOL Search Query Logs - RP  
+[http://www.researchpipeline.com/mediawiki/index.php?title=AOL\_Search\_Query\_Logs](http://www.researchpipeline.com/mediawiki/index.php?title=AOL_Search_Query_Logs)
+
+5、livedoor gourmet  
+[http://blog.livedoor.jp/techblog/archives/65836960.html](http://blog.livedoor.jp/techblog/archives/65836960.html)
+
+海量图像数据集：  
+1、ImageNet  
+[http://www.image-net.org/](http://www.image-net.org/)  
+包含1400万的图像。
+
+2、Tiny Images Dataset  
+[http://horatio.cs.nyu.edu/mit/tiny/data/index.html](http://horatio.cs.nyu.edu/mit/tiny/data/index.html)  
+包含8000万的32x32图像。
+
+3、 MirFlickr1M  
+[http://press.liacs.nl/mirflickr/](http://press.liacs.nl/mirflickr/)  
+Flickr中的100万的图像集。
+
+4、 CoPhIR  
+[http://cophir.isti.cnr.it/whatis.html](http://cophir.isti.cnr.it/whatis.html)  
+Flickr中的1亿600万的图像
+
+5、SBU captioned photo dataset  
+[http://dsl1.cewit.stonybrook.edu/~vicente/sbucaptions/](http://dsl1.cewit.stonybrook.edu/~vicente/sbucaptions/)  
+Flickr中的100万的图像集。
+
+6、Large-Scale Image Annotation using Visual Synset\(ICCV 2011\)  
+[http://cpl.cc.gatech.edu/projects/VisualSynset/](http://cpl.cc.gatech.edu/projects/VisualSynset/)  
+包含2亿图像
+
+7、NUS-WIDE  
+[http://lms.comp.nus.edu.sg/research/NUS-WIDE.htm](http://lms.comp.nus.edu.sg/research/NUS-WIDE.htm)  
+Flickr中的27万的图像集。
+
+8、SUN dataset  
+[http://people.csail.mit.edu/jxiao/SUN/](http://people.csail.mit.edu/jxiao/SUN/)  
+包含13万的图像
+
+9、MSRA-MM  
+[http://research.microsoft.com/en-us/projects/msrammdata/](http://research.microsoft.com/en-us/projects/msrammdata/)  
+包含100万的图像，23000视频
+
+10、TRECVID  
+[http://trecvid.nist.gov/](http://trecvid.nist.gov/)
+
+截止目前好像还没有国内的企业或者组织开放自己的数据集。希望也能有企业开发自己的数据集给研究人员使用，从而推动海量数据处理在国内的发展！
+
+2014/07/07 雅虎发布超大Flickr数据集 1亿的图片+视频  
+[http://yahoolabs.tumblr.com/post/89783581601/one-hundred-million-creative-commons-flickr-images-for](http://yahoolabs.tumblr.com/post/89783581601/one-hundred-million-creative-commons-flickr-images-for)
+
+100多个有趣的数据集  
+[http://www.csdn.net/article/2014-06-06/2820111-100-Interesting-Data-Sets-for-Statistics](http://www.csdn.net/article/2014-06-06/2820111-100-Interesting-Data-Sets-for-Statistics)
 

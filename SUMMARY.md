@@ -35,5 +35,5 @@
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
 * 第二十五课：深度学习
-  * [1.  深度学习介绍](dl/introduction.md)
+  * [第一节 深度学习简介](dl/introduction.md)
 
