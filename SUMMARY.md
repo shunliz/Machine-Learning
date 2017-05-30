@@ -1,10 +1,10 @@
 # Summary
 
 * [Introduction](README.md)
-* 第一课：机器学习的数学基础 - 数学分析
+* [第一课：机器学习的数学基础 - 数学分析](di-yi-ke-ff1a-ji-qi-xue-xi-de-shu-xue-ji-chu-shu-xue-fen-xi.md)
   * [13. 梯度下降](math/analytic/gradient_descent.md)
 * 第二课：机器学习的数学基础 - 概率论与贝叶斯先验
-  * 10.深刻理解最大似然估计MLE和最大后验估计MAP
+  * [10.深刻理解最大似然估计MLE和最大后验估计MAP](10shen-ke-li-jiezui-da-si-ran-gu-ji-mle-he-zui-da-hou-yan-gu-ji-map.md)
   * 11.过拟合的数学原理与解决方案
 * 第三课：机器学习的数学基础 - 矩阵和线性代数
   * 10.向量对向量求导
