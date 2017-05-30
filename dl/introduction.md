@@ -108,3 +108,66 @@ Flickr中的27万的图像集。
 100多个有趣的数据集  
 [http://www.csdn.net/article/2014-06-06/2820111-100-Interesting-Data-Sets-for-Statistics](http://www.csdn.net/article/2014-06-06/2820111-100-Interesting-Data-Sets-for-Statistics)
 
+
+
+## 视频人体姿态数据集 {#视频人体姿态数据集}
+
+**1. Weizmann 人体行为库**
+
+此[数据库](http://lib.csdn.net/base/mysql)一共包括90段视频，这些视频分别是由9个人执行了10个不同的动作（bend, jack, jump, pjump, run, side, skip, walk, wave1,wave2）。视频的背景，视角以及摄像头都是静止的。而且该数据库提供标注好的前景轮廓视频。不过此数据库的正确率已经达到100%了。下载地址：[http://www.wisdom.weizmann.ac.il/~vision/SpaceTimeActions.html](http://www.wisdom.weizmann.ac.il/~vision/SpaceTimeActions.html)  
+![](http://img.blog.csdn.net/20151120145237333 "这里写图片描述")  
+**2. KTH人体行为数据库**  
+该数据库包括6类行为（walking, jogging, running, boxing, hand waving, hand clapping）,是由25个不同的人执行的，分别在四个场景下，一共有599段视频。背景相对静止，除了镜头的拉近拉远，摄像机的运动比较轻微。这个数据库是现在的benchmark，正确率需要达到95.5%以上才能够发文章。下载地址：[http://www.nada.kth.se/cvap/actions/](http://www.nada.kth.se/cvap/actions/)  
+![](http://img.blog.csdn.net/20151120145338437 "这里写图片描述")  
+**3. INRIA XMAX多视角视频库**  
+该数据库从五个视角获得，一共11个人执行14种行为。室内四个方向和头顶一共安装5个摄像头。另外背景和光照基本不变。下载地址：[http://4drepository.inrialpes.fr/public/viewgroup/6](http://4drepository.inrialpes.fr/public/viewgroup/6)  
+![](http://img.blog.csdn.net/20151120145449665 "这里写图片描述")  
+**4. UCF Sports 数据库**  
+该视频包括150段关于体育的视频，一共有13个动作。实验室采用留一交叉验证法。2011年cvpr有几篇都用这个数据库，正确率要达到87%才能发文章。下载地址：[http://vision.eecs.ucf.edu/data.html](http://vision.eecs.ucf.edu/data.html)  
+**6. Olympic sports dataset**
+
+该数据库有16种行为，783段视频。现在的正确率大约在75%左右。下载地址：[http://vision.stanford.edu/Datasets/OlympicSports/](http://vision.stanford.edu/Datasets/OlympicSports/)
+
+## UCI收集的机器学习数据集 {#uci收集的机器学习数据集}
+
+[ftp://pami.sjtu.edu.cn](ftp://pami.sjtu.edu.cn/)  
+[http://www.ics.uci.edu/~mlearn/](http://www.ics.uci.edu/~mlearn/)\MLRepository.htm  
+**样本数据库**  
+[http://kdd.ics.uci.edu/](http://kdd.ics.uci.edu/)  
+[http://www.ics.uci.edu/~mlearn/MLRepository.html](http://www.ics.uci.edu/~mlearn/MLRepository.html)
+
+## CASIA WebFace Database {#casia-webface-database}
+
+中科院自动化研究所的几种数据集，里面包含掌纹，手写体，人体动作等6种数据集；需要按照说明申请，免费使用。  
+[http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html](http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html)
+
+![](http://img.blog.csdn.net/20151120150109648 "这里写图片描述")
+
+## 微软人体姿态数据库 MSRC-12 Gesture Dataset {#微软人体姿态数据库-msrc-12-gesture-dataset}
+
+手势数据集  
+[http://www.datatang.com/data/46521](http://www.datatang.com/data/46521)
+
+备注：数据堂链接：[http://www.datatang.com/](http://www.datatang.com/)  
+![](http://img.blog.csdn.net/20151120150505049 "这里写图片描述")
+
+## 文本分类数据集 {#文本分类数据集}
+
+一个数据集是可以用的，即rainbow的数据集  
+[http://www-2.cs.cmu.edu/afs/cs/p](http://www-2.cs.cmu.edu/afs/cs/p)… ww/naive-bayes.html
+
+## 其余杂数据集 {#其余杂数据集}
+
+癌症基因：  
+[http://www.broad.mit.edu/cgi-bin/cancer/datasets.cgi](http://www.broad.mit.edu/cgi-bin/cancer/datasets.cgi)  
+金融数据：  
+[http://lisp.vse.cz/pkdd99/Challenge/chall.htm](http://lisp.vse.cz/pkdd99/Challenge/chall.htm)  
+各种数据集：  
+[http://kdd.ics.uci.edu/summary.data.type.html](http://kdd.ics.uci.edu/summary.data.type.html)  
+[http://www.mlnet.org/cgi-bin/mlnetois.pl/?File=datasets.html](http://www.mlnet.org/cgi-bin/mlnetois.pl/?File=datasets.html)  
+[http://lib.stat.cmu.edu/datasets/](http://lib.stat.cmu.edu/datasets/)  
+[http://dctc.sjtu.edu.cn/adaptive/datasets/](http://dctc.sjtu.edu.cn/adaptive/datasets/)  
+[http://fimi.cs.helsinki.fi/data/](http://fimi.cs.helsinki.fi/data/)  
+[http://www.almaden.ibm.com/software/quest/Resources/index.shtml](http://www.almaden.ibm.com/software/quest/Resources/index.shtml)  
+[http://miles.cnuce.cnr.it/~palmeri/datam/DCI/](http://miles.cnuce.cnr.it/~palmeri/datam/DCI/)
+
