@@ -34,7 +34,7 @@
 * 第二十二课：LDA实践
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
-* [第二十五课：深度学习](di-er-shi-wu-ke-ff1a-shen-du-xue-xi.md)
-  * [第一节 深度学习简介](dl/introduction.md)
+* [第二十五课：深度学习](dl/introduction.md)
   * [参考文献](dl/reference.md)
+* [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
 
