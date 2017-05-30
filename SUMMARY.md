@@ -70,7 +70,7 @@
 
 * [第七课： 回归]()
 
-  * [1.  线性回归]()
+  * [1.  线性回归](regression/linear-regression.md)
   * [2.  Logistic/Softmax回归]()
   * [3.  广义线性回归]()
   * [4.  L1/L2正则化]()
