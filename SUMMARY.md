@@ -38,5 +38,8 @@
   * [参考文献](dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
 * [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
-  * [DCGAN](dl/gan/gan/dcgan.md)
+  * [DCGAN](dl/gan/dcgan.md)
+  * [InfoGAN](dl/gan/infogan.md)
+* [受限波尔兹曼机](dl/rbm.md)
+  * [RBM code](dl/rbm/rbm-code.md)
 
