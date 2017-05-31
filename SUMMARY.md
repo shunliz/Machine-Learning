@@ -37,4 +37,6 @@
 * [第二十五课：深度学习](dl/introduction.md)
   * [参考文献](dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
+* [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
+  * [DCGAN](dl/gan/gan/dcgan.md)
 
