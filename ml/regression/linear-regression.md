@@ -24,7 +24,7 @@ $$J(\theta_0,\theta_1....,\theta_n)=\sum_{i=0}^{m}(h_\theta(x_0,x_1,...x_n)-y_i)
 
 进一步用矩阵形式表达损失函数：
 
-$$J(\theta)=\frac{1}{2}(X\theta-Y）^T(X\theta-Y)$$
+$$J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)$$
 
 由于矩阵法表达比较的简洁，后面我们将统一采用矩阵方式表达模型函数和损失函数。
 
