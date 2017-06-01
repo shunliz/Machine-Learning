@@ -17,6 +17,7 @@
   * [1.  线性回归](ml/regression/linear-regression.md)
   * 10.最大熵模型
   * 11.K-L散度
+  * [坐标下降和最小角](ml/regression/cordinate-angle.md)
 * 第八课：回归实践
 * 第九课：决策树和随机森林
 * 第十课：随机森林实践
