@@ -13,7 +13,7 @@
 * 第四课：Python基础1 - Python及其数学库
 * 第五课：Python基础2 - 机器学习库
 * 第六课：Python基础3 - 数据清洗和特征选择
-* 第七课： 回归
+* [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * 10.最大熵模型
   * 11.K-L散度
