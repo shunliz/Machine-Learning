@@ -15,7 +15,7 @@
 * 第六课：Python基础3 - 数据清洗和特征选择
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
-  * 10.最大熵模型
+  * [10.最大熵模型](ml/regression/10zui-da-shang-mo-xing.md)
   * 11.K-L散度
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
 * 第八课：回归实践
