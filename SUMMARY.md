@@ -43,6 +43,6 @@
   * [InfoGAN](dl/gan/infogan.md)
 * [受限波尔兹曼机](dl/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
-* [LSTM](dl/lstm.md)
 * [RNN](dl/rnn.md)
+  * [LSTM](dl/rnn/lstm.md)
 
