@@ -178,21 +178,21 @@ ElasticNetCV类用在我们发现用Lasso回归太过（太多特征被稀疏为
 
 OrthogonalMatchingPursuit（OMP）算法和普通的线性回归损失函数的区别是增加了一个限制项，来限制回归系数中非0元素的最大个数。形成了一个全新的损失函数如下：
 
-J\(θ\)=12\(Xθ−Y\)T\(Xθ−Y\)J\(θ\)=12\(Xθ−Y\)T\(Xθ−Y\)
+$$J(\mathbf\theta) = \frac{1}{2}(\mathbf{X\theta} - \mathbf{Y})^T(\mathbf{X\theta} - \mathbf{Y})$$
 
-subject to\|\|θ\|\|0≤nnon−zero−coefs\|\|θ\|\|0≤nnon−zero−coefs,其中\(\|\|θ\|\|0\(\|\|θ\|\|0代表θθ的L0范数，即非0回归系数的个数。
+subject to $$||\theta||_0 \leq n_{non-zero-coefs}$$,其中$$||\theta||_0$$代表θ的L0范数，即非0回归系数的个数。
 
 **损失函数的优化方法：**
 
 OrthogonalMatchingPursuit类使用前向选择算法来优化损失函数。它是最小角回归算法的缩水版。虽然精度不如最小角回归算法，但是运算速度很快。
 
-**　　　　验证方法：**
+**验证方法：**
 
-OrthogonalMatchingPursuit类并没有用到交叉验证之类的验证方法，和Lasso类类似。需要我们自己把数据集分成训练集和测试集，需要自己选择限制参数nnon−zero−coefsnnon−zero−coefs。然后训练优化。
+OrthogonalMatchingPursuit类并没有用到交叉验证之类的验证方法，和Lasso类类似。需要我们自己把数据集分成训练集和测试集，需要自己选择限制参数$$n_{non-zero-coefs}$$。然后训练优化。
 
-**　　　　使用场景：**
+**使用场景：**
 
-OrthogonalMatchingPursuit类需要自己选择nnon−zero−coefsnnon−zero−coefs，所以不是OrthogonalMatchingPursuit回归的首选，一般用到的是下一节要讲的OrthogonalMatchingPursuitCV类，不过如果你已经定好了nnon−zero−coefsnnon−zero−coefs的值，那用OrthogonalMatchingPursuit比较方便。
+OrthogonalMatchingPursuit类需要自己选择$$n_{non-zero-coefs}$$，所以不是OrthogonalMatchingPursuit回归的首选，一般用到的是下一节要讲的OrthogonalMatchingPursuitCV类，不过如果你已经定好了$$n_{non-zero-coefs}$$的值，那用OrthogonalMatchingPursuit比较方便。
 
 # 12. OrthogonalMatchingPursuitCV
 
@@ -200,7 +200,7 @@ OrthogonalMatchingPursuitCV类的损失函数和损失函数的优化方法完�
 
 **验证方法：**
 
-OrthogonalMatchingPursuitCV类使用交叉验证，在S折交叉验证中以MSE最小为标准来选择最好的nnon−zero−coefsnnon−zero−coefs。
+OrthogonalMatchingPursuitCV类使用交叉验证，在S折交叉验证中以MSE最小为标准来选择最好的$$n_{non-zero-coefs}$$。
 
 **使用场景：**
 
@@ -208,7 +208,7 @@ OrthogonalMatchingPursuitCV类通常用在稀疏回归系数的特征选择上�
 
 # 13.  MultiTaskLasso
 
-从这节到第16节，类里面都带有一个“MultiTask”的前缀。不过他不是编程里面的多线程，而是指多个线性回归模型共享样本特征，但是有不同的回归系数和特征输出。具体的线性回归模型是Y=XWY=XW。其中X是mxn维度的矩阵。W为nxk维度的矩阵，Y为mxk维度的矩阵。m为样本个数，n为样本特征，而k就代表多个回归模型的个数。所谓的“MultiTask”这里其实就是指k个线性回归的模型一起去拟合。
+从这节到第16节，类里面都带有一个“MultiTask”的前缀。不过他不是编程里面的多线程，而是指多个线性回归模型共享样本特征，但是有不同的回归系数和特征输出。具体的线性回归模型是Y=XW。其中X是mxn维度的矩阵。W为nxk维度的矩阵，Y为mxk维度的矩阵。m为样本个数，n为样本特征，而k就代表多个回归模型的个数。所谓的“MultiTask”这里其实就是指k个线性回归的模型一起去拟合。
 
 **损失函数：**
 
