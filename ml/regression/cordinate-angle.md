@@ -70,19 +70,19 @@ Lasso回归使得一些系数变小，甚至还是一些绝对值较小的系数
 
 2. 对于第k轮的迭代。我们从$$\theta_1^{(k)}$$开始，到$$x = y$$为止，依次求$$\theta_i^{(k)}$$。$$\theta_i^{(k)}$$的表达式如下：
 
-$$\theta_i^{(k)}  \in \underbrace{argmin}_{\theta_i} J(\theta_1^{(k)}, \theta_2^{(k)}, ... \theta_{i-1}^{(k)}, \theta_i, \theta_{i+1}^{(k-1)}, ..., \theta_n^{(k-1)})$$
+$$\theta_i^{(k)}  \in argmin J(\theta_1^{(k)}, \theta_2^{(k)}, ... \theta_{i-1}^{(k)}, \theta_i, \theta_{i+1}^{(k-1)}, ..., \theta_n^{(k-1)})$$
 
 也就是说$$\theta_i^{(k)}$$是使$$J(\theta_1^{(k)},\theta_2^{(k)},...\theta_{i-1}^{(k)},\theta_i^{(k)},\theta_{i+1}^{(k)},....,\theta_n^{(k)})$$最小化时候的θi的值。此时J\(θ\)只有$$\theta_i^{(k)}$$是变量，其余均为常量，因此最小值容易通过求导求得。
 
 如果上面这个式子不好理解，我们具体一点，在第k轮，θ向量的n个维度的迭代式如下：
 
-$$\theta_1^{(k)}  \in \underbrace{argmin}_{\theta_1} J(\theta_1, \theta_2^{(k-1)}, ... , \theta_n^{(k-1)})$$
+$$\theta_1^{(k)}  \in argmin J(\theta_1, \theta_2^{(k-1)}, ... , \theta_n^{(k-1)})$$
 
-$$\theta_2^{(k)}  \in \underbrace{argmin}_{\theta_2} J(\theta_1^{(k)}, \theta_2, \theta_3^{(k-1)}... , \theta_n^{(k-1)})$$
+$$\theta_2^{(k)}  \in argmin J(\theta_1^{(k)}, \theta_2, \theta_3^{(k-1)}... , \theta_n^{(k-1)})$$
 
 ...
 
-$$\theta_n^{(k)}  \in \underbrace{argmin}_{\theta_n} J(\theta_1^{(k)}, \theta_2^{(k)}, ... , \theta_{n-1}^{(k)}, \theta_n)$$
+$$\theta_n^{(k)}  \in argmin J(\theta_1^{(k)}, \theta_2^{(k)}, ... , \theta_{n-1}^{(k)}, \theta_n)$$
 
 1. 检查$$\theta_i^{(k)}$$向量和$$\theta_i^{(k-1)}$$向量在各个维度上的变化情况，如果在所有维度上变化都足够小，那么$$\theta_i^{(k)}$$即为最终结果，否则转入2，继续第k+1轮的迭代。
 
