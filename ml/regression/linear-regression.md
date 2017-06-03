@@ -30,7 +30,7 @@ $$J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)$$
 
 # 2. 线性回归的算法
 
-对于线性回归的损失函数$$$$$$J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)$$，我们常用的有两种方法来求损失函数最小化时候的θ参数：一种是[**梯度下降法**](/math/analytic/gradient_descent.md)，一种是[**最小二乘法**](/math/analytic/least-square.md)。由于已经在其它篇中单独介绍了梯度下降法和最小二乘法，可以点链接到对应的文章链接去阅读。
+对于线性回归的损失函数$$J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)$$，我们常用的有两种方法来求损失函数最小化时候的θ参数：一种是[**梯度下降法**](/math/analytic/gradient_descent.md)，一种是[**最小二乘法**](/math/analytic/least-square.md)。由于已经在其它篇中单独介绍了梯度下降法和最小二乘法，可以点链接到对应的文章链接去阅读。
 
 如果采用梯度下降法，则θ的迭代公式是这样的：
 
