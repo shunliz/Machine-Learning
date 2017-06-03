@@ -18,6 +18,7 @@
   * [10.最大熵模型](ml/regression/10zui-da-shang-mo-xing.md)
   * 11.K-L散度
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
+  * [线性回归小结](ml/regression/linear-regression-summary.md)
 * 第八课：回归实践
 * 第九课：决策树和随机森林
 * 第十课：随机森林实践
