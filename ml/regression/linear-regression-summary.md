@@ -214,29 +214,29 @@ OrthogonalMatchingPursuitCV类通常用在稀疏回归系数的特征选择上�
 
 由于这里是多个线性回归一起拟合，所以损失函数和前面的都很不一样：
 
-J\(W\)=12m\(\|\|XW−Y\|\|\)2Fro+α\|\|W\|\|21J\(W\)=12m\(\|\|XW−Y\|\|\)Fro2+α\|\|W\|\|21
+$$J(\mathbf{W}) = \frac{1}{2m}\mathbf{(||XW-Y||)_{Fro}^2} + \alpha||\mathbf{W}||_{21}$$
 
-其中，\(\|\|XW−Y\|\|\)Fro\(\|\|XW−Y\|\|\)Fro是Y=XWY=XW的Frobenius范数。而\|\|W\|\|21\|\|W\|\|21代表W的各列的根平方和之和。
+其中，$$\mathbf{(||XW-Y||)_{Fro}}$$是Y=XW的Frobenius范数。而$$\mathbf{||W||_{21}}$$代表W的各列的根平方和之和。
 
 **损失函数的优化方法：**
 
 MultiTaskLasso类使用坐标轴下降法来优化损失函数。
 
-**　　　　验证方法：**
+**验证方法：**
 
 MultiTaskLasso类并没有用到交叉验证之类的验证方法，和Lasso类类似。需要我们自己把数据集分成训练集和测试集，需要自己设置好超参数αα。然后训练优化。
 
-**　　　　使用场景：**
+**使用场景：**
 
-MultiTaskLasso类需要自己对αα调优，所以不是共享特征协同回归的首选，一般用到的是下一节要讲的MultiTaskLassoCV类。
+MultiTaskLasso类需要自己对α调优，所以不是共享特征协同回归的首选，一般用到的是下一节要讲的MultiTaskLassoCV类。
 
 # 14.  MultiTaskLassoCV
 
 MultiTaskLassoCV类的损失函数和损失函数的优化方法完全与MultiTaskLasso类相同，区别在于验证方法。
 
-**　　　　验证方法：**
+**验证方法：**
 
-MultiTaskLassoCV类对超参数αα使用了交叉验证，来帮忙我们选择一个合适的αα。在初始化LassoLarsCV类时候，我们可以传一组备选的αα值，10个，100个都可以。MultiTaskLassoCV类会帮我们选择一个合适的αα。
+MultiTaskLassoCV类对超参数α使用了交叉验证，来帮忙我们选择一个合适的α。在初始化LassoLarsCV类时候，我们可以传一组备选的α值，10个，100个都可以。MultiTaskLassoCV类会帮我们选择一个合适的α。
 
 **使用场景：**
 
@@ -248,9 +248,9 @@ MultiTaskLassoCV是多个回归模型需要一起共享样本特征一起拟合�
 
 MultiTaskElasticNet类和MultiTaskLasso类的模型是相同的。不过损失函数不同。损失函数表达式如下：
 
-J\(W\)=12m\(\|\|XW−Y\|\|\)2Fro+αρ\|\|W\|\|21+α\(1−ρ\)2\(\|\|W\|\|\)2FroJ\(W\)=12m\(\|\|XW−Y\|\|\)Fro2+αρ\|\|W\|\|21+α\(1−ρ\)2\(\|\|W\|\|\)Fro2
+$$J(\mathbf{W}) = \frac{1}{2m}\mathbf{(||XW-Y||)_{Fro}^2} + \alpha\rho||\mathbf{W}||_{21} + \frac{\alpha(1-\rho)}{2}\mathbf{(||W||)_{Fro}^2}$$
 
-其中，\(\|\|XW−Y\|\|\)Fro\(\|\|XW−Y\|\|\)Fro是Y=XWY=XW的Frobenius范数。而\|\|W\|\|21\|\|W\|\|21代表W的各列的根平方和之和。
+其中，$$\mathbf{(||XW-Y||)_{Fro}}$$是Y=XW的Frobenius范数。而$$\mathbf{||W||_{21}}$$代表W的各列的根平方和之和。
 
 **　　　　损失函数的优化方法：**
 
@@ -260,25 +260,25 @@ MultiTaskElasticNet类使用坐标轴下降法来优化损失函数。
 
 MultiTaskElasticNet类并没有用到交叉验证之类的验证方法，和Lasso类类似。需要我们自己把数据集分成训练集和测试集，需要自己设置好超参数αα和ρρ。然后训练优化。
 
-**　　　　使用场景：**
+**使用场景：**
 
-MultiTaskElasticNet类需要自己对αα调优，所以不是共享特征协同回归的首选，如果需要用MultiTaskElasticNet，一般用到的是下一节要讲的MultiTaskElasticNetCV类。
+MultiTaskElasticNet类需要自己对α调优，所以不是共享特征协同回归的首选，如果需要用MultiTaskElasticNet，一般用到的是下一节要讲的MultiTaskElasticNetCV类。
 
 # 16.  MultiTaskElasticNetCV
 
 MultiTaskElasticNetCV类的损失函数和损失函数的优化方法完全与MultiTaskElasticNet类相同，区别在于验证方法。
 
-**　　　　验证方法：**
+**验证方法：**
 
-MultiTaskElasticNetCV类对超参数αα和ρρ使用了交叉验证，来帮忙我们选择合适的αα和ρρ。在初始化MultiTaskElasticNetCV类时候，我们可以传一组备选的αα值和ρρ，10个，100个都可以。ElasticNetCV类会帮我们选择一个合适的αα和ρρ。免去了我们自己去一轮轮筛选αα和ρρ的苦恼。
+MultiTaskElasticNetCV类对超参数α和ρ使用了交叉验证，来帮忙我们选择合适的α和ρ。在初始化MultiTaskElasticNetCV类时候，我们可以传一组备选的α值和ρ，10个，100个都可以。ElasticNetCV类会帮我们选择一个合适的α和ρ。免去了我们自己去一轮轮筛选α和ρ的苦恼。
 
-**　　　　使用场景：**
+**使用场景：**
 
 MultiTaskElasticNetCV是多个回归模型需要一起共享样本特征一起拟合时候的两个备选之一，首选是MultiTaskLassoCV。如果我们发现用MultiTaskLassoCV时回归系数衰减的太快，那么可以考虑用MultiTaskElasticNetCV。
 
 # 17. BayesianRidge
 
-第17和18节讲的都是贝叶斯回归模型。贝叶斯回归模型假设先验概率，似然函数和后验概率都是正态分布。先验概率是假设模型输出Y是符合均值为XθXθ的正态分布，正则化参数αα被看作是一个需要从数据中估计得到的随机变量。回归系数θθ的先验分布规律为球形正态分布，超参数为λλ。我们需要通过最大化边际似然函数来估计超参数αα和λλ，以及回归系数θθ。
+第17和18节讲的都是贝叶斯回归模型。贝叶斯回归模型假设先验概率，似然函数和后验概率都是正态分布。先验概率是假设模型输出Y是符合均值为Xθ的正态分布，正则化参数αα被看作是一个需要从数据中估计得到的随机变量。回归系数θθ的先验分布规律为球形正态分布，超参数为λλ。我们需要通过最大化边际似然函数来估计超参数αα和λλ，以及回归系数θθ。
 
 此处对损失函数即负的最大化边际似然函数不多讨论，不过其形式和Ridge回归的损失函数很像，所以也取名BayesianRidge。
 
