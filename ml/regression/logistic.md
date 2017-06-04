@@ -84,7 +84,7 @@ $$\frac{\partial}{\partial\theta}J(\theta) = -Y \bullet X^T\frac{1}{h_{\theta}(X
 
 $$\frac{\partial}{\partial X}logX = 1/X$$
 
-$$\frac{\partial}{\partial z}g(z) = g(z)(1-g(z))   (g(z)为sigmoid函数)$$
+$$\frac{\partial}{\partial z}g(z) = g(z)(1-g(z))$$       \(g\(z\)为sigmoid函数\)
 
 $$\frac{\partial}{\partial\theta}X\theta = X^T$$
 
