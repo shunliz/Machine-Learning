@@ -22,7 +22,7 @@ GANs是一类生成模型，从字面意思不难猜到它会涉及两个“对�
 
 以下内容根据Goodfellow 2014年发表的GAN论文和代码（arxiv 1406.2661）以及近期arxiv上挂出的NIPS tutorial（arxiv 1701.00160 ）整理。
 
-**    **
+---
 
 **为什么要研究生成模型**
 
@@ -86,7 +86,7 @@ Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学
 
 至此，本文总共出现了三种loss，它们的函数图像长这样：
 
-![](/images/dl/gan/gan3loss.png)**    
+![](/images/dl/gan/gan3loss.png)**      
 **
 
 **GANs实验效果**
