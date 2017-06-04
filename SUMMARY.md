@@ -37,8 +37,8 @@
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
 * [第二十五课：深度学习](dl/introduction.md)
-  * [参考文献](dl/reference.md)
-  * [反向传播](dl/back-propagation.md)
+  * [反向传播](/dl/back-propagation.md)
+* * [参考文献](/dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
 * [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
   * [DCGAN](dl/gan/dcgan.md)
@@ -47,4 +47,6 @@
   * [RBM code](dl/rbm/rbm-code.md)
 * [RNN](dl/rnn.md)
   * [LSTM](dl/rnn/lstm.md)
+
+
 
