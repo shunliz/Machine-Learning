@@ -38,11 +38,11 @@ GANs是一类生成模型，从字面意思不难猜到它会涉及两个“对�
 
 * 生成模型，特别是GANs，能处理多模态输出（multi-modal）的问题。多模态输出问题（对于离散输出来说，就是多类标问题【multi-label】）是很多机器学习算法没办法直接处理的问题，很多机器学习算法的loss定义为均方误差，它实际上将多种可能的输出做了平均。下图给出了一个预测视频的下一帧的例子，使用MSE训练的结果，图像模糊了（它对所有可能的结果做了平均），而使用GANs训练的结果，则不存在这种问题。
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)![](/images/dl/gan/import.png)
+![](/images/dl/gan/import.png)
 
 * 某些任务在本质上要求根据某些分布产生样本。例如：用低分辨率图像产生高分辨率图像；用草图生成真实图像；根据卫星图像产生地图等。如下图所示。
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)![](/images/dl/gan/import2.png)
+![](/images/dl/gan/import2.png)
 
 **最初版本的GANs模型**
 
@@ -60,21 +60,21 @@ Discriminator是一个二元分类器，输入是图像，输出是两类：“�
 
 其次，要定义loss function才能训练。前面说了，GANs可以看成一个博弈，那么博弈双方都会有cost（代价），如果是零和博弈，那么双方的cost之和为0。Discriminator是一个分类器，它的loss可以定义用交叉熵来定义：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_{xP\sim _{data}}logD(x)-\frac {1}{2}E_zlog(1-D(G(z)))$$
+$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_{xP\sim _{data}}logD(x)-\frac {1}{2}E_zlog(1-D(G(z)))$$
 
 如果是零和博弈，那么Generator的loss就定义为：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{(D)}(\theta^{(D)},\theta^{(G)})=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))$$
+$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{(D)}(\theta^{(D)},\theta^{(G)})=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))$$
 
 整个优化问题就是一个minmax博弈：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)![](/images/dl/gan/minmax.png)
+![](/images/dl/gan/minmax.png)
 
 Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学习能够足够强、拥有足够的数据、每次迭代过程中，固定Generator，Discriminator总能达到最优），这样构造的GANs会收敛到纳什均衡解。基于此，在2014年的论文里面，作者提出的算法是，每次迭代过程包括两个步骤：更新k次Discriminator（k&gt;=1）；更新1次Generator。也就是，应该让Discriminator学得更充分一些。PS：2016 NIPS tutorial中，作者指出，每次迭代对博弈双方同时进行（随机）梯度下降，在实际操作中效果最好。
 
 然而，这样定义的零和博弈在实际中效果并不好，实际训练的时候，Discriminator仍然采用前面介绍的loss，但Generator采用下面的loss：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_zlog(1-D(G(z)))$$
+$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_zlog(1-D(G(z)))$$
 
 也就是说，Generator的loss只考虑它自身的交叉熵，而不用全局的交叉熵。这样做能够确保任一博弈失利的一方仍有较强的梯度以扭转不利局面。作者称采用这个loss的博弈为Non-saturating heuristic game。采用这个版本的loss，整个博弈不再是零和博弈，没有理论保证它会收敛达到纳什均衡。
 
@@ -82,7 +82,7 @@ Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学
 
 原始版本的GANs模型并不是通过最大化似然函数（也即最小化KL散度）来训练的。Goodfellow在14年的另一篇论文（[https://arxiv.org/abs/1412.6515）中证明了，若每次迭代Discriminator都达到最优，Generator采用下面的loss，则GANs等价于最大化似然函数：](https://arxiv.org/abs/1412.6515）中证明了，若每次迭代Discriminator都达到最优，Generator采用下面的loss，则GANs等价于最大化似然函数：)
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)$$J^{(G)}=-\frac{1}{2}E_zexp(\sigma ^{-1}(D(G(z))))$$
+$$J^{(G)}=-\frac{1}{2}E_zexp(\sigma ^{-1}(D(G(z))))$$
 
 至此，本文总共出现了三种loss，它们的函数图像长这样：
 
@@ -93,9 +93,6 @@ Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学
 
 根据Goodfellow 2014年的论文，GANs在MNIST和TFD数据集上训练，产生的样本更接近于真实分布（参看下图中的Table 1）。然而，虽然效果更好，GANs也存在一些问题（如下面的Figure 29和30），话不多说，看图。
 
-![](/images/dl/gan/table1.png)![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
-
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)![](/images/dl/gan/clip1.png)
 
 **GANs优缺点**
 
