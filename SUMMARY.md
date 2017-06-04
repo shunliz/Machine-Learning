@@ -19,6 +19,7 @@
   * 11.K-L散度
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
   * [线性回归小结](ml/regression/linear-regression-summary.md)
+  * [Logistic回归](ml/regression/logistic.md)
 * 第八课：回归实践
 * 第九课：决策树和随机森林
 * 第十课：随机森林实践
