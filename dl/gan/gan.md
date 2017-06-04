@@ -4,13 +4,9 @@
 
 GANs是一类生成模型，从字面意思不难猜到它会涉及两个“对手”，一个称为Generator（生成者），一个称为Discriminator（判别者）。Goodfellow最近arxiv上挂出的GAN tutorial文章中将它们分别比喻为伪造者（Generator）和警察（Discriminator）。伪造者总想着制造出能够以假乱真的钞票，而警察则试图用更先进的技术甄别真假钞票。两者在博弈过程中不断升级自己的技术。
 
-![](https://mmbiz.qpic.cn/mmbiz_jpg/yAnhaHNJib1ZKfqLlhy3UB99BHy3n6IoRdW0eV1NtFDCQO0ZAm6LtibKMLE0LazxnEn1j6yo83jgo9F0DWJUuFIQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)
-
 从博弈论的角度来看，如果是零和博弈（zero-sum game），两者最终会达到纳什均衡（Nash equilibrium），即存在一组策略\(g, d\)，如果Generator不选择策略g，那么对于Discriminator来说，总存在一种策略使得Generator输得更惨；同样地，将Generator换成Discriminator也成立。囚徒的困境就是一个典型的零和博弈。
 
 如果GANs定义的lossfunction满足零和博弈，并且有足够多的样本，双方都有充足的学习能力情况，在这种情况下，Generator和Discriminator的最优策略即为纳什均衡点，也即：Generator产生的都是“真钞”（材料、工艺技术与真钞一样，只是没有得到授权...），Discriminator会把任何一张钞票以1/2的概率判定为真钞。
-
-![](https://mmbiz.qpic.cn/mmbiz_png/yAnhaHNJib1ZKfqLlhy3UB99BHy3n6IoRogRSL9r040v4Aw85nDP6TSyoF2gTyFd1qBcQciaRpkVZ4eEn1K9Xk5A/0?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)
 
 讲到这里，今天的推送基本就讲完了...
 
@@ -26,8 +22,7 @@ GANs是一类生成模型，从字面意思不难猜到它会涉及两个“对�
 
 以下内容根据Goodfellow 2014年发表的GAN论文和代码（arxiv 1406.2661）以及近期arxiv上挂出的NIPS tutorial（arxiv 1701.00160 ）整理。
 
-**    
-**
+**    **
 
 **为什么要研究生成模型**
 
@@ -85,13 +80,13 @@ Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学
 
 **最大似然博弈GANs**
 
-原始版本的GANs模型并不是通过最大化似然函数（也即最小化KL散度）来训练的。Goodfellow在14年的另一篇论文（https://arxiv.org/abs/1412.6515）中证明了，若每次迭代Discriminator都达到最优，Generator采用下面的loss，则GANs等价于最大化似然函数：
+原始版本的GANs模型并不是通过最大化似然函数（也即最小化KL散度）来训练的。Goodfellow在14年的另一篇论文（[https://arxiv.org/abs/1412.6515）中证明了，若每次迭代Discriminator都达到最优，Generator采用下面的loss，则GANs等价于最大化似然函数：](https://arxiv.org/abs/1412.6515）中证明了，若每次迭代Discriminator都达到最优，Generator采用下面的loss，则GANs等价于最大化似然函数：)
 
 ![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)$$J^{(G)}=-\frac{1}{2}E_zexp(\sigma ^{-1}(D(G(z))))$$
 
 至此，本文总共出现了三种loss，它们的函数图像长这样：
 
-![](/images/dl/gan/gan3loss.png)**  
+![](/images/dl/gan/gan3loss.png)**    
 **
 
 **GANs实验效果**
@@ -101,15 +96,6 @@ Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学
 ![](/images/dl/gan/table1.png)![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
 
 ![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)![](/images/dl/gan/clip1.png)
-
-![](/images/dl/gan/clip2.png)![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
-![](https://mmbiz.qpic.cn/mmbiz_jpg/yAnhaHNJib1ZKfqLlhy3UB99BHy3n6IoRPF9iahG22bAc40fiaSf6O6IibOxtbkbnmh1tNlVb1azrEOvXeD2ERSBtg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)  
-![](https://mmbiz.qpic.cn/mmbiz_jpg/yAnhaHNJib1ZKfqLlhy3UB99BHy3n6IoRYTkM4ULj2jvkQadJI6xL2qNpPibOTlVicuGNcDOtFepKJLHcddkqm6Gw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)
-
-**    
-**
 
 **GANs优缺点**
 
