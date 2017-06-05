@@ -10,7 +10,7 @@
   * 10.向量对向量求导
   * 11.标量对向量求导
   * 12.标量对矩阵求导
-* 第四课：Python基础1 - Python及其数学库
+* [第四课：Python基础1 - Python及其数学库](ml/pythonml.md)
 * 第五课：Python基础2 - 机器学习库
 * 第六课：Python基础3 - 数据清洗和特征选择
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
