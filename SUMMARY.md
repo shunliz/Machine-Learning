@@ -21,7 +21,8 @@
   * [线性回归小结](ml/regression/linear-regression-summary.md)
   * [Logistic回归](ml/regression/logistic.md)
 * 第八课：回归实践
-* 第九课：决策树和随机森林
+* [第九课：决策树和随机森林](ml/decisiontree.md)
+  * [ID3](ml/decisiontree/id3.md)
 * 第十课：随机森林实践
 * 第十一课：提升
 * 第十二课：XGBoost实践
