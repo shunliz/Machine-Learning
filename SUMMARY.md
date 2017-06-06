@@ -25,6 +25,7 @@
   * [ID3](ml/decisiontree/id3.md)
   * [C4.5](ml/decisiontree/c45.md)
   * [CART](ml/decisiontree/cart.md)
+  * [总结](ml/decisiontree/summary.md)
 * 第十课：随机森林实践
 * 第十一课：提升
 * 第十二课：XGBoost实践
