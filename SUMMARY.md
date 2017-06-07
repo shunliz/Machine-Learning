@@ -27,6 +27,10 @@
   * [CART](ml/decisiontree/cart.md)
   * [总结](ml/decisiontree/summary.md)
 * [第十课：随机森林](ml/forest.md)
+  * [随机森林](ml/forest/random-forest.md)
+  * [GBDT](ml/forest/gbdt.md)
+  * [XGBOOST](ml/forest/xgboost.md)
+  * [AdaBoost](ml/forest/adaboost.md)
 * 第十一课：提升
 * 第十二课：XGBoost实践
 * 第十三课：SVM
