@@ -12,7 +12,9 @@
   * 12.标量对矩阵求导
 * [第四课：Python基础1 - Python及其数学库](ml/pythonml.md)
 * 第五课：Python基础2 - 机器学习库
-* 第六课：Python基础3 - 数据清洗和特征选择
+* [第六课：数据清洗和特征选择](di-liu-ke-ff1a-python-ji-chu-3-shu-ju-qing-xi-he-te-zheng-xuan-ze.md)
+  * [PCA](ml/clean-feature/pca.md)
+  * [ICA](ml/clean-feature/ica.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/10zui-da-shang-mo-xing.md)
@@ -20,7 +22,6 @@
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
   * [线性回归小结](ml/regression/linear-regression-summary.md)
   * [Logistic回归](ml/regression/logistic.md)
-* 第八课：回归实践
 * [第九课：决策树](ml/decisiontree.md)
   * [ID3](ml/decisiontree/id3.md)
   * [C4.5](ml/decisiontree/c45.md)
@@ -31,8 +32,6 @@
   * [GBDT](ml/forest/gbdt.md)
   * [XGBOOST](ml/forest/xgboost.md)
   * [AdaBoost](ml/forest/adaboost.md)
-* 第十一课：提升
-* 第十二课：XGBoost实践
 * 第十三课：SVM
 * 第十四课：SVM实践
 * 第十五课：聚类
