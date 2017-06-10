@@ -1,3 +1,30 @@
 {
-    "plugins": ["katex"]
+    "title":"机器学习",
+    "author": "shunliz",
+    "plugins": ["katex", 
+                "image-captions",
+                "github-buttons",
+                "page-treeview"
+    ],
+  "pluginsConfig": {
+    "image-captions": {
+      "attributes": {
+        "width": "600"
+      },
+      "caption": "图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_"
+    },
+    "github-buttons": {
+      "repo": "shunliz/MachineLearning",
+      "types": [
+        "star",
+        "watch"
+      ],
+      "size": "small"
+    },
+    "page-treeview": {
+      "copyright": "Copyright &#169; shunliz",
+      "minHeaderCount": "2",
+      "minHeaderDeep": "2"
+		}
+  }
 }
