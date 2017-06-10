@@ -21,8 +21,8 @@
   * [ICA](ml/clean-feature/ica.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
-  * [10.最大熵模型](ml/regression/10zui-da-shang-mo-xing.md)
-  * 11.K-L散度
+  * [10.最大熵模型](ml/regression/max-entropy.md)
+  * [11.K-L散度](ml/regression/kl.md)
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
   * [线性回归小结](ml/regression/linear-regression-summary.md)
   * [Logistic回归](ml/regression/logistic.md)
