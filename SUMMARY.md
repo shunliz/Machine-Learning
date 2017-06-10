@@ -7,7 +7,7 @@
   * [数值计算](math/analytic/shu-zhi-ji-suan.md)
 * [第二章 概率论](math/probability.md)
   * [10.深刻理解最大似然估计MLE和最大后验估计MAP](10shen-ke-li-jiezui-da-si-ran-gu-ji-mle-he-zui-da-hou-yan-gu-ji-map.md)
-  * 11.过拟合的数学原理与解决方案
+  * [11.过拟合的数学原理与解决方案](11guo-ni-he-de-shu-xue-yuan-li-yu-jie-jue-fang-an.md)
 * [第三章 矩阵和线性代数](math/matrix-linear.md)
   * 10.向量对向量求导
   * 11.标量对向量求导
