@@ -1,9 +1,10 @@
 # Summary
 
 * [前言](README.md)
+* [第一部分 数学基础](di-yi-bu-fen-shu-xue-ji-chu.md)
 * [第一章 数学分析](math/analytic/introduction.md)
   * [梯度下降](math/analytic/gradient_descent.md)
-* [第一部分 数学基础](di-yi-bu-fen-shu-xue-ji-chu.md)
+  * [数值计算](math/analytic/shu-zhi-ji-suan.md)
 * [第二章 概率论](math/probability.md)
   * [10.深刻理解最大似然估计MLE和最大后验估计MAP](10shen-ke-li-jiezui-da-si-ran-gu-ji-mle-he-zui-da-hou-yan-gu-ji-map.md)
   * 11.过拟合的数学原理与解决方案
