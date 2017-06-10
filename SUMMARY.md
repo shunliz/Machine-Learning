@@ -34,7 +34,9 @@
   * [AdaBoost](ml/forest/adaboost.md)
 * 第十三课：SVM
 * 第十四课：SVM实践
-* 第十五课：聚类
+* [第十五课：聚类](ml/cluster.md)
+  * [K-Mean](ml/cluster/kmeans.md)
+  * [KNN](ml/cluster/KNN.md)
 * 第十六课：聚类实践
 * 第十七课：EM算法
 * 第十八课：EM算法实践
