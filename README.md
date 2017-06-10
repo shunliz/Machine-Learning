@@ -1,6 +1,6 @@
 # 机器学习原理
 
-机器学习原理笔记整理, 如何贡献？
+机器学习原理笔记整理, [如何贡献](/contribute.md)？
 
 ![](/images/machine-learning-classification.jpg)
 
