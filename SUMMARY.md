@@ -37,6 +37,7 @@
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
   * [KNN](ml/cluster/KNN.md)
+  * [KNN实践](ml/cluster/knnshi-jian.md)
 * 第十六课：聚类实践
 * 第十七课：EM算法
 * 第十八课：EM算法实践
