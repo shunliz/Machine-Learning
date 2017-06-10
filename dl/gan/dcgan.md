@@ -56,7 +56,7 @@ GANs难训练、稳定性差，怎么办？Alec Radford在论文中提出了一�
 
 
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
+
 
 
 我发现之前写的GAN的generator跟这个几乎是一样的（generator的model是在github上找的），除了上采样和卷积的stride。没得到好的效果，大概我用的是一个假模型？
@@ -103,7 +103,7 @@ GANs难训练、稳定性差，怎么办？Alec Radford在论文中提出了一�
 
 
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
+
 
 
   
@@ -144,7 +144,7 @@ GANs难训练、稳定性差，怎么办？Alec Radford在论文中提出了一�
 ![](http://mmbiz.qpic.cn/mmbiz_jpg/yAnhaHNJib1Yga5ibhib4DY7pItpsS6af0N3DqcWU4FFANicSaUjqNibB4EJgtxFyBjKQs9jHYhndfI3Mwib8w91BGoQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1)  
 
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
+
 
 
   
@@ -163,7 +163,7 @@ GANs难训练、稳定性差，怎么办？Alec Radford在论文中提出了一�
 
 
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
+
 
 
   
@@ -182,7 +182,7 @@ Discriminator能够用于提取图像的特征，作者测试了用DCGAN非监�
   
 
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)  
+
 
 
   

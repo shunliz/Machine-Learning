@@ -1,16 +1,14 @@
 我们先来聊聊GANs有哪些可研究的方向。下面说说我的看法。我把研究的方向分为三大块：theory、optimization、application。在theory上的研究可以分为博弈论视角和非博弈论视角。收敛性是theory的一个很重要的研究方向。然而，理论研究非常难，一方面GANs一般是基于deep learning的，而deep learning的理论根基尚且未知；另一方面，有理论收敛性保证的零和博弈GANs在实际应用中训练效果并不好，实际应用的启发式GANs并非零和博弈，很难从理论上做分析。
 
-```
-    至于optimization，我们知道GANs很难训练，容易发生模式坍塌（mode collapse），从这点上可以找到两个研究课题：如何找到合适的优化方法以稳定训练过程、发生模式坍塌的原因何在。正如Ian Goodfellow所言，寻找纳什均衡比优化loss function要难得多。经验上或者理论上找到一类相对容易寻找纳什均衡的GANs，也是一个不错的研究方向，DCGAN做的正是这方面的工作。对GANs提出合适的优化方法目前还没看到相关工作，多数optimization的文章还是在研究训练GANs的一些tricks，如DCGAN、improved GAN。总的来说，optimization上的研究，可以从loss function、training procedure、flamework上入手。
-```
+至于optimization，我们知道GANs很难训练，容易发生模式坍塌（mode collapse），从这点上可以找到两个研究课题：如何找到合适的优化方法以稳定训练过程、发生模式坍塌的原因何在。正如Ian Goodfellow所言，寻找纳什均衡比优化loss function要难得多。经验上或者理论上找到一类相对容易寻找纳什均衡的GANs，也是一个不错的研究方向，DCGAN做的正是这方面的工作。对GANs提出合适的优化方法目前还没看到相关工作，多数optimization的文章还是在研究训练GANs的一些tricks，如DCGAN、improved GAN。总的来说，optimization上的研究，可以从loss function、training procedure、flamework上入手。
+
 
 还有一类是研究GAN的application，这也是一个相对容易一些的研究方向。关于GAN的应用，在推出GANs系列的第一期我们就提到过，如根据描述生成图像、卫星图像与地图的转换、草图生成真实图像等。后续也会解读这方面的文章。
 
-```
-    我尝试在这上面做些研究，一开始有一堆想法，然后一个个地思考、否定、心寒。看懂别人的工作似乎不难，但是自己研究还是很难的。But不要气馁，一切才刚刚开始。GANs的研究也才2年。
+我尝试在这上面做些研究，一开始有一堆想法，然后一个个地思考、否定、心寒。看懂别人的工作似乎不难，但是自己研究还是很难的。But不要气馁，一切才刚刚开始。GANs的研究也才2年。
 
-     好了，进入正题。今天要介绍的两篇论文都来自于OpenAI，第一篇介绍了一种新的GAN，叫InfoGAN，它对generator和generator的loss做了一些修改，并取得了很好的效果。第二篇对GAN提出了一些改进，并将GANs应用到半监督学习中。
-```
+好了，进入正题。今天要介绍的两篇论文都来自于OpenAI，第一篇介绍了一种新的GAN，叫InfoGAN，它对generator和generator的loss做了一些修改，并取得了很好的效果。第二篇对GAN提出了一些改进，并将GANs应用到半监督学习中。
+
 
 **InfoGAN**
 
@@ -54,15 +52,15 @@ InfoGAN采用DCGAN提出的限制设计generator和discriminator网络。每个�
 
 实验发现，互信息很快就达到了最大，表明文中给出的最大化互信息方法是有效的。
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+
 
 MNIST数据集上，InfoGAN学到的3个structuredlatent code具有明确的含义：其中c\_1表示数字类型；c\_2表示旋转角度；c\_3表示笔画宽度。如下图所示：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+
 
 此外，在生成人脸和桌椅上也有类似效果：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+
 
 **Improved-GAN**
 
@@ -94,15 +92,11 @@ GANs的loss是建立在discriminator的输出上的，即discriminator输出的�
 
 * 计算cross-sample distance  
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+
 
 * 计算minibatch layer的输出：
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
 
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
-
-![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
 
 需要指出的是，作者提出的minibatch discrimination是在discriminator原来的网络的某个中间层后面插入minibatch layer，minibatch layer的输出作为原来discriminator下一层的输入。示例图解如下：
 
