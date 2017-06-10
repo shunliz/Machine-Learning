@@ -1,7 +1,7 @@
 # Summary
 
 * [前言](README.md)
-* [第一部分 数学基础](di-yi-bu-fen-shu-xue-ji-chu.md)
+* [第一部分 数学基础](part1.md)
 * [第一章 数学分析](math/analytic/introduction.md)
   * [梯度下降](math/analytic/gradient_descent.md)
   * [数值计算](math/analytic/shu-zhi-ji-suan.md)
