@@ -4,10 +4,10 @@
 * [第一章 数学分析](math/analytic/introduction.md)
   * [梯度下降](math/analytic/gradient_descent.md)
 * [第一部分 数学基础](di-yi-bu-fen-shu-xue-ji-chu.md)
-* 第二章 概率论
+* [第二章 概率论](math/probability.md)
   * [10.深刻理解最大似然估计MLE和最大后验估计MAP](10shen-ke-li-jiezui-da-si-ran-gu-ji-mle-he-zui-da-hou-yan-gu-ji-map.md)
   * 11.过拟合的数学原理与解决方案
-* [第三章 矩阵和线性代数](di-san-ke-ff1a-ji-qi-xue-xi-de-shu-xue-ji-chu-ju-zhen-he-xian-xing-dai-shu.md)
+* [第三章 矩阵和线性代数](math/matrix-linear.md)
   * 10.向量对向量求导
   * 11.标量对向量求导
   * 12.标量对矩阵求导
