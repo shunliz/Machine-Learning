@@ -1,17 +1,20 @@
 # Summary
 
-* [Introduction](README.md)
-* [第一课：机器学习的数学基础 - 数学分析](math/analytic/introduction.md)
+* [前言](README.md)
+* [第一章 数学分析](math/analytic/introduction.md)
   * [梯度下降](math/analytic/gradient_descent.md)
-* 第二课：机器学习的数学基础 - 概率论与贝叶斯先验
+* [第一部分 数学基础](di-yi-bu-fen-shu-xue-ji-chu.md)
+* 第二章 概率论
   * [10.深刻理解最大似然估计MLE和最大后验估计MAP](10shen-ke-li-jiezui-da-si-ran-gu-ji-mle-he-zui-da-hou-yan-gu-ji-map.md)
   * 11.过拟合的数学原理与解决方案
-* 第三课：机器学习的数学基础 - 矩阵和线性代数
+* [第三章 矩阵和线性代数](di-san-ke-ff1a-ji-qi-xue-xi-de-shu-xue-ji-chu-ju-zhen-he-xian-xing-dai-shu.md)
   * 10.向量对向量求导
   * 11.标量对向量求导
   * 12.标量对矩阵求导
-* [第四课：Python基础1 - Python及其数学库](ml/pythonml.md)
-* 第五课：Python基础2 - 机器学习库
+* 第二部分 机器学习
+* [第四章 机器学习基础](ml/pythonml.md)
+  * Python及其数学库
+  * 机器学习库
 * [第六课：数据清洗和特征选择](di-liu-ke-ff1a-python-ji-chu-3-shu-ju-qing-xi-he-te-zheng-xuan-ze.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
@@ -47,6 +50,7 @@
 * 第二十二课：LDA实践
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
+* 第三部分 深度学习
 * [第二十五课：深度学习](dl/introduction.md)
   * [反向传播](/dl/back-propagation.md)
   * [参考文献](dl/reference.md)
@@ -57,6 +61,4 @@
   * [VAE](dl/gan/vae.md)
 * [受限波尔兹曼机](dl/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
-* [RNN](dl/rnn.md)
-  * [LSTM](dl/rnn/lstm.md)
 
