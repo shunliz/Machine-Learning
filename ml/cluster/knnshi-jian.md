@@ -14,7 +14,11 @@
 
 ![](/images/cluster/table1.png)
 
+![](/images/cluster/table2.png)
 
+![](/images/cluster/table3.png)
+
+![](/image/cluster/table4.png)
 
 # 3. 使用KNeighborsClassifier做分类的实例
 
