@@ -46,7 +46,7 @@
 * 第十七课：EM算法
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
-* [第二十一课：主题模型LDA](di-er-shi-yi-ke-ff1a-zhu-ti-mo-xing-lda.md)
+* [第二十一课：主题模型LDA](ml/lda.md)
 * 第二十二课：LDA实践
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
