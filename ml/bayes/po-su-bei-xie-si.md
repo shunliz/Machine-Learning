@@ -64,7 +64,7 @@ $$P(X_1=x_1, X_2=x_2,...X_n=x_n|Y=C_k) = P(X_1=x_1|Y=C_k)P(X_2=x_2|Y=C_k)...P(X_
 
 我们预测的类别$$C_{result}$$是使$$P(Y=C_k|X=X^{(test)})$$最大化的类别，数学表达式为：
 
-$$C_{result}  = argmaxP(Y=C_k|X=X^{(test)}) = argmaxP(X=X^{(test)}|Y=C_k)P(Y=C_k) \Bigg{/}P(X=X^{(test)}) $$
+$$C_{result}  = argmaxP(Y=C_k|X=X^{(test)}) = argmaxP(X=X^{(test)}|Y=C_k)P(Y=C_k) /P(X=X^{(test)}) $$
 
 由于对于所有的类别计算$$P(Y=C_k|X=X^{(test)})$$时，上式的分母是一样的，都是$$P(X=X^{(test)}$$，因此，我们的预测公式可以简化为：
 
