@@ -64,15 +64,15 @@ $$P(X_1=x_1, X_2=x_2,...X_n=x_n|Y=C_k) = P(X_1=x_1|Y=C_k)P(X_2=x_2|Y=C_k)...P(X_
 
 我们预测的类别$$C_{result}$$是使$$P(Y=C_k|X=X^{(test)})$$最大化的类别，数学表达式为：
 
-$$C_{result}  = \underbrace{argmax}_{C_k}P(Y=C_k|X=X^{(test)}) = \underbrace{argmax}_{C_k}P(X=X^{(test)}|Y=C_k)P(Y=C_k) \Bigg{/}P(X=X^{(test)}) $$
+$$C_{result}  = argmaxP(Y=C_k|X=X^{(test)}) = argmaxP(X=X^{(test)}|Y=C_k)P(Y=C_k) \Bigg{/}P(X=X^{(test)}) $$
 
 由于对于所有的类别计算$$P(Y=C_k|X=X^{(test)})$$时，上式的分母是一样的，都是$$P(X=X^{(test)}$$，因此，我们的预测公式可以简化为：
 
-$$C_{result}  = \underbrace{argmax}_{C_k}P(X=X^{(test)}|Y=C_k)P(Y=C_k)$$
+$$C_{result}  = argmaxP(X=X^{(test)}|Y=C_k)P(Y=C_k)$$
 
 接着我们利用朴素贝叶斯的独立性假设，就可以得到通常意义上的朴素贝叶斯推断公式:
 
-$$C_{result}  = \underbrace{argmax}_{C_k}P(Y=C_k)\prod_{j=1}^{n}P(X_j=X_j^{(test)}|Y=C_k)$$
+$$C_{result}  = argmaxP(Y=C_k)\prod_{j=1}^{n}P(X_j=X_j^{(test)}|Y=C_k)$$
 
 # 4. 朴素贝叶斯的参数估计
 
@@ -144,7 +144,7 @@ $$P(Y=C_k)\prod_{j=1}^{n}P(X_j=x_j^{(test)}|Y=C_k)$$
 
 4）确定实例$$X^{(test)}$$的分类$$C_{result}$$
 
-$$C_{result}  = \underbrace{argmax}_{C_k}P(Y=C_k)\prod_{j=1}^{n}P(X_j=X_j^{(test)}|Y=C_k)$$
+$$C_{result}  = argmaxP(Y=C_k)\prod_{j=1}^{n}P(X_j=X_j^{(test)}|Y=C_k)$$
 
 从上面的计算可以看出，没有复杂的求导和矩阵运算，因此效率很高。
 
