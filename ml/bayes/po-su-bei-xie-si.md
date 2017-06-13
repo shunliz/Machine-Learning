@@ -102,7 +102,7 @@ $$P(X_j=X_j^{(test)}|Y=C_k) = P(j|Y=C_k)X_j^{(test)} + (1 - P(j|Y=C_k)(1-X_j^{(t
 
 c\)如果我们我们的$$X_j$$是连续值，我们通常取$$X_j$$的先验概率为正态分布，即在样本类别$$C_k$$中，$$X_j$$的值符合正态分布。这样$$P(X_j=X_j^{(test)}|Y=C_k)$$的概率分布是：
 
-$$P(X_j=X_j^{(test)}|Y=C_k) = \frac{1}{\sqrt{2\pi\sigma_k^2}}exp\Bigg{(}-\frac{(X_j^{(test)} - \mu_k)^2}{2\sigma_k^2}\Bigg{)}$$
+$$P(X_j=X_j^{(test)}|Y=C_k) = \frac{1}{\sqrt{2\pi\sigma_k^2}}exp(-\frac{(X_j^{(test)} - \mu_k)^2}{2\sigma_k^2})$$
 
 其中和$$\mu_k$$和$$\sigma_k^2$$是正态分布的期望和方差，可以通过极大似然估计求得。$$\mu_k$$为在样本类别$$C_k$$中，所有$$X_j$$的平均值。$$\sigma_k^2$$为在样本类别$$C_k$$中，所有$$X_j$$的方差。对于一个连续的样本值，带入正态分布的公式，就可以求出概率分布了。
 
@@ -134,7 +134,7 @@ b\)如果是稀疏二项离散值:$$P(X_j=x_{jl}|Y=C_k) = P(j|Y=C_k)x_{jl} + (1 
 
 c\)如果是连续值不需要计算各个l的取值概率，直接求正态分布的参数:
 
-$$P(X_j=x_j|Y=C_k) = \frac{1}{\sqrt{2\pi\sigma_k^2}}exp\Bigg{(}-\frac{(x_j - \mu_k)^2}{2\sigma_k^2}\Bigg{)}$$
+$$P(X_j=x_j|Y=C_k) = \frac{1}{\sqrt{2\pi\sigma_k^2}}exp(-\frac{(x_j - \mu_k)^2}{2\sigma_k^2})$$
 
 需要求出$$\mu_k$$和$$\sigma_k^2$$。$$\mu_k$$为在样本类别$$C_k$$中，所有$$X_j$$的平均值。$$\sigma_k^2$$为在样本类别$$C_k$$中，所有$$X_j$$的方差。
 
