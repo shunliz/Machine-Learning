@@ -36,7 +36,8 @@
   * [GBDT](ml/forest/gbdt.md)
   * [XGBOOST](ml/forest/xgboost.md)
   * [AdaBoost](ml/forest/adaboost.md)
-* 第十三课：SVM
+* [第十三课：SVM](ml/svm.md)
+  * [线性SVM](ml/svm/linear-svm.md)
 * 第十四课：SVM实践
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
