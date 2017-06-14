@@ -58,6 +58,7 @@
 * [第二十五课：深度学习](dl/introduction.md)
   * [基本概念](dl/ji-ben-gai-nian.md)
   * [反向传播](/dl/back-propagation.md)
+  * 反向传播2
   * [参考文献](dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
 * [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
