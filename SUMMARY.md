@@ -37,6 +37,7 @@
   * [XGBOOST](ml/forest/xgboost.md)
   * [AdaBoost](ml/forest/adaboost.md)
 * [第十三课：SVM](ml/svm.md)
+  * [感知机模型](ml/svm/gan-zhi-ji-mo-xing.md)
   * [线性SVM](ml/svm/linear-svm.md)
 * 第十四课：SVM实践
 * [第十五课：聚类](ml/cluster.md)
