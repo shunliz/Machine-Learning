@@ -2,15 +2,15 @@
 
 神经网络的一个最引人注目的特点就是它实际上可以计算任何的函数。也就是说，假设某个人给你某种复杂而奇特的函数，$$f(x)$$：
 
-![](http://upload-images.jianshu.io/upload_images/42741-c1b7fa50644b033c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-c1b7fa50644b033c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 不管这个函数是什么样的，总会有一个神经网络能够对任何可能的输入 $$x$$，网络可以得到对应的值 $$f(x)$$（或者某个足够准确的近似），如图：
 
-![](http://upload-images.jianshu.io/upload_images/42741-84438da12a56973a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-84438da12a56973a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 即使函数有很多输入或者多个输出，这个结果都是成立的，$$f=f(x_1,...,x_m)$$ 。例如，这里有一个输入为 $$m=3$$ 和输出为 $$n=2$$ 的网络：
 
-![](http://upload-images.jianshu.io/upload_images/42741-69a4dda01da570b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-69a4dda01da570b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 结果表明神经网络拥有一种*普遍性*（universality）。不过拿过来什么函数，我们都确信存在一个神经网络可以计算它。
 
@@ -32,7 +32,7 @@
 
 第一点，这句话不是说一个网络可以被用来**准确地**计算任何函数。而是说，我们可以获得尽可能好的一个**近似**。通过增加隐藏元的数量，我们可以提升近似的精度。例如，早先我使用了三个隐藏元的网络来计算 $$f(x)$$。使用三个隐藏元仅仅能得到一个低质量的大多数函数近似。通过增加隐藏元的数量（比如说，设置为五个），我们能够明显地得到更好的近似：
 
-![](http://upload-images.jianshu.io/upload_images/42741-c095f2aa08f90c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-c095f2aa08f90c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 并且我们可以继续增加隐藏元的数目。
 
@@ -46,31 +46,31 @@
 ---
 为了理解为何普遍性定理成立，我们先从理解如何构造一个神经网络能偶近似一个只有一个输入和一个输出的函数：
 
-![](http://upload-images.jianshu.io/upload_images/42741-ebabd93f89b1bdbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-ebabd93f89b1bdbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 结果表明，这其实是普遍性问题的核心。一旦我们理解了这个特例，那么实际上就会很容易扩展到那些有多个输入输出的函数上。
 
 为了构建关于如何构造一个计算 $$f$$ 的网络的洞察，让我们从一个只包含一个隐藏层的网络开始，隐藏元两个，还有一个只有一个输出神经元的输出层：
 
-![](http://upload-images.jianshu.io/upload_images/42741-ed33ed7b3a405217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-/images.jianshu.io/upload_/images/42741-ed33ed7b3a405217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 为了感受一下网络的组成部分工作的机制，我们聚焦在最顶上的那个隐藏神经元。在下图例子中，点击权重，$$w$$，将鼠标从左往右拉动可以进行权重的增加。你可以立即看到最上面的隐藏元计算的函数变化的情况：
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-f04c9e50f5e58b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-f04c9e50f5e58b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-32d9c572f4c6ac3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-32d9c572f4c6ac3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-8012d4689db60f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-8012d4689db60f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-abe28cc132e6aea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-abe28cc132e6aea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-1c78f744dc63eaaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-1c78f744dc63eaaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/42741-3b3cf96b2dc8fa9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](http://upload-/images.jianshu.io/upload_/images/42741-3b3cf96b2dc8fa9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 就在本书前面，我们也讲过隐藏元所计算的函数其实是 $$\sigma(wx+b)$$

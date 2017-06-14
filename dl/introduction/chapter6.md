@@ -6,11 +6,11 @@
 
 本章主要的部分是对最为流行神经网络之一的**深度卷积网络**的介绍。我们将细致地分析一个使用卷积网络来解决 MNIST 数据集的手写数字识别的例子（包含了代码和讲解）：
 
-![MNIST 数据集样例](images/159.png)
+![MNIST 数据集样例](/images/159.png)
 
 我们将从浅层的神经网络开始来解决上面的问题。通过多次的迭代，我们会构建越来越强大的网络。在这个过程中，也将要探究若干强大技术：卷积、pooling、使用GPU来更好地训练、训练数据的算法性扩展（避免过匹配）、dropout 技术的使用（同样为了防止过匹配现象）、网络的 ensemble 使用 和 其他技术。最终的结果能够接近人类的表现。在 10,000 幅 MNIST 测试图像上 —— 模型从未在训练中接触的图像 —— 该系统最终能够将其中 9,967 幅正确分类。这儿我们看看错分的 33 幅图像。注意正确分类是右上的标记；系统产生的分类在右下：
 
-![深度神经网络在 MNIST 实验中的性能](images/160.png)
+![深度神经网络在 MNIST 实验中的性能](/images/160.png)
 
 可以发现，这里面的图像对于正常人类来说都是非常困难区分的。例如，在第一行的第三幅图。我看的话，看起来更像是 “9” 而非 “8”，而 “8” 却是给出的真实的结果。我们的网络同样能够确定这个是 “9”。这种类型的“错误” 最起码是容易理解的，可能甚至值得我们赞许。最后用对最近使用深度（卷积）神经网络在图像识别上的研究进展作为关于图像识别的讨论的总结。
 
@@ -24,11 +24,11 @@
 ---
 在前面的章节中，我们教会了神经网络能够较好地识别手写数字：
 
-![MNIST 手写数字](images/161.png)
+![MNIST 手写数字](/images/161.png)
 
 我们在深度神经网络中使用全连接的邻接关系。网络中的神经元与相邻的层上的所有神经元均连接：
 
-![全连接深度神经网络](images/162.png)
+![全连接深度神经网络](/images/162.png)
 
 特别地，对输入图像中的每个像素点，我们将其光强度作为对应输入层神经元的输入。对于 $$28 \times 28$$ 像素的图像，这意味着我们输入神经元需要有 $$784(=28 \times 28)$$ 个。
 
@@ -571,7 +571,7 @@ def dropout_layer(layer, p_dropout):
 
 **The 2012 LRMD paper**：让我们从一篇来自 Stanford 和 Google 的研究者的论文开始。后面将这篇论文简记为 LRMD，前四位作者的姓的首字母命名。LRMD 使用神经网络对 [ImageNet](http://www.image-net.org/) 的图片进行分类，这是一个具有非常挑战性的图像识别问题。2011 年 ImageNet 数据包含了 $$16,000,000$$ 的全色图像，有 $$20,000$$ 个类别。图像从开放的网络上爬去，由 Amazon Mechanical Turk 服务的工人分类。下面是几幅 ImageNet 的图像：
 
-![Paste_Image.png](images/163.png)
+![Paste_Image.png](/images/163.png)
 
 上面这些分别属于 **圆线刨**，**棕色烂根须**，**加热的牛奶**，及 **通常的蚯蚓**。如果你想挑战一下，你可以访问[hand tools](http://www.image-net.org/synset?wnid=n03489162)，里面包含了一系列的区分的任务，比如区分 **圆线刨**、**短刨**、**倒角刨**以及其他十几种类型的刨子和其他的类别。我不知道读者你是怎么样一个人，但是我不能将所有这些工具类型都确定地区分开。这显然是比 MNIST 任务更具挑战性的任务。LRMD 网络获得了不错的 15.8% 的准确度。这看起很不给力，但是在先前最优的 9.3% 准确度上却是一个大的突破。这个飞跃告诉人们，神经网络可能会成为一个对非常困难的图像识别任务的强大武器。
 
@@ -583,7 +583,7 @@ ILSVRC 竞赛中一个难点是许多图像中包含多个对象。假设一个�
 
 KSH 网络有 $$7$$ 个隐藏层。前 $$5$$ 个隐藏层是卷积层（可能会包含 max-pooling），而后两个隐藏层则是全连接层。输出层则是 $$1,000$$ 的 softmax，对应于 $$1,000$$ 种分类。下面给出了网络的架构图，来自 KSH 的论文。我们会给出详细的解释。注意很多层被分解为 $$2$$ 个部分，对应于 $$2$$ 个 GPU。
 
-![Paste_Image.png](images/164.png)
+![Paste_Image.png](/images/164.png)
 
 输出层包含 $$3\times 224\times 224$$ 神经元，表示一幅 $$224\times 224$$ 的图像的RGB 值。回想一下，ImageNet 包含不同分辨率的图像。这里也会有问题，因为神经网络输入层通常是固定的大小。KSH 通过将每幅图进行的重设定，使得短的边长度为 256。然后在重设后的图像上裁剪出 $$256\times 256$$ 的区域。最终 KSH 从 $$256\times 256$$ 的图像中抽取出随机的 $$224\times  224$$ 的子图（和水平反射）。他们使用随机的方式，是为了扩展训练数据，这样能够缓解过匹配的情况。在大型网络中这样的方法是很有效的。这些 $$224 \times 224$$ 的图像就成为了网络的输入。在大多数情形下，裁剪的图像仍会包含原图中主要的对象。
 
@@ -605,7 +605,7 @@ KSH 网络使用了很多的技术。放弃了 sigmoid 或者 tanh 激活函数�
 **The 2014 ILSVRC 竞赛**：2012年后，研究一直在快速推进。看看 2014年的 ILSVRC 竞赛。和 2012 一样，这次也包括了一个 $$120,000$$ 张图像，$$1,000$$ 种类别，而最终评价也就是看网络输出前五是不是包含正确的分类。胜利的团队，基于 Google 之前给出的结果，使用了包含 $$22$$ 层的深度卷积网络。他们称此为 GoogLeNet，向 LeNet-5 致敬。GoogLeNet 达到了93.33% 的准确率远超2013年的 88.3% [Clarifai](http://www.clarifai.com/) 和 2012 年的KSH 84.7%。
 
 那么 GoogLeNet 93.33% 的准确率又是多好呢？在2014年，一个研究团队写了一篇关于 ILSVRC 竞赛的综述文章。其中有个问题是人类在这个竞赛中能表现得如何。为了做这件事，他们构建了一个系统让人类对 ILSVRC 图像进行分类。其作者之一 Andrej Karpathy 在一篇博文中解释道，让人类达到 GoogLeNet 的性能确实很困难：
-> ...the task of labeling images with 5 out of 1000 categories quickly turned out to be extremely challenging, even for some friends in the lab who have been working on ILSVRC and its classes for a while. First we thought we would put it up on [Amazon Mechanical Turk]. Then we thought we could recruit paid undergrads. Then I organized a labeling party of intense labeling effort only among the (expert labelers) in our lab. Then I developed a modified interface that used GoogLeNet predictions to prune the number of categories from 1000 to only about 100. It was still too hard - people kept missing categories and getting up to ranges of 13-15% error rates. In the end I realized that to get anywhere competitively close to GoogLeNet, it was most efficient if I sat down and went through the painfully long training process and the subsequent careful annotation process myself... The labeling happened at a rate of about 1 per minute, but this decreased over time... Some images are easily recognized, while some images (such as those of fine-grained breeds of dogs, birds, or monkeys) can require multiple minutes of concentrated effort. I became very good at identifying breeds of dogs... Based on the sample of images I worked on, the GoogLeNet classification error turned out to be 6.8%... My own error in the end turned out to be 5.1%, approximately 1.7% better.
+> ...the task of labeling /images with 5 out of 1000 categories quickly turned out to be extremely challenging, even for some friends in the lab who have been working on ILSVRC and its classes for a while. First we thought we would put it up on [Amazon Mechanical Turk]. Then we thought we could recruit paid undergrads. Then I organized a labeling party of intense labeling effort only among the (expert labelers) in our lab. Then I developed a modified interface that used GoogLeNet predictions to prune the number of categories from 1000 to only about 100. It was still too hard - people kept missing categories and getting up to ranges of 13-15% error rates. In the end I realized that to get anywhere competitively close to GoogLeNet, it was most efficient if I sat down and went through the painfully long training process and the subsequent careful annotation process myself... The labeling happened at a rate of about 1 per minute, but this decreased over time... Some /images are easily recognized, while some /images (such as those of fine-grained breeds of dogs, birds, or monkeys) can require multiple minutes of concentrated effort. I became very good at identifying breeds of dogs... Based on the sample of /images I worked on, the GoogLeNet classification error turned out to be 6.8%... My own error in the end turned out to be 5.1%, approximately 1.7% better.
 
 换言之，一个专家级别的人类，非常艰难地检查图像，付出很大的精力才能够微弱胜过深度神经网络。实际上，Karpathy 指出第二个人类专家，用小点的图像样本训练后，只能达到 12.0% 的 top-5 错误率，明显弱于 GoogLeNet。大概有一半的错误都是专家“难以发现和认定正确的类别究竟是什么”。
 
@@ -617,7 +617,7 @@ KSH 网络使用了很多的技术。放弃了 sigmoid 或者 tanh 激活函数�
 
 我可能已经留下了印象——所有的结果都是令人兴奋的正面结果。当然，目前一些有趣的研究工作也报道了一些我们还没能够真的理解的根本性的问题。例如，2013 年一篇论文指出，深度网络可能会受到有效忙点的影响。看看下面的图示。左侧是被网络正确分类的 ImageNet 图像。右边是一幅稍受干扰的图像（使用中间的噪声进行干扰）结果就没有能够正确分类。作者发现对每幅图片都存在这样的“对手”图像，而非少量的特例。
 
-![Paste_Image.png](images/165.png)
+![Paste_Image.png](/images/165.png)
 
 这是一个令人不安的结果。论文使用了基于同样的被广泛研究使用的 KSH 代码。尽管这样的神经网络计算的函数在理论上都是连续的，结果表明在实际应用中，可能会碰到很多非常不连续的函数。更糟糕的是，他们将会以背离我们直觉的方式变得不连续。真是烦心啊。另外，现在对这种不连续性出现的原因还没有搞清楚：是跟损失函数有关么？或者激活函数？又或是网络的架构？还是其他？我们一无所知。
 
@@ -651,7 +651,7 @@ RNN 同样也在其他问题的解决中发挥着作用。在语音识别中，R
 > 参见 Geoffrey Hinton, Simon Osindero 和 Yee-Whye Teh 在 2006 年的[A fast learning algorithm for deep belief nets](http://www.cs.toronto.edu/~hinton/absps/fastnc.pdf) , 及 Geoffrey Hinton 和 Ruslan Salakhutdinov 在2006 年的相关工作[Reducing the dimensionality of data with neural networks](http://www.sciencemag.org/content/313/5786/504.short) 
 
 DBN 在之后一段时间内很有影响力，但近些年前馈网络和 RNN 的流行，盖过了 DBN 的风头。尽管如此，DBN 还是有几个有趣的特性。
-一个就是 DBN 是一种生成式模型。在前馈网络中，我们指定了输入的激活函数，然后这些激活函数便决定了网络中后面的激活值。而像 DBN 这样的生成式模型可以类似这样使用，但是更加有用的可能就是指定某些特征神经元的值，然后进行“反向运行”，产生输入激活的值。具体讲，DBN 在手写数字图像上的训练同样可以用来生成和手写数字很像的图像。换句话说，DBN 可以学习写字的能力。所以，生成式模型更像人类的大脑：不仅可以读数字，还能够写出数字。用 Geoffrey Hinton 本人的话就是：“要识别对象的形状，先学会生成图像。” （to recognize shapes，first learn to generate images）
+一个就是 DBN 是一种生成式模型。在前馈网络中，我们指定了输入的激活函数，然后这些激活函数便决定了网络中后面的激活值。而像 DBN 这样的生成式模型可以类似这样使用，但是更加有用的可能就是指定某些特征神经元的值，然后进行“反向运行”，产生输入激活的值。具体讲，DBN 在手写数字图像上的训练同样可以用来生成和手写数字很像的图像。换句话说，DBN 可以学习写字的能力。所以，生成式模型更像人类的大脑：不仅可以读数字，还能够写出数字。用 Geoffrey Hinton 本人的话就是：“要识别对象的形状，先学会生成图像。” （to recognize shapes，first learn to generate /images）
 另一个是 DBN 可以进行无监督和半监督的学习。例如，在使用 图像数据学习时，DBN 可以学会有用的特征来理解其他的图像，即使，训练图像是无标记的。这种进行非监督学习的能力对于根本性的科学理由和实用价值（如果完成的足够好的话）来说都是极其有趣的。
 
 所以，为何 DBN 在已经获得了这些引人注目的特性后，仍然逐渐消失在深度学习的浪潮中呢？部分原因在于，前馈网络和 RNN 已经获得了很多很好的结果，例如在图像和语音识别的标准测试任务上的突破。所以大家把注意力转到这些模型上并不奇怪，这其实也是很合理的。然而，这里隐藏着一个推论。研究领域里通常是赢者通吃的规则，所以，几乎所有的注意力集中在最流行的领域中。这会给那些进行目前还不很流行方向上的研究人员很大的压力，虽然他们的研究长期的价值非常重要。我个人的观点是 DBN 和其他的生成式模型应该获得更多的注意。并且我对今后如果 DBN 或者相关的模型超过目前流行的模型也毫不诧异。欲了解 DBN，参考这个[DBN 综述](http://www.scholarpedia.org/article/Deep_belief_networks)。还有[这篇文章](http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf)也很有用。虽然没有主要地将 DBN，但是已经包含了很多关于 DBN 核心组件的受限 Boltzmann 机的有价值的信息。
