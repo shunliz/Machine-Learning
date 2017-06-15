@@ -19,6 +19,7 @@
 * [第六课：数据清洗和特征选择](di-liu-ke-ff1a-python-ji-chu-3-shu-ju-qing-xi-he-te-zheng-xuan-ze.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
+  * [One-hot编码](ml/clean-feature/one-hot.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
