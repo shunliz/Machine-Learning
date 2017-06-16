@@ -6,6 +6,7 @@
   * [梯度下降](math/analytic/gradient_descent.md)
   * [数值计算](math/analytic/shu-zhi-ji-suan.md)
   * [过拟合数学原理与解决方案](math/analytic/overfitting.md)
+  * [交叉验证](math/analytic/cross-validation.md)
 * [第二章 概率论](math/probability.md)
   * [最大似然估计](math/probability/mle.md)
 * [第三章 矩阵和线性代数](math/matrix-linear.md)
