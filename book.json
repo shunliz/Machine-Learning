@@ -1,7 +1,7 @@
 {
     "title":"机器学习",
     "author": "shunliz",
-    "plugins": ["katex", 
+    "plugins": ["MathJax", 
                 "image-captions"
     ],
   "pluginsConfig": {
