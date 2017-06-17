@@ -50,7 +50,7 @@
   * [KNN](ml/cluster/KNN.md)
   * [KNN实践](ml/cluster/knnshi-jian.md)
 * 第十六课：聚类实践
-* 第十七课：EM算法
+* [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
