@@ -1,1 +1,4 @@
-*.md linguist-language=markdown
+*.js linguist-language=python
+*.css linguist-language=python
+*.html linguist-language=python
+*.md linguist-language=python
