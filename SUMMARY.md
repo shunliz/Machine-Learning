@@ -30,6 +30,7 @@
   * [坐标下降和最小角](ml/regression/cordinate-angle.md)
   * [线性回归小结](ml/regression/linear-regression-summary.md)
   * [Logistic回归](ml/regression/logistic.md)
+  * [Logistic回归小结](ml/regression/logistichui-gui-xiao-jie.md)
 * [第九课：决策树](ml/decisiontree.md)
   * [ID3](ml/decisiontree/id3.md)
   * [C4.5](ml/decisiontree/c45.md)
