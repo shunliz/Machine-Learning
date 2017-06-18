@@ -92,8 +92,6 @@ $$
 $$
 \mu_i \geq 0 \;(i =1,2,...,m)
 $$
-
-
 对于$$C- \alpha_i - \mu_i = 0$$ ，$$\alpha_i \geq 0$$ ，$$\mu_i \geq 0$$这3个式子，我们可以消去$$\mu_i$$，只留下$$\alpha_i$$，也就是说$$0 \leq \alpha_i \leq C$$。 同时将优化目标函数变号，求极小值，如下：
 $$
 \underbrace{ min }_{\alpha} \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum\limits_{i=1}^{m}\alpha_i
@@ -148,8 +146,6 @@ $$
 $$
 0 \leq \alpha_i \leq C
 $$
-
-
 2）用SMO算法求出上式最小时对应的\alpha向量的值$$\alpha^{*}$$向量.
 
 3\) 计算$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
@@ -164,8 +160,6 @@ $$
 $$
 \underbrace{ min}_{w, b}[1-y_i(w \bullet x + b)]_{+} + \lambda ||w||_2^2
 $$
-
-
 其中$$L(y(w \bullet x + b)) = [1-y_i(w \bullet x + b)]_{+}$$称为合页损失函数\(hinge loss function\)，下标+表示为：
 
 $$[z]_{+}= \begin{cases} z & {z >0}\\ 0& {z\leq 0} \end{cases}$$
