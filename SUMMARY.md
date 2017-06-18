@@ -47,6 +47,7 @@
   * [软间隔最大化模型](ml/svm/soft-margin-max.md)
   * [核函数](ml/svm/kernel-method.md)
   * [SMO算法原理](ml/svm/smo.md)
+  * [SVM回归](ml/svm/svm-regression.md)
 * 第十四课：SVM实践
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
