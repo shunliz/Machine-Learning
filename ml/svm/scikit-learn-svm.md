@@ -143,7 +143,7 @@ $$
 |  | 是否用对偶形式优化dual | 这是一个布尔变量，控制是否使用对偶形式来优化算法，默认是True,即采用上面第二节的分类算法对偶形式来优化算法。如果我们的样本量比特征数多，此时采用对偶形式计算量较大，推荐dual设置为False，即采用原始形式优化 | SVC和NuSVC没有这个参数 |
 |  | 核函数参数degree | LinearSVC没有这个参数，LinearSVC限制了只能使用线性核函数 | 如果我们在kernel参数使用了多项式核函数 'poly'，那么我们就需要对这个参数进行调参。这个参数对应$$K(x, z) = （\gamma x \bullet z  + r)^d$$中的d。默认是3。一般需要通过交叉验证选择一组合适的$$\gamma$$, r, d |
 |  | 核函数参数gamma | LinearSVC没有这个参数，LinearSVC限制了只能使用线性核函数 | 如果我们在kernel参数使用了多项式核函数 'poly'，高斯核函数‘rbf’, 或者sigmoid核函数，那么我们就需要对这个参数进行调参。多项式核函数中这个参数对应$$K(x, z) = （\gamma x \bullet z  + r)^d$$中的$$\gamma$$。一般需要通过交叉验证选择一组合适的$$\gamma$$, r, d高斯核函数中这个参数对应$$K(x, z) = exp(\gamma\|\|x-z\|\|^2)$$中的$$\gamma$$。一般需要通过交叉验证选择合适的$$\gamma$$sigmoid核函数中这个参数对应$$K(x, z) = tanh（\gamma x \bullet z  + r)$$中的$$\gamma$$。一般需要通过交叉验证选择一组合适的$$\gamma$$, r。$$\gamma$$默认为'auto',即$$\frac{1}{特征维度}$$ |
-|  | 核函数参数coef0 | LinearSVC没有这个参数，LinearSVC限制了只能使用线性核函数 | 如果我们在kernel参数使用了多项式核函数 'poly'，或者sigmoid核函数，那么我们就需要对这个参数进行调参。多项式核函数中这个参数对应$$K\(x, z\) = （\gamma x \bullet z  + r\)^d$$中的r。一般需要通过交叉验证选择一组合适的$$\gamma$$, r, dsigmoid核函数中这个参数对应$$K\(x, z\) = tanh（\gamma x \bullet z  + r\)$$中的r。一般需要通过交叉验证选择一组合适的$$\gamma$$, rcoef0默认为0 |
+|  | 核函数参数coef0 | LinearSVC没有这个参数，LinearSVC限制了只能使用线性核函数 | 如果我们在kernel参数使用了多项式核函数 'poly'，或者sigmoid核函数，那么我们就需要对这个参数进行调参。多项式核函数中这个参数对应$$K(x, z) = （\gamma x \bullet z  + r)^d$$中的r。一般需要通过交叉验证选择一组合适的$$\gamma$$, r, dsigmoid核函数中这个参数对应$$K(x, z) = tanh（\gamma x \bullet z  + r)$$中的r。一般需要通过交叉验证选择一组合适的$$\gamma$$, rcoef0默认为0 |
 |  |  | 样本权重class\_weight | 指定样本各类别的的权重，主要是为了防止训练集某些类别的样本过多，导致训练的决策过于偏向这些类别。这里可以自己指定各个样本的权重，或者用“balanced”，如果使用“balanced”，则算法会自己计算权重，样本量少的类别所对应的样本权重会高。当然，如果你的样本类别分布没有明显的偏倚，则可以不管这个参数，选择默认的"None" |
 |  | 分类决策decision\_function\_shape | LinearSVC没有这个参数，使用multi\_class参数替代。 | 可以选择'ovo'或者‘ovo’.目前0.18版本默认是'ovo'.0.19版本将是'ovr'OvR\(one ve rest\)的思想很简单，无论你是多少元分类，我们都可以看做二元分类。具体做法是，对于第K类的分类决策，我们把所有第K类的样本作为正例，除了第K类样本以外的所有样本都作为负例，然后在上面做二元分类，得到第K类的分类模型。其他类的分类模型获得以此类推。OvO\(one-vs-one\)则是每次每次在所有的T类样本里面选择两类样本出来，不妨记为T1类和T2类，把所有的输出为T1和T2的样本放在一起，把T1作为正例，T2作为负例，进行二元分类，得到模型参数。我们一共需要T\(T-1\)/2次分类。从上面的描述可以看出OvR相对简单，但分类效果相对略差（这里指大多数样本分布情况，某些样本分布下OvR可能更好）。而OvO分类相对精确，但是分类速度没有OvR快。一般建议使用OvO以达到较好的分类效果。 |
 |  | 分类决策multi\_class | 可以选择 ‘ovr’ 或者 ‘crammer\_singer’ ‘ovr’和SVC和nuSVC中的decision\_function\_shape对应的‘ovr’类似。'crammer\_singer'是一种改良版的'ovr'，说是改良，但是没有比’ovr‘好，一般在应用中都不建议使用。 | SVC和nuSVC没有这个参数，使用decision\_function\_shape参数替代。 |
@@ -155,15 +155,15 @@ SVM回归算法库的重要参数巨大部分和分类算法库类似，因此�
 
 | **参数** | **LinearSVR** | **SVR** | **nuSVR** |
 | :--- | :--- | :--- | :--- |
-|  |  | 惩罚系数C | 即为我们第二节中SVM分类模型原型形式和对偶形式中的惩罚系数C，默认为1，一般需要通过交叉验证来选择一个合适的C。一般来说，如果噪音点较多时，C需要小一些。大家可能注意到在分类模型里面，nuSVC使用了nu这个等价的参数控制错误率，就没有使用C，为什么我们nuSVR仍然有这个参数呢，不是重复了吗？这里的原因在回归模型里面，我们除了惩罚系数C还有还有一个距离误差\epsilon来控制损失度量，因此仅仅一个nu不能等同于C.也就是说分类错误率是惩罚系数C和距离误差\epsilon共同作用的结果。后面我们可以看到nuSVR中nu的作用。 |
-|  | nu | LinearSVR 和SVR没有这个参数，用\epsilon控制错误率 | nu代表训练集训练的错误率的上限，或者说支持向量的百分比下限，取值范围为\(0,1\],默认是0.5.通过选择不同的错误率可以得到不同的距离误差\epsilon。也就是说这里的nu的使用和LinearSVR 和SVR的\epsilon参数等价。 |
-|  | 距离误差epsilon | 即我们第二节回归模型中的\epsilon，训练集中的样本需满足-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land} | nuSVR没有这个参数，用nu控制错误率 |
+|  |  | 惩罚系数C | 即为我们第二节中SVM分类模型原型形式和对偶形式中的惩罚系数C，默认为1，一般需要通过交叉验证来选择一个合适的C。一般来说，如果噪音点较多时，C需要小一些。大家可能注意到在分类模型里面，nuSVC使用了nu这个等价的参数控制错误率，就没有使用C，为什么我们nuSVR仍然有这个参数呢，不是重复了吗？这里的原因在回归模型里面，我们除了惩罚系数C还有还有一个距离误差$$\epsilon$$来控制损失度量，因此仅仅一个nu不能等同于C.也就是说分类错误率是惩罚系数C和距离误差$$\epsilon$$共同作用的结果。后面我们可以看到nuSVR中nu的作用。 |
+|  | nu | LinearSVR 和SVR没有这个参数，用$$\epsilon$$控制错误率 | nu代表训练集训练的错误率的上限，或者说支持向量的百分比下限，取值范围为\(0,1\],默认是0.5.通过选择不同的错误率可以得到不同的距离误差$$\epsilon$$。也就是说这里的nu的使用和LinearSVR 和SVR的$$\epsilon$$参数等价。 |
+|  | 距离误差$$\epsilon$$ | 即我们第二节回归模型中的$$\epsilon$$，训练集中的样本需满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land}$$ | nuSVR没有这个参数，用nu控制错误率 |
 |  | 是否用对偶形式优化dual | 和SVC类似，可参考上一节的dual描述 | SVR和NuSVR没有这个参数 |
 |  | 正则化参数penalty | 和SVC类似，可参考上一节的penalty 描述 | SVR和NuSVR没有这个参数 |
 |  | 核函数 kernel | LinearSVR没有这个参数，LinearSVR限制了只能使用线性核函数 | 和SVC, nuSVC类似，可参考上一节的kernel描述 |
 |  | 核函数参数degree, gamma 和coef0 | LinearSVR没有这些参数，LinearSVR限制了只能使用线性核函数 | 和SVC, nuSVC类似，可参考上一节的kernel参数描述 |
 |  |  | 样本权重class\_weight | 和LinearSVC， SVC, nuSVC类似，可参考上一节的class\_weight描述 |
-|  | 损失函数度量loss | 可以选择为‘epsilon\_insensitive’ 和 ‘squared\_epsilon\_insensitive’ ，如果选择‘epsilon\_insensitive’ ，则损失度量满足-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land}，即和第二节的损失度量一样。是默认的SVM回归的损失度量标准形式。如果选择为 ‘squared\_epsilon\_insensitive’ , 则损失度量满足\(y\_i - w \bullet \phi\(x\_i \) -b\)^2 \leq \epsilon + \xi\_i，此时可见会少一个松弛系数。其优化过程我们在SVM原理系列里没有讲，但是目标函数优化过程是完全相似的。一般用默认的‘epsilon\_insensitive’就足够了。 | SVR和NuSVR没有这个参数 |
+|  | 损失函数度量loss | 可以选择为‘epsilon\_insensitive’ 和 ‘squared\_epsilon\_insensitive’ ，如果选择‘epsilon\_insensitive’ ，则损失度量满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land}$$，即和第二节的损失度量一样。是默认的SVM回归的损失度量标准形式。如果选择为 ‘squared\_epsilon\_insensitive’ , 则损失度量满足$$\(y\_i - w \bullet \phi\(x\_i \) -b\)^2 \leq \epsilon + \xi\_i$$，此时可见会少一个松弛系数。其优化过程我们在SVM原理系列里没有讲，但是目标函数优化过程是完全相似的。一般用默认的‘epsilon\_insensitive’就足够了。 | SVR和NuSVR没有这个参数 |
 |  | 缓存大小cache\_size | LinearSVC计算量不大，因此不需要这个参数 | 在大样本的时候，缓存大小会影响训练速度，因此如果机器内存大，和SVC，nuSVC一样，推荐用500MB甚至1000MB。默认是200，即200MB. |
 
 # 6. SVM算法库其他调参要点
@@ -174,7 +174,7 @@ SVM回归算法库的重要参数巨大部分和分类算法库类似，因此�
 
 2）在特征数非常多的情况下，或者样本数远小于特征数的时候，使用线性核，效果已经很好，并且只需要选择惩罚系数C即可。
 
-3）在选择核函数时，如果线性拟合不好，一般推荐使用默认的高斯核'rbf'。这时我们主要需要对惩罚系数C和核函数参数\gamma进行艰苦的调参，通过多轮的交叉验证选择合适的惩罚系数C和核函数参数\gamma。
+3）在选择核函数时，如果线性拟合不好，一般推荐使用默认的高斯核'rbf'。这时我们主要需要对惩罚系数C和核函数参数$$\gamma$$进行艰苦的调参，通过多轮的交叉验证选择合适的惩罚系数C和核函数参数$$\gamma$$。
 
 4）理论上高斯核不会比线性核差，但是这个理论却建立在要花费更多的时间来调参上。所以实际上能用线性核解决问题我们尽量使用线性核。
 
