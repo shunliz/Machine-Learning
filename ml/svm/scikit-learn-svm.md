@@ -157,13 +157,13 @@ SVM回归算法库的重要参数巨大部分和分类算法库类似，因此�
 | :--- | :--- | :--- | :--- |
 |  |  | 惩罚系数C | 即为我们第二节中SVM分类模型原型形式和对偶形式中的惩罚系数C，默认为1，一般需要通过交叉验证来选择一个合适的C。一般来说，如果噪音点较多时，C需要小一些。大家可能注意到在分类模型里面，nuSVC使用了nu这个等价的参数控制错误率，就没有使用C，为什么我们nuSVR仍然有这个参数呢，不是重复了吗？这里的原因在回归模型里面，我们除了惩罚系数C还有还有一个距离误差$$\epsilon$$来控制损失度量，因此仅仅一个nu不能等同于C.也就是说分类错误率是惩罚系数C和距离误差$$\epsilon$$共同作用的结果。后面我们可以看到nuSVR中nu的作用。 |
 |  | nu | LinearSVR 和SVR没有这个参数，用$$\epsilon$$控制错误率 | nu代表训练集训练的错误率的上限，或者说支持向量的百分比下限，取值范围为\(0,1\],默认是0.5.通过选择不同的错误率可以得到不同的距离误差$$\epsilon$$。也就是说这里的nu的使用和LinearSVR 和SVR的$$\epsilon$$参数等价。 |
-|  | 距离误差$$\epsilon$$ | 即我们第二节回归模型中的$$\epsilon$$，训练集中的样本需满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land}$$ | nuSVR没有这个参数，用nu控制错误率 |
+|  | 距离误差$$\epsilon$$ | 即我们第二节回归模型中的$$\epsilon$$，训练集中的样本需满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi(x_i ) -b \leq \epsilon + \xi\_i^{\land}$$ | nuSVR没有这个参数，用nu控制错误率 |
 |  | 是否用对偶形式优化dual | 和SVC类似，可参考上一节的dual描述 | SVR和NuSVR没有这个参数 |
 |  | 正则化参数penalty | 和SVC类似，可参考上一节的penalty 描述 | SVR和NuSVR没有这个参数 |
 |  | 核函数 kernel | LinearSVR没有这个参数，LinearSVR限制了只能使用线性核函数 | 和SVC, nuSVC类似，可参考上一节的kernel描述 |
 |  | 核函数参数degree, gamma 和coef0 | LinearSVR没有这些参数，LinearSVR限制了只能使用线性核函数 | 和SVC, nuSVC类似，可参考上一节的kernel参数描述 |
 |  |  | 样本权重class\_weight | 和LinearSVC， SVC, nuSVC类似，可参考上一节的class\_weight描述 |
-|  | 损失函数度量loss | 可以选择为‘epsilon\_insensitive’ 和 ‘squared\_epsilon\_insensitive’ ，如果选择‘epsilon\_insensitive’ ，则损失度量满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi\(x\_i \) -b \leq \epsilon + \xi\_i^{\land}$$，即和第二节的损失度量一样。是默认的SVM回归的损失度量标准形式。如果选择为 ‘squared\_epsilon\_insensitive’ , 则损失度量满足$$\(y\_i - w \bullet \phi\(x\_i \) -b\)^2 \leq \epsilon + \xi\_i$$，此时可见会少一个松弛系数。其优化过程我们在SVM原理系列里没有讲，但是目标函数优化过程是完全相似的。一般用默认的‘epsilon\_insensitive’就足够了。 | SVR和NuSVR没有这个参数 |
+|  | 损失函数度量loss | 可以选择为‘epsilon\_insensitive’ 和 ‘squared\_epsilon\_insensitive’ ，如果选择‘epsilon\_insensitive’ ，则损失度量满足$$-\epsilon - \xi\_i^{\lor} \leq y\_i - w \bullet \phi(x_i ) -b \leq \epsilon + \xi\_i^{\land}$$，即和第二节的损失度量一样。是默认的SVM回归的损失度量标准形式。如果选择为 ‘squared\_epsilon\_insensitive’ , 则损失度量满足$$(y_i - w \bullet \phi(x_i ) -b)^2 \leq \epsilon + \xi_i$$，此时可见会少一个松弛系数。其优化过程我们在SVM原理系列里没有讲，但是目标函数优化过程是完全相似的。一般用默认的‘epsilon\_insensitive’就足够了。 | SVR和NuSVR没有这个参数 |
 |  | 缓存大小cache\_size | LinearSVC计算量不大，因此不需要这个参数 | 在大样本的时候，缓存大小会影响训练速度，因此如果机器内存大，和SVC，nuSVC一样，推荐用500MB甚至1000MB。默认是200，即200MB. |
 
 # 6. SVM算法库其他调参要点
