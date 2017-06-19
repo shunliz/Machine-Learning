@@ -50,12 +50,12 @@
   * [SVM回归](ml/svm/svm-regression.md)
   * [scikit-learn SVM](ml/svm/scikit-learn-svm.md)
   * [支持向量机高斯核调参](ml/svm/gaosi-kernel.md)
-* 第十四课：SVM实践
+* 集成学习
+* 第十六课：聚类实践
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
   * [KNN](ml/cluster/KNN.md)
   * [KNN实践](ml/cluster/knnshi-jian.md)
-* 第十六课：聚类实践
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
