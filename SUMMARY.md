@@ -51,7 +51,8 @@
   * [scikit-learn SVM](ml/svm/scikit-learn-svm.md)
   * [支持向量机高斯核调参](ml/svm/gaosi-kernel.md)
 * [集成学习](ml/integrate.md)
-  * [adaboost原理](ml/integrate/adaboost.md)
+  * [Adaboost原理](ml/integrate/adaboost.md)
+  * [scikit-learn Adaboost](ml/integrate/scikit-learn-adaboost.md)
 * 第十六课：聚类实践
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
