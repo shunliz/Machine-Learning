@@ -28,7 +28,7 @@ Gradient boosting 是 boosting 的其中一种方法，所谓**Boosting**，就�
 
 AdaBoost 就是将多个弱分类器，通过投票的手段来改变各个分类器的权值，使分错的分类器获得较大权值。同时在每一次循环中也改变样本的分布，这样被错误分类的样本也会受到更多的关注。
 
-![](http://upload-images.jianshu.io/upload_images/1667471-c98c268fe27708a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1667471-c98c268fe27708a2.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 ---
 
@@ -41,21 +41,24 @@ AdaBoost 就是将多个弱分类器，通过投票的手段来改变各个分�
 **表现快**是因为它具有这样的设计：
 
 * Parallelization：
- 
+
   训练时可以用所有的 CPU 内核来并行化建树。
+
 * Distributed Computing ：
- 
+
   用分布式计算来训练非常大的模型。
+
 * Out-of-Core Computing：
- 
+
   对于非常大的数据集还可以进行 Out-of-Core Computing。
+
 * Cache Optimization of data structures and algorithms：
- 
+
   更好地利用硬件。
 
 下图就是 XGBoost 与其它 gradient boosting 和 bagged decision trees 实现的效果比较，可以看出它比 R, Python，Spark，H2O 中的基准配置要更快。
 
-![](http://upload-images.jianshu.io/upload_images/1667471-517f7c6d2df156f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1667471-517f7c6d2df156f7.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 另外一个优点就是在预测问题中**模型表现非常好**，下面是几个 kaggle winner 的赛后采访链接，可以看出 XGBoost 的在实战中的效果。
 
@@ -191,7 +194,7 @@ plot_importance(model)
 pyplot.show()
 ```
 
-![](http://upload-images.jianshu.io/upload_images/1667471-c453db61f95f1914.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1667471-c453db61f95f1914.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 **4. 调参**
 
