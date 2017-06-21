@@ -36,6 +36,7 @@
   * [C4.5](ml/decisiontree/c45.md)
   * [CART](ml/decisiontree/cart.md)
   * [总结](ml/decisiontree/summary.md)
+  * [实现代码](ml/decisiontree/code.md)
 * [第十课：随机森林](ml/forest.md)
   * [随机森林](ml/forest/random-forest.md)
   * [GBDT](ml/forest/gbdt.md)
