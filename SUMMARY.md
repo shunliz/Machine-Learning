@@ -58,7 +58,8 @@
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
   * [KNN](ml/cluster/KNN.md)
-  * [KNN实践](ml/cluster/knnshi-jian.md)
+  * [scikit-learn KNN](ml/cluster/knnshi-jian.md)
+  * [KNN 代码](ml/cluster/knn-code.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
