@@ -52,6 +52,7 @@
   * [Adaboost原理](ml/integrate/adaboost.md)
   * [scikit-learn Adaboost](ml/integrate/scikit-learn-adaboost.md)
   * [梯度提升树（GBDT）](ml/integrate/gbdt.md)
+  * [scikit GBDT](ml/integrate/scikit-gbdt.md)
   * [XGBOOST](ml/integrate/xgboost.md)
 * [第十五课：聚类](ml/cluster.md)
   * [K-Mean](ml/cluster/kmeans.md)
