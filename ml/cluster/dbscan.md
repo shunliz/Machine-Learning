@@ -1,4 +1,4 @@
-# [DBSCAN密度聚类算法](http://www.cnblogs.com/pinard/p/6208966.html)
+# DBSCAN密度聚类算法
 
 ---
 

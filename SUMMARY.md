@@ -63,6 +63,7 @@
   * [BIRCH聚类算法原理](ml/cluster/birch.md)
   * [scikit-learn BIRCH](ml/cluster/scikit-learn-birch.md)
   * [DBSCAN密度聚类算法](ml/cluster/dbscan.md)
+  * [scikit-learn DBSCAN](ml/cluster/scikit-learn-dbscan.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
