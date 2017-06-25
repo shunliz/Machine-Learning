@@ -24,6 +24,7 @@
   * [ICA](ml/clean-feature/ica.md)
   * [One-hot编码](ml/clean-feature/one-hot.md)
   * [scikit-learn PCA](ml/clean-feature/scikit-pca.md)
+  * [线性判别分析LDA](ml/clean-feature/xian-xing-pan-bie-fen-xi-lda.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
@@ -74,7 +75,7 @@
   * [scikit-learn朴素贝叶斯](ml/bayes/scikit-simple-bayes.md)
   * [朴素贝叶斯实际应用](ml/bayes/simple-bayes-real-use.md)
   * [朴素贝叶斯代码](ml/bayes/simple-bayes-code.md)
-* [第二十一课：主题模型LDA](ml/lda.md)
+* [第二十一课：LDA主题模型](ml/lda/lda.md)
 * 第二十二课：LDA实践
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
