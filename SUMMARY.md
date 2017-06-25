@@ -25,6 +25,7 @@
   * [One-hot编码](ml/clean-feature/one-hot.md)
   * [scikit-learn PCA](ml/clean-feature/scikit-pca.md)
   * [线性判别分析LDA](ml/clean-feature/xian-xing-pan-bie-fen-xi-lda.md)
+  * [用scikit-learn进行LDA降维](ml/clean-feature/scikit-lda.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
