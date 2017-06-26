@@ -28,6 +28,7 @@
   * [用scikit-learn进行LDA降维](ml/clean-feature/scikit-lda.md)
   * [奇异值分解\(SVD\)原理与在降维中的应用](ml/clean-feature/svd.md)
   * [局部线性嵌入\(LLE\)原理](ml/clean-feature/lle.md)
+  * [scikit-learn LLE](ml/clean-feature/scikit-lle.md)
 * [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
