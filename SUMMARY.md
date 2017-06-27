@@ -76,6 +76,7 @@
   * [典型关联分析\(CCA\)原理](ml/associative/cca.md)
   * [Apriori算法原理](ml/associative/apriori.md)
   * [FP Tree算法原理](ml/associative/fptree.md)
+  * [PrefixSpan算法原理](ml/associative/prefixspan.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
