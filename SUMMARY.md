@@ -74,6 +74,7 @@
   * [scikit-learn 谱聚类](ml/cluster/scikit-spectral.md)
 * 关联分析
   * [典型关联分析\(CCA\)原理](ml/associative/cca.md)
+  * [Apriori算法原理](ml/associative/apriori.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
