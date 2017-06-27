@@ -24,13 +24,13 @@ CCA使用的方法是将多维的X和Y都用线性变换为1维的X'和Y'，然�
 
 我们CCA的优化目标是最大化$$\rho(X',Y')$$得到对应的投影向量a,b，即$$\underbrace{arg\;max}_{a,b}\frac{cov(X',Y')}{\sqrt{D(X')}\sqrt{D(Y')}}$$
 
-在投影前，我们一般会把原始数据进行标准化，得到均值为0而方差为1的数据X和Y。这样我们有：$$cov(X',Y') = cov(a^TX, b^TY) = E(<a^TX, b^TY>) = E((a^TX)(b^TY)^T) = a^TE(XY^T)bD(X') = D(a^TX) = a^TE(XX^T)aD(Y') = D(b^TY) = b^TE(YY^T)b$$
+在投影前，我们一般会把原始数据进行标准化，得到均值为0而方差为1的数据X和Y。这样我们有：$$cov(X',Y') = cov(a^TX, b^TY) = E(<a^TX, b^TY>) = E((a^TX)(b^TY)^T) = a^TE(XY^T)bD(X') = D(a^TX) \\& = a^TE(XX^T)aD(Y') = D(b^TY) = b^TE(YY^T)b$$
 
 由于我们的X，Y的均值均为0，则D\(X\) = cov\(X,X\) = E\(XX^T\), D\(Y\)= cov\(Y,Y\) = E\(YY^T\)cov\(X,Y\) = E\(XY^T\),  cov\(Y,X\) = E\(YX^T\)
 
 令S\_{XY} =cov\(X,Y\)，则优化目标可以转化为：\underbrace{arg\;max}\_{a,b}\frac{a^TS\_{XY}b}{\sqrt{ a^TS\_{XX}a}\sqrt{b^TS\_{YY}b}}
 
-由于分子分母增大相同的倍数，优化目标结果不变，我们可以采用和SVM类似的优化方法，固定分母，优化分子，具体的转化为：\underbrace{arg\;max}\_{a,b}\;\;{a^TS\_{XY}b}s.t. a^TS\_{XX}a =1,\; b^TS\_{YY}b =1
+由于分子分母增大相同的倍数，优化目标结果不变，我们可以采用和SVM类似的优化方法，固定分母，优化分子，具体的转化为：$$\underbrace{arg\;max}_{a,b}\;\;{a^TS_{XY}b}$$                                 $$s.t. a^TS_{XX}a =1,\; b^TS_{YY}b =1$$
 
 也就是说，我们的CCA算法的目标最终转化为一个凸优化过程，只要我们求出了这个优化目标的最大值，就是我们前面提到的多维X和Y的相关性度量，而对应的a,b则为降维时的投影向量，或者说线性系数。
 
