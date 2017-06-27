@@ -39,6 +39,8 @@ $$
 D(X) = cov(X,X) = E(XX^T), D(Y)= cov(Y,Y) = E(YY^T)
 $$
 
+
+
 $$
 cov(X,Y) = E(XY^T),  cov(Y,X) = E(YX^T)
 $$
