@@ -79,6 +79,7 @@
   * [PrefixSpan算法原理](ml/associative/prefixspan.md)
   * [Spark FP Tree算法和PrefixSpan算法](ml/associative/spark-fptree-prefixspan.md)
 * [推荐算法](ml/recommand/recommand.md)
+  * [矩阵分解协同过滤推荐算法](ml/recommand/matrix-filter.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
