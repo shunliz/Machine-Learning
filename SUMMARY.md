@@ -72,11 +72,12 @@
   * [scikit-learn DBSCAN](ml/cluster/scikit-learn-dbscan.md)
   * [谱聚类（spectral clustering）原理](ml/cluster/spectral.md)
   * [scikit-learn 谱聚类](ml/cluster/scikit-spectral.md)
-* 关联分析
+* [关联分析](guan-lian-fen-xi.md)
   * [典型关联分析\(CCA\)原理](ml/associative/cca.md)
   * [Apriori算法原理](ml/associative/apriori.md)
   * [FP Tree算法原理](ml/associative/fptree.md)
   * [PrefixSpan算法原理](ml/associative/prefixspan.md)
+  * [Spark FP Tree算法和PrefixSpan算法](ml/associative/spark-fptree-prefixspan.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
