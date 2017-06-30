@@ -2,11 +2,11 @@
 
 ---
 
-在[矩阵分解在协同过滤推荐算法中的应用](http://www.cnblogs.com/pinard/p/6351319.html)中，我们对矩阵分解在推荐算法中的应用原理做了总结，这里我们就从实践的角度来用Spark学习矩阵分解推荐算法。
+在[矩阵分解在协同过滤推荐算法中的应用](/ml/recommand/matrix-filter.md)中，我们对矩阵分解在推荐算法中的应用原理做了总结，这里我们就从实践的角度来用Spark学习矩阵分解推荐算法。
 
 # 1. Spark推荐算法概述
 
-　　　　在Spark MLlib中，推荐算法这块只实现了基于矩阵分解的协同过滤推荐算法。而基于的算法是FunkSVD算法，即将m个用户和n个物品对应的评分矩阵M分解为两个低维的矩阵：Mm×n=PTm×kQk×n
+　　　　在Spark MLlib中，推荐算法这块只实现了基于矩阵分解的协同过滤推荐算法。而基于的算法是FunkSVD算法，即将m个用户和n个物品对应的评分矩阵M分解为两个低维的矩阵：$$M_{m \times n}=P_{m \times k}^TQ_{k \times n}$$
 
 　　　　其中k为分解成低维的维数，一般远比m和n小。如果大家对FunkSVD算法不熟悉，可以复习对应的原理篇。
 
@@ -30,7 +30,7 @@
 
 　　　　1\) **ratings**: 评分矩阵对应的RDD。需要我们输入。如果是隐式反馈，则是评分矩阵对应的隐式反馈矩阵。
 
-　　　　2\) **rank** : 矩阵分解时对应的低维的维数。即PTm×kQk×n中的维度k。这个值会影响矩阵分解的性能，越大则算法运行的时间和占用的内存可能会越多。通常需要进行调参，一般可以取10-200之间的数。
+　　　　2\) **rank** : 矩阵分解时对应的低维的维数。即$$P_{m \times k}^TQ_{k \times n}$$中的维度k。这个值会影响矩阵分解的性能，越大则算法运行的时间和占用的内存可能会越多。通常需要进行调参，一般可以取10-200之间的数。
 
 　　　　3\) **iterations** :在矩阵分解用交替最小二乘法求解时，进行迭代的最大次数。这个值取决于评分矩阵的维度，以及评分矩阵的系数程度。一般来说，不需要太大，比如5-20次即可。默认值是5。
 
@@ -52,95 +52,29 @@
 
 　　　　如果你没有搭notebook的Spark环境，则需要先跑下面这段代码。当然，如果你已经搭好了，则下面这段代码不用跑了。
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 ```
-import
- os
+import os
+import sys
 
-import
- sys
+#下面这些目录都是你自己机器的Spark安装目录和Java安装目录
+os.environ['SPARK_HOME'] = "C:/Tools/spark-1.6.1-bin-hadoop2.6/"
 
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/bin")
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/python")
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/python/pyspark")
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib")
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib/pyspark.zip")
+sys.path.append("C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib/py4j-0.9-src.zip")
+sys.path.append("C:/Program Files (x86)/Java/jdk1.8.0_102")
 
-#
-下面这些目录都是你自己机器的Spark安装目录和Java安装目录
+from pyspark import SparkContext
+from pyspark import SparkConf
 
-os.environ[
-'
-SPARK_HOME
-'
-] = 
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/
-"
-
-
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/bin
-"
-)
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/python
-"
-)
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/python/pyspark
-"
-)
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib
-"
-)
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib/pyspark.zip
-"
-)
-sys.path.append(
-"
-C:/Tools/spark-1.6.1-bin-hadoop2.6/python/lib/py4j-0.9-src.zip
-"
-)
-sys.path.append(
-"
-C:/Program Files (x86)/Java/jdk1.8.0_102
-"
-)
-
-
-from
- pyspark 
-import
- SparkContext
-
-from
- pyspark 
-import
- SparkConf
-
-sc 
-= SparkContext(
-"
-local
-"
-, 
-"
-testing
-"
-)
+sc = SparkContext("local", "testing")
 ```
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
-　　　　在跑算法之前，建议输出Spark Context如下，如果可以正常打印内存地址，则说明Spark的运行环境搞定了。
-
 ```
-print
- sc
+print sc
 ```
 
 　　　　比如我的输出是：
@@ -154,14 +88,8 @@ pyspark.context.SparkContext object at 0x07352950
 　　　　首先我们将u.data文件读入内存，并尝试输出第一行的数据来检验是否成功读入，注意复制代码的时候，数据的目录要用你自己的u.data的目录。代码如下：
 
 ```
-#
-下面目录要用解压后u.data所在的目录
-
-user_data = sc.textFile(
-"
-C:/Temp/ml-100k/u.data
-"
-)
+#下面目录要用解压后u.data所在的目录
+user_data = sc.textFile("C:/Temp/ml-100k/u.data")
 user_data.first()
 ```
 
@@ -174,17 +102,8 @@ u'196\t242\t3\t881250949'
 　　　　可以看到数据是用\t分开的，我们需要将每行的字符串划开，成为数组，并只取前三列，不要时间戳那一列。代码如下：
 
 ```
-rates = user_data.map(
-lambda
- x: x.split(
-"
-\t
-"
-)[0:3
-])
-
-print
- rates.first()
+rates = user_data.map(lambda x: x.split("\t")[0:3])
+print rates.first()
 ```
 
 　　　　输出如下：
@@ -196,18 +115,9 @@ print
 　　　　此时虽然我们已经得到了评分矩阵数组对应的RDD，但是这些数据都还是字符串，Spark需要的是若干Rating类对应的数组。因此我们现在将RDD的数据类型做转化，代码如下：
 
 ```
-from
- pyspark.mllib.recommendation 
-import
- Rating
-rates_data 
-= rates.map(
-lambda
- x: Rating(int(x[0]),int(x[1]),int(x[2
-])))
-
-print
- rates_data.first()
+from pyspark.mllib.recommendation import Rating
+rates_data = rates.map(lambda x: Rating(int(x[0]),int(x[1]),int(x[2])))
+print rates_data.first()
 ```
 
 　　　　输出如下：
@@ -219,25 +129,11 @@ Rating(user=196, product=242, rating=3.0)
 　　　　可见我们的数据已经是基于Rating类的RDD了，现在我们终于可以把整理好的数据拿来训练了，代码如下, 我们将矩阵分解的维度设置为20，最大迭代次数设置为5，而正则化系数设置为0.02。在实际应用中，我们需要通过交叉验证来选择合适的矩阵分解维度与正则化系数。这里我们由于是实例，就简化了。
 
 ```
-from
-  pyspark.mllib.recommendation 
-import
- ALS
-
-from
- pyspark.mllib.recommendation 
-import
- MatrixFactorizationModel
-sc.setCheckpointDir(
-'
-checkpoint/
-'
-)
-ALS.checkpointInterval 
-= 2
-
-model 
-= ALS.train(ratings=rates_data, rank=20, iterations=5, lambda_=0.02)
+from  pyspark.mllib.recommendation import ALS
+from pyspark.mllib.recommendation import MatrixFactorizationModel
+sc.setCheckpointDir('checkpoint/')
+ALS.checkpointInterval = 2
+model = ALS.train(ratings=rates_data, rank=20, iterations=5, lambda_=0.02)
 ```
 
 　　　　将模型训练完毕后，我们终于可以来做推荐系统的预测了。
@@ -245,8 +141,7 @@ model
 　　　　首先做一个最简单的预测，比如预测用户38对物品20的评分。代码如下：
 
 ```
-print
- model.predict(38,20)
+print model.predict(38,20)
 ```
 
 　　　　输出如下：
@@ -260,8 +155,7 @@ print
 　　　　现在我们来预测了用户38最喜欢的10个物品，代码如下：
 
 ```
-print
- model.recommendProducts(38,10)
+print model.recommendProducts(38,10)
 ```
 
 　　　　输出如下：
@@ -276,8 +170,7 @@ print
 　　　　接着我们来预测下物品20可能最值得推荐的10个用户，代码如下：
 
 ```
-print
- model.recommendUsers(20,10)
+print model.recommendUsers(20,10)
 ```
 
 　　　　输出如下：
@@ -290,8 +183,7 @@ print
 　　　　现在我们来看看每个用户最值得推荐的三个物品，代码如下:
 
 ```
-print
- model.recommendProductsForUsers(3).collect()
+print model.recommendProductsForUsers(3).collect()
 ```
 
 　　　　由于输出非常长，这里就不将输出copy过来了。
@@ -299,8 +191,7 @@ print
 　　　　而每个物品最值得被推荐的三个用户，代码如下：
 
 ```
-print
- model.recommendUsersForProducts(3).collect()
+print model.recommendUsersForProducts(3).collect()
 ```
 
 　　　　同样由于输出非常长，这里就不将输出copy过来了。
