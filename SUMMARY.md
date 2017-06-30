@@ -14,12 +14,12 @@
   * 10.向量对向量求导
   * 11.标量对向量求导
   * 12.标量对矩阵求导
-* 第二部分 机器学习
+* [第二部分 机器学习](di-er-bu-fen-ji-qi-xue-xi.md)
 * [第四章 机器学习基础](ml/pythonml.md)
   * [Python及其数学库](ml/pythonml/pythonji-qi-shu-xue-ku.md)
   * [机器学习库](ml/pythonml/ji-qi-xue-xi-ku.md)
   * [模型度量](ml/pythonml/ml-metrics.md)
-* [第六课：数据清洗和特征选择](di-liu-ke-ff1a-python-ji-chu-3-shu-ju-qing-xi-he-te-zheng-xuan-ze.md)
+* [第六课：数据清洗和特征选择](ml/clean-feature/cleanup-feature.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
   * [One-hot编码](ml/clean-feature/one-hot.md)
