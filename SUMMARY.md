@@ -81,6 +81,7 @@
 * [推荐算法](ml/recommand/recommand.md)
   * [矩阵分解协同过滤推荐算法](ml/recommand/matrix-filter.md)
   * [SimRank协同过滤推荐算法](ml/recommand/simrank.md)
+  * [Spark矩阵分解推荐算法](ml/recomand/spark-factor.md)
 * [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
