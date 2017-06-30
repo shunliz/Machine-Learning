@@ -1,7 +1,7 @@
 # Summary
 
 * [前言](README.md)
-* [第一部分 数学基础](part1.md)
+* [第一部分 数学基础](math/math.md)
 * [第一章 数学分析](math/analytic/introduction.md)
   * [梯度下降](math/analytic/gradient_descent.md)
   * [数值计算](math/analytic/shu-zhi-ji-suan.md)
@@ -14,7 +14,7 @@
   * 10.向量对向量求导
   * 11.标量对向量求导
   * 12.标量对矩阵求导
-* [第二部分 机器学习](di-er-bu-fen-ji-qi-xue-xi.md)
+* [第二部分 机器学习](ml/ml.md)
 * [第四章 机器学习基础](ml/pythonml.md)
   * [Python及其数学库](ml/pythonml/pythonji-qi-shu-xue-ku.md)
   * [机器学习库](ml/pythonml/ji-qi-xue-xi-ku.md)
