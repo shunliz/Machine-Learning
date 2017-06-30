@@ -29,7 +29,7 @@
   * [奇异值分解\(SVD\)原理与在降维中的应用](ml/clean-feature/svd.md)
   * [局部线性嵌入\(LLE\)原理](ml/clean-feature/lle.md)
   * [scikit-learn LLE](ml/clean-feature/scikit-lle.md)
-* [第七课： 回归](di-qi-ke-ff1a-hui-gui.md)
+* [第七课： 回归](ml/regression/regression.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
   * [11.K-L散度](ml/regression/kl.md)
@@ -83,7 +83,7 @@
   * [SimRank协同过滤推荐算法](ml/recommand/simrank.md)
   * [Spark矩阵分解推荐算法](ml/recomand/spark-factor.md)
   * [分解机\(Factorization Machines\)推荐算法原理](ml/recommand/fm.md)
-* [第十七课：EM算法](di-shi-qi-ke-ff1a-em-suan-fa.md)
+* [第十七课：EM算法](ml/em/em.md)
 * 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
