@@ -4,7 +4,7 @@
 
 ## 1. 梯度
 
-在微积分里面，对多元函数的参数求∂偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数f\(x,y\), 分别对x,y求偏导数，求得的梯度向量就是$$(\partial f/\partial x, \partial f/\partial y)^T$$,简称$$grad f(x,y)$$或者$$▽f(x,y)$$。对于在点$$(x_0,y_0)$$的具体梯度向量就是$$(\partial f/\partial x0,\partial f/\partial y0)^T$$.或者$$▽f(x_0, y_0)$$，如果是3个参数的向量梯度，就是$$(\partial f/\partial x, \partial f/\partial y, \partial f/\partial z)^T$$,以此类推。
+在微积分里面，对多元函数的参数求∂偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数f\(x,y\), 分别对x,y求偏导数，求得的梯度向量就是$$(\partial f/\partial x, \partial f/\partial y)^T$$,简称$$grad f(x,y)$$。对于在点$$(x_0,y_0)$$的具体梯度向量就是$$(\partial f/\partial x0,\partial f/\partial y0)^T$$.，如果是3个参数的向量梯度，就是$$(\partial f/\partial x, \partial f/\partial y, \partial f/\partial z)^T$$,以此类推。
 
 那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数f\(x,y\),在点$$(x_0,y_0)$$，沿着梯度向量的方向就是$$(\partial f/\partial x_0, \partial f/\partial y_0)^T$$的方向是f\(x,y\)增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是 $$-(\partial f/\partial x_0, \partial f/\partial y_0)^T$$的方向，梯度减少最快，也就是更加容易找到函数的最小值。
 
@@ -186,9 +186,10 @@ $$
    4）更新θ向量，其更新表达式如下。更新完毕后继续转入步骤1.
 
 
-   $$
+$$
    \theta=\theta-\alpha\frac {\partial}{\theta}J(\theta)
-   $$
+$$
+
 
 还是用线性回归的例子来描述具体的算法过程。
 
@@ -226,12 +227,12 @@ $$
 3. 归一化。由于样本不同特征的取值范围不一样，可能导致迭代很慢，为了减少特征取值的影响，可以对特征数据归一化，也就是对于每个特征x，求出它的期望$\bar{x}$和标准差std\(x\)，然后转化为：
 
 
-   $$
+$$
    \frac {x-\bar {x}}{std(x)}
-   $$
+$$
 
 
-   这样特征的新期望为0，新方差为1，迭代次数可以大大加快。
+这样特征的新期望为0，新方差为1，迭代次数可以大大加快。
 
 ## 4. 梯度下降法大家族（BGD，SGD，MBGD）
 
