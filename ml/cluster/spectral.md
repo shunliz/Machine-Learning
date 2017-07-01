@@ -42,7 +42,7 @@ $$
 
 　　　　对于$$\epsilon$$-邻近法，它设置了一个距离阈值$$\epsilon$$，然后用欧式距离$$s_{ij}$$度量任意两点$$x_i$$和$$x_j$$的距离。即相似矩阵的$$s_{ij} = ||x_i-x_j||_2^2$$,  然后根据$$s_{ij}$$和$$\epsilon$$的大小关系，来定义邻接矩阵W如下：
 
-$$W_{ij}= \begin{cases} 0& {s_{ij} > \epsilon}\\ \epsilon& {{s_{ij} \leq \epsilon}} \end{cases}$$
+W_{ij}= \begin{cases} 0& {s_{ij} > \epsilon}\\ \epsilon& {{s_{ij} \leq \epsilon}} \end{cases}
 
 　　　　从上式可见，两点间的权重要不就是$$\epsilon$$,要不就是0，没有其他的信息了。距离远近度量很不精确，因此在实际应用中，我们很少使用$$\epsilon$$-邻近法。
 
