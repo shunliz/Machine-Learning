@@ -85,7 +85,6 @@
   * [分解机\(Factorization Machines\)推荐算法原理](ml/recommand/fm.md)
   * [美团推荐算法](ml/recommand/meituan.md)
 * [第十七课：EM算法](ml/em/em.md)
-* 第十八课：EM算法实践
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
   * [scikit-learn朴素贝叶斯](ml/bayes/scikit-simple-bayes.md)
