@@ -8,7 +8,7 @@ def createDataSet():
     labels = ['A','A','B','B']
     return group,labels
 
-def classify0(inX,dataSet,labels,k):
+def classify(inX,dataSet,labels,k):
     #返回“数组”的行数，如果shape[1]返回的则是数组的列数
     dataSetSize = dataSet.shape[0]
     #两个“数组”相减，得到新的数组
@@ -32,6 +32,22 @@ def classify0(inX,dataSet,labels,k):
     sortedClassCount = sorted(classCount.iteritems(),key = operator.itemgetter(1),reverse = True)
     #返回距离最小的点对应的标签
    return sortedClassCount[0][0]
+```
+
+```
+import kNN  
+from numpy import *   
+  
+dataSet, labels = kNN.createDataSet()  
+  
+testX = array([1.2, 1.0])  
+k = 3  
+outputLabel = kNN.kNNClassify(testX, dataSet, labels, 3)  
+print "Your input is:", testX, "and classified to class: ", outputLabel  
+  
+testX = array([0.1, 0.3])  
+outputLabel = kNN.kNNClassify(testX, dataSet, labels, 3)  
+print "Your input is:", testX, "and classified to class: ", outputLabel  
 ```
 
 
