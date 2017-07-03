@@ -52,6 +52,7 @@
   * [SVM回归](ml/svm/svm-regression.md)
   * [scikit-learn SVM](ml/svm/scikit-learn-svm.md)
   * [支持向量机高斯核调参](ml/svm/gaosi-kernel.md)
+  * [SVM代码实现](ml/svm/svm-code.md)
 * [集成学习](ml/integrate.md)
   * [Adaboost原理](ml/integrate/adaboost.md)
   * [scikit-learn Adaboost](ml/integrate/scikit-learn-adaboost.md)
