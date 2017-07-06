@@ -108,4 +108,8 @@
   * [VAE](dl/gan/vae.md)
 * [受限波尔兹曼机](dl/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
+* RNN
+  * Bidirectional RNNs
+  * Deep \(Bidirectional\) RNNs
+  * LSTM
 
