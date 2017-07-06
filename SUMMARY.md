@@ -111,5 +111,6 @@
 * RNN
   * Bidirectional RNNs
   * Deep \(Bidirectional\) RNNs
-  * LSTM
+  * [LSTM](dl/rnn/lstm.md)
+  * [随时间反向传播（BPTT）算法](dl/rnn/bptt.md)
 
