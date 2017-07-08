@@ -73,6 +73,7 @@
   * [scikit-learn DBSCAN](ml/cluster/scikit-learn-dbscan.md)
   * [谱聚类（spectral clustering）原理](ml/cluster/spectral.md)
   * [scikit-learn 谱聚类](ml/cluster/scikit-spectral.md)
+  * [近邻传播算法](ml/cluster/ap.md)
 * [关联分析](ml/associative/associative.md)
   * [典型关联分析\(CCA\)原理](ml/associative/cca.md)
   * [Apriori算法原理](ml/associative/apriori.md)
