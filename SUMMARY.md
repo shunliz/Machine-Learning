@@ -30,6 +30,7 @@
   * [局部线性嵌入\(LLE\)原理](ml/clean-feature/lle.md)
   * [scikit-learn LLE](ml/clean-feature/scikit-lle.md)
   * [spark特征选择](ml/clean-feature/spark-fselect.md)
+  * [Spark特征提取](ml/clean-feature/spark-fextract.md)
 * [第七课： 回归](ml/regression/regression.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
