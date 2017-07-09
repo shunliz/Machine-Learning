@@ -2,15 +2,15 @@
 
 # VectorSlicer算法介绍：
 
-         VectorSlicer是一个转换器输入特征向量，输出原始特征向量子集。VectorSlicer接收带有特定索引的向量列，通过对这些索引的值进行筛选得到新的向量集。可接受如下两种索引：  
-
+VectorSlicer是一个转换器输入特征向量，输出原始特征向量子集。VectorSlicer接收带有特定索引的向量列，通过对这些索引的值进行筛选得到新的向量集。可接受如下两种索引：
 
 > 1、整数索引---代表向量中特征的的索引，setIndices\(\)
 >
 > 2、字符串索引---代表向量中特征的名字，这要求向量列有AttributeGroup，因为这根据Attribute来匹配名字字段
 
-        指定整数或者字符串类型都是可以的。另外，同时使用整数索引和字符串名字也是可以的。同时注意，至少选择一个特征，不能重复选择同一特征（整数索引和名字索引对应的特征不能叠）。注意如果使用名字特征，当遇到空值的时候将会报错。  
-        输出向量将会首先按照所选的数字索引排序（按输入顺序），其次按名字排序（按输入顺序）。
+指定整数或者字符串类型都是可以的。另外，同时使用整数索引和字符串名字也是可以的。同时注意，至少选择一个特征，不能重复选择同一特征（整数索引和名字索引对应的特征不能叠）。注意如果使用名字特征，当遇到空值的时候将会报错。
+
+输出向量将会首先按照所选的数字索引排序（按输入顺序），其次按名字排序（按输入顺序）。
 
 **示例：**输入一个包含列名为userFeatures的DataFrame：
 
@@ -20,7 +20,7 @@
  [0.0, 10.0, 0.5]
 ```
 
-        userFeatures是一个向量列包含3个用户特征。假设userFeatures的第一列全为0，我们希望删除它并且只选择后两项。我们可以通过索引setIndices\(1,2\)来选择后两项并产生一个新的features列：
+userFeatures是一个向量列包含3个用户特征。假设userFeatures的第一列全为0，我们希望删除它并且只选择后两项。我们可以通过索引setIndices\(1,2\)来选择后两项并产生一个新的features列：
 
 ```
  userFeatures     | features
@@ -100,7 +100,7 @@ public class VectorSlicerDemo {
 
 # **RFormula算法介绍：**
 
-        RFormula通过R模型公式来选择列。支持R操作中的部分操作，包括‘~’, ‘.’, ‘:’, ‘+’以及‘-‘，基本操作如下：
+RFormula通过R模型公式来选择列。支持R操作中的部分操作，包括‘~’, ‘.’, ‘:’, ‘+’以及‘-‘，基本操作如下：
 
 > 1、 ~分隔目标和对象
 >
@@ -112,15 +112,13 @@ public class VectorSlicerDemo {
 >
 > 5、 . 除了目标列的全部列
 
-        假设a和b为两列：  
-
+假设a和b为两列：
 
 > 1、 y ~ a + b表示模型y ~ w0 + w1 \* a +w2 \* b其中w0为截距，w1和w2为相关系数
 >
 > 2、 y ~a + b + a:b – 1表示模型y ~ w1\* a + w2 \* b + w3 \* a \* b，其中w1，w2，w3是相关系数
 
-        RFormula产生一个向量特征列以及一个double或者字符串标签列。如果用R进行线性回归，则对String类型的输入列进行one-hot编码、对数值型的输入列进行double类型转化。如果类别列是字符串类型，它将通过StringIndexer转换为double类型。如果标签列不存在，则输出中将通过规定的响应变量创造一个标签列。  
-
+RFormula产生一个向量特征列以及一个double或者字符串标签列。如果用R进行线性回归，则对String类型的输入列进行one-hot编码、对数值型的输入列进行double类型转化。如果类别列是字符串类型，它将通过StringIndexer转换为double类型。如果标签列不存在，则输出中将通过规定的响应变量创造一个标签列。
 
 **示例：**假设我们有一个DataFrame含有id,country, hour和clicked四列：
 
@@ -200,7 +198,7 @@ public class RFormulaDemo {
 
 # ChiSqSelector算法介绍：
 
-        ChiSqSelector代表卡方特征选择。它适用于带有类别特征的标签数据。ChiSqSelector根据独立卡方检验，然后选取类别标签主要依赖的特征。它类似于选取最有预测能力的特征。它支持三种特征选取方法：
+ChiSqSelector代表卡方特征选择。它适用于带有类别特征的标签数据。ChiSqSelector根据独立卡方检验，然后选取类别标签主要依赖的特征。它类似于选取最有预测能力的特征。它支持三种特征选取方法：
 
 > 1、numTopFeatures：通过卡方检验选取最具有预测能力的Top\(num\)个特征；
 >
@@ -208,13 +206,9 @@ public class RFormulaDemo {
 >
 > 3、fpr:选择P值低于门限值的特征，这样就可以控制false positive rate来进行特征选择；
 
-        默认情况下特征选择方法是numTopFeatures\(50\)，可以根据setSelectorType\(\)选择特征选取方法。
+默认情况下特征选择方法是numTopFeatures\(50\)，可以根据setSelectorType\(\)选择特征选取方法。
 
-  
-
-
-**示例：**假设我们有一个DataFrame含有id,features和clicked三列，其中clicked为需要预测的目标：  
-
+**示例：**假设我们有一个DataFrame含有id,features和clicked三列，其中clicked为需要预测的目标：
 
 ```
 id | features              | clicked
@@ -225,8 +219,6 @@ id | features              | clicked
 ```
 
 如果我们使用ChiSqSelector并设置numTopFeatures为1，根据标签clicked，features中最后一列将会是最有用特征：
-
-
 
 ```
 id | features              | clicked | selectedFeatures
