@@ -60,15 +60,15 @@ $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * \parti
 
 **Making substitutions**
 
-\partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(\(1 \* x\_1\) + \(1 \* w\_1 \* \partial s\_0/\partial z\_0 \* 1 \* x\_0\)\)
+$$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * ((1 * x_1) + (1 * w_1 * \partial s_0/\partial z_0 * 1 * x_0))$$
 
 **Ending with a nice, clean formula.**
 
-\partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(x\_1 + w\_1 \* \partial s\_0/\partial z\_0 \* x\_0\)
+$$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (x_1 + w_1 * \partial s_0/\partial z_0 * x_0)$$
 
 **And similarly**
 
-\partial E/\partial w = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(s\_0 + w\_1 \* \partial s\_0/\partial z\_0 \* s\_{-1}\)
+$$\partial E/\partial w = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (s_0 + w_1 * \partial s_0/\partial z_0 * s_{-1})$$
 
 ---
 
