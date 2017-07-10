@@ -12,7 +12,13 @@ $$o_t$$是第t步的输出，$$ot=softmax(Vs_t)$$
 
 
 
+RNN的数学描述：
 
+$$s_t=tanh(Uxt+Ws_{t-1})$$
+
+$$ot=softmax(Vs_t)$$
+
+$$L(y,o)=-1/N\sum_{n}^{} y_nlogo_n$$
 
 RNN在很多NLP任务中表现的非常出色。
 
@@ -22,13 +28,13 @@ RNN在很多NLP任务中表现的非常出色。
 
 ### 机器翻译
 
-![](http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-10.39.06-AM.png)
+![](http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-10.39.06-AM.png)根据原语言的输入序列，预测目标语言的序列达到翻译的目的。
 
 ### 语音识别
 
+输入一段音频序列，预测出一个序列的音频。
+
 ### 生成文本描述
 
-![](http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-11.44.24-AM-1024x349.png)
-
-
+![](http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-11.44.24-AM-1024x349.png)和CNN一块，CNN识别图像内容，RNN生成图像的描述。
 
