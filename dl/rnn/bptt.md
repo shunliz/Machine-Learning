@@ -20,39 +20,39 @@ $$y_t$$是时刻t的样本实际值， $$\hat y\_t$$是预测值，我们通常�
 
 **Forward Pass 1**
 
-a\_0 = x\_0 \* u\_0
+$$a_0 = x_0 * u_0$$
 
-b\_0 = s\_{-1} \* w\_0
+$$b_0 = s_{-1} * w_0$$
 
-z\_0 = a\_0 + b\_0
+$$z_0 = a_0 + b_0$$
 
-s\_0 = func\_0\(z\_0\)\(wherefunc\_0is sig, or tanh\)
+$$s_0 = func_0(z_0)$$ \(wherefunc\_0 is sig, or tanh\)
 
 **Foward Pass 2**
 
-a\_1 = x\_1 \* u\_1
+$$a_1 = x_1 * u_1$$
 
-b\_1 = s\_0 \* w\_1
+$$b_1 = s_0 * w_1$$
 
-z\_1 = a\_1 + b\_1
+$$z_1 = a_1 + b_1$$
 
-s\_1 = func\_1\(z\_1\)\(wherefunc\_1is sig, or tanh\)
+$$s_1 = func_1(z_1)$$\(wherefunc\_1 is sig, or tanh\)
 
-q = s\_1 \* v\_1
+$$q = s_1 * v_1$$
 
 **Output pass**
 
-o = func\_2\(q\)\(wherefunc\_2is softmax\)
+$$o = func_2(q)$$\(where $$func_2$$ is softmax\)
 
-E = func\_3\(o\)\(wherefunc\_3is x-entropy\)
+$$E = func_3(o)$$\(where $$func_3$$ is x-entropy\)
 
 Now, attempting to hand-bomb back prop, for U \(by working backwards through the above network\).
 
-\partial E/\partial u = \partial E/\partial u\_1 + \partial E/\partial u\_0
+$$\partial E/\partial u = \partial E/\partial u_1 + \partial E/\partial u_0$$
 
-\partial E/\partial u\_1 = \partial E/\partial o \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \partial z\_1/\partial a\_1 \* \partial a\_1/\partial u\_1
+$$\partial E/\partial u_1 = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial a_1 * \partial a_1/\partial u_1$$
 
-\partial E/\partial u\_0 = \partial E/\partial o \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \partial z\_1/\partial b\_1 \* \partial b\_1/\partial s\_0 \* \partial s\_0/dz\_0 \* \partial z\_0/\partial a\_0 \* \partial a\_0/\partial u\_0
+$$\partial E/\partial u_0 = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/dz_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0$$
 
 **Gathering like terms**
 
