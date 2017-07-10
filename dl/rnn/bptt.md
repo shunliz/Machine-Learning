@@ -26,7 +26,7 @@ $$b_0 = s_{-1} * w_0$$
 
 $$z_0 = a_0 + b_0$$
 
-$$s_0 = func_0(z_0)$$ \(wherefunc\_0 is sig, or tanh\)
+$$s_0 = func_0(z_0)$$ \(where $$func_0$$ is sig, or tanh\)
 
 **Foward Pass 2**
 
@@ -36,7 +36,7 @@ $$b_1 = s_0 * w_1$$
 
 $$z_1 = a_1 + b_1$$
 
-$$s_1 = func_1(z_1)$$\(wherefunc\_1 is sig, or tanh\)
+$$s_1 = func_1(z_1)$$\(where $$func_1$$ is sig, or tanh\)
 
 $$q = s_1 * v_1$$
 
@@ -56,7 +56,7 @@ $$\partial E/\partial u_0 = \partial E/\partial o * \partial o/\partial q * \par
 
 **Gathering like terms**
 
-\partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \(\(\partial z\_1/\partial a\_1 \* \partial a\_1/\partial u\_1\) + \(\partial z\_1/\partial b\_1 \* \partial b\_1/\partial s\_0 \* \partial s\_0/\partial z\_0 \* \partial z\_0/\partial a\_0 \* \partial a\_0/\partial u\_0\)\)
+$$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * ((\partial z_1/\partial a_1 * \partial a_1/\partial u_1) + (\partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/\partial z_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0))$$
 
 **Making substitutions**
 
