@@ -120,9 +120,9 @@ $$s_t = func(z_t)$$
 
 $$z_1 = u*x_1 + w*s_{0} + k$$
 
-s\_1 = funct\(z\_1\)
+$$s_1 = funct(z_1)$$
 
-q = s\_1\*v1+c
+$$q = s\_1\*v1+c$$
 
 Note that what you've defined here is actually not a standard RNN, but a many-to-one RNN:
 
@@ -132,41 +132,41 @@ For more detail on this and RNNs in general, I would definitely recommend[Goodfe
 
 > **Output pass**
 >
-> o = func\_2\(q\)\(wherefunc\_2is softmax\)
+> $$o = func_2(q)$$ \(where $$func_2$$ is softmax\)
 >
-> E = func\_3\(o\)\(wherefunc\_3is x-entropy\)
+> $$E = func_3(o)$$\(where $$func_3$$ is x-entropy\)
 
-o = soft\(q\)\(wheresoftis softmax\)
+$$o = soft(q)$$\(where soft is softmax\)
 
-E = L\(o\)\(whereLis x-entropy\)
+$$E = L(o)$$\(where L is x-entropy\)
 
-> Now, attempting to hand-bomb back prop, for U \(by working backwards through the above network\).\partial E/\partial u = \partial E/\partial u\_1 + \partial E/\partial u\_0
+> Now, attempting to hand-bomb back prop, for U \(by working backwards through the above network\).$$\partial E/\partial u = \partial E/\partial u_1 + \partial E/\partial u_0$$
 >
-> \partial E/\partial u\_1 = \partial E/do \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \partial z\_1/\partial a\_1 \* \partial a\_1/\partial u\_1
+> $$\partial E/\partial u_1 = \partial E/do * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial a_1 * \partial a_1/\partial u_1$$
 >
-> \partial E/\partial u\_0 = \partial E/\partial o \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \partial z\_1/\partial b\_1 \* \partial b\_1/\partial s\_0 \* \partial s\_0/dz\_0 \* \partial z\_0/\partial a\_0 \* \partial a\_0/\partial u\_0
+> $$\partial E/\partial u_0 = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/dz_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0$$
 >
 > **Gathering like terms**
 >
-> \partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* \partial q/\partial s\_1 \* \partial s\_1/\partial z\_1 \* \(\(\partial z\_1/\partial a\_1 \* \partial a\_1/\partial u\_1\) + \(\partial z\_1/\partial b\_1 \* \partial b\_1/\partial s\_0 \* \partial s\_0/\partial z\_0 \* \partial z\_0/\partial a\_0 \* \partial a\_0/\partial u\_0\)\)
+> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * ((\partial z_1/\partial a_1 * \partial a_1/\partial u_1) + (\partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/\partial z_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0))$$
 >
 > **Making substitutions**
 >
-> \partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(\(1 \* x\_1\) + \(1 \* w\_1 \* \partial s\_0/\partial z\_0 \* 1 \* x\_0\)\)
+> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * ((1 * x_1) + (1 * w_1 * \partial s_0/\partial z_0 * 1 * x_0))$$
 >
 > **Ending with a nice, clean formula.**
 >
-> \partial E/\partial u = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(x\_1 + w\_1 \* \partial s\_0/\partial z\_0 \* x\_0\)
+> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (x_1 + w_1 * \partial s_0/\partial z_0 * x_0)$$
 
 For u, the derivative is
 
-\dfrac{\partial{L}}{\partial{u}}=\sum\_t \dfrac{\partial{L}}{\partial{u\_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s\_1} \dfrac{\partial s\_1}{\partial u\_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s\_1}\dfrac{\partial s\_1}{\partial s\_0}\dfrac{\partial s\_0}{\partial u\_0}
+$$\dfrac{\partial{L}}{\partial{u}}=\sum_t \dfrac{\partial{L}}{\partial{u_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial u_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial u_0}$$
 
 > **And similarly**
 >
-> \partial E/\partial w = \partial E/\partial o \* \partial o/\partial q \* v\_1 \* \partial s\_1/\partial z\_1 \* \(s\_0 + w\_1 \* \partial s\_0/\partial z\_0 \* s\_{-1}\)
+> $$\partial E/\partial w = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (s_0 + w_1 * \partial s_0/\partial z_0 * s_{-1})$$
 
 For w:
 
-\dfrac{\partial{L}}{\partial{w}}=\sum\_t \dfrac{\partial{L}}{\partial{w\_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s\_1} \dfrac{\partial s\_1}{\partial w\_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s\_1}\dfrac{\partial s\_1}{\partial s\_0}\dfrac{\partial s\_0}{\partial w\_0}
+$$\dfrac{\partial{L}}{\partial{w}}=\sum_t \dfrac{\partial{L}}{\partial{w_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial w_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial w_0}$$
 
