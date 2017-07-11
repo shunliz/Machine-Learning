@@ -78,15 +78,15 @@ It's the right idea, but the RNN update equations in the question are non-standa
 >
 > **Forward Pass 1**
 >
-> a\_0 = x\_0 \* u\_0
+> $$a_0 = x_0 * u_0$$
 
 Assuming that the input for timetisx\_tand that we are dealing with scalar inputs and parameters \(as opposed to vectors\)
 
-> b\_0 = s\_{-1} \* w\_0
+> $$b_0 = s_{-1} * w_0$$
 
 Assumingsis the state
 
-> z\_0 = a\_0 \* b\_0
+> $$z_0 = a_0 * b_0$$
 
 Generally,z\_0 = a\_0 + b\_0 + kfor some constant k. Intuitively, this is because the hidden state is then a combination of the input at timetand the hidden state from the previous timet-1. In this way, they both contribute to the hidden state, but not synergistically. For many applications of RNN, this seems to be a good assumption \(they work well\). I am not sure whether the optimization of a network that uses products of the previous hidden state with the current input would be stable in optimization.
 
