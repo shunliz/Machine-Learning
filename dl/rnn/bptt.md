@@ -104,21 +104,21 @@ or
 
 $$z_t = u*x_t + w*s_{t-1} + k$$
 
-s\_t = func\(z\_t\)
+$$s_t = func(z_t)$$
 
 > **Foward Pass 2**
 >
-> a\_1 = x\_1 \* u\_1
+> $$a_1 = x_1 * u_1$$
 >
-> b\_1 = s\_0 \* w\_1
+> $$b_1 = s_0 * w_1$$
 >
-> z\_1 = a\_1 \* b\_1
+> $$z_1 = a_1 * b_1$$
 >
-> s\_1 = func\_1\(z\_1\)\(wherefunc\_1is sig, or tanh\)
+> $$s_1 = func_1(z_1)$$\(where $$func_1$$ is sig, or tanh\)
 >
-> q = s\_1 \* v\_1
+> $$q = s_1 * v_1$$
 
-z\_1 = u\*x\_1 + w\*s\_{0} + k
+$$z_1 = u*x_1 + w*s_{0} + k$$
 
 s\_1 = funct\(z\_1\)
 
