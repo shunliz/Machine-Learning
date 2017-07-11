@@ -88,21 +88,21 @@ Assumingsis the state
 
 > $$z_0 = a_0 * b_0$$
 
-Generally,z\_0 = a\_0 + b\_0 + kfor some constant k. Intuitively, this is because the hidden state is then a combination of the input at timetand the hidden state from the previous timet-1. In this way, they both contribute to the hidden state, but not synergistically. For many applications of RNN, this seems to be a good assumption \(they work well\). I am not sure whether the optimization of a network that uses products of the previous hidden state with the current input would be stable in optimization.
+Generally,$$z_0 = a_0 + b_0 + k$$for some constant k. Intuitively, this is because the hidden state is then a combination of the input at timetand the hidden state from the previous timet-1. In this way, they both contribute to the hidden state, but not synergistically. For many applications of RNN, this seems to be a good assumption \(they work well\). I am not sure whether the optimization of a network that uses products of the previous hidden state with the current input would be stable in optimization.
 
-> s\_0 = func\_0\(z\_0\)\(wherefunc\_0is sig, or tanh\)
+> $$s_0 = func_0(z_0)$$\(where $$func_0$$ is sig, or tanh\)
 
-s\_0 = func\(z\_0\)--- no need to index the activation function by time step.
+$$s_0 = func(z_0)$$--- no need to index the activation function by time step.
 
 Also, there is no real need to index the parametersu\_0, w\_0, although it does help because ultimately when we derive the gradient of the parameters, we sum over time steps. Really, though, in describing the forward pass you can just say
 
-z\_0 = u\*x\_0 + w\*s\_{-1} + k
+$$z_0 = u*x_0 + w*s_{-1} + k$$
 
-s\_0 = funct\(z\_0\)
+$$s_0 = funct(z_0)$$
 
 or
 
-z\_t = u\*x\_t + w\*s\_{t-1} + k
+$$z_t = u*x_t + w*s_{t-1} + k$$
 
 s\_t = func\(z\_t\)
 
