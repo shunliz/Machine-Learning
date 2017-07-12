@@ -100,8 +100,8 @@
 * 第二十三课：隐马尔科夫模型HMM
 * 第二十四课：HMM实践
 * 第三部分 深度学习
-* [第二十五课：深度学习](dl/introduction.md)
-  * [基本概念](dl/ji-ben-gai-nian.md)
+* [第二十五课：深度学习](dl/introduction/introduction.md)
+  * [基本概念](dl/introduction/ji-ben-gai-nian.md)
   * [反向传播](dl/introduction/back-propagation.md)
   * [反向传播2](dl/introduction/READ.md)
   * [参考文献](dl/reference.md)
