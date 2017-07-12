@@ -40,13 +40,9 @@ $$s_1 = func(z_1)$$\(where $$func$$ is sig, or tanh\)
 
 $$q = s_1 * v_1$$
 
-
-
 $$z_t = u*x_t + w*s_{t-1} + k$$
 
 $$s_t = func(z_t)$$
-
-
 
 **Output pass**
 
@@ -78,51 +74,17 @@ $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * 
 
 $$\partial E/\partial w = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (s_0 + w_1 * \partial s_0/\partial z_0 * s_{-1})$$
 
----
 
-Assuming that the input for time t is $$x_t$$ 
+
+$$\dfrac{\partial{L}}{\partial{u}}=\sum_t \dfrac{\partial{L}}{\partial{u_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial u_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial u_0}$$
+
+$$\dfrac{\partial{L}}{\partial{w}}=\sum_t \dfrac{\partial{L}}{\partial{w_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial w_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial w_0}$$
+
+Assuming that the input for time t is $$x_t$$
 
 [![](https://i.stack.imgur.com/B15TJm.png "Many-to-one RNN")](https://i.stack.imgur.com/B15TJm.png)
 
 For more detail on this and RNNs in general, I would definitely recommend[Goodfellow et al RNN chapter](http://www.deeplearningbook.org/contents/rnn.html)and Andrej Karpathy's[post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)and[minimal character RNN](https://gist.github.com/karpathy/d4dee566867f8291f086)implementation.
 
-> **Output pass**
->
-> $$o = func_2(q)$$ \(where $$func_2$$ is softmax\)
->
-> $$E = func_3(o)$$\(where $$func_3$$ is x-entropy\)
 
-$$o = soft(q)$$\(where soft is softmax\)
-
-$$E = L(o)$$\(where L is x-entropy\)
-
-> Now, attempting to hand-bomb back prop, for U \(by working backwards through the above network\).$$\partial E/\partial u = \partial E/\partial u_1 + \partial E/\partial u_0$$
->
-> $$\partial E/\partial u_1 = \partial E/do * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial a_1 * \partial a_1/\partial u_1$$
->
-> $$\partial E/\partial u_0 = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * \partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/dz_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0$$
->
-> **Gathering like terms**
->
-> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * \partial q/\partial s_1 * \partial s_1/\partial z_1 * ((\partial z_1/\partial a_1 * \partial a_1/\partial u_1) + (\partial z_1/\partial b_1 * \partial b_1/\partial s_0 * \partial s_0/\partial z_0 * \partial z_0/\partial a_0 * \partial a_0/\partial u_0))$$
->
-> **Making substitutions**
->
-> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * ((1 * x_1) + (1 * w_1 * \partial s_0/\partial z_0 * 1 * x_0))$$
->
-> **Ending with a nice, clean formula.**
->
-> $$\partial E/\partial u = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (x_1 + w_1 * \partial s_0/\partial z_0 * x_0)$$
-
-For u, the derivative is
-
-$$\dfrac{\partial{L}}{\partial{u}}=\sum_t \dfrac{\partial{L}}{\partial{u_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial u_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial u_0}$$
-
-> **And similarly**
->
-> $$\partial E/\partial w = \partial E/\partial o * \partial o/\partial q * v_1 * \partial s_1/\partial z_1 * (s_0 + w_1 * \partial s_0/\partial z_0 * s_{-1})$$
-
-For w:
-
-$$\dfrac{\partial{L}}{\partial{w}}=\sum_t \dfrac{\partial{L}}{\partial{w_t}} = \dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1} \dfrac{\partial s_1}{\partial w_1}+\dfrac{\partial L}{\partial o} \dfrac{\partial o}{\partial s_1}\dfrac{\partial s_1}{\partial s_0}\dfrac{\partial s_0}{\partial w_0}$$
 
