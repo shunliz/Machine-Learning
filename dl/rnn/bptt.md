@@ -20,25 +20,33 @@ $$y_t$$是时刻t的样本实际值， $$\hat y\_t$$是预测值，我们通常�
 
 **Forward Pass 1**
 
-$$a_0 = x_0 * u_0$$
+$$a_0 = x_0 * u$$
 
-$$b_0 = s_{-1} * w_0$$
+$$b_0 = s_{-1} * w$$
 
-$$z_0 = a_0 + b_0$$
+$$z_0 = a_0 + b_0 + k$$
 
-$$s_0 = func_0(z_0)$$ \(where $$func_0$$ is sig, or tanh\)
+$$s_0 = func(z_0)$$ \(where $$func$$ is sig, or tanh\)
 
 **Foward Pass 2**
 
-$$a_1 = x_1 * u_1$$
+$$a_1 = x_1 * u$$
 
-$$b_1 = s_0 * w_1$$
+$$b_1 = s_0 * w$$
 
-$$z_1 = a_1 + b_1$$
+$$z_1 = a_1 + b_1+k$$
 
-$$s_1 = func_1(z_1)$$\(where $$func_1$$ is sig, or tanh\)
+$$s_1 = func(z_1)$$\(where $$func$$ is sig, or tanh\)
 
 $$q = s_1 * v_1$$
+
+
+
+$$z_t = u*x_t + w*s_{t-1} + k$$
+
+$$s_t = func(z_t)$$
+
+
 
 **Output pass**
 
@@ -72,59 +80,7 @@ $$\partial E/\partial w = \partial E/\partial o * \partial o/\partial q * v_1 * 
 
 ---
 
-It's the right idea, but the RNN update equations in the question are non-standard. Generally the hidden state is computed as a linear combination of the previous hidden state and the input at that time. I will go through and replace the equations, but I think that your formulation is not wrong:
-
-> Just for the forward pass:
->
-> **Forward Pass 1**
->
-> $$a_0 = x_0 * u_0$$
-
-Assuming that the input for timetisx\_tand that we are dealing with scalar inputs and parameters \(as opposed to vectors\)
-
-> $$b_0 = s_{-1} * w_0$$
-
-Assumingsis the state
-
-> $$z_0 = a_0 * b_0$$
-
-Generally,$$z_0 = a_0 + b_0 + k$$for some constant k. Intuitively, this is because the hidden state is then a combination of the input at timetand the hidden state from the previous timet-1. In this way, they both contribute to the hidden state, but not synergistically. For many applications of RNN, this seems to be a good assumption \(they work well\). I am not sure whether the optimization of a network that uses products of the previous hidden state with the current input would be stable in optimization.
-
-> $$s_0 = func_0(z_0)$$\(where $$func_0$$ is sig, or tanh\)
-
-$$s_0 = func(z_0)$$--- no need to index the activation function by time step.
-
-Also, there is no real need to index the parametersu\_0, w\_0, although it does help because ultimately when we derive the gradient of the parameters, we sum over time steps. Really, though, in describing the forward pass you can just say
-
-$$z_0 = u*x_0 + w*s_{-1} + k$$
-
-$$s_0 = funct(z_0)$$
-
-or
-
-$$z_t = u*x_t + w*s_{t-1} + k$$
-
-$$s_t = func(z_t)$$
-
-> **Foward Pass 2**
->
-> $$a_1 = x_1 * u_1$$
->
-> $$b_1 = s_0 * w_1$$
->
-> $$z_1 = a_1 * b_1$$
->
-> $$s_1 = func_1(z_1)$$\(where $$func_1$$ is sig, or tanh\)
->
-> $$q = s_1 * v_1$$
-
-$$z_1 = u*x_1 + w*s_{0} + k$$
-
-$$s_1 = funct(z_1)$$
-
-$$q = s\_1\*v1+c$$
-
-Note that what you've defined here is actually not a standard RNN, but a many-to-one RNN:
+Assuming that the input for time t is $$x_t$$ 
 
 [![](https://i.stack.imgur.com/B15TJm.png "Many-to-one RNN")](https://i.stack.imgur.com/B15TJm.png)
 
