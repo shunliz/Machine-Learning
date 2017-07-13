@@ -26,13 +26,13 @@
 
 首先是输出层第L层。注意到输出层的W,b满足下式：$$a^L = \sigma(z^L) = \sigma(W^La^{L-1} + b^L)$$
 
-这样对于输出层的参数，我们的损失函数变为：J\(W,b,x,y\) = \frac{1}{2}\|\|a^L-y\|\|\_2^2 =  \frac{1}{2}\|\| \sigma\(W^La^{L-1} + b^L\)-y\|\|\_2^2
+这样对于输出层的参数，我们的损失函数变为：$$J(W,b,x,y) = \frac{1}{2}||a^L-y||_2^2 =  \frac{1}{2}|| \sigma(W^La^{L-1} + b^L)-y||_2^2$$
 
-这样求解W,b的梯度就简单了：\frac{\partial J\(W,b,x,y\)}{\partial W^L} = \frac{\partial J\(W,b,x,y\)}{\partial z^L}\frac{\partial z^L}{\partial W^L} =\(a^L-y\) \(a^{L-1}\)^T\odot \sigma^{'}\(z\)\frac{\partial J\(W,b,x,y\)}{\partial b^L} = \frac{\partial J\(W,b,x,y\)}{\partial z^L}\frac{\partial z^L}{\partial b^L} =\(a^L-y\)\odot \sigma^{'}\(z^L\)
+这样求解W,b的梯度就简单了：$$\frac{\partial J(W,b,x,y)}{\partial W^L} = \frac{\partial J(W,b,x,y)}{\partial z^L}\frac{\partial z^L}{\partial W^L} =(a^L-y) (a^{L-1})^T\odot \sigma^{'}(z)$$$$\frac{\partial J(W,b,x,y)}{\partial b^L} = \frac{\partial J(W,b,x,y)}{\partial z^L}\frac{\partial z^L}{\partial b^L} =(a^L-y)\odot \sigma^{'}(z^L)$$
 
-注意上式中有一个符号\odot,它代表Hadamard积，对于两个维度相同的向量A（a\_1,a\_2,...a\_n）^T和B（b\_1,b\_2,...b\_n）^T,则A \odot B = \(a\_1b\_1, a\_2b\_2,...a\_nb\_n\)^T。
+注意上式中有一个符号$$\odot$$,它代表Hadamard积，对于两个维度相同的向量A$$（a_1,a_2,...a_n）^T$$和B$$（b_1,b_2,...b_n）^T$$,则$$A \odot B = (a_1b_1, a_2b_2,...a_nb_n)^T$$。
 
-我们注意到在求解输出层的W,b的时候，有公共的部分\frac{\partial J\(W,b,x,y\)}{\partial z^L}，因此我们可以把公共的部分即对z^L先算出来，记为：\delta^L = \frac{\partial J\(W,b,x,y\)}{\partial z^L} = \(a^L-y\)\odot \sigma^{'}\(z^L\)
+我们注意到在求解输出层的W,b的时候，有公共的部分$$\frac{\partial J(W,b,x,y)}{\partial z^L}$$，因此我们可以把公共的部分即对$$z^L$$先算出来，记为：$$\delta^L = \frac{\partial J(W,b,x,y)}{\partial z^L} = (a^L-y)\odot \sigma^{'}(z^L)$$
 
 现在我们终于把输出层的梯度算出来了，那么如何计算上一层L-1层的梯度，上上层L-2层的梯度呢？这里我们需要一步步的递推，注意到对于第l层的未激活输出z^l，它的梯度可以表示为:\delta^l =\frac{\partial J\(W,b,x,y\)}{\partial z^l} = \frac{\partial J\(W,b,x,y\)}{\partial z^L}\frac{\partial z^L}{\partial z^{L-1}}\frac{\partial z^{L-1}}{\partial z^{L-2}}...\frac{\partial z^{l+1}}{\partial z^{l}}
 
