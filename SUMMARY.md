@@ -103,6 +103,7 @@
 * [第二十五课：深度学习](dl/introduction/introduction.md)
   * [基本概念](dl/introduction/ji-ben-gai-nian.md)
   * [深度神经网络（DNN）模型与前向传播算法](dl/introduction/dnn-fp.md)
+  * [深度神经网络（DNN）反向传播算法\(BP\)](dl/introduction/dnn-bp.md)
   * [反向传播](dl/introduction/back-propagation.md)
   * [反向传播2](dl/introduction/READ.md)
   * [参考文献](dl/reference.md)
