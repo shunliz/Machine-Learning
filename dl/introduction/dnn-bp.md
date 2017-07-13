@@ -34,23 +34,23 @@
 
 我们注意到在求解输出层的W,b的时候，有公共的部分$$\frac{\partial J(W,b,x,y)}{\partial z^L}$$，因此我们可以把公共的部分即对$$z^L$$先算出来，记为：$$\delta^L = \frac{\partial J(W,b,x,y)}{\partial z^L} = (a^L-y)\odot \sigma^{'}(z^L)$$
 
-现在我们终于把输出层的梯度算出来了，那么如何计算上一层L-1层的梯度，上上层L-2层的梯度呢？这里我们需要一步步的递推，注意到对于第l层的未激活输出z^l，它的梯度可以表示为:\delta^l =\frac{\partial J\(W,b,x,y\)}{\partial z^l} = \frac{\partial J\(W,b,x,y\)}{\partial z^L}\frac{\partial z^L}{\partial z^{L-1}}\frac{\partial z^{L-1}}{\partial z^{L-2}}...\frac{\partial z^{l+1}}{\partial z^{l}}
+现在我们终于把输出层的梯度算出来了，那么如何计算上一层L-1层的梯度，上上层L-2层的梯度呢？这里我们需要一步步的递推，注意到对于第l层的未激活输出$$z^l$$，它的梯度可以表示为:$$\delta^l =\frac{\partial J(W,b,x,y)}{\partial z^l} = \frac{\partial J(W,b,x,y)}{\partial z^L}\frac{\partial z^L}{\partial z^{L-1}}\frac{\partial z^{L-1}}{\partial z^{L-2}}...\frac{\partial z^{l+1}}{\partial z^{l}}$$
 
-如果我们可以依次计算出第l层的\delta^l,则该层的W^l,b^l很容易计算？为什么呢？注意到根据前向传播算法，我们有：z^l= W^la^{l-1} + b^l
+如果我们可以依次计算出第l层的$$\delta^l$$,则该层的$$W^l,b^l$$很容易计算？为什么呢？注意到根据前向传播算法，我们有：$$z^l= W^la^{l-1} + b^l$$
 
-所以根据上式我们可以很方便的计算出第l层的W^l,b^l的梯度如下：\frac{\partial J\(W,b,x,y\)}{\partial W^l} = \frac{\partial J\(W,b,x,y\)}{\partial z^l} \frac{\partial z^l}{\partial W^l} = \delta^{l}\(a^{l-1}\)^T\frac{\partial J\(W,b,x,y\)}{\partial b^l} = \frac{\partial J\(W,b,x,y\)}{\partial z^l} \frac{\partial z^l}{\partial b^l} = \delta^{l}
+所以根据上式我们可以很方便的计算出第l层的$$W^l,b^l$$的梯度如下：$$\frac{\partial J(W,b,x,y)}{\partial W^l} = \frac{\partial J(W,b,x,y)}{\partial z^l} \frac{\partial z^l}{\partial W^l} = \delta^{l}(a^{l-1})^T\frac{\partial J(W,b,x,y)}{\partial b^l} = \frac{\partial J(W,b,x,y)}{\partial z^l} \frac{\partial z^l}{\partial b^l} = \delta^{l}$$
 
-那么现在问题的关键就是要求出\delta^{l}了。这里我们用数学归纳法，第L层的\delta^{L}上面我们已经求出， 假设第l+1层的\delta^{l+1}已经求出来了，那么我们如何求出第l层的\delta^{l}呢？我们注意到：\delta^{l} = \frac{\partial J\(W,b,x,y\)}{\partial z^l} = \frac{\partial J\(W,b,x,y\)}{\partial z^{l+1}}\frac{\partial z^{l+1}}{\partial z^{l}} = \delta^{l+1}\frac{\partial z^{l+1}}{\partial z^{l}}
+那么现在问题的关键就是要求出$$\delta^{l}$$了。这里我们用数学归纳法，第L层的$$\delta^{L}$$上面我们已经求出， 假设第l+1层的$$\delta^{l+1}$$已经求出来了，那么我们如何求出第l层的\delta^{l}呢？我们注意到：$$\delta^{l} = \frac{\partial J(W,b,x,y)}{\partial z^l} = \frac{\partial J(W,b,x,y)}{\partial z^{l+1}}\frac{\partial z^{l+1}}{\partial z^{l}} = \delta^{l+1}\frac{\partial z^{l+1}}{\partial z^{l}}$$
 
-可见，用归纳法递推\delta^{l+1}和\delta^{l}的关键在于求解\frac{\partial z^{l+1}}{\partial z^{l}}。
+可见，用归纳法递推$$\delta^{l+1}$$和$$\delta^{l}$$的关键在于求解$$\frac{\partial z^{l+1}}{\partial z^{l}}$$。
 
-而z^{l+1}和z^{l}的关系其实很容易找出：z^{l+1}= W^{l+1}a^{l} + b^{l+1} = W^{l+1}\sigma\(z^l\) + b^{l+1}
+而$$z^{l+1}$$和$$z^{l}$$的关系其实很容易找出：$$z^{l+1}= W^{l+1}a^{l} + b^{l+1} = W^{l+1}\sigma(z^l) + b^{l+1}$$
 
-这样很容易求出：\frac{\partial z^{l+1}}{\partial z^{l}} = \(W^{l+1}\)^T\odot \sigma^{'}\(z^l\)
+这样很容易求出：$$\frac{\partial z^{l+1}}{\partial z^{l}} = (W^{l+1})^T\odot \sigma^{'}(z^l)$$
 
-将上式带入上面\delta^{l+1}和\delta^{l}关系式我们得到：\delta^{l} = \delta^{l+1}\frac{\partial z^{l+1}}{\partial z^{l}} = \(W^{l+1}\)^T\delta^{l+1}\odot \sigma^{'}\(z^l\)
+将上式带入上面$$\delta^{l+1}$$和$$\delta^{l}$$关系式我们得到：$$\delta^{l} = \delta^{l+1}\frac{\partial z^{l+1}}{\partial z^{l}} = (W^{l+1})^T\delta^{l+1}\odot \sigma^{'}(z^l)$$
 
-现在我们得到了\delta^{l}的递推关系式，只要求出了某一层的\delta^{l}，求解W^l,b^l的对应梯度就很简单的。
+现在我们得到了$$\delta^{l}$$的递推关系式，只要求出了某一层的$$\delta^{l}$$，求解$$W^l,b^l$$的对应梯度就很简单的。
 
 # 3. DNN反向传播算法过程
 
