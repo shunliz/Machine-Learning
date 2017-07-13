@@ -106,6 +106,7 @@
   * [深度神经网络（DNN）反向传播算法\(BP\)](dl/introduction/dnn-bp.md)
   * [反向传播](dl/introduction/back-propagation.md)
   * [反向传播2](dl/introduction/READ.md)
+  * [DNN损失函数和激活函数的选择](dl/introduction/dnn-loss.md)
   * [参考文献](dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
 * [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
