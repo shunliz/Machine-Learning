@@ -110,6 +110,7 @@
   * [深度神经网络（DNN）的正则化](dl/introduction/dnn-normal.md)
   * [参考文献](dl/reference.md)
 * [第二十六课 卷积神 经网络\(Convolutional Neural Netowrk\)](dl/cnn/introduction.md)
+  * [卷积神经网络\(CNN\)模型结构](dl/cnn/cnn-arch.md)
 * [对抗生成网络\(Generative Adversarial Networks\)](dl/gan/gan.md)
   * [GAN原理](ml/gan/gan-principle.md)
   * [InfoGAN](dl/gan/infogan.md)
