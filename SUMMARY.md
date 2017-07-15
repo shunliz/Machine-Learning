@@ -123,7 +123,7 @@
 * [RNN](rnn.md)
   * Bidirectional RNNs
   * Deep \(Bidirectional\) RNNs
-  * [LSTM](dl/rnn/lstm.md)
+  * [LSTM模型与前向反向传播算法](dl/rnn/lstm.md)
   * [随时间反向传播（BPTT）算法](dl/rnn/bptt.md)
   * [循环神经网络\(RNN\)模型与前向反向传播算法](dl/rnn/rnn-bptt.md)
 
