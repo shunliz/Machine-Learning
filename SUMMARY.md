@@ -118,9 +118,9 @@
   * [InfoGAN](dl/gan/infogan.md)
   * [DCGAN](dl/gan/dcgan.md)
   * [VAE](dl/gan/vae.md)
-* [受限波尔兹曼机](dl/rbm.md)
+* [受限波尔兹曼机](dl/rbm/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
-* [RNN](rnn.md)
+* [RNN](dl/rnn/rnn.md)
   * Bidirectional RNNs
   * Deep \(Bidirectional\) RNNs
   * [LSTM模型与前向反向传播算法](dl/rnn/lstm.md)
