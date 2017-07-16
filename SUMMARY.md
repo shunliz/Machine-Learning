@@ -133,4 +133,7 @@
   * [LSTM模型与前向反向传播算法](dl/rnn/lstm.md)
   * [随时间反向传播（BPTT）算法](dl/rnn/bptt.md)
   * [循环神经网络\(RNN\)模型与前向反向传播算法](dl/rnn/rnn-bptt.md)
+* [自动编码器](dl/encoder/encoder.md)
+  * [堆叠降噪自动编码器](dl/encoder/stack-denoise-encoder.md)
+  * [降噪自动编码器](dl/encoder/denoise-encoder.md)
 
