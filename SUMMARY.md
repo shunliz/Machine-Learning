@@ -9,6 +9,7 @@
   * [交叉验证](math/analytic/cross-validation.md)
   * [最小二乘](math/analytic/least-square.md)
 * [第二章 概率论](math/probability.md)
+  * [统计学习方法概论](math/probability/prob-methodology.md)
   * [最大似然估计](math/probability/mle.md)
   * [蒙特卡罗方法](math/probability/mcmc1.md)
   * [马尔科夫链](math/probability/markov-chain.md)
