@@ -12,6 +12,7 @@
   * [最大似然估计](math/probability/mle.md)
   * [蒙特卡罗方法](math/probability/mcmc1.md)
   * [马尔科夫链](math/probability/markov-chain.md)
+  * [MCMC采样和M-H采样](math/probability/mcmc-mh.md)
 * [第三章 矩阵和线性代数](math/matrix-linear.md)
   * 10.向量对向量求导
   * 11.标量对向量求导
