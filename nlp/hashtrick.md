@@ -61,12 +61,9 @@ print vectorizer.fit_transform(corpus)
 
 我们可以进一步看看每个文本的词向量特征和各个特征代表的词，代码如下：
 
-```
-print
- vectorizer.fit_transform(corpus).toarray()
-
-print
- vectorizer.get_feature_names()
+```py
+print vectorizer.fit_transform(corpus).toarray()
+print vectorizer.get_feature_names()
 ```
 
 输出如下：
