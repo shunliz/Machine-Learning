@@ -28,9 +28,9 @@ RBM是基于基于能量的概率分布模型。怎么理解呢？分两部分�
 
 其中Z为归一化因子，类似于softmax中的归一化因子，表达式为：$$Z = \sum\limits_{v,h}e^{-E(v,h)}$$
 
-有了概率分布，我们现在来看条件分布$$$$
+有了概率分布，我们现在来看条件分布
 
-$$$$$$\begin{align} P(h|v)  & =  \frac{P(h,v)}{P(v)}  \\& =  \frac{1}{P(v)}\frac{1}{Z}exp\{a^Tv + b^Th + h^TWv\} \\& = \frac{1}{Z'}exp\{b^Th + h^TWv\}  \\& =  \frac{1}{Z'}exp\{\sum\limits_{j=1}^{n_h}(b_j^Th_j + h_j^TW_{:,j}v_j)\} \\& =  \frac{1}{Z'} \prod\limits_{j=1}^{n_h}exp\{b_j^Th_j + h_j^TW_{:,j}v_j\} \end{align}$$
+$$\begin{align} P(h|v)  & =  \frac{P(h,v)}{P(v)}  \\& =  \frac{1}{P(v)}\frac{1}{Z}exp\{a^Tv + b^Th + h^TWv\} \\& = \frac{1}{Z'}exp\{b^Th + h^TWv\}  \\& =  \frac{1}{Z'}exp\{\sum\limits_{j=1}^{n_h}(b_j^Th_j + h_j^TW_{:,j}v_j)\} \\& =  \frac{1}{Z'} \prod\limits_{j=1}^{n_h}exp\{b_j^Th_j + h_j^TW_{:,j}v_j\} \end{align}$$
 
 其中Z'为新的归一化系数，表达式为：$$Z' = \frac{1}{P(v)}\frac{1}{Z}exp{a^Tv}$$
 
