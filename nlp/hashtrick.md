@@ -102,17 +102,10 @@ print vectorizer.get_feature_names()
 
 在scikit-learn的HashingVectorizer类中，实现了基于signed hash trick的算法，这里我们就用HashingVectorizer来实践一下Hash Trick，为了简单，我们使用上面的19维词汇表，并哈希降维到6维。当然在实际应用中，19维的数据根本不需要Hash Trick，这里只是做一个演示，代码如下：
 
-```
-from
- sklearn.feature_extraction.text 
-import
- HashingVectorizer 
-vectorizer2
-=HashingVectorizer(n_features = 6,norm =
- None)
-
-print
- vectorizer2.fit_transform(corpus)
+```py
+from sklearn.feature_extraction.text import HashingVectorizer 
+vectorizer2=HashingVectorizer(n_features = 6,norm = None)
+print vectorizer2.fit_transform(corpus)
 ```
 
 输出如下：
