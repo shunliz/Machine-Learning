@@ -147,56 +147,23 @@ TfidfVectorizer类可以帮助我们完成向量化，TF-IDF和标准化三步�
 
 现在我们把上面分词好的文本载入内存：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 ```
-with open(
-'
-.
-lp_test1.txt
-'
-) as f3:
-    res1 
-=
- f3.read()
-
-print
- res1
-with open(
-'
-.
-lp_test3.txt
-'
-) as f4:
-    res2 
-=
- f4.read()
-
-print
- res2
+with open('./nlp_test1.txt') as f3:
+    res1 = f3.read()
+print res1
+with open('./nlp_test3.txt') as f4:
+    res2 = f4.read()
+print res2
 ```
-
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
 这里的输出还是我们上面分完词的文本。现在我们可以进行向量化，TF-IDF和标准化三步处理了。注意，这里我们引入了我们上面的停用词表。
 
 ```
-from
- sklearn.feature_extraction.text 
-import
- TfidfVectorizer
-corpus 
-=
- [res1,res2]
-vector 
-= TfidfVectorizer(stop_words=
-stpwrdlst)
-tfidf 
-=
- vector.fit_transform(corpus)
-
-print
- tfidf
+from sklearn.feature_extraction.text import TfidfVectorizer
+corpus = [res1,res2]
+vector = TfidfVectorizer(stop_words=stpwrdlst)
+tfidf = vector.fit_transform(corpus)
+print tfidf
 ```
 
 部分输出如下：
@@ -215,44 +182,16 @@ print
 
 我们再来看看每次词和TF-IDF的对应关系：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 ```
-wordlist = vector.get_feature_names()
-#
-获取词袋模型中的所有词  
-
-#
- tf-idf矩阵 元素a[i][j]表示j词在i类文本中的tf-idf权重
-
-weightlist =
- tfidf.toarray()  
-
-#
-打印每类文本的tf-idf词语权重，第一个for遍历所有文本，第二个for便利某一类文本下的词语权重
-for
- i 
-in
- range(len(weightlist)):  
-
-print
-"
--------第
-"
-,i,
-"
-段文本的词语tf-idf权重------
-"
-for
- j 
-in
- range(len(wordlist)):  
-
-print
- wordlist[j],weightlist[i][j]
+wordlist = vector.get_feature_names()#获取词袋模型中的所有词  
+# tf-idf矩阵 元素a[i][j]表示j词在i类文本中的tf-idf权重
+weightlist = tfidf.toarray()  
+#打印每类文本的tf-idf词语权重，第一个for遍历所有文本，第二个for便利某一类文本下的词语权重
+for i in range(len(weightlist)):  
+    print "-------第",i,"段文本的词语tf-idf权重------"  
+    for j in range(len(wordlist)):  
+        print wordlist[j],weightlist[i][j]
 ```
-
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
 部分输出如下：
 
