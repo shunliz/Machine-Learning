@@ -52,7 +52,7 @@ import jieba
 
 with open('./nlp_test0.txt') as f:
     document = f.read()
-    
+
     document_decode = document.decode('GBK')
     document_cut = jieba.cut(document_decode)
     #print  ' '.join(jieba_cut)  //如果打印结果，则分词效果消失，后面的result无法显示
@@ -66,91 +66,37 @@ f2.close()
 
 输出的文本内容如下：
 
->沙 瑞金 赞叹 易 学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易 学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易 学习 被 降职 到 道口 县当 县长 ， 王 大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王 大路 ， 就 和 易 学习 一起 给 王 大路 凑 了 5 万块 钱 ， 王 大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王 大路 竟然 做 得 风生水 起 。 沙 瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
+> 沙 瑞金 赞叹 易 学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易 学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易 学习 被 降职 到 道口 县当 县长 ， 王 大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王 大路 ， 就 和 易 学习 一起 给 王 大路 凑 了 5 万块 钱 ， 王 大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王 大路 竟然 做 得 风生水 起 。 沙 瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
 
 可以发现对于一些人名和地名，jieba处理的不好，不过我们可以帮jieba加入词汇如下：
 
 ```
-jieba.suggest_freq(
-'
-沙瑞金
-'
-, True)
-jieba.suggest_freq(
-'
-易学习
-'
-, True)
-jieba.suggest_freq(
-'
-王大路
-'
-, True)
-jieba.suggest_freq(
-'
-京州
-'
-, True)
+jieba.suggest_freq('沙瑞金', True)
+jieba.suggest_freq('易学习', True)
+jieba.suggest_freq('王大路', True)
+jieba.suggest_freq('京州', True)
 ```
 
 现在我们再来进行读文件，编码，分词，编码和写文件，代码如下：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
-```
-with open(
-'
-.
-lp_test0.txt
-'
-) as f:
-    document 
-=
- f.read()
-
-    document_decode 
-= document.decode(
-'
-GBK
-'
-)
-    document_cut 
-=
- jieba.cut(document_decode)
-
-#
-print  ' '.join(jieba_cut)
-
-    result = 
-'
-'
-.join(document_cut)
-    result 
-= result.encode(
-'
-utf-8
-'
-)
-    with open(
-'
-.
-lp_test1.txt
-'
-, 
-'
-w
-'
-) as f2:
+```py
+with open('./nlp_test0.txt') as f:
+    document = f.read()
+    
+    document_decode = document.decode('GBK')
+    document_cut = jieba.cut(document_decode)
+    #print  ' '.join(jieba_cut)
+    result = ' '.join(document_cut)
+    result = result.encode('utf-8')
+    with open('./nlp_test1.txt', 'w') as f2:
         f2.write(result)
 f.close()
 f2.close()
 ```
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 输出的文本内容如下：
 
-沙瑞金 赞叹 易学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易学习 被 降职 到 道口 县当 县长 ， 王大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王大路 ， 就 和 易学习 一起 给 王大路 凑 了 5 万块 钱 ， 王大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王大路 竟然 做 得 风生水 起 。 沙瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
+>沙瑞金 赞叹 易学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易学习 被 降职 到 道口 县当 县长 ， 王大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王大路 ， 就 和 易学习 一起 给 王大路 凑 了 5 万块 钱 ， 王大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王大路 竟然 做 得 风生水 起 。 沙瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
 
 基本已经可以满足要求。同样的方法我们对第二段文本nlp\_test2.txt进行分词和写入文件nlp\_test3.txt。
 
