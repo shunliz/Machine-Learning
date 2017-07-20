@@ -82,7 +82,7 @@ jieba.suggest_freq('京州', True)
 ```py
 with open('./nlp_test0.txt') as f:
     document = f.read()
-    
+
     document_decode = document.decode('GBK')
     document_cut = jieba.cut(document_decode)
     #print  ' '.join(jieba_cut)
@@ -96,66 +96,28 @@ f2.close()
 
 输出的文本内容如下：
 
->沙瑞金 赞叹 易学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易学习 被 降职 到 道口 县当 县长 ， 王大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王大路 ， 就 和 易学习 一起 给 王大路 凑 了 5 万块 钱 ， 王大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王大路 竟然 做 得 风生水 起 。 沙瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
+> 沙瑞金 赞叹 易学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易学习 被 降职 到 道口 县当 县长 ， 王大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王大路 ， 就 和 易学习 一起 给 王大路 凑 了 5 万块 钱 ， 王大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王大路 竟然 做 得 风生水 起 。 沙瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。
 
 基本已经可以满足要求。同样的方法我们对第二段文本nlp\_test2.txt进行分词和写入文件nlp\_test3.txt。
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
+```py
+with open('./nlp_test2.txt') as f:
+    document2 = f.read()
 
-```
-with open(
-'
-.
-lp_test2.txt
-'
-) as f:
-    document2 
-=
- f.read()
-
-    document2_decode 
-= document2.decode(
-'
-GBK
-'
-)
-    document2_cut 
-=
- jieba.cut(document2_decode)
-
-#
-print  ' '.join(jieba_cut)
-
-    result = 
-'
-'
-.join(document2_cut)
-    result 
-= result.encode(
-'
-utf-8
-'
-)
-    with open(
-'
-.
-lp_test3.txt
-'
-, 
-'
-w
-'
-) as f2:
+    document2_decode = document2.decode('GBK')
+    document2_cut = jieba.cut(document2_decode)
+    #print  ' '.join(jieba_cut)
+    result = ' '.join(document2_cut)
+    result = result.encode('utf-8')
+    with open('./nlp_test3.txt', 'w') as f2:
         f2.write(result)
 f.close()
 f2.close()
 ```
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 输出的文本内容如下：
 
-沙瑞金 向 毛娅 打听 他们 家 在 京州 的 别墅 ， 毛娅 笑 着 说 ， 王大路 事业有成 之后 ， 要 给 欧阳 菁 和 她 公司 的 股权 ， 她们 没有 要 ， 王大路 就 在 京州 帝豪园 买 了 三套 别墅 ， 可是 李达康 和 易学习 都 不要 ， 这些 房子 都 在 王大路 的 名下 ， 欧阳 菁 好像 去 住 过 ， 毛娅 不想 去 ， 她 觉得 房子 太大 很 浪费 ， 自己 家住 得 就 很 踏实 。
+> 沙瑞金 向 毛娅 打听 他们 家 在 京州 的 别墅 ， 毛娅 笑 着 说 ， 王大路 事业有成 之后 ， 要 给 欧阳 菁 和 她 公司 的 股权 ， 她们 没有 要 ， 王大路 就 在 京州 帝豪园 买 了 三套 别墅 ， 可是 李达康 和 易学习 都 不要 ， 这些 房子 都 在 王大路 的 名下 ， 欧阳 菁 好像 去 住 过 ， 毛娅 不想 去 ， 她 觉得 房子 太大 很 浪费 ， 自己 家住 得 就 很 踏实 。
 
 可见分词效果还不错。
 
@@ -167,36 +129,15 @@ f2.close()
 
 现在我们将停用词表从文件读出，并切分成一个数组备用：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
-
 ```
-#
-从文件导入停用词表
-
-stpwrdpath = 
-"
-stop_words.txt
-"
-
-stpwrd_dic 
-= open(stpwrdpath, 
-'
-rb
-'
-)
-stpwrd_content 
-=
- stpwrd_dic.read()
-
-#
-将停用词表转换为list  
-
-stpwrdlst =
- stpwrd_content.splitlines()
+#从文件导入停用词表
+stpwrdpath = "stop_words.txt"
+stpwrd_dic = open(stpwrdpath, 'rb')
+stpwrd_content = stpwrd_dic.read()
+#将停用词表转换为list  
+stpwrdlst = stpwrd_content.splitlines()
 stpwrd_dic.close()
 ```
-
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
 ## 7. 中文文本挖掘预处理六：特征处理
 
