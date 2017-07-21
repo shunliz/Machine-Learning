@@ -54,34 +54,16 @@ ERROR: likee
 在实际应用中，一般使用nltk来进行词干提取和词型还原。安装nltk也很简单，"pip install nltk"即可。只不过我们一般需要下载nltk的语料库，可以用下面的代码完成，nltk会弹出对话框选择要下载的内容。选择下载语料库就可以了。
 
 ```
-import
- nltk
+import nltk
 nltk.download()
 ```
 
 在nltk中，做词干提取的方法有PorterStemmer，LancasterStemmer和SnowballStemmer。个人推荐使用SnowballStemmer。这个类可以处理很多种语言，当然，除了中文。
 
 ```
-from
- nltk.stem 
-import
- SnowballStemmer
-stemmer 
-= SnowballStemmer(
-"
-english
-"
-) 
-#
- Choose a language
-
-stemmer.stem(
-"
-countries
-"
-) 
-#
- Stem a word
+from nltk.stem import SnowballStemmer
+stemmer = SnowballStemmer("english") # Choose a language
+stemmer.stem("countries") # Stem a word
 ```
 
 输出是"countri",这个词干并不是一个词。
