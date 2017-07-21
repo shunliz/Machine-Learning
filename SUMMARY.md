@@ -101,9 +101,7 @@
   * [朴素贝叶斯实际应用](ml/bayes/simple-bayes-real-use.md)
   * [朴素贝叶斯代码](ml/bayes/simple-bayes-code.md)
 * [第二十一课：LDA主题模型](ml/lda/lda.md)
-* 第二十二课：LDA实践
 * 第二十三课：隐马尔科夫模型HMM
-* 第二十四课：HMM实践
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
