@@ -71,20 +71,9 @@ stemmer.stem("countries") # Stem a word
 而如果是做词型还原，则一般可以使用WordNetLemmatizer类，即wordnet词形还原方法。
 
 ```
-from
- nltk.stem 
-import
- WordNetLemmatizer
-wnl 
-=
- WordNetLemmatizer()
-
-print
-(wnl.lemmatize(
-'
-countries
-'
-))
+from nltk.stem import WordNetLemmatizer
+wnl = WordNetLemmatizer()
+print(wnl.lemmatize('countries')) 
 ```
 
 输出是"country",比较符合需求。
