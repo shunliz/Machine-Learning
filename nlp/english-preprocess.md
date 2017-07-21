@@ -31,32 +31,11 @@
 对于一段文本，我们可以用下面的方式去找出拼写错误：
 
 ```
-from
- enchant.checker 
-import
- SpellChecker
-chkr 
-= SpellChecker(
-"
-en_US
-"
-)
-chkr.set_text(
-"
-Many peope likee to watch In the Name of People.
-"
-)
-
-for
- err 
-in
- chkr:
-
-print
-"
-ERROR:
-"
-, err.word
+from enchant.checker import SpellChecker
+chkr = SpellChecker("en_US")
+chkr.set_text("Many peope likee to watch In the Name of People.")
+for err in chkr:
+    print "ERROR:", err.word
 ```
 
 输出是：
