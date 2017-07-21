@@ -109,6 +109,7 @@
   * [HashTrick](nlp/hashtrick.md)
   * [TF-IDF](nlp/tf-idf.md)
   * [中文文本挖掘预处理](nlp/preprocessing.md)
+  * [英文文本挖掘预处理](nlp/english-preprocess.md)
 * 第三部分 深度学习
 * [第二十五课：深度学习](dl/introduction/introduction.md)
   * [基本概念](dl/introduction/ji-ben-gai-nian.md)
