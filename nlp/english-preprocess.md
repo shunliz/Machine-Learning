@@ -73,7 +73,7 @@ stemmer.stem("countries") # Stem a word
 ```
 from nltk.stem import WordNetLemmatizer
 wnl = WordNetLemmatizer()
-print(wnl.lemmatize('countries')) 
+print(wnl.lemmatize('countries'))
 ```
 
 输出是"country",比较符合需求。
@@ -94,7 +94,7 @@ print(wnl.lemmatize('countries'))
 
 ## 8. 英文文本挖掘预处理七：特征处理
 
-现在我们就可以用scikit-learn来对我们的文本特征进行处理了，在[文本挖掘预处理之向量化与Hash Trick](http://www.cnblogs.com/pinard/p/6688348.html)中，我们讲到了两种特征处理的方法，向量化与Hash Trick。而向量化是最常用的方法，因为它可以接着进行TF-IDF的特征处理。在[文本挖掘预处理之TF-IDF](http://www.cnblogs.com/pinard/p/6693230.html)中，我们也讲到了TF-IDF特征处理的方法。
+现在我们就可以用scikit-learn来对我们的文本特征进行处理了，在[文本挖掘预处理之向量化与Hash Trick](/nlp/hashtrick.md)中，我们讲到了两种特征处理的方法，向量化与Hash Trick。而向量化是最常用的方法，因为它可以接着进行TF-IDF的特征处理。在[文本挖掘预处理之TF-IDF](/nlp/tf-idf.md)中，我们也讲到了TF-IDF特征处理的方法。
 
 TfidfVectorizer类可以帮助我们完成向量化，TF-IDF和标准化三步。当然，还可以帮我们处理停用词。这部分工作和中文的特征处理也是完全相同的，大家参考前文即可。
 
