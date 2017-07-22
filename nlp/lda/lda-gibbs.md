@@ -22,9 +22,9 @@
 
 首先我们简化下Dirichlet分布的表达式,其中$$\triangle(\alpha)$$是归一化参数：$$Dirichlet(\vec p| \vec \alpha) = \frac{\Gamma(\sum\limits_{k=1}^K\alpha_k)}{\prod_{k=1}^K\Gamma(\alpha_k)}\prod_{k=1}^Kp_k^{\alpha_k-1} = \frac{1}{\triangle( \vec \alpha)}\prod_{k=1}^Kp_k^{\alpha_k-1}$$
 
-现在我们先计算下第d个文档的主题的条件分布$$p(\vec z_d|\alpha)$$，在上一篇中我们讲到$$\alpha \to \theta_d \to \vec z_d$$组成了Dirichlet-multi共轭,利用这组分布，计算$$p(\vec z_d| \vec \alpha)$$如下：$$$$
+现在我们先计算下第d个文档的主题的条件分布$$p(\vec z_d|\alpha)$$，在上一篇中我们讲到$$\alpha \to \theta_d \to \vec z_d$$组成了Dirichlet-multi共轭,利用这组分布，计算$$p(\vec z_d| \vec \alpha)$$如下：
 
-$$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) p(\theta_d |  \vec \alpha) d  \vec \theta_d  & \\ = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} Dirichlet(\vec \alpha) d \vec \theta_d  & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} \frac{1}{\triangle( \vec \alpha)}\prod_{k=1}^Kp_k^{\alpha_k-1}d \vec \theta_d  &\\ =  \frac{1}{\triangle( \vec \alpha)} \int \prod_{k=1}^Kp_k^{n_d^{(k)} + \alpha_k-1}d \vec \theta_d  & = \frac{\triangle(\vec n_d +  \vec \alpha)}{\triangle( \vec \alpha)}   \end{align}$$
+$$$$$$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) p(\theta_d |  \vec \alpha) d  \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} Dirichlet(\vec \alpha) d \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} \frac{1}{\triangle( \vec \alpha)}\prod_{k=1}^Kp_k^{\alpha_k-1}d \vec \theta_d \\ & =  \frac{1}{\triangle( \vec \alpha)} \int \prod_{k=1}^Kp_k^{n_d^{(k)} + \alpha_k-1}d \vec \theta_d \\ & = \frac{\triangle(\vec n_d +  \vec \alpha)}{\triangle( \vec \alpha)}   \end{align}$$
 
 其中，在第d个文档中，第k个主题的词的个数表示为：$$n_d^{(k)}$$, 对应的多项分布的计数可以表示为$$\vec n_d = (n_d^{(1)}, n_d^{(2)},...n_d^{(K)})$$
 
@@ -40,9 +40,15 @@ $$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) 
 
 对于下标i,由于它对应的词$$w_i$$是可以观察到的，因此我们有：$$p(z_i=k| \vec w,\vec z_{\neg i}) \propto p(z_i=k, w_i =t| \vec w_{\neg i},\vec z_{\neg i})$$
 
-对于$$z_i=k, w_i =t$$,它只涉及到第d篇文档和第k个主题两个Dirichlet-multi共轭，即：$$\vec \alpha \to \vec \theta_d \to \vec z_d\vec \eta \to \vec \beta_k \to \vec w_{(k)}$$
+对于$$z_i=k, w_i =t$$,它只涉及到第d篇文档和第k个主题两个Dirichlet-multi共轭，即：
 
-其余的M+K-2个Dirichlet-multi共轭和它们这两个共轭是独立的。如果我们在语料库中去掉$$z_i,w_i,$$并不会改变之前的M+K个Dirichlet-multi共轭结构，只是向量的某些位置的计数会减少，因此对于$$\vec \theta_d, \vec \beta_k$$,对应的后验分布为：$$p(\vec \theta_d | \vec w_{\neg i},\vec z_{\neg i}) = Dirichlet(\vec \theta_d | \vec n_{d, \neg i} + \vec \alpha)p(\vec \beta_k | \vec w_{\neg i},\vec z_{\neg i}) = Dirichlet(\vec \beta_k | \vec n_{k, \neg i} + \vec \eta)$$
+$$\vec \alpha \to \vec \theta_d \to \vec z_d$$
+
+$$\vec \eta \to \vec \beta_k \to \vec w_{(k)}$$
+
+其余的M+K-2个Dirichlet-multi共轭和它们这两个共轭是独立的。如果我们在语料库中去掉$$z_i,w_i,$$并不会改变之前的M+K个Dirichlet-multi共轭结构，只是向量的某些位置的计数会减少，因此对于$$\vec \theta_d, \vec \beta_k$$,对应的后验分布为：$$p(\vec \theta_d | \vec w_{\neg i},\vec z_{\neg i}) = Dirichlet(\vec \theta_d | \vec n_{d, \neg i} + \vec \alpha)$$
+
+$$p(\vec \beta_k | \vec w_{\neg i},\vec z_{\neg i}) = Dirichlet(\vec \beta_k | \vec n_{k, \neg i} + \vec \eta)$$
 
 现在开始计算Gibbs采样需要的条件概率：
 
