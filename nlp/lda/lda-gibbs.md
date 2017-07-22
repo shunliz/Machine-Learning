@@ -48,9 +48,15 @@ $$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) 
 
 $$\begin{align} p(z_i=k| \vec w,\vec z_{\neg i})  &  \propto p(z_i=k, w_i =t| \vec w_{\neg i},\vec z_{\neg i}) \\ & = \int p(z_i=k, w_i =t, \vec \theta_d , \vec \beta_k| \vec w_{\neg i},\vec z_{\neg i}) d\vec \theta_d d\vec \beta_k  \\ & =  \int p(z_i=k,  \vec \theta_d |  \vec w_{\neg i},\vec z_{\neg i})p(w_i=t,  \vec \beta_k |  \vec w_{\neg i},\vec z_{\neg i}) d\vec \theta_d d\vec \beta_k  \\ & =  \int p(z_i=k|\vec \theta_d )p( \vec \theta_d |  \vec w_{\neg i},\vec z_{\neg i})p(w_i=t|\vec \beta_k)p(\vec \beta_k |  \vec w_{\neg i},\vec z_{\neg i}) d\vec \theta_d d\vec \beta_k  \\ & = \int p(z_i=k|\vec \theta_d ) Dirichlet(\vec \theta_d | \vec n_{d, \neg i} + \vec \alpha) d\vec \theta_d \\ & * \int p(w_i=t|\vec \beta_k) Dirichlet(\vec \beta_k | \vec n_{k, \neg i} + \vec \eta) d\vec \beta_k \\ & = \int  \theta_{dk} Dirichlet(\vec \theta_d | \vec n_{d, \neg i} + \vec \alpha) d\vec \theta_d  \int \beta_{kt} Dirichlet(\vec \beta_k | \vec n_{k, \neg i} + \vec \eta) d\vec \beta_k \\ & = E_{Dirichlet(\theta_d)}(\theta_{dk})E_{Dirichlet(\beta_k)}(\beta_{kt})\end{align}$$
 
-在上一篇LDA基础里我们讲到了Dirichlet分布的期望公式，因此我们有：$$E_{Dirichlet(\theta_d)}(\theta_{dk}) = \frac{n_{d, \neg i}^{k} + \alpha_k}{\sum\limits_{s=1}^Kn_{d, \neg i}^{s} + \alpha_s}E_{Dirichlet(\beta_k)}(\beta_{kt})= \frac{n_{k, \neg i}^{t} + \eta_t}{\sum\limits_{f=1}^Vn_{k, \neg i}^{f} + \eta_f}$$
+在上一篇LDA基础里我们讲到了Dirichlet分布的期望公式，因此我们有：
 
-最终我们得到每个词对应主题的Gibbs采样的条件概率公式为：$$p(z_i=k| \vec w,\vec z_{\neg i})  = \frac{n_{d, \neg i}^{k} + \alpha_k}{\sum\limits_{s=1}^Kn_{d, \neg i}^{s} + \alpha_s}   \frac{n_{k, \neg i}^{t} + \eta_t}{\sum\limits_{f=1}^Vn_{k, \neg i}^{f} + \eta_f}$$
+$$E_{Dirichlet(\theta_d)}(\theta_{dk}) = \frac{n_{d, \neg i}^{k} + \alpha_k}{\sum\limits_{s=1}^Kn_{d, \neg i}^{s} + \alpha_s}$$
+
+$$E_{Dirichlet(\beta_k)}(\beta_{kt})= \frac{n_{k, \neg i}^{t} + \eta_t}{\sum\limits_{f=1}^Vn_{k, \neg i}^{f} + \eta_f}$$
+
+最终我们得到每个词对应主题的Gibbs采样的条件概率公式为：
+
+$$p(z_i=k| \vec w,\vec z_{\neg i})  = \frac{n_{d, \neg i}^{k} + \alpha_k}{\sum\limits_{s=1}^Kn_{d, \neg i}^{s} + \alpha_s}   \frac{n_{k, \neg i}^{t} + \eta_t}{\sum\limits_{f=1}^Vn_{k, \neg i}^{f} + \eta_f}$$
 
 有了这个公式，我们就可以用Gibbs采样去采样所有词的主题，当Gibbs采样收敛后，即得到所有词的采样主题。
 
