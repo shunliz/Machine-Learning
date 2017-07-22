@@ -110,6 +110,7 @@
   * [英文文本挖掘预处理](nlp/english-preprocess.md)
   * [潜在语义索引\(LSI\)](nlp/lda/lsi.md)
   * [非负矩阵分解\(NMF\)](nlp/lda/nmf.md)
+  * [LDA基础](nlp/lda/lda.md)
 * 第三部分 深度学习
 * [第二十五课：深度学习](dl/introduction/introduction.md)
   * [基本概念](dl/introduction/ji-ben-gai-nian.md)
