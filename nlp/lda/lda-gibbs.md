@@ -24,7 +24,7 @@
 
 现在我们先计算下第d个文档的主题的条件分布$$p(\vec z_d|\alpha)$$，在上一篇中我们讲到$$\alpha \to \theta_d \to \vec z_d$$组成了Dirichlet-multi共轭,利用这组分布，计算$$p(\vec z_d| \vec \alpha)$$如下：
 
-$$$$$$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) p(\theta_d |  \vec \alpha) d  \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} Dirichlet(\vec \alpha) d \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} \frac{1}{\triangle( \vec \alpha)}\prod_{k=1}^Kp_k^{\alpha_k-1}d \vec \theta_d \\ & =  \frac{1}{\triangle( \vec \alpha)} \int \prod_{k=1}^Kp_k^{n_d^{(k)} + \alpha_k-1}d \vec \theta_d \\ & = \frac{\triangle(\vec n_d +  \vec \alpha)}{\triangle( \vec \alpha)}   \end{align}$$
+$$\begin{align} p(\vec z_d| \vec \alpha)  & = \int p(\vec z_d |  \vec \theta_d) p(\theta_d |  \vec \alpha) d  \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} Dirichlet(\vec \alpha) d \vec \theta_d \\ & = \int \prod_{k=1}^Kp_k^{n_d^{(k)}} \frac{1}{\triangle( \vec \alpha)}\prod_{k=1}^Kp_k^{\alpha_k-1}d \vec \theta_d \\ & =  \frac{1}{\triangle( \vec \alpha)} \int \prod_{k=1}^Kp_k^{n_d^{(k)} + \alpha_k-1}d \vec \theta_d \\ & = \frac{\triangle(\vec n_d +  \vec \alpha)}{\triangle( \vec \alpha)}   \end{align}$$
 
 其中，在第d个文档中，第k个主题的词的个数表示为：$$n_d^{(k)}$$, 对应的多项分布的计数可以表示为$$\vec n_d = (n_d^{(1)}, n_d^{(2)},...n_d^{(K)})$$
 
