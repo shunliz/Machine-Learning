@@ -138,33 +138,33 @@ $$\begin{align} \eta_{i+1} = \eta_i+ \frac{\nabla_{\eta_i}L}{\nabla_{\eta_i\eta_
 
 2）开始EM算法迭代循环直到收敛。
 
-a\) 初始化所有的\phi, \gamma, \lambda，进行LDA的E步迭代循环,直到\lambda,\phi, \gamma收敛。
+     a\) 初始化所有的$$\phi, \gamma, \lambda$$，进行LDA的E步迭代循环,直到$$\lambda,\phi, \gamma$$收敛。
 
-\(i\) for d from 1 to M:
+            \(i\) for d from 1 to M:
 
-for n from 1 toN\_d:
+                 for n from 1 toN\_d:
 
-for k from 1 to K:
+                       for k from 1 to K:
 
-按照\(23\)式更新\phi\_{nk}
+                              按照\(23\)式更新$$\phi_{nk}$$
 
-标准化\phi\_{nk}使该向量各项的和为1.
+                       标准化$$\phi_{nk}$$使该向量各项的和为1.
 
-按照\(24\) 式更新\gamma\_{k}。
+                  按照\(24\) 式更新$$\gamma_{k}$$。
 
-\(ii\) for k from 1 to K:
+            \(ii\) for k from 1 to K:
 
-for i from 1 to V:
+                        for i from 1 to V:
 
-按照\(26\) 式更新\lambda{ki}。
+                  按照\(26\) 式更新$$\lambda{ki}$$。
 
-\(iii\)如果\phi, \gamma, \lambda均已收敛，则跳出a\)步，否则回到\(i\)步。
+           \(iii\)如果$$\phi, \gamma, \lambda$$均已收敛，则跳出a\)步，否则回到\(i\)步。
 
-b\) 进行LDA的M步迭代循环， 直到\alpha,\eta收敛
+     b\) 进行LDA的M步迭代循环， 直到$$\alpha,\eta$$收敛
 
-\(i\) 按照\(27\)\(28\)式用牛顿法迭代更新\alpha,\eta直到收敛
+           \(i\) 按照\(27\)\(28\)式用牛顿法迭代更新$$\alpha,\eta$$直到收敛
 
-c\) 如果所有的参数均收敛，则算法结束，否则回到第2\)步。
+     c\) 如果所有的参数均收敛，则算法结束，否则回到第2\)步。
 
-算法结束后，我们可以得到模型的后验参数\alpha,\eta,以及我们需要的近似模型主题词分布\lambda,以及近似训练文档主题分布\gamma。
+算法结束后，我们可以得到模型的后验参数$$\alpha,\eta$$,以及我们需要的近似模型主题词分布$$\lambda$$,以及近似训练文档主题分布$$\gamma$$。
 
