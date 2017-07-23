@@ -24,57 +24,63 @@
 
 ![](http://images2015.cnblogs.com/blog/1042406/201705/1042406-20170518154844557-29824317.png)
 
-我们假设隐藏变量\theta是由独立分布\gamma形成的，隐藏变量z是由独立分布\phi形成的，隐藏变量\beta是由独立分布\lambda形成的。这样我们得到了三个隐藏变量联合的变分分布q为：\begin{align} q\(\beta, z, \theta\|\lambda,\phi, \gamma\) & = \prod\_{k=1}^Kq\(\beta\_k\|\lambda\_k\)\prod\_{d=1}^Mq\(\theta\_d, z\_d\|\gamma\_d,\phi\_d\)  & =  \prod\_{k=1}^Kq\(\beta\_k\|\lambda\_k\)\prod\_{d=1}^M\(q\(\theta\_d\|\gamma\_d\)\prod\_{n=1}^{N\_d}q\(z\_{dn}\| \phi\_{dn}\)\) \end{align}
+我们假设隐藏变量$$\theta$$是由独立分布$$\gamma$$形成的，隐藏变量z是由独立分布$$\phi$$形成的，隐藏变量$$\beta$$是由独立分布$$\lambda$$形成的。这样我们得到了三个隐藏变量联合的变分分布q为：$$\begin{align} q(\beta, z, \theta|\lambda,\phi, \gamma) & = \prod_{k=1}^Kq(\beta_k|\lambda_k)\prod_{d=1}^Mq(\theta_d, z_d|\gamma_d,\phi_d)  & =  \prod_{k=1}^Kq(\beta_k|\lambda_k)\prod_{d=1}^M(q(\theta_d|\gamma_d)\prod_{n=1}^{N_d}q(z_{dn}| \phi_{dn})) \end{align}$$
 
-我们的目标是用q\(\beta, z, \theta\|\lambda,\phi, \gamma\)来近似的估计p\(\theta,\beta, z \| w, \alpha, \eta\)，也就是说需要这两个分布尽可能的相似，用数学语言来描述就是希望这两个概率分布之间有尽可能小的KL距离，即：\(\lambda^\*,\phi^\*, \gamma^\*\) = \underbrace{arg \;min}\_{\lambda,\phi, \gamma} D\(q\(\beta, z, \theta\|\lambda,\phi, \gamma\) \|\| p\(\theta,\beta, z \| w, \alpha, \eta\)\)
+我们的目标是用$$q(\beta, z, \theta|\lambda,\phi, \gamma)$$来近似的估计$$p(\theta,\beta, z | w, \alpha, \eta)$$，也就是说需要这两个分布尽可能的相似，用数学语言来描述就是希望这两个概率分布之间有尽可能小的KL距离，即：$$(\lambda^*,\phi^*, \gamma^*) = \underbrace{arg \;min}_{\lambda,\phi, \gamma} D(q(\beta, z, \theta|\lambda,\phi, \gamma) || p(\theta,\beta, z | w, \alpha, \eta))$$
 
-其中D\(q\|\|p\)即为KL散度或KL距离，对应分布q和p的交叉熵。即：D\(q\|\|p\) = \sum\limits\_{x}q\(x\)log\frac{q\(x\)}{p\(x\)} = E\_{q\(x\)}\(log\;q\(x\) - log\;p\(x\)\)
+其中D\(q\|\|p\)即为KL散度或KL距离，对应分布q和p的交叉熵。即：$$D(q||p) = \sum\limits_{x}q(x)log\frac{q(x)}{p(x)} = E_{q(x)}(log\;q(x) - log\;p(x))$$
 
-我们的目的就是找到合适的\lambda^\*,\phi^\*, \gamma^\*,然后用q\(\beta, z, \theta\|\lambda^\*,\phi^\*, \gamma^\*\)来近似隐藏变量的条件分布p\(\theta,\beta, z \| w, \alpha, \eta\)，进而使用EM算法迭代。
+我们的目的就是找到合适的$$\lambda^*,\phi^*, \gamma^*,$$然后用$$q(\beta, z, \theta|\lambda^*,\phi^*, \gamma^*)$$来近似隐藏变量的条件分布$$p(\theta,\beta, z | w, \alpha, \eta)$$，进而使用EM算法迭代。
 
-这个合适的\lambda^\*,\phi^\*, \gamma^\*,也不是那么好求的，怎么办呢？我们先看看我能文档数据的对数似然函数log\(w\|\alpha,\eta\)如下,为了简化表示，我们用E\_q\(x\)代替E\_{q\(\beta, z, \theta\|\lambda,\phi, \gamma\) }\(x\)，用来表示x对于变分分布q\(\beta, z, \theta\|\lambda,\phi, \gamma\)的期望。
+这个合适的$$\lambda^*,\phi^*, \gamma^*,$$也不是那么好求的，怎么办呢？我们先看看我能文档数据的对数似然函数$$log(w|\alpha,\eta)$$如下,为了简化表示，我们用$$E_q(x)$$代替$$E_{q(\beta, z, \theta|\lambda,\phi, \gamma) }(x)$$，用来表示x对于变分分布$$q(\beta, z, \theta|\lambda,\phi, \gamma)$$的期望。
 
-\begin{align} log\(w\|\alpha,\eta\) & = log \int\int \sum\limits\_z p\(\theta,\beta, z,  w\| \alpha, \eta\) d\theta d\beta  & = log \int\int \sum\limits\_z \frac{p\(\theta,\beta, z,  w\| \alpha, \eta\) q\(\beta, z, \theta\|\lambda,\phi, \gamma\)}{q\(\beta, z, \theta\|\lambda,\phi, \gamma\)}d\theta d\beta   & = log\;E\_q \frac{p\(\theta,\beta, z,  w\| \alpha, \eta\) }{q\(\beta, z, \theta\|\lambda,\phi, \gamma\)}  & \geq E\_q\; log\frac{p\(\theta,\beta, z,  w\| \alpha, \eta\) }{q\(\beta, z, \theta\|\lambda,\phi, \gamma\)}  & = E\_q\; log{p\(\theta,\beta, z,  w\| \alpha, \eta\) } - E\_q\; log{q\(\beta, z, \theta\|\lambda,\phi, \gamma\)} \end{align}
+$$\begin{align} log(w|\alpha,\eta) & = log \int\int \sum\limits_z p(\theta,\beta, z,  w| \alpha, \eta) d\theta d\beta \\ & = log \int\int \sum\limits_z \frac{p(\theta,\beta, z,  w| \alpha, \eta) q(\beta, z, \theta|\lambda,\phi, \gamma)}{q(\beta, z, \theta|\lambda,\phi, \gamma)}d\theta d\beta  \\ & = log\;E_q \frac{p(\theta,\beta, z,  w| \alpha, \eta) }{q(\beta, z, \theta|\lambda,\phi, \gamma)} \\ & \geq E_q\; log\frac{p(\theta,\beta, z,  w| \alpha, \eta) }{q(\beta, z, \theta|\lambda,\phi, \gamma)} \\ & = E_q\; log{p(\theta,\beta, z,  w| \alpha, \eta) } - E_q\; log{q(\beta, z, \theta|\lambda,\phi, \gamma)} \end{align}$$
 
-其中，从第\(5\)式到第\(6\)式用到了Jensen不等式：f\(E\(x\)\) \geq E\(f\(x\)\) \;\; f\(x\)为凹函数
+其中，从第\(5\)式到第\(6\)式用到了Jensen不等式：$$f(E(x)) \geq E(f(x)) \;\; f(x)$$为凹函数
 
-我们一般把第\(7\)式记为：L\(\lambda,\phi, \gamma; \alpha, \eta\) = E\_q\; log{p\(\theta,\beta, z,  w\| \alpha, \eta\) } - E\_q\; log{q\(\beta, z, \theta\|\lambda,\phi, \gamma\)}
+我们一般把第\(7\)式记为：$$L(\lambda,\phi, \gamma; \alpha, \eta) = E_q\; log{p(\theta,\beta, z,  w| \alpha, \eta) } - E_q\; log{q(\beta, z, \theta|\lambda,\phi, \gamma)}$$
 
-由于L\(\lambda,\phi, \gamma; \alpha, \eta\)是我们的对数似然的一个下界（第6式），所以这个L一般称为ELBO\(Evidence Lower BOund\)。那么这个ELBO和我们需要优化的的KL散度有什么关系呢？注意到：\begin{align} D\(q\(\beta, z, \theta\|\lambda,\phi, \gamma\) \|\| p\(\theta,\beta, z \| w, \alpha, \eta\)\) & = E\_q logq\(\beta, z, \theta\|\lambda,\phi, \gamma\) -  E\_q log p\(\theta,\beta, z \| w, \alpha, \eta\) \& =E\_q logq\(\beta, z, \theta\|\lambda,\phi, \gamma\) -  E\_q log \frac{p\(\theta,\beta, z,  w\| \alpha, \eta\)}{p\(w\|\alpha, \eta\)} \& = - L\(\lambda,\phi, \gamma; \alpha, \eta\)  + log\(w\|\alpha,\eta\)  \end{align}
+由于$$L(\lambda,\phi, \gamma; \alpha, \eta)$$是我们的对数似然的一个下界（第6式），所以这个L一般称为ELBO\(Evidence Lower BOund\)。那么这个ELBO和我们需要优化的的KL散度有什么关系呢？注意到：$$\begin{align} D(q(\beta, z, \theta|\lambda,\phi, \gamma) || p(\theta,\beta, z | w, \alpha, \eta)) & = E_q logq(\beta, z, \theta|\lambda,\phi, \gamma) -  E_q log p(\theta,\beta, z | w, \alpha, \eta) \\& =E_q logq(\beta, z, \theta|\lambda,\phi, \gamma) -  E_q log \frac{p(\theta,\beta, z,  w| \alpha, \eta)}{p(w|\alpha, \eta)} \\& = - L(\lambda,\phi, \gamma; \alpha, \eta)  + log(w|\alpha,\eta)  \end{align}$$
 
-在\(10\)式中，由于对数似然部分和我们的KL散度无关，可以看做常量，因此我们希望最小化KL散度等价于最大化ELBO。那么我们的变分推断最终等价的转化为要求ELBO的最大值。现在我们开始关注于极大化ELBO并求出极值对应的变分参数\lambda,\phi, \gamma。
+在\(10\)式中，由于对数似然部分和我们的KL散度无关，可以看做常量，因此我们希望最小化KL散度等价于最大化ELBO。那么我们的变分推断最终等价的转化为要求ELBO的最大值。现在我们开始关注于极大化ELBO并求出极值对应的变分参数$$\lambda,\phi, \gamma$$。
 
 # 3. 极大化ELBO求解变分参数
 
-为了极大化ELBO，我们首先对ELBO函数做一个整理如下：\begin{align} L\(\lambda,\phi, \gamma; \alpha, \eta\) & = E\_q\[logp\(\beta\|\eta\)\] +  E\_q\[logp\(z\|\theta\)\]  + E\_q\[logp\(\theta\|\alpha\)\]  & +  E\_q\[logp\(w\|z, \beta\)\] - E\_q\[logq\(\beta\|\lambda\)\]  & - E\_q\[logq\(z\|\phi\)\]   - E\_q\[logq\(\theta\|\gamma\)\]  \end{align}
+为了极大化ELBO，我们首先对ELBO函数做一个整理如下：
 
-可见展开后有7项，现在我们需要对这7项分别做一个展开。为了简化篇幅，这里只对第一项的展开做详细介绍。在介绍第一项的展开前，我们需要了解指数分布族的性质。指数分布族是指下面这样的概率分布：p\(x\|\theta\) = h\(x\) exp\(\eta\(\theta\)\*T\(x\) -A\(\theta\)\)
+$$\begin{align} L(\lambda,\phi, \gamma; \alpha, \eta) & = E_q[logp(\beta|\eta)] +  E_q[logp(z|\theta)]  + E_q[logp(\theta|\alpha)] \\ & +  E_q[logp(w|z, \beta)] - E_q[logq(\beta|\lambda)] \\ & - E_q[logq(z|\phi)]   - E_q[logq(\theta|\gamma)]  \end{align}$$
 
-其中，A\(x\)为归一化因子，主要是保证概率分布累积求和后为1，引入指数分布族主要是它有下面这样的性质：\frac{d}{d \eta\(\theta\)} A\(\theta\) = E\_{p\(x\|\theta\)}\[T\(x\)\]
+可见展开后有7项，现在我们需要对这7项分别做一个展开。为了简化篇幅，这里只对第一项的展开做详细介绍。在介绍第一项的展开前，我们需要了解指数分布族的性质。指数分布族是指下面这样的概率分布：$$p(x|\theta) = h(x) exp(\eta(\theta)*T(x) -A(\theta))$$
+
+其中，A\(x\)为归一化因子，主要是保证概率分布累积求和后为1，引入指数分布族主要是它有下面这样的性质：$$\frac{d}{d \eta(\theta)} A(\theta) = E_{p(x|\theta)}[T(x)]$$
 
 这个证明并不复杂，这里不累述。我们的常见分布比如Gamma分布，Beta分布，Dirichlet分布都是指数分布族。有了这个性质，意味着我们在ELBO里面一大推的期望表达式可以转化为求导来完成，这个技巧大大简化了计算量。
 
-回到我们ELBO第一项的展开如下：\begin{align} E\_q\[logp\(\beta\|\eta\)\]  & =  E\_q\[log\(\frac{\Gamma\(\sum\limits\_{i=1}^V\eta\_i\)}{\prod\_{i=1}^V\Gamma\(\eta\_i\)}\prod\_{i=1}^V\beta\_{i}^{\eta\_i-1}\)\]  & = Klog\Gamma\(\sum\limits\_{i=1}^V\eta\_i\) - K\sum\limits\_{i=1}^Vlog\Gamma\(\eta\_i\)  + \sum\limits\_{k=1}^KE\_q\[\sum\limits\_{i=1}^V\(\eta\_i-1\) log\beta\_{ki}\] \end{align}
+回到我们ELBO第一项的展开如下：
 
-第\(15\)式的第三项的期望部分，可以用上面讲到的指数分布族的性质，转化为一个求导过程。即：E\_q\[\sum\limits\_{i=1}^Vlog\beta\_{ki}\] = \(log\Gamma\(\lambda\_{ki} \) - log\Gamma\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\)\)^{'} = \Psi\(\lambda\_{ki}\) - \Psi\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\)
+$$\begin{align} E_q[logp(\beta|\eta)]  & =  E_q[log(\frac{\Gamma(\sum\limits_{i=1}^V\eta_i)}{\prod_{i=1}^V\Gamma(\eta_i)}\prod_{i=1}^V\beta_{i}^{\eta_i-1})] \\ & = Klog\Gamma(\sum\limits_{i=1}^V\eta_i) - K\sum\limits_{i=1}^Vlog\Gamma(\eta_i)  + \sum\limits_{k=1}^KE_q[\sum\limits_{i=1}^V(\eta_i-1) log\beta_{ki}] \end{align}$$
 
-其中：\Psi\(x\) = \frac{d}{d x}log\Gamma\(x\) = \frac{\Gamma^{'}\(x\)}{\Gamma\(x\)}
+第\(15\)式的第三项的期望部分，可以用上面讲到的指数分布族的性质，转化为一个求导过程。即：$$E_q[\sum\limits_{i=1}^Vlog\beta_{ki}] = (log\Gamma(\lambda_{ki} ) - log\Gamma(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}))^{'} = \Psi(\lambda_{ki}) - \Psi(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}})$$
 
-最终，我们得到EBLO第一项的展开式为：\begin{align} E\_q\[logp\(\beta\|\eta\)\]  & =  Klog\Gamma\(\sum\limits\_{i=1}^V\eta\_i\) - K\sum\limits\_{i=1}^Vlog\Gamma\(\eta\_i\)   + \sum\limits\_{k=1}^K\sum\limits\_{i=1}^V\(\eta\_i-1\)\(\Psi\(\lambda\_{ki}\) - \Psi\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\) \) \end{align}
+其中：$$\Psi(x) = \frac{d}{d x}log\Gamma(x) = \frac{\Gamma^{'}(x)}{\Gamma(x)}$$
 
-类似的方法求解其他6项，可以得到ELBO的最终关于变分参数\lambda,\phi, \gamma的表达式。其他6项的表达式为：\begin{align} E\_q\[logp\(z\|\theta\)\] = \sum\limits\_{n=1}^N\sum\limits\_{k=1}^K\phi\_{nk}\Psi\(\gamma\_{k}\) - \Psi\(\sum\limits\_{k^{'}=1}^K\gamma\_{k^{'}}\) \end{align}
+最终，我们得到EBLO第一项的展开式为：$$\begin{align} E_q[logp(\beta|\eta)]  & =  Klog\Gamma(\sum\limits_{i=1}^V\eta_i) - K\sum\limits_{i=1}^Vlog\Gamma(\eta_i)   + \sum\limits_{k=1}^K\sum\limits_{i=1}^V(\eta_i-1)(\Psi(\lambda_{ki}) - \Psi(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}) ) \end{align}$$
 
-\begin{align} E\_q\[logp\(\theta\|\alpha\)\]  & = log\Gamma\(\sum\limits\_{k=1}^K\alpha\_k\) - \sum\limits\_{k=1}^Klog\Gamma\(\alpha\_k\)  + \sum\limits\_{k=1}^K\(\alpha\_k-1\)\(\Psi\(\gamma\_{k}\) - \Psi\(\sum\limits\_{k^{'}=1}^K\gamma\_{k^{'}}\)\) \end{align}
+类似的方法求解其他6项，可以得到ELBO的最终关于变分参数$$\lambda,\phi, \gamma$$的表达式。其他6项的表达式为：
 
-\begin{align}  E\_q\[logp\(w\|z, \beta\)\]  & = \sum\limits\_{n=1}^N\sum\limits\_{k=1}^K\sum\limits\_{i=1}^V\phi\_{nk}w\_n^i\(\Psi\(\lambda\_{ki}\) - \Psi\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\) \) \end{align}
+$$\begin{align} E_q[logp(z|\theta)] = \sum\limits_{n=1}^N\sum\limits_{k=1}^K\phi_{nk}\Psi(\gamma_{k}) - \Psi(\sum\limits_{k^{'}=1}^K\gamma_{k^{'}}) \end{align}$$
 
-\begin{align} E\_q\[logq\(\beta\|\lambda\)\] = \sum\limits\_{k=1}^K\(log\Gamma\(\sum\limits\_{i=1}^V\lambda\_{ki}\) - \sum\limits\_{i=1}^Vlog\Gamma\(\lambda\_{ki}\)\) + \sum\limits\_{k=1}^K\sum\limits\_{i=1}^V \(\lambda\_{ki}-1\)\(\Psi\(\lambda\_{ki}\) - \Psi\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\) \)\end{align}
+$$\begin{align} E_q[logp(\theta|\alpha)]  & = log\Gamma(\sum\limits_{k=1}^K\alpha_k) - \sum\limits_{k=1}^Klog\Gamma(\alpha_k)  + \sum\limits_{k=1}^K(\alpha_k-1)(\Psi(\gamma_{k}) - \Psi(\sum\limits_{k^{'}=1}^K\gamma_{k^{'}})) \end{align}$$
 
-\begin{align} E\_q\[logq\(z\|\phi\)\] & = \sum\limits\_{n=1}^N\sum\limits\_{k=1}^K\phi\_{nk}log\phi\_{nk} \end{align}
+$$\begin{align}  E_q[logp(w|z, \beta)]  & = \sum\limits_{n=1}^N\sum\limits_{k=1}^K\sum\limits_{i=1}^V\phi_{nk}w_n^i(\Psi(\lambda_{ki}) - \Psi(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}) ) \end{align}$$
 
-\begin{align}  E\_q\[logq\(\theta\|\gamma\)\] & =  log\Gamma\(\sum\limits\_{k=1}^K\gamma\_k\) - \sum\limits\_{k=1}^Klog\Gamma\(\gamma\_k\)  +  \sum\limits\_{k=1}^K\(\gamma\_k-1\)\(\Psi\(\gamma\_{k}\) - \Psi\(\sum\limits\_{k^{'}=1}^K\gamma\_{k^{'}}\)\)\end{align}
+$$\begin{align} E_q[logq(\beta|\lambda)] = \sum\limits_{k=1}^K(log\Gamma(\sum\limits_{i=1}^V\lambda_{ki}) - \sum\limits_{i=1}^Vlog\Gamma(\lambda_{ki})) + \sum\limits_{k=1}^K\sum\limits_{i=1}^V (\lambda_{ki}-1)(\Psi(\lambda_{ki}) - \Psi(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}) )\end{align}$$
 
-有了ELBO的具体的关于变分参数\lambda,\phi, \gamma的表达式，我们就可以用EM算法来迭代更新变分参数和模型参数了。
+$$\begin{align} E_q[logq(z|\phi)] & = \sum\limits_{n=1}^N\sum\limits_{k=1}^K\phi_{nk}log\phi_{nk} \end{align}$$
+
+$$\begin{align}  E_q[logq(\theta|\gamma)] & =  log\Gamma(\sum\limits_{k=1}^K\gamma_k) - \sum\limits_{k=1}^Klog\Gamma(\gamma_k)  +  \sum\limits_{k=1}^K(\gamma_k-1)(\Psi(\gamma_{k}) - \Psi(\sum\limits_{k^{'}=1}^K\gamma_{k^{'}}))\end{align}$$
+
+有了ELBO的具体的关于变分参数$$\lambda,\phi, \gamma$$的表达式，我们就可以用EM算法来迭代更新变分参数和模型参数了。
 
 # 4. EM算法之E步：获取最优变分参数
 
