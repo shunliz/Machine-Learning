@@ -84,43 +84,49 @@ $$\begin{align}  E_q[logq(\theta|\gamma)] & =  log\Gamma(\sum\limits_{k=1}^K\gam
 
 # 4. EM算法之E步：获取最优变分参数
 
-有了前面变分推断得到的ELBO函数为基础，我们就可以进行EM算法了。但是和EM算法不同的是这里的E步需要在包含期望的EBLO计算最佳的变分参数。如何求解最佳的变分参数呢？通过对ELBO函数对各个变分参数\lambda,\phi, \gamma分别求导并令偏导数为0，可以得到迭代表达式，多次迭代收敛后即为最佳变分参数。
+有了前面变分推断得到的ELBO函数为基础，我们就可以进行EM算法了。但是和EM算法不同的是这里的E步需要在包含期望的EBLO计算最佳的变分参数。如何求解最佳的变分参数呢？通过对ELBO函数对各个变分参数$$\lambda,\phi, \gamma$$分别求导并令偏导数为0，可以得到迭代表达式，多次迭代收敛后即为最佳变分参数。
 
 这里就不详细推导了，直接给出各个变分参数的表达式如下：
 
-\begin{align} \phi\_{nk} & \propto exp\(\sum\limits\_{i=1}^Vw\_n^i\(\Psi\(\lambda\_{ki}\) - \Psi\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\) \) + \Psi\(\gamma\_{k}\) - \Psi\(\sum\limits\_{k^{'}=1}^K\gamma\_{k^{'}}\)\)\end{align}
+$$\begin{align} \phi_{nk} & \propto exp(\sum\limits_{i=1}^Vw_n^i(\Psi(\lambda_{ki}) - \Psi(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}) ) + \Psi(\gamma_{k}) - \Psi(\sum\limits_{k^{'}=1}^K\gamma_{k^{'}}))\end{align}$$
 
-其中，w\_n^i =1当且仅当文档中第n个词为词汇表中第i个词。
+其中，$$w_n^i =1$$当且仅当文档中第n个词为词汇表中第i个词。
 
-\begin{align} \gamma\_k & = \alpha\_k + \sum\limits\_{n=1}^N\phi\_{nk} \end{align}
+$$\begin{align} \gamma_k & = \alpha_k + \sum\limits_{n=1}^N\phi_{nk} \end{align}$$
 
-\begin{align} \lambda\_{ki} & = \eta\_i + \sum\limits\_{n=1}^N\phi\_{nk}w\_n^i \end{align}
+$$\begin{align} \lambda_{ki} & = \eta_i + \sum\limits_{n=1}^N\phi_{nk}w_n^i \end{align}$$
 
-由于变分参数\lambda决定了\beta的分布，对于整个语料是共有的，因此我们有：
+由于变分参数$$\lambda$$决定了$$\beta$$的分布，对于整个语料是共有的，因此我们有：
 
-\begin{align} \lambda\_{ki} & = \eta\_i +  \sum\limits\_{d=1}^M\sum\limits\_{n=1}^{N\_d}\phi\_{dnk}w\_{dn}^i \end{align}
+$$\begin{align} \lambda_{ki} & = \eta_i +  \sum\limits_{d=1}^M\sum\limits_{n=1}^{N_d}\phi_{dnk}w_{dn}^i \end{align}$$
 
-最终我们的E步就是用（23）（24）（26）式来更新三个变分参数。当我们得到三个变分参数后，不断循环迭代更新，直到这三个变分参数收敛。当变分参数收敛后，下一步就是M步，固定变分参数，更新模型参数\alpha,\eta了。
+最终我们的E步就是用（23）（24）（26）式来更新三个变分参数。当我们得到三个变分参数后，不断循环迭代更新，直到这三个变分参数收敛。当变分参数收敛后，下一步就是M步，固定变分参数，更新模型参数$$\alpha,\eta$$了。
 
 # 5. EM算法之M步：更新模型参数
 
-由于我们在E步，已经得到了当前最佳变分参数，现在我们在M步就来固定变分参数，极大化ELBO得到最优的模型参数\alpha,\eta。求解最优的模型参数\alpha,\eta的方法有很多，梯度下降法，牛顿法都可以。LDA这里一般使用的是牛顿法，即通过求出ELBO对于\alpha,\eta的一阶导数和二阶导数的表达式，然后迭代求解\alpha,\eta在M步的最优解。
+由于我们在E步，已经得到了当前最佳变分参数，现在我们在M步就来固定变分参数，极大化ELBO得到最优的模型参数$$\alpha,\eta$$。求解最优的模型参数$$\alpha,\eta$$的方法有很多，梯度下降法，牛顿法都可以。LDA这里一般使用的是牛顿法，即通过求出ELBO对于$$\alpha,\eta$$的一阶导数和二阶导数的表达式，然后迭代求解$$\alpha,\eta$$在M步的最优解。
 
-对于\alpha,它的一阶导数和二阶导数的表达式为：\nabla\_{\alpha\_k}L = M\(\Psi\(\sum\limits\_{k^{'}=1}^K\alpha\_{k^{'}}\) - \Psi\(\alpha\_{k}\) \) + \sum\limits\_{d=1}^M\(\Psi^{'}\(\gamma\_{dk}\) - \Psi^{'}\(\sum\limits\_{k^{'}=1}^K\gamma\_{dk^{'}}\)\)
+对于$$\alpha$$,它的一阶导数和二阶导数的表达式为：
 
-\nabla\_{\alpha\_k\alpha\_j}L = M\(\Psi^{'}\(\sum\limits\_{k^{'}=1}^K\alpha\_{k^{'}}\)- \delta\(k,j\)\Psi^{'}\(\alpha\_{k}\) \)
+$$\nabla_{\alpha_k}L = M(\Psi(\sum\limits_{k^{'}=1}^K\alpha_{k^{'}}) - \Psi(\alpha_{k}) ) + \sum\limits_{d=1}^M(\Psi^{'}(\gamma_{dk}) - \Psi^{'}(\sum\limits_{k^{'}=1}^K\gamma_{dk^{'}}))$$
 
-其中，当且仅当k=j时，\delta\(k,j\)=1,否则\delta\(k,j\)=0。
+$$\nabla_{\alpha_k\alpha_j}L = M(\Psi^{'}(\sum\limits_{k^{'}=1}^K\alpha_{k^{'}})- \delta(k,j)\Psi^{'}(\alpha_{k}) )$$
 
-对于\eta,它的一阶导数和二阶导数的表达式为：\nabla\_{\eta\_i}L = K\(\Psi\(\sum\limits\_{i^{'}=1}^V\eta\_{i^{'}}\) - \Psi\(\eta\_{i}\) \) + \sum\limits\_{k=1}^K\(\Psi^{'}\(\lambda\_{ki}\) - \Psi^{'}\(\sum\limits\_{i^{'}=1}^V\lambda\_{ki^{'}}\)\)
+其中，当且仅当k=j时，$$\delta(k,j)=1$$,否则$$\delta(k,j)=0$$。
 
-\nabla\_{\eta\_i\eta\_j}L =  K\(\Psi^{'}\(\sum\limits\_{i^{'}=1}^V\eta\_{i^{'}}\) -  \delta\(i,j\)\Psi^{'}\(\eta\_{i}\) \)
+对于$$\eta$$,它的一阶导数和二阶导数的表达式为：
 
-其中，当且仅当i=j时，\delta\(i,j\)=1,否则\delta\(i,j\)=0。
+$$\nabla_{\eta_i}L = K(\Psi(\sum\limits_{i^{'}=1}^V\eta_{i^{'}}) - \Psi(\eta_{i}) ) + \sum\limits_{k=1}^K(\Psi^{'}(\lambda_{ki}) - \Psi^{'}(\sum\limits_{i^{'}=1}^V\lambda_{ki^{'}}))$$
 
-最终牛顿法法迭代公式为：\begin{align} \alpha\_{k+1} = \alpha\_k + \frac{\nabla\_{\alpha\_k}L}{\nabla\_{\alpha\_k\alpha\_j}L} \end{align}
+$$\nabla_{\eta_i\eta_j}L =  K(\Psi^{'}(\sum\limits_{i^{'}=1}^V\eta_{i^{'}}) -  \delta(i,j)\Psi^{'}(\eta_{i}) )$$
 
-\begin{align} \eta\_{i+1} = \eta\_i+ \frac{\nabla\_{\eta\_i}L}{\nabla\_{\eta\_i\eta\_j}L} \end{align}
+其中，当且仅当i=j时，$$\delta(i,j)=1$$,否则$$\delta(i,j)=0$$。
+
+最终牛顿法法迭代公式为：
+
+$$\begin{align} \alpha_{k+1} = \alpha_k + \frac{\nabla_{\alpha_k}L}{\nabla_{\alpha_k\alpha_j}L} \end{align}$$
+
+$$\begin{align} \eta_{i+1} = \eta_i+ \frac{\nabla_{\eta_i}L}{\nabla_{\eta_i\eta_j}L} \end{align}$$
 
 # 6. LDA变分推断EM算法流程总结
 
@@ -128,7 +134,7 @@ $$\begin{align}  E_q[logq(\theta|\gamma)] & =  log\Gamma(\sum\limits_{k=1}^K\gam
 
 输入：主题数K,M个文档与对应的词。
 
-1） 初始化\alpha,\eta向量。
+1） 初始化$$\alpha,\eta$$向量。
 
 2）开始EM算法迭代循环直到收敛。
 
