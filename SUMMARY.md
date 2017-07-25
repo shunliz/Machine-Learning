@@ -113,6 +113,7 @@
   * [LDA基础](nlp/lda/lda.md)
   * [LDA求解之Gibbs采样算法](nlp/lda/lda-gibbs.md)
   * [LDA求解之变分推断EM算法](nlp/lda/vi-em.md)
+  * [scikit-learn LDA主题模型](nlp/lda/scikit-learn-lda.md)
 * 第三部分 深度学习
 * [第二十五课：深度学习](dl/introduction/introduction.md)
   * [基本概念](dl/introduction/ji-ben-gai-nian.md)
