@@ -18,7 +18,7 @@
 
 2\) **doc\_topic\_prior:**即我们的文档主题先验Dirichlet分布$$\theta_d$$的参数$$\alpha$$。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
 
-3\) **topic\_word\_prior:**即我们的主题词先验Dirichlet分布\beta\_k的参数\eta。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
+3\) **topic\_word\_prior:**即我们的主题词先验Dirichlet分布$$\beta_k$$的参数$$\eta$$。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
 
 4\) **learning\_method:**即LDA的求解算法。有 ‘batch’ 和 ‘online’两种选择。 ‘batch’即我们在原理篇讲的变分推断EM算法，而"online"即在线变分推断EM算法，在"batch"的基础上引入了分步训练，将训练样本分批，逐步一批批的用样本更新主题词分布的算法。默认是"online"。选择了‘online’则我们可以在训练时使用partial\_fit函数分布训练。不过在scikit-learn 0.20版本中默认算法会改回到"batch"。建议样本量不大只是用来学习的话用"batch"比较好，这样可以少很多参数要调。而样本太多太大的话，"online"则是首先了。
 
@@ -36,7 +36,7 @@
 
 11） **max\_doc\_update\_iter: **即E步更新变分参数的最大迭代次数，如果E步迭代次数达到阈值，则转入M步。
 
-从上面可以看出，如果learning\_method使用"batch"算法，则需要注意的参数较少，则如果使用"online",则需要注意"learning\_decay", "learning\_offset"，“total\_samples”和“batch\_size”等参数。无论是"batch"还是"online", n\_topics\(K\), doc\_topic\_prior\(\alpha\), topic\_word\_prior\(\eta\)都要注意。如果没有先验知识，则主要关注与主题数K。可以说，主题数K是LDA主题模型最重要的超参数。
+从上面可以看出，如果learning\_method使用"batch"算法，则需要注意的参数较少，则如果使用"online",则需要注意"learning\_decay", "learning\_offset"，“total\_samples”和“batch\_size”等参数。无论是"batch"还是"online", n\_topics\(K\), doc\_topic\_prior\($$\alpha$$\), topic\_word\_prior\($$\eta$$\)都要注意。如果没有先验知识，则主要关注与主题数K。可以说，主题数K是LDA主题模型最重要的超参数。
 
 # 3. scikit-learn LDA中文主题模型实例
 
