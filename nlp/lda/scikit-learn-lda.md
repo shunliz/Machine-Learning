@@ -2,55 +2,55 @@
 
 ---
 
-# 1. scikit-learn LDA主题模型概述
+# 1. scikit-learn LDA主题模型概述
 
-　　　　在scikit-learn中,LDA主题模型的类在sklearn.decomposition.LatentDirichletAllocation包中，其算法实现主要基于原理篇里讲的变分推断EM算法，而没有使用基于Gibbs采样的MCMC算法实现。
+在scikit-learn中,LDA主题模型的类在sklearn.decomposition.LatentDirichletAllocation包中，其算法实现主要基于原理篇里讲的变分推断EM算法，而没有使用基于Gibbs采样的MCMC算法实现。
 
-　　　　而具体到变分推断EM算法，scikit-learn除了我们原理篇里讲到的标准的变分推断EM算法外，还实现了另一种在线变分推断EM算法，它在原理篇里的变分推断EM算法的基础上，为了避免文档内容太多太大而超过内存大小，而提供了分步训练\(partial\_fit函数\)，即一次训练一小批样本文档，逐步更新模型，最终得到所有文档LDA模型的方法。这个改进算法我们没有讲，具体论文在这：[“Online Learning for Latent Dirichlet Allocation”](https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf) 。
+而具体到变分推断EM算法，scikit-learn除了我们原理篇里讲到的标准的变分推断EM算法外，还实现了另一种在线变分推断EM算法，它在原理篇里的变分推断EM算法的基础上，为了避免文档内容太多太大而超过内存大小，而提供了分步训练\(partial\_fit函数\)，即一次训练一小批样本文档，逐步更新模型，最终得到所有文档LDA模型的方法。这个改进算法我们没有讲，具体论文在这：[“Online Learning for Latent Dirichlet Allocation”](https://www.cs.princeton.edu/~blei/papers/HoffmanBleiBach2010b.pdf) 。
 
-　　　　下面我们来看看sklearn.decomposition.LatentDirichletAllocation类库的主要参数。
+下面我们来看看sklearn.decomposition.LatentDirichletAllocation类库的主要参数。
 
-# 2. scikit-learn LDA主题模型主要参数和方法
+# 2. scikit-learn LDA主题模型主要参数和方法
 
-　　　　我们来看看LatentDirichletAllocation类的主要输入参数:
+我们来看看LatentDirichletAllocation类的主要输入参数:
 
-　　　　1\) **n\_topics:**即我们的隐含主题数K,需要调参。K的大小取决于我们对主题划分的需求，比如我们只需要类似区分是动物，植物，还是非生物这样的粗粒度需求，那么K值可以取的很小，个位数即可。如果我们的目标是类似区分不同的动物以及不同的植物，不同的非生物这样的细粒度需求，则K值需要取的很大，比如上千上万。此时要求我们的训练文档数量要非常的多。
+1\) **n\_topics:**即我们的隐含主题数K,需要调参。K的大小取决于我们对主题划分的需求，比如我们只需要类似区分是动物，植物，还是非生物这样的粗粒度需求，那么K值可以取的很小，个位数即可。如果我们的目标是类似区分不同的动物以及不同的植物，不同的非生物这样的细粒度需求，则K值需要取的很大，比如上千上万。此时要求我们的训练文档数量要非常的多。
 
-　　　　2\) **doc\_topic\_prior:**即我们的文档主题先验Dirichlet分布\theta\_d的参数\alpha。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
+2\) **doc\_topic\_prior:**即我们的文档主题先验Dirichlet分布$$\theta_d$$的参数$$\alpha$$。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
 
-　　　　3\) **topic\_word\_prior:**即我们的主题词先验Dirichlet分布\beta\_k的参数\eta。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
+3\) **topic\_word\_prior:**即我们的主题词先验Dirichlet分布\beta\_k的参数\eta。一般如果我们没有主题分布的先验知识，可以使用默认值1/K。
 
-　　　　4\) **learning\_method:**即LDA的求解算法。有 ‘batch’ 和 ‘online’两种选择。 ‘batch’即我们在原理篇讲的变分推断EM算法，而"online"即在线变分推断EM算法，在"batch"的基础上引入了分步训练，将训练样本分批，逐步一批批的用样本更新主题词分布的算法。默认是"online"。选择了‘online’则我们可以在训练时使用partial\_fit函数分布训练。不过在scikit-learn 0.20版本中默认算法会改回到"batch"。建议样本量不大只是用来学习的话用"batch"比较好，这样可以少很多参数要调。而样本太多太大的话，"online"则是首先了。
+4\) **learning\_method:**即LDA的求解算法。有 ‘batch’ 和 ‘online’两种选择。 ‘batch’即我们在原理篇讲的变分推断EM算法，而"online"即在线变分推断EM算法，在"batch"的基础上引入了分步训练，将训练样本分批，逐步一批批的用样本更新主题词分布的算法。默认是"online"。选择了‘online’则我们可以在训练时使用partial\_fit函数分布训练。不过在scikit-learn 0.20版本中默认算法会改回到"batch"。建议样本量不大只是用来学习的话用"batch"比较好，这样可以少很多参数要调。而样本太多太大的话，"online"则是首先了。
 
-　　　　5）**learning\_decay：**仅仅在算法使用"online"时有意义，取值最好在\(0.5, 1.0\]，以保证"online"算法渐进的收敛。主要控制"online"算法的学习率，默认是0.7。一般不用修改这个参数。
+5）**learning\_decay：**仅仅在算法使用"online"时有意义，取值最好在\(0.5, 1.0\]，以保证"online"算法渐进的收敛。主要控制"online"算法的学习率，默认是0.7。一般不用修改这个参数。
 
-　　　　6）**learning\_offset：**仅仅在算法使用"online"时有意义，取值要大于1。用来减小前面训练样本批次对最终模型的影响。
+6）**learning\_offset：**仅仅在算法使用"online"时有意义，取值要大于1。用来减小前面训练样本批次对最终模型的影响。
 
-　　　　7） **max\_iter** ：EM算法的最大迭代次数。
+7） **max\_iter** ：EM算法的最大迭代次数。
 
-　　　　8）**total\_samples：**仅仅在算法使用"online"时有意义， 即分步训练时每一批文档样本的数量。在使用partial\_fit函数时需要。
+8）**total\_samples：**仅仅在算法使用"online"时有意义， 即分步训练时每一批文档样本的数量。在使用partial\_fit函数时需要。
 
-　　　　9）**batch\_size:**仅仅在算法使用"online"时有意义， 即每次EM算法迭代时使用的文档样本的数量。
+9）**batch\_size:**仅仅在算法使用"online"时有意义， 即每次EM算法迭代时使用的文档样本的数量。
 
-　　　　10）**mean\_change\_tol** :即E步更新变分参数的阈值，所有变分参数更新小于阈值则E步结束，转入M步。一般不用修改默认值。
+10）**mean\_change\_tol** :即E步更新变分参数的阈值，所有变分参数更新小于阈值则E步结束，转入M步。一般不用修改默认值。
 
-　　　　11） **max\_doc\_update\_iter: **即E步更新变分参数的最大迭代次数，如果E步迭代次数达到阈值，则转入M步。
+11） **max\_doc\_update\_iter: **即E步更新变分参数的最大迭代次数，如果E步迭代次数达到阈值，则转入M步。
 
-　　　　从上面可以看出，如果learning\_method使用"batch"算法，则需要注意的参数较少，则如果使用"online",则需要注意"learning\_decay", "learning\_offset"，“total\_samples”和“batch\_size”等参数。无论是"batch"还是"online", n\_topics\(K\), doc\_topic\_prior\(\alpha\), topic\_word\_prior\(\eta\)都要注意。如果没有先验知识，则主要关注与主题数K。可以说，主题数K是LDA主题模型最重要的超参数。
+从上面可以看出，如果learning\_method使用"batch"算法，则需要注意的参数较少，则如果使用"online",则需要注意"learning\_decay", "learning\_offset"，“total\_samples”和“batch\_size”等参数。无论是"batch"还是"online", n\_topics\(K\), doc\_topic\_prior\(\alpha\), topic\_word\_prior\(\eta\)都要注意。如果没有先验知识，则主要关注与主题数K。可以说，主题数K是LDA主题模型最重要的超参数。
 
-# 3. scikit-learn LDA中文主题模型实例
+# 3. scikit-learn LDA中文主题模型实例
 
-　　　　下面我们给一个LDA中文主题模型的简单实例，从分词一直到LDA主题模型。
+下面我们给一个LDA中文主题模型的简单实例，从分词一直到LDA主题模型。
 
-　　　　我们的有下面三段文档语料，分别放在了nlp\_test0.txt, nlp\_test2.txt和 nlp\_test4.txt：
+我们的有下面三段文档语料，分别放在了nlp\_test0.txt, nlp\_test2.txt和 nlp\_test4.txt：
 
-　　　　沙瑞金赞叹易学习的胸怀，是金山的百姓有福，可是这件事对李达康的触动很大。易学习又回忆起他们三人分开的前一晚，大家一起喝酒话别，易学习被降职到道口县当县长，王大路下海经商，李达康连连赔礼道歉，觉得对不起大家，他最对不起的是王大路，就和易学习一起给王大路凑了5万块钱，王大路自己东挪西撮了5万块，开始下海经商。没想到后来王大路竟然做得风生水起。沙瑞金觉得他们三人，在困难时期还能以沫相助，很不容易。
+沙瑞金赞叹易学习的胸怀，是金山的百姓有福，可是这件事对李达康的触动很大。易学习又回忆起他们三人分开的前一晚，大家一起喝酒话别，易学习被降职到道口县当县长，王大路下海经商，李达康连连赔礼道歉，觉得对不起大家，他最对不起的是王大路，就和易学习一起给王大路凑了5万块钱，王大路自己东挪西撮了5万块，开始下海经商。没想到后来王大路竟然做得风生水起。沙瑞金觉得他们三人，在困难时期还能以沫相助，很不容易。
 
-　　　　沙瑞金向毛娅打听他们家在京州的别墅，毛娅笑着说，王大路事业有成之后，要给欧阳菁和她公司的股权，她们没有要，王大路就在京州帝豪园买了三套别墅，可是李达康和易学习都不要，这些房子都在王大路的名下，欧阳菁好像去住过，毛娅不想去，她觉得房子太大很浪费，自己家住得就很踏实。
+沙瑞金向毛娅打听他们家在京州的别墅，毛娅笑着说，王大路事业有成之后，要给欧阳菁和她公司的股权，她们没有要，王大路就在京州帝豪园买了三套别墅，可是李达康和易学习都不要，这些房子都在王大路的名下，欧阳菁好像去住过，毛娅不想去，她觉得房子太大很浪费，自己家住得就很踏实。
 
-　　　　347年（永和三年）三月，桓温兵至彭模（今四川彭山东南），留下参军周楚、孙盛看守辎重，自己亲率步兵直攻成都。同月，成汉将领李福袭击彭模，结果被孙盛等人击退；而桓温三战三胜，一直逼近成都。
+347年（永和三年）三月，桓温兵至彭模（今四川彭山东南），留下参军周楚、孙盛看守辎重，自己亲率步兵直攻成都。同月，成汉将领李福袭击彭模，结果被孙盛等人击退；而桓温三战三胜，一直逼近成都。
 
-　　　　首先我们进行分词，并把分词结果分别存在nlp\_test1.txt, nlp\_test3.txt和 nlp\_test5.txt：
+首先我们进行分词，并把分词结果分别存在nlp\_test1.txt, nlp\_test3.txt和 nlp\_test5.txt：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -92,7 +92,7 @@ lp_test0.txt
     document 
 =
  f.read()
-    
+
     document_decode 
 = document.decode(
 '
@@ -102,7 +102,7 @@ GBK
     document_cut 
 =
  jieba.cut(document_decode)
-    
+
 #
 print  ' '.join(jieba_cut)
 
@@ -143,7 +143,7 @@ lp_test2.txt
     document2 
 =
  f.read()
-    
+
     document2_decode 
 = document2.decode(
 '
@@ -153,7 +153,7 @@ GBK
     document2_cut 
 =
  jieba.cut(document2_decode)
-    
+
 #
 print  ' '.join(jieba_cut)
 
@@ -199,7 +199,7 @@ lp_test4.txt
     document3 
 =
  f.read()
-    
+
     document3_decode 
 = document3.decode(
 '
@@ -209,7 +209,7 @@ GBK
     document3_cut 
 =
  jieba.cut(document3_decode)
-    
+
 #
 print  ' '.join(jieba_cut)
 
@@ -235,12 +235,12 @@ w
 ) as f3:
         f3.write(result)
 f.close()
-f3.close()  
+f3.close()
 ```
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
-　　　　现在我们读入分好词的数据到内存备用，并打印分词结果观察：
+现在我们读入分好词的数据到内存备用，并打印分词结果观察：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -285,13 +285,13 @@ print
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
-　　　　打印出的分词结果如下：
+打印出的分词结果如下：
 
 沙瑞金 赞叹 易学习 的 胸怀 ， 是 金山 的 百姓 有福 ， 可是 这件 事对 李达康 的 触动 很大 。 易学习 又 回忆起 他们 三人 分开 的 前一晚 ， 大家 一起 喝酒 话别 ， 易学习 被 降职 到 道口 县当 县长 ， 王大路 下海经商 ， 李达康 连连 赔礼道歉 ， 觉得 对不起 大家 ， 他 最 对不起 的 是 王大路 ， 就 和 易学习 一起 给 王大路 凑 了 5 万块 钱 ， 王大路 自己 东挪西撮 了 5 万块 ， 开始 下海经商 。 没想到 后来 王大路 竟然 做 得 风生水 起 。 沙瑞金 觉得 他们 三人 ， 在 困难 时期 还 能 以沫 相助 ， 很 不 容易 。  
 　　　　沙瑞金 向 毛娅 打听 他们 家 在 京州 的 别墅 ， 毛娅 笑 着 说 ， 王大路 事业有成 之后 ， 要 给 欧阳 菁 和 她 公司 的 股权 ， 她们 没有 要 ， 王大路 就 在 京州 帝豪园 买 了 三套 别墅 ， 可是 李达康 和 易学习 都 不要 ， 这些 房子 都 在 王大路 的 名下 ， 欧阳 菁 好像 去 住 过 ， 毛娅 不想 去 ， 她 觉得 房子 太大 很 浪费 ， 自己 家住 得 就 很 踏实 。  
 　　　　347 年 （ 永和 三年 ） 三月 ， 桓温 兵至 彭模 （ 今 四川 彭山 东南 ） ， 留下 参军 周楚 、 孙盛 看守 辎重 ， 自己 亲率 步兵 直攻 成都 。 同月 ， 成汉 将领 李福 袭击 彭模 ， 结果 被 孙盛 等 人 击退 ； 而 桓温 三 战三胜 ， 一直 逼近 成都 。
 
-　　　　我们接着导入停用词表，这里的代码和[中文文本挖掘预处理流程总结](http://www.cnblogs.com/pinard/p/6744056.html)中一样，如果大家没有1208个的中文停用词表，可以到之前的这篇文章的链接里去下载。
+我们接着导入停用词表，这里的代码和[中文文本挖掘预处理流程总结](http://www.cnblogs.com/pinard/p/6744056.html)中一样，如果大家没有1208个的中文停用词表，可以到之前的这篇文章的链接里去下载。
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -324,7 +324,7 @@ stpwrd_dic.close()
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
-　　　　接着我们要把词转化为词频向量，注意由于LDA是基于词频统计的，因此一般不用TF-IDF来做文档特征。代码如下：
+接着我们要把词转化为词频向量，注意由于LDA是基于词频统计的，因此一般不用TF-IDF来做文档特征。代码如下：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -354,7 +354,7 @@ print
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
-　　　　输出即为所有文档中各个词的词频向量。有了这个词频向量，我们就可以来做LDA主题模型了，由于我们只有三个文档，所以选择主题数K=2。代码如下：
+输出即为所有文档中各个词的词频向量。有了这个词频向量，我们就可以来做LDA主题模型了，由于我们只有三个文档，所以选择主题数K=2。代码如下：
 
 ```
 lda = LatentDirichletAllocation(n_topics=2
@@ -369,7 +369,7 @@ docres
 = lda.fit_transform(cntTf)
 ```
 
-　　　　通过fit\_transform函数，我们就可以得到文档的主题模型分布在docres中。而主题词 分布则在lda.components\_中。我们将其打印出来：
+通过fit\_transform函数，我们就可以得到文档的主题模型分布在docres中。而主题词 分布则在lda.components\_中。我们将其打印出来：
 
 ```
 print
@@ -379,7 +379,7 @@ print
  lda.components_
 ```
 
-　　　　文档主题的分布如下：
+文档主题的分布如下：
 
 ```
 [[ 0.00950072  0.99049928]
@@ -387,9 +387,9 @@ print
  [ 0.98429257  0.01570743]]
 ```
 
-　　　　可见第一个和第二个文档较大概率属于主题2，则第三个文档属于主题1.
+可见第一个和第二个文档较大概率属于主题2，则第三个文档属于主题1.
 
-　　　　主题和词的分布如下：
+主题和词的分布如下：
 
 ```
 [[ 1.32738199  1.24830645  0.90453117  0.7416939   0.78379936  0.89659305
@@ -428,5 +428,5 @@ print
    1.27929042  1.19130408]]
 ```
 
-　　　　在实际的应用中，我们需要对K,\alpha,\eta进行调参。如果是"online"算法，则可能需要对"online"算法的一些参数做调整。这里只是给出了LDA主题模型从原始文档到实际LDA处理的过程
+在实际的应用中，我们需要对K,\alpha,\eta进行调参。如果是"online"算法，则可能需要对"online"算法的一些参数做调整。这里只是给出了LDA主题模型从原始文档到实际LDA处理的过程
 
