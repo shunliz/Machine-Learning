@@ -102,6 +102,7 @@
   * [朴素贝叶斯代码](ml/bayes/simple-bayes-code.md)
 * [第二十一课：LDA主题模型](ml/lda/lda.md)
 * [第二十三课：隐马尔科夫模型HMM](ml/hmm/hmm.md)
+  * [HMM前向后向算法评估观察序列概率](ml/hmm/hmm-forward-backward.md)
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
