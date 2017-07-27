@@ -28,27 +28,27 @@ HMM模型参数求解根据已知的条件可以分为两种情况。
 
 # 3. 鲍姆-韦尔奇算法的推导
 
-我们的训练数据为{\(O\_1, I\_1\), \(O\_2, I\_2\), ...\(O\_D, I\_D\)}，其中任意一个观测序列O\_d = {o\_1^{\(d\)}, o\_2^{\(d\)}, ... o\_T^{\(d\)}},其对应的未知的隐藏状态序列表示为：O\_d = {i\_1^{\(d\)}, i\_2^{\(d\)}, ... i\_T^{\(d\)}}
+我们的训练数据为$${(O_1, I_1), (O_2, I_2), ...(O_D, I_D)}$$，其中任意一个观测序列$$O_d = {o_1^{(d)}, o_2^{(d)}, ... o_T^{(d)}}$$,其对应的未知的隐藏状态序列表示为：$$O_d = {i_1^{(d)}, i_2^{(d)}, ... i_T^{(d)}}$$
 
-首先看鲍姆-韦尔奇算法的E步，我们需要先计算联合分布P\(O,I\|\lambda\)的表达式如下：P\(O,I\|\lambda\) = \pi\_{i\_1}b\_{i\_1}\(o\_1\)a\_{i\_1i\_2}b\_{i\_2}\(o\_2\)...a\_{i\_{T-1}i\_T}b\_{i\_T}\(o\_T\)
+首先看鲍姆-韦尔奇算法的E步，我们需要先计算联合分布$$P(O,I|\lambda)$$的表达式如下：$$P(O,I|\lambda) = \pi_{i_1}b_{i_1}(o_1)a_{i_1i_2}b_{i_2}(o_2)...a_{i_{T-1}i_T}b_{i_T}(o_T)$$
 
-我们的E步得到的期望表达式为：L\(\lambda, \overline{\lambda}\) = \sum\limits\_{d=1}^D\sum\limits\_{I}P\(I\|O,\overline{\lambda}\)logP\(O,I\|\lambda\)
+我们的E步得到的期望表达式为：$$L(\lambda, \overline{\lambda}) = \sum\limits_{d=1}^D\sum\limits_{I}P(I|O,\overline{\lambda})logP(O,I|\lambda)$$
 
-在M步我们要极大化上式。由于P\(I\|O,\overline{\lambda}\) = P\(I,O\|\overline{\lambda}\)/P\(O\|\overline{\lambda}\),而P\(O\|\overline{\lambda}\)是常数，因此我们要极大化的式子等价于：\overline{\lambda} = arg\;\max\_{\lambda}\sum\limits\_{d=1}^D\sum\limits\_{I}P\(O,I\|\overline{\lambda}\)logP\(O,I\|\lambda\)
+在M步我们要极大化上式。由于$$P(I|O,\overline{\lambda}) = P(I,O|\overline{\lambda})/P(O|\overline{\lambda})$$,而$$P(O|\overline{\lambda})$$是常数，因此我们要极大化的式子等价于：$$\overline{\lambda} = arg\;\max_{\lambda}\sum\limits_{d=1}^D\sum\limits_{I}P(O,I|\overline{\lambda})logP(O,I|\lambda)$$
 
-我们将上面P\(O,I\|\lambda\)的表达式带入我们的极大化式子，得到的表达式如下：\overline{\lambda} = arg\;\max\_{\lambda}\sum\limits\_{d=1}^D\sum\limits\_{I}P\(O,I\|\overline{\lambda}\)\(log\pi\_{i\_1} + \sum\limits\_{t=1}^{T-1}log\;a\_{i\_t}a\_{i\_{t+1}} +  \sum\limits\_{t=1}^Tb\_{i\_t}\(o\_t\)\)
+我们将上面$$P(O,I|\lambda)$$的表达式带入我们的极大化式子，得到的表达式如下：$$\overline{\lambda} = arg\;\max_{\lambda}\sum\limits_{d=1}^D\sum\limits_{I}P(O,I|\overline{\lambda})(log\pi_{i_1} + \sum\limits_{t=1}^{T-1}log\;a_{i_t}a_{i_{t+1}} +  \sum\limits_{t=1}^Tb_{i_t}(o_t))$$
 
-我们的隐藏模型参数\lambda =\(A,B,\Pi\),因此下面我们只需要对上式分别对A,B,\Pi求导即可得到我们更新的模型参数\overline{\lambda}
+我们的隐藏模型参数$$\lambda =(A,B,\Pi)$$,因此下面我们只需要对上式分别对A,B,$$\Pi$$求导即可得到我们更新的模型参数$$\overline{\lambda}$$
 
-首先我们看看对模型参数\Pi的求导。由于\Pi只在上式中括号里的第一部分出现，因此我们对于\Pi的极大化式子为：\overline{\pi\_i} = arg\;\max\_{\pi\_{i\_1}} \sum\limits\_{d=1}^D\sum\limits\_{I}P\(O,I\|\overline{\lambda}\)log\pi\_{i\_1} = arg\;\max\_{\pi\_{i}} \sum\limits\_{d=1}^D\sum\limits\_{i=1}^NP\(O,i\_1^{\(d\)} =i\|\overline{\lambda}\)log\pi\_{i}
+首先我们看看对模型参数$$\Pi$$的求导。由于$$\Pi$$只在上式中括号里的第一部分出现，因此我们对于$$\Pi$$的极大化式子为：$$\overline{\pi_i} = arg\;\max_{\pi_{i_1}} \sum\limits_{d=1}^D\sum\limits_{I}P(O,I|\overline{\lambda})log\pi_{i_1} = arg\;\max_{\pi_{i}} \sum\limits_{d=1}^D\sum\limits_{i=1}^NP(O,i_1^{(d)} =i|\overline{\lambda})log\pi_{i}$$
 
-由于\pi\_i还满足\sum\limits\_{i=1}^N\pi\_i =1，因此根据拉格朗日子乘法，我们得到\pi\_i要极大化的拉格朗日函数为：arg\;\max\_{\pi\_{i}}\sum\limits\_{d=1}^D\sum\limits\_{i=1}^NP\(O,i\_1^{\(d\)} =i\|\overline{\lambda}\)log\pi\_{i} + \gamma\(\sum\limits\_{i=1}^N\pi\_i -1\)
+由于$$\pi_i$$还满足$$\sum\limits_{i=1}^N\pi_i =1$$，因此根据拉格朗日子乘法，我们得到$$\pi_i$$要极大化的拉格朗日函数为：$$arg\;\max_{\pi_{i}}\sum\limits_{d=1}^D\sum\limits_{i=1}^NP(O,i_1^{(d)} =i|\overline{\lambda})log\pi_{i} + \gamma(\sum\limits_{i=1}^N\pi_i -1)$$
 
-其中，\gamma为拉格朗日系数。上式对\pi\_i求偏导数并令结果为0， 我们得到：\sum\limits\_{d=1}^DP\(O,i\_1^{\(d\)} =i\|\overline{\lambda}\) + \gamma\pi\_i = 0
+其中，$$\gamma$$为拉格朗日系数。上式对$$\pi_i$$求偏导数并令结果为0， 我们得到：$$\sum\limits_{d=1}^DP(O,i_1^{(d)} =i|\overline{\lambda}) + \gamma\pi_i = 0$$
 
-令i分别等于从1到N，从上式可以得到N个式子，对这N个式子求和可得：\sum\limits\_{d=1}^DP\(O\|\overline{\lambda}\) + \gamma = 0
+令i分别等于从1到N，从上式可以得到N个式子，对这N个式子求和可得：$$\sum\limits_{d=1}^DP(O|\overline{\lambda}) + \gamma = 0$$
 
-从上两式消去\gamma,得到\pi\_i的表达式为：\pi\_i =\frac{\sum\limits\_{d=1}^DP\(O,i\_1^{\(d\)} =i\|\overline{\lambda}\)}{\sum\limits\_{d=1}^DP\(O\|\overline{\lambda}\)} = \frac{\sum\limits\_{d=1}^DP\(O,i\_1^{\(d\)} =i\|\overline{\lambda}\)}{DP\(O\|\overline{\lambda}\)} = \frac{\sum\limits\_{d=1}^DP\(i\_1^{\(d\)} =i\|O, \overline{\lambda}\)}{D} =  \frac{\sum\limits\_{d=1}^DP\(i\_1^{\(d\)} =i\|O^{\(d\)}, \overline{\lambda}\)}{D}
+从上两式消去$$\gamma$$,得到$$\pi_i$$的表达式为：$$\pi_i =\frac{\sum\limits_{d=1}^DP(O,i_1^{(d)} =i|\overline{\lambda})}{\sum\limits_{d=1}^DP(O|\overline{\lambda})} = \frac{\sum\limits_{d=1}^DP(O,i_1^{(d)} =i|\overline{\lambda})}{DP(O|\overline{\lambda})} = \frac{\sum\limits_{d=1}^DP(i_1^{(d)} =i|O, \overline{\lambda})}{D} =  \frac{\sum\limits_{d=1}^DP(i_1^{(d)} =i|O^{(d)}, \overline{\lambda})}{D}$$
 
 利用我们在[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](http://www.cnblogs.com/pinard/p/6955871.html)里第二节中前向概率的定义可得：P\(i\_1^{\(d\)} =i\|O^{\(d\)}, \overline{\lambda}\) = \gamma\_1^{\(d\)}\(i\)
 
