@@ -104,6 +104,7 @@
 * [第二十三课：隐马尔科夫模型HMM](ml/hmm/hmm.md)
   * [HMM前向后向算法评估观察序列概率](ml/hmm/hmm-forward-backward.md)
   * [鲍姆-韦尔奇算法求解HMM参数](ml/hmm/bmwl-hmm.md)
+  * [维特比算法解码隐藏状态序列](ml/hmm/viterb-hmm.md)
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
