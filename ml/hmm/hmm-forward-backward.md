@@ -112,27 +112,27 @@ $$B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array}
 
 ![](http://images2015.cnblogs.com/blog/1042406/201706/1042406-20170607172032606-996787196.png)
 
-这样我们得到了后向概率的递推关系式如下：\beta\_{t}\(i\) = \sum\limits\_{j=1}^{N}a\_{ij}b\_j\(o\_{t+1}\)\beta\_{t+1}\(j\)
+这样我们得到了后向概率的递推关系式如下：$$\beta_{t}(i) = \sum\limits_{j=1}^{N}a_{ij}b_j(o_{t+1})\beta_{t+1}(j)$$
 
 现在我们总结下后向算法的流程,注意下和前向算法的相同点和不同点：
 
-输入：HMM模型\lambda = \(A, B, \Pi\)，观测序列O=\(o\_1,o\_2,...o\_T\)
+输入：HMM模型$$\lambda = (A, B, \Pi)$$，观测序列$$O=(o_1,o_2,...o_T)$$
 
-输出：观测序列概率P\(O\|\lambda\)
+输出：观测序列概率$$P(O|\lambda)$$
 
-1\) 初始化时刻T的各个隐藏状态后向概率：\beta\_T\(i\) = 1,\; i=1,2,...N
+1\) 初始化时刻T的各个隐藏状态后向概率：$$\beta_T(i) = 1,\; i=1,2,...N$$
 
-2\) 递推时刻T-1,T-2,...1时刻的后向概率：\beta\_{t}\(i\) = \sum\limits\_{j=1}^{N}a\_{ij}b\_j\(o\_{t+1}\)\beta\_{t+1}\(j\),\; i=1,2,...N
+2\) 递推时刻T-1,T-2,...1时刻的后向概率：$$\beta_{t}(i) = \sum\limits_{j=1}^{N}a_{ij}b_j(o_{t+1})\beta_{t+1}(j),\; i=1,2,...N$$
 
-3\) 计算最终结果：P\(O\|\lambda\) = \sum\limits\_{i=1}^N\pi\_ib\_i\(o\_1\)\beta\_1\(i\)
+3\) 计算最终结果：$$P(O|\lambda) = \sum\limits_{i=1}^N\pi_ib_i(o_1)\beta_1(i)$$
 
-此时我们的算法时间复杂度仍然是O\(TN^2\)。
+此时我们的算法时间复杂度仍然是$$O(TN^2)$$。
 
 # 5. HMM常用概率的计算
 
 利用前向概率和后向概率，我们可以计算出HMM中单个状态和两个状态的概率公式。
 
-1）给定模型\lambda和观测序列O,在时刻t处于状态q\_i的概率记为:\gamma\_t\(i\) = P\(i\_t = q\_i \| O,\lambda\) = \frac{P\(i\_t = q\_i ,O\|\lambda\)}{P\(O\|\lambda\)}
+1）给定模型$$\lambda$$和观测序列O,在时刻t处于状态$$q_i$$的概率记为:$$\gamma_t(i) = P(i_t = q_i | O,\lambda) = \frac{P(i_t = q_i ,O|\lambda)}{P(O|\lambda)}$$
 
 利用前向概率和后向概率的定义可知：P\(i\_t = q\_i ,O\|\lambda\) = \alpha\_t\(i\)\beta\_t\(i\)
 
