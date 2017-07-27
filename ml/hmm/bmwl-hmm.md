@@ -50,23 +50,23 @@ HMM模型参数求解根据已知的条件可以分为两种情况。
 
 从上两式消去$$\gamma$$,得到$$\pi_i$$的表达式为：$$\pi_i =\frac{\sum\limits_{d=1}^DP(O,i_1^{(d)} =i|\overline{\lambda})}{\sum\limits_{d=1}^DP(O|\overline{\lambda})} = \frac{\sum\limits_{d=1}^DP(O,i_1^{(d)} =i|\overline{\lambda})}{DP(O|\overline{\lambda})} = \frac{\sum\limits_{d=1}^DP(i_1^{(d)} =i|O, \overline{\lambda})}{D} =  \frac{\sum\limits_{d=1}^DP(i_1^{(d)} =i|O^{(d)}, \overline{\lambda})}{D}$$
 
-利用我们在[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](http://www.cnblogs.com/pinard/p/6955871.html)里第二节中前向概率的定义可得：P\(i\_1^{\(d\)} =i\|O^{\(d\)}, \overline{\lambda}\) = \gamma\_1^{\(d\)}\(i\)
+利用我们在[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](/ml/hmm/hmm-forward-backward.md)里第二节中前向概率的定义可得：$$P(i_1^{(d)} =i|O^{(d)}, \overline{\lambda}) = \gamma_1^{(d)}(i)$$
 
-因此最终我们在M步\pi\_i的迭代公式为：\pi\_i =  \frac{\sum\limits\_{d=1}^D\gamma\_1^{\(d\)}\(i\)}{D}
+因此最终我们在M步$$\pi_i$$的迭代公式为：$$\pi_i =  \frac{\sum\limits_{d=1}^D\gamma_1^{(d)}(i)}{D}$$
 
-现在我们来看看A的迭代公式求法。方法和\Pi的类似。由于A只在最大化函数式中括号里的第二部分出现，而这部分式子可以整理为：\sum\limits\_{d=1}^D\sum\limits\_{I}\sum\limits\_{t=1}^{T-1}P\(O,I\|\overline{\lambda}\)log\;a\_{i\_t}a\_{i\_{t+1}} = \sum\limits\_{d=1}^D\sum\limits\_{i=1}^N\sum\limits\_{j=1}^N\sum\limits\_{t=1}^{T-1}P\(O,i\_t^{\(d\)} = i, i\_{t+1}^{\(d\)} = j\|\overline{\lambda}\)log\;a\_{ij}
+现在我们来看看A的迭代公式求法。方法和$$\Pi$$的类似。由于A只在最大化函数式中括号里的第二部分出现，而这部分式子可以整理为：$$\sum\limits_{d=1}^D\sum\limits_{I}\sum\limits_{t=1}^{T-1}P(O,I|\overline{\lambda})log\;a_{i_t}a_{i_{t+1}} = \sum\limits_{d=1}^D\sum\limits_{i=1}^N\sum\limits_{j=1}^N\sum\limits_{t=1}^{T-1}P(O,i_t^{(d)} = i, i_{t+1}^{(d)} = j|\overline{\lambda})log\;a_{ij}$$
 
-由于a\_{ij}还满足\sum\limits\_{j=1}^Na\_{ij} =1。和求解\pi\_i类似，我们可以用拉格朗日子乘法并对a\_{ij}求导，并令结果为0，可以得到a\_{ij}的迭代表达式为：a\_{ij} = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}P\(O^{\(d\)}, i\_t^{\(d\)} = i, i\_{t+1}^{\(d\)} = j\|\overline{\lambda}\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}P\(O^{\(d\)}, i\_t^{\(d\)} = i\|\overline{\lambda}\)}
+由于$$a_{ij}$$还满足$$\sum\limits_{j=1}^Na_{ij} =1$$。和求解$$\pi_i$$类似，我们可以用拉格朗日子乘法并对$$a_{ij}$$求导，并令结果为0，可以得到$$a_{ij}$$的迭代表达式为：$$a_{ij} = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}P(O^{(d)}, i_t^{(d)} = i, i_{t+1}^{(d)} = j|\overline{\lambda})}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}P(O^{(d)}, i_t^{(d)} = i|\overline{\lambda})}$$
 
-利用[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](http://www.cnblogs.com/pinard/p/6955871.html)里第二节中前向概率的定义和第五节\xi\_t\(i,j\)的定义可得们在M步a\_{ij}的迭代公式为：a\_{ij} = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}\xi\_t^{\(d\)}\(i,j\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}\gamma\_t^{\(d\)}\(i\)}
+利用[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](/ml/hmm/hmm-forward-backward.md)里第二节中前向概率的定义和第五节$$\xi_t(i,j)$$的定义可得们在M步$$a_{ij}$$的迭代公式为：$$a_{ij} = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\xi_t^{(d)}(i,j)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\gamma_t^{(d)}(i)}$$
 
-现在我们来看看B的迭代公式求法。方法和\Pi的类似。由于B只在最大化函数式中括号里的第三部分出现，而这部分式子可以整理为：\sum\limits\_{d=1}^D\sum\limits\_{I}\sum\limits\_{t=1}^{T}P\(O,I\|\overline{\lambda}\)log\;b\_{i\_t}\(o\_t\) = \sum\limits\_{d=1}^D\sum\limits\_{j=1}^N\sum\limits\_{t=1}^{T}P\(O,i\_t^{\(d\)} = j\|\overline{\lambda}\)log\;b\_{j}\(o\_t\)
+现在我们来看看B的迭代公式求法。方法和$$\Pi$$的类似。由于B只在最大化函数式中括号里的第三部分出现，而这部分式子可以整理为：$$\sum\limits_{d=1}^D\sum\limits_{I}\sum\limits_{t=1}^{T}P(O,I|\overline{\lambda})log\;b_{i_t}(o_t) = \sum\limits_{d=1}^D\sum\limits_{j=1}^N\sum\limits_{t=1}^{T}P(O,i_t^{(d)} = j|\overline{\lambda})log\;b_{j}(o_t)$$
 
-由于b\_{j}\(o\_t\)还满足\sum\limits\_{k=1}^Mb\_{j}\(o\_t =v\_k\) =1。和求解\pi\_i类似，我们可以用拉格朗日子乘法并对b\_{j}\(k\)求导，并令结果为0，得到b\_{j}\(k\)的迭代表达式为：b\_{j}\(k\) = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T}P\(O,i\_t^{\(d\)} = j\|\overline{\lambda}\)I\(o\_t^{\(d\)}=v\_k\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T}P\(O,i\_t^{\(d\)} = j\|\overline{\lambda}\)}
+由于$$b_{j}(o_t)$$还满足$$\sum\limits_{k=1}^Mb_{j}(o_t =v_k) =1$$。和求解$$\pi_i$$类似，我们可以用拉格朗日子乘法并对$$b_{j}(k)$$求导，并令结果为0，得到$$b_{j}(k)$$的迭代表达式为：$$b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T}P(O,i_t^{(d)} = j|\overline{\lambda})I(o_t^{(d)}=v_k)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T}P(O,i_t^{(d)} = j|\overline{\lambda})}$$
 
-其中I\(o\_t^{\(d\)}=v\_k\)当且仅当o\_t^{\(d\)}=v\_k时为1，否则为0. 利用[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](http://www.cnblogs.com/pinard/p/6955871.html)里第二节中前向概率的定义可得b\_{j}\(o\_t\)的最终表达式为：b\_{j}\(k\) = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1, o\_t^{\(d\)}=v\_k}^{T}\gamma\_t^{\(d\)}\(i\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T}\gamma\_t^{\(d\)}\(i\)}
+其中$$I(o_t^{(d)}=v_k)$$当且仅当$$o_t^{(d)}=v_k$$时为1，否则为0. 利用[隐马尔科夫模型HMM（二）前向后向算法评估观察序列概率](/ml/hmm/hmm-forward-backward.md)里第二节中前向概率的定义可得$$b_{j}(o_t)$$的最终表达式为：$$b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t^{(d)}(i)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T}\gamma_t^{(d)}(i)}$$
 
-有了\pi\_i, a\_{ij},b\_{j}\(k\)的迭代公式，我们就可以迭代求解HMM模型参数了。
+有了$$\pi_i, a_{ij},b_{j}(k)$$的迭代公式，我们就可以迭代求解HMM模型参数了。
 
 # 4. 鲍姆-韦尔奇算法流程总结
 
