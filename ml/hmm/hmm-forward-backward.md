@@ -134,21 +134,21 @@ $$B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array}
 
 1）给定模型$$\lambda$$和观测序列O,在时刻t处于状态$$q_i$$的概率记为:$$\gamma_t(i) = P(i_t = q_i | O,\lambda) = \frac{P(i_t = q_i ,O|\lambda)}{P(O|\lambda)}$$
 
-利用前向概率和后向概率的定义可知：P\(i\_t = q\_i ,O\|\lambda\) = \alpha\_t\(i\)\beta\_t\(i\)
+利用前向概率和后向概率的定义可知：$$P(i_t = q_i ,O|\lambda) = \alpha_t(i)\beta_t(i)$$
 
-于是我们得到：\gamma\_t\(i\) = \frac{ \alpha\_t\(i\)\beta\_t\(i\)}{\sum\limits\_{j=1}^N \alpha\_t\(j\)\beta\_t\(j\)}
+于是我们得到：$$\gamma_t(i) = \frac{ \alpha_t(i)\beta_t(i)}{\sum\limits_{j=1}^N \alpha_t(j)\beta_t(j)}$$
 
-2）给定模型\lambda和观测序列O,在时刻t处于状态q\_i，且时刻t+1处于状态q\_j的概率记为:\xi\_t\(i,j\) = P\(i\_t = q\_i, i\_{t+1}=q\_j \| O,\lambda\) = \frac{ P\(i\_t = q\_i, i\_{t+1}=q\_j , O\|\lambda\)}{P\(O\|\lambda\)}
+2）给定模型$$\lambda$$和观测序列O,在时刻t处于状态$$q_i$$，且时刻t+1处于状态$$q_j$$的概率记为:$$\xi_t(i,j) = P(i_t = q_i, i_{t+1}=q_j | O,\lambda) = \frac{ P(i_t = q_i, i_{t+1}=q_j , O|\lambda)}{P(O|\lambda)}$$
 
-而P\(i\_t = q\_i, i\_{t+1}=q\_j , O\|\lambda\)可以由前向后向概率来表示为:P\(i\_t = q\_i, i\_{t+1}=q\_j , O\|\lambda\) = \alpha\_t\(i\)a\_{ij}b\_j\(o\_{t+1}\)\beta\_{t+1}\(j\)
+而$$P(i_t = q_i, i_{t+1}=q_j , O|\lambda)$$可以由前向后向概率来表示为:$$P(i_t = q_i, i_{t+1}=q_j , O|\lambda) = \alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)$$
 
-从而最终我们得到\xi\_t\(i,j\)的表达式如下：\xi\_t\(i,j\) = \frac{\alpha\_t\(i\)a\_{ij}b\_j\(o\_{t+1}\)\beta\_{t+1}\(j\)}{\sum\limits\_{r=1}^N\sum\limits\_{s=1}^N\alpha\_t\(r\)a\_{rs}b\_s\(o\_{t+1}\)\beta\_{t+1}\(s\)}
+从而最终我们得到$$\xi_t(i,j)$$的表达式如下：$$\xi_t(i,j) = \frac{\alpha_t(i)a_{ij}b_j(o_{t+1})\beta_{t+1}(j)}{\sum\limits_{r=1}^N\sum\limits_{s=1}^N\alpha_t(r)a_{rs}b_s(o_{t+1})\beta_{t+1}(s)}$$
 
-3\) 将\gamma\_t\(i\)和\xi\_t\(i,j\)在各个时刻t求和，可以得到：
+3\) 将$$\gamma_t(i)$$和$$\xi_t(i,j)$$在各个时刻t求和，可以得到：
 
-在观测序列O下状态i出现的期望值\sum\limits\_{t=1}^T\gamma\_t\(i\)
+在观测序列O下状态i出现的期望值$$\sum\limits_{t=1}^T\gamma_t(i)$$
 
-在观测序列O下由状态i转移的期望值\sum\limits\_{t=1}^{T-1}\gamma\_t\(i\)
+在观测序列O下由状态i转移的期望值$$\sum\limits_{t=1}^{T-1}\gamma_t(i)$$
 
-在观测序列O下由状态i转移到状态j的期望值\sum\limits\_{t=1}^{T-1}\xi\_t\(i,j\)
+在观测序列O下由状态i转移到状态j的期望值$$\sum\limits_{t=1}^{T-1}\xi_t(i,j)$$
 
