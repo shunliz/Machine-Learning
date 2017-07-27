@@ -72,21 +72,21 @@ HMM模型参数求解根据已知的条件可以分为两种情况。
 
 这里我们概括总结下鲍姆-韦尔奇算法的流程。
 
-输入：D个观测序列样本{\(O\_1\), \(O\_2\), ...\(O\_D\)}
+输入：D个观测序列样本$${(O_1), (O_2), ...(O_D)}$$
 
 输出：HMM模型参数
 
-1\)随机初始化所有的\pi\_i, a\_{ij},b\_{j}\(k\)
+1\)随机初始化所有的$$\pi_i, a_{ij},b_{j}(k)$$
 
-2\) 对于每个样本d = 1,2,...D，用前向后向算法计算\gamma\_t^{\(d\)}\(i\)，\xi\_t^{\(d\)}\(i,j\), t =1,2...T
+2\) 对于每个样本d = 1,2,...D，用前向后向算法计算$$\gamma_t^{(d)}(i)，\xi_t^{(d)}(i,j), t =1,2...T$$
 
 3\)  更新模型参数：
 
-\pi\_i =  \frac{\sum\limits\_{d=1}^D\gamma\_1^{\(d\)}\(i\)}{D}
+$$\pi_i =  \frac{\sum\limits_{d=1}^D\gamma_1^{(d)}(i)}{D}$$
 
-a\_{ij} = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}\xi\_t^{\(d\)}\(i,j\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T-1}\gamma\_t^{\(d\)}\(i\)}
+$$a_{ij} = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\xi_t^{(d)}(i,j)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T-1}\gamma_t^{(d)}(i)}$$
 
-b\_{j}\(k\) = \frac{\sum\limits\_{d=1}^D\sum\limits\_{t=1, o\_t^{\(d\)}=v\_k}^{T}\gamma\_t^{\(d\)}\(i\)}{\sum\limits\_{d=1}^D\sum\limits\_{t=1}^{T}\gamma\_t^{\(d\)}\(i\)}
+$$b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t^{(d)}(i)}{\sum\limits_{d=1}^D\sum\limits_{t=1}^{T}\gamma_t^{(d)}(i)}$$
 
-4\) 如果\pi\_i, a\_{ij},b\_{j}\(k\)的值已经收敛，则算法结束，否则回到第2）步继续迭代。
+4\) 如果$$\pi_i, a_{ij},b_{j}(k)$$的值已经收敛，则算法结束，否则回到第2）步继续迭代。
 
