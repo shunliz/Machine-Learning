@@ -22,133 +22,43 @@ hmmlearn实现了三种HMM模型类，按照观测状态是连续状态还是离
 
 首先建立HMM的模型：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
+```py
+import numpy as np
+from hmmlearn import hmm
 
+states = ["box 1", "box 2", "box3"]
+n_states = len(states)
+
+observations = ["red", "white"]
+n_observations = len(observations)
+
+start_probability = np.array([0.2, 0.4, 0.4])
+
+transition_probability = np.array([
+  [0.5, 0.2, 0.3],
+  [0.3, 0.5, 0.2],
+  [0.2, 0.3, 0.5]
+])
+
+emission_probability = np.array([
+  [0.5, 0.5],
+  [0.4, 0.6],
+  [0.7, 0.3]
+])
+
+model = hmm.MultinomialHMM(n_components=n_states)
+model.startprob_=start_probability
+model.transmat_=transition_probability
+model.emissionprob_=emission_probability
 ```
-import
- numpy as np
-
-from
- hmmlearn 
-import
- hmm
-
-states 
-= [
-"
-box 1
-"
-, 
-"
-box 2
-"
-, 
-"
-box3
-"
-]
-n_states 
-=
- len(states)
-
-observations 
-= [
-"
-red
-"
-, 
-"
-white
-"
-]
-n_observations 
-=
- len(observations)
-
-start_probability 
-= np.array([0.2, 0.4, 0.4
-])
-
-transition_probability 
-=
- np.array([
-  [
-0.5, 0.2, 0.3
-],
-  [
-0.3, 0.5, 0.2
-],
-  [
-0.2, 0.3, 0.5
-]
-])
-
-emission_probability 
-=
- np.array([
-  [
-0.5, 0.5
-],
-  [
-0.4, 0.6
-],
-  [
-0.7, 0.3
-]
-])
-
-model 
-= hmm.MultinomialHMM(n_components=
-n_states)
-model.startprob_
-=
-start_probability
-model.transmat_
-=
-transition_probability
-model.emissionprob_
-=emission_probability
-```
-
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
 现在我们来跑一跑HMM问题三维特比算法的解码过程，使用和原理篇一样的观测序列来解码，代码如下：
 
 ```
-seen = np.array([[0,1
-,0]]).T
-logprob, box 
-= model.decode(seen, algorithm=
-"
-viterbi
-"
-)
-
-print
-(
-"
-The ball picked:
-"
-, 
-"
-, 
-"
-.join(map(
-lambda
- x: observations[x], seen)))
-
-print
-(
-"
-The hidden box
-"
-, 
-"
-, 
-"
-.join(map(
-lambda
- x: states[x], box)))
+seen = np.array([[0,1,0]]).T
+logprob, box = model.decode(seen, algorithm="viterbi")
+print("The ball picked:", ", ".join(map(lambda x: observations[x], seen)))
+print("The hidden box", ", ".join(map(lambda x: states[x], box)))
 ```
 
 输出结果如下：
