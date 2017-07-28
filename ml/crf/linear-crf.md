@@ -54,71 +54,71 @@
 
 其中K是定义在该节点的局部特征函数的总个数，i是当前节点在序列的位置。之所以只有上下文相关的局部特征函数，没有不相邻节点之间的特征函数，是因为我们的linear-CRF满足马尔科夫性。
 
-无论是节点特征函数还是局部特征函数，它们的取值只能是0或者1。即满足特征条件或者不满足特征条件。同时，我们可以为每个特征函数赋予一个权值，用以表达我们对这个特征函数的信任度。假设t\_k的权重系数是\lambda\_k,s\_l的权重系数是\mu\_l,则linear-CRF由我们所有的t\_k, \lambda\_k, s\_l, \mu\_l共同决定。
+无论是节点特征函数还是局部特征函数，它们的取值只能是0或者1。即满足特征条件或者不满足特征条件。同时，我们可以为每个特征函数赋予一个权值，用以表达我们对这个特征函数的信任度。假设$$t_k$$的权重系数是$$\lambda_k,s_l$$的权重系数是$$\mu_l$$,则linear-CRF由我们所有的$$t_k, \lambda_k, s_l, \mu_l$$共同决定。
 
-此时我们得到了linear-CRF的参数化形式如下：P\(y\|x\) = \frac{1}{Z\(x\)}exp\Big\(\sum\limits\_{i,k} \lambda\_kt\_k\(y\_{i-1},y\_i, x,i\) +\sum\limits\_{i,l}\mu\_ls\_l\(y\_i, x,i\)\Big\)
+此时我们得到了linear-CRF的参数化形式如下：$$P(y|x) = \frac{1}{Z(x)}exp\Big(\sum\limits_{i,k} \lambda_kt_k(y_{i-1},y_i, x,i) +\sum\limits_{i,l}\mu_ls_l(y_i, x,i)\Big)$$
 
-其中，Z\(x\)为规范化因子：Z\(x\) =\sum\limits\_{y} exp\Big\(\sum\limits\_{i,k} \lambda\_kt\_k\(y\_{i-1},y\_i, x,i\) +\sum\limits\_{i,l}\mu\_ls\_l\(y\_i, x,i\)\Big\)
+其中，Z\(x\)为规范化因子：$$Z(x) =\sum\limits_{y} exp\Big(\sum\limits_{i,k} \lambda_kt_k(y_{i-1},y_i, x,i) +\sum\limits_{i,l}\mu_ls_l(y_i, x,i)\Big)$$
 
 回到特征函数本身，每个特征函数定义了一个linear-CRF的规则，则其系数定义了这个规则的可信度。所有的规则和其可信度一起构成了我们的linear-CRF的最终的条件概率分布。
 
 # 6. 线性链条件随机场实例
 
-这里我们给出一个linear-CRF用于词性标注的实例，为了方便，我们简化了词性的种类。假设输入的都是三个词的句子，即X=\(X\_1,X\_2,X\_3\),输出的词性标记为Y=\(Y\_1,Y\_2,Y\_3\),其中Y \in {1\(名词\)，2\(动词\)}
+这里我们给出一个linear-CRF用于词性标注的实例，为了方便，我们简化了词性的种类。假设输入的都是三个词的句子，即$$X=(X_1,X_2,X_3)$$,输出的词性标记为$$Y=(Y_1,Y_2,Y_3)$$,其中$$Y \in {1(名词)，2(动词)}$$
 
-这里只标记出取值为1的特征函数如下：t\_1 =t\_1\(y\_{i-1} = 1, y\_i =2,x,i\), i =2,3,\;\;\lambda\_1=1
+这里只标记出取值为1的特征函数如下：$$t_1 =t_1(y_{i-1} = 1, y_i =2,x,i), i =2,3,\;\;\lambda_1=1$$
 
-t\_2 =t\_2\(y\_1=1,y\_2=1,x,2\)\;\;\lambda\_2=0.5
+$$t_2 =t_2(y_1=1,y_2=1,x,2)\;\;\lambda_2=0.5$$
 
-t\_3 =t\_3\(y\_2=2,y\_3=1,x,3\)\;\;\lambda\_3=1
+$$t_3 =t_3(y_2=2,y_3=1,x,3)\;\;\lambda_3=1$$
 
-t\_4 =t\_4\(y\_1=2,y\_2=1,x,2\)\;\;\lambda\_4=1
+$$t_4 =t_4(y_1=2,y_2=1,x,2)\;\;\lambda_4=1$$
 
-t\_5 =t\_5\(y\_2=2,y\_3=2,x,3\)\;\;\lambda\_5=0.2
+$$t_5 =t_5(y_2=2,y_3=2,x,3)\;\;\lambda_5=0.2$$
 
-s\_1 =s\_1\(y\_1=1,x,1\)\;\;\mu\_1 =1
+$$s_1 =s_1(y_1=1,x,1)\;\;\mu_1 =1$$
 
-s\_2 =s\_2\( y\_i =2,x,i\), i =1,2,\;\;\mu\_2=0.5
+$$s_2 =s_2( y_i =2,x,i), i =1,2,\;\;\mu_2=0.5$$
 
-s\_3 =s\_3\( y\_i =1,x,i\), i =2,3,\;\;\mu\_3=0.8
+$$s_3 =s_3( y_i =1,x,i), i =2,3,\;\;\mu_3=0.8$$
 
-s\_4 =s\_4\(y\_3=2,x,3\)\;\;\mu\_4 =0.5
+$$s_4 =s_4(y_3=2,x,3)\;\;\mu_4 =0.5$$
 
 求标记\(1,2,2\)的非规范化概率。
 
-利用linear-CRF的参数化公式，我们有：P\(y\|x\) \propto exp\Big\[\sum\limits\_{k=1}^5\lambda\_k\sum\limits\_{i=2}^3t\_k\(y\_{i-1},y\_i, x,i\) + \sum\limits\_{l=1}^4\mu\_l\sum\limits\_{i=1}^3s\_l\(y\_i, x,i\) \Big\]
+利用linear-CRF的参数化公式，我们有：$$P(y|x) \propto exp\Big[\sum\limits_{k=1}^5\lambda_k\sum\limits_{i=2}^3t_k(y_{i-1},y_i, x,i) + \sum\limits_{l=1}^4\mu_l\sum\limits_{i=1}^3s_l(y_i, x,i) \Big]$$
 
-带入\(1,2,2\)我们有：P\(y\_1=1,y\_2=2,y\_3=2\|x\) \propto exp\(3.2\)
+带入\(1,2,2\)我们有：$$P(y_1=1,y_2=2,y_3=2|x) \propto exp(3.2)$$
 
 # 7. 线性链条件随机场的简化形式
 
-在上几节里面，我们用s\_l表示节点特征函数，用t\_k表示局部特征函数，同时也用了不同的符号表示权重系数，导致表示起来比较麻烦。其实我们可以对特征函数稍加整理，将其统一起来。
+在上几节里面，我们用$$s_l$$表示节点特征函数，用$$t_k$$表示局部特征函数，同时也用了不同的符号表示权重系数，导致表示起来比较麻烦。其实我们可以对特征函数稍加整理，将其统一起来。
 
-假设我们在某一节点我们有K\_1个局部特征函数和K\_2个节点特征函数，总共有K=K\_1+K\_2个特征函数。我们用一个特征函数f\_k\(y\_{i-1},y\_i, x,i\)来统一表示如下:
+假设我们在某一节点我们有$$K_1$$个局部特征函数和$$K_2$$个节点特征函数，总共有$$K=K_1+K_2$$个特征函数。我们用一个特征函数$$f_k(y_{i-1},y_i, x,i)$$来统一表示如下:
 
-f\_k\(y\_{i-1},y\_i, x,i\)= \begin{cases} t\_k\(y\_{i-1},y\_i, x,i\) & {k=1,2,...K\_1}\ s\_l\(y\_i, x,i\)& {k=K\_1+l,\; l=1,2...,K\_2} \end{cases}
+$$f_k(y_{i-1},y_i, x,i)= \begin{cases} t_k(y_{i-1},y_i, x,i) & {k=1,2,...K_1}\\ s_l(y_i, x,i)& {k=K_1+l,\; l=1,2...,K_2} \end{cases}$$
 
-对f\_k\(y\_{i-1},y\_i, x,i\)在各个序列位置求和得到：f\_k\(y,x\) = \sum\limits\_{i=1}^nf\_k\(y\_{i-1},y\_i, x,i\)
+对$$f_k(y_{i-1},y_i, x,i)$$在各个序列位置求和得到：$$f_k(y,x) = \sum\limits_{i=1}^nf_k(y_{i-1},y_i, x,i)$$
 
-同时我们也统一f\_k\(y\_{i-1},y\_i, x,i\)对应的权重系数w\_k如下：
+同时我们也统一$$f_k(y_{i-1},y_i, x,i)$$对应的权重系数$$w_k$$如下：
 
-w\_k= \begin{cases} \lambda\_k & {k=1,2,...K\_1}\ \mu\_l & {k=K\_1+l,\; l=1,2...,K\_2} \end{cases}
+$$w_k= \begin{cases} \lambda_k & {k=1,2,...K_1}\\ \mu_l & {k=K_1+l,\; l=1,2...,K_2} \end{cases}$$
 
-这样，我们的linear-CRF的参数化形式简化为：P\(y\|x\) =  \frac{1}{Z\(x\)}exp\sum\limits\_{k=1}^Kw\_kf\_k\(y,x\)
+这样，我们的linear-CRF的参数化形式简化为：$$P(y|x) =  \frac{1}{Z(x)}exp\sum\limits_{k=1}^Kw_kf_k(y,x)$$
 
-其中，Z\(x\)为规范化因子：Z\(x\) =\sum\limits\_{y}exp\sum\limits\_{k=1}^Kw\_kf\_k\(y,x\)
+其中，Z\(x\)为规范化因子：$$Z(x) =\sum\limits_{y}exp\sum\limits_{k=1}^Kw_kf_k(y,x)$$
 
-如果将上两式中的w\_k与f\_k的用向量表示，即:w=\(w\_1,w\_2,...w\_K\)^T\;\;\; F\(y,x\) =\(f\_1\(y,x\),f\_2\(y,x\),...f\_K\(y,x\)\)^T
+如果将上两式中的$$w_k$$与$$f_k$$的用向量表示，即:$$w=(w_1,w_2,...w_K)^T\;\;\; F(y,x) =(f_1(y,x),f_2(y,x),...f_K(y,x))^T$$
 
-则linear-CRF的参数化形式简化为内积形式如下：P\_w\(y\|x\) = \frac{exp\(w \bullet F\(y,x\)\)}{Z\_w\(x\)} = \frac{exp\(w \bullet F\(y,x\)\)}{\sum\limits\_{y}exp\(w \bullet F\(y,x\)\)}
+则linear-CRF的参数化形式简化为内积形式如下：$$P_w(y|x) = \frac{exp(w \bullet F(y,x))}{Z_w(x)} = \frac{exp(w \bullet F(y,x))}{\sum\limits_{y}exp(w \bullet F(y,x))}$$
 
 # 8. 线性链条件随机场的矩阵形式
 
-将上一节统一后的linear-CRF公式加以整理，我们还可以将linear-CRF的参数化形式写成矩阵形式。为此我们定义一个m \times m的矩阵M，m为y所有可能的状态的取值个数。M定义如下：M\_i\(x\) = \Big\[ M\_i\(y\_{i-1},y\_i \|x\)\Big\] =  \Big\[  exp\(W\_i\(y\_{i-1},y\_i \|x\)\)\Big\] = \Big\[  exp\(\sum\limits\_{k=1}^Kw\_kf\_k\(y\_{i-1},y\_i, x,i\)\)\Big\]
+将上一节统一后的linear-CRF公式加以整理，我们还可以将linear-CRF的参数化形式写成矩阵形式。为此我们定义一个$$m \times m$$的矩阵M，m为y所有可能的状态的取值个数。M定义如下：$$M_i(x) = \Big[ M_i(y_{i-1},y_i |x)\Big] =  \Big[  exp(W_i(y_{i-1},y_i |x))\Big] = \Big[  exp(\sum\limits_{k=1}^Kw_kf_k(y_{i-1},y_i, x,i))\Big]$$
 
-我们引入起点和终点标记y\_0 =start, y\_{n+1} = stop, 这样，标记序列y的非规范化概率可以通过n+1个矩阵元素的乘积得到，即：P\_w\(y\|x\) =  \frac{1}{Z\_w\(x\)}\prod\_{i=1}^{n+1}M\_i\(y\_{i-1},y\_i \|x\)
+我们引入起点和终点标记$$y_0 =start, y_{n+1} = stop$$, 这样，标记序列y的非规范化概率可以通过n+1个矩阵元素的乘积得到，即：$$P_w(y|x) =  \frac{1}{Z_w(x)}\prod_{i=1}^{n+1}M_i(y_{i-1},y_i |x)$$
 
-其中Z\_w\(x\)为规范化因子。
+其中$$Z_w(x)$$为规范化因子。
 
 以上就是linear-CRF的模型基础，后面我们会讨论linear-CRF和HMM类似的三个问题的求解方法。
 
