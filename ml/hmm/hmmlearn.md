@@ -73,34 +73,9 @@ print("The hidden box", ", ".join(map(lambda x: states[x], box)))
 也可以使用predict函数，结果也是一样的，代码如下：
 
 ```
-box2 =
- model.predict(seen)
-
-print
-(
-"
-The ball picked:
-"
-, 
-"
-, 
-"
-.join(map(
-lambda
- x: observations[x], seen)))
-
-print
-(
-"
-The hidden box
-"
-, 
-"
-, 
-"
-.join(map(
-lambda
- x: states[x], box2)))
+box2 = model.predict(seen)
+print("The ball picked:", ", ".join(map(lambda x: observations[x], seen)))
+print("The hidden box", ", ".join(map(lambda x: states[x], box2)))
 ```
 
 大家可以跑一下，看看结果是否和decode函数相同。
@@ -108,8 +83,7 @@ lambda
 现在我们再来看看求HMM问题一的观测序列的概率的问题，代码如下：
 
 ```
-print
- model.score(seen)
+print model.score(seen)
 ```
 
 输出结果是：
@@ -118,100 +92,37 @@ print
 -2.03854530992
 ```
 
-要注意的是score函数返回的是以自然对数为底的对数概率值，我们在HMM问题一中手动计算的结果是未取对数的原始概率是0.13022。对比一下：ln0.13022 \approx -2.0385
+要注意的是score函数返回的是以自然对数为底的对数概率值，我们在HMM问题一中手动计算的结果是未取对数的原始概率是0.13022。对比一下：$$ln0.13022 \approx -2.0385$$
 
 现在我们再看看HMM问题二，求解模型参数的问题。由于鲍姆-韦尔奇算法是基于EM算法的近似算法，所以我们需要多跑几次，比如下面我们跑三次，选择一个比较优的模型参数，代码如下：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
+```py
+import numpy as np
+from hmmlearn import hmm
 
+states = ["box 1", "box 2", "box3"]
+n_states = len(states)
+
+observations = ["red", "white"]
+n_observations = len(observations)
+model2 = hmm.MultinomialHMM(n_components=n_states, n_iter=20, tol=0.01)
+X2 = np.array([[0,1,0,1],[0,0,0,1],[1,0,1,1]])
+model2.fit(X2)
+print model2.startprob_
+print model2.transmat_
+print model2.emissionprob_
+print model2.score(X2)
+model2.fit(X2)
+print model2.startprob_
+print model2.transmat_
+print model2.emissionprob_
+print model2.score(X2)
+model2.fit(X2)
+print model2.startprob_
+print model2.transmat_
+print model2.emissionprob_
+print model2.score(X2)
 ```
-import
- numpy as np
-
-from
- hmmlearn 
-import
- hmm
-
-states 
-= [
-"
-box 1
-"
-, 
-"
-box 2
-"
-, 
-"
-box3
-"
-]
-n_states 
-=
- len(states)
-
-observations 
-= [
-"
-red
-"
-, 
-"
-white
-"
-]
-n_observations 
-=
- len(observations)
-model2 
-= hmm.MultinomialHMM(n_components=n_states, n_iter=20, tol=0.01
-)
-X2 
-= np.array([[0,1,0,1],[0,0,0,1],[1,0,1,1
-]])
-model2.fit(X2)
-
-print
- model2.startprob_
-
-print
- model2.transmat_
-
-print
- model2.emissionprob_
-
-print
- model2.score(X2)
-model2.fit(X2)
-
-print
- model2.startprob_
-
-print
- model2.transmat_
-
-print
- model2.emissionprob_
-
-print
- model2.score(X2)
-model2.fit(X2)
-
-print
- model2.startprob_
-
-print
- model2.transmat_
-
-print
- model2.emissionprob_
-
-print
- model2.score(X2)
-```
-
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
 结果这里就略去了，最终我们会选择分数最高的模型参数。
 
