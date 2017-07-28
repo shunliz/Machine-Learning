@@ -130,102 +130,45 @@ print model2.score(X2)
 
 # 3. GaussianHMM实例
 
-下面我们再给一个GaussianHMM的实例，这个实例中，我们的观测状态是二维的，而隐藏状态有4个。因此我们的“means”参数是4 \times 2的矩阵，而“covars”参数是4 \times 2 \times 2的张量。
+下面我们再给一个GaussianHMM的实例，这个实例中，我们的观测状态是二维的，而隐藏状态有4个。因此我们的“means”参数是$$4 \times 2$$的矩阵，而“covars”参数是$$4 \times 2 \times 2$$的张量。
 
 建立模型如下：
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
+```py
+startprob = np.array([0.6, 0.3, 0.1, 0.0])
+# The transition matrix, note that there are no transitions possible
+# between component 1 and 3
+transmat = np.array([[0.7, 0.2, 0.0, 0.1],
+                     [0.3, 0.5, 0.2, 0.0],
+                     [0.0, 0.3, 0.5, 0.2],
+                     [0.2, 0.0, 0.2, 0.6]])
+# The means of each component
+means = np.array([[0.0,  0.0],
+                  [0.0, 11.0],
+                  [9.0, 10.0],
+                  [11.0, -1.0]])
+# The covariance of each component
+covars = .5 * np.tile(np.identity(2), (4, 1, 1))
 
-```
-startprob = np.array([0.6, 0.3, 0.1, 0.0
-])
+# Build an HMM instance and set parameters
+model3 = hmm.GaussianHMM(n_components=4, covariance_type="full")
 
-#
- The transition matrix, note that there are no transitions possible
-
-#
- between component 1 and 3
-
-transmat = np.array([[0.7, 0.2, 0.0, 0.1
-],
-                     [
-0.3, 0.5, 0.2, 0.0
-],
-                     [
-0.0, 0.3, 0.5, 0.2
-],
-                     [
-0.2, 0.0, 0.2, 0.6
-]])
-
-#
- The means of each component
-
-means = np.array([[0.0,  0.0
-],
-                  [
-0.0, 11.0
-],
-                  [
-9.0, 10.0
-],
-                  [
-11.0, -1.0
-]])
-
-#
- The covariance of each component
-
-covars = .5 * np.tile(np.identity(2), (4, 1, 1
-))
-
-
-#
- Build an HMM instance and set parameters
-
-model3 = hmm.GaussianHMM(n_components=4, covariance_type=
-"
-full
-"
-)
-
-
-#
- Instead of fitting it from the data, we directly set the estimated
-
-#
- parameters, the means and covariance of the components
-
-model3.startprob_ =
- startprob
-model3.transmat_ 
-=
- transmat
-model3.means_ 
-=
- means
-model3.covars_ 
-= covars
+# Instead of fitting it from the data, we directly set the estimated
+# parameters, the means and covariance of the components
+model3.startprob_ = startprob
+model3.transmat_ = transmat
+model3.means_ = means
+model3.covars_ = covars
 ```
 
-[![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
+注意上面有个参数covariance\_type，取值为"full"意味所有的$$\mu,\Sigma$$都需要指定。取值为“spherical”则$$\Sigma$$的非对角线元素为0，对角线元素相同。取值为“diag”则$$\Sigma$$的非对角线元素为0，对角线元素可以不同，"tied"指所有的隐藏状态对应的观测状态分布使用相同的协方差矩阵$$\Sigma$$
 
-注意上面有个参数covariance\_type，取值为"full"意味所有的\mu,\Sigma都需要指定。取值为“spherical”则\Sigma的非对角线元素为0，对角线元素相同。取值为“diag”则\Sigma的非对角线元素为0，对角线元素可以不同，"tied"指所有的隐藏状态对应的观测状态分布使用相同的协方差矩阵\Sigma
-
-我们现在跑一跑HMM问题一解码的过程，由于观测状态是二维的，我们用的三维观测序列， 所以这里的 输入是一个3 \times 2 \times 2的张量，代码如下：
+我们现在跑一跑HMM问题一解码的过程，由于观测状态是二维的，我们用的三维观测序列， 所以这里的 输入是一个$$3 \times 2 \times 2$$的张量，代码如下：
 
 ```
-seen = np.array([[1.1,2.0],[-1,2.0],[3,7
-]])
-logprob, state 
-= model.decode(seen, algorithm=
-"
-viterbi
-"
-)
-
-print
- state
+seen = np.array([[1.1,2.0],[-1,2.0],[3,7]])
+logprob, state = model.decode(seen, algorithm="viterbi")
+print state
 ```
 
 输出结果如下：
@@ -237,8 +180,7 @@ print
 再看看HMM问题一对数概率的计算：
 
 ```
-print
- model3.score(seen)
+print model3.score(seen)
 ```
 
 输出如下：
