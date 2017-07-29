@@ -154,4 +154,5 @@
   * [堆叠降噪自动编码器](dl/encoder/stack-denoise-encoder.md)
   * [降噪自动编码器](dl/encoder/denoise-encoder.md)
 * [word2vec](dl/word2vec/word2vec.md)
+  * CBOW与Skip-Gram模型基础
 
