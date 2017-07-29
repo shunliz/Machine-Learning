@@ -108,6 +108,7 @@
   * [用hmmlearn学习隐马尔科夫模型HMM](ml/hmm/hmmlearn.md)
 * [条件随机场CRF](ml/crf/crf.md)
   * [从随机场到线性链条件随机场](ml/crf/linear-crf.md)
+  * [前向后向算法评估标记序列概率](ml/crf/back-forth.md)
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
