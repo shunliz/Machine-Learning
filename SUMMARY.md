@@ -155,4 +155,5 @@
   * [降噪自动编码器](dl/encoder/denoise-encoder.md)
 * [word2vec](dl/word2vec/word2vec.md)
   * [CBOW与Skip-Gram模型基础](dl/word2vec/cbow-skip-n.md)
+  * [基于Hierarchical Softmax的模型](dl/word2vec/hierarc-softmax.md)
 
