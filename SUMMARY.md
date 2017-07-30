@@ -15,8 +15,8 @@
   * [马尔科夫链](math/probability/markov-chain.md)
   * [MCMC采样和M-H采样](math/probability/mcmc-mh.md)
   * [Gibbs采样](math/probability/gibbs.md)
-* [第三章 矩阵和线性代数](math/matrix-linear.md)
-  * 10.向量对向量求导
+* [第三章 矩阵和线性代数](math/linear-matrix/linear-matrix.md)
+  * [10.向量对向量求导](math/matrix-linear/10xiang-liang-dui-xiang-liang-qiu-dao.md)
   * 11.标量对向量求导
   * 12.标量对矩阵求导
 * [第二部分 机器学习](ml/ml.md)
