@@ -42,7 +42,7 @@ $$\begin{align}f(w) & = -\sum\limits_{x,y}\overline{P}(x,y)logP_w(y|x) \\ &=  \s
 
 输出：最优标记序列$$y^* =(y_1^*,y_2^*,...y_n^*)$$
 
-1\) 初始化：$$$$
+1\) 初始化：
 
 $$\delta_{1}(l) = \sum\limits_{k=1}^Kw_kf_k(y_{0} =start,y_{1} = l,x,i)\}\;, l=1,2,...m$$
 
