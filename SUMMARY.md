@@ -123,7 +123,8 @@
   * [LDA求解之Gibbs采样算法](nlp/lda/lda-gibbs.md)
   * [LDA求解之变分推断EM算法](nlp/lda/vi-em.md)
   * [scikit-learn LDA主题模型](nlp/lda/scikit-learn-lda.md)
-* 第三部分 深度学习
+* [第三部分 深度学习](dl/dl.md)
+* [深度学习层](dl/layers/layers.md)
 * [第二十五课：深度学习](dl/introduction/introduction.md)
   * [基本概念](dl/introduction/ji-ben-gai-nian.md)
   * [深度神经网络（DNN）模型与前向传播算法](dl/introduction/dnn-fp.md)
