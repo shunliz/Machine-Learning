@@ -4,9 +4,9 @@
 
 ## 1. 梯度
 
-在微积分里面，对多元函数的参数求∂偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数f\(x,y\), 分别对x,y求偏导数，求得的梯度向量就是$$(\frac {\partial f} {\partial x}, \frac {\partial f} {\partial y})^T$$,简称grad $$f(x,y)$$。对于在点$$(x_0,y_0)$$的具体梯度向量就是$$(\frac {\partial f} {\partial x0},\frac {\partial f} {\partial y0})^T$$.，如果是3个参数的向量梯度，就是$$(\frac{\partial f} {\partial x}, \frac {\partial f} {\partial y}, \frac {\partial f} {\partial z})^T$$,以此类推。
+在微积分里面，对多元函数的参数求∂偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数f\(x,y\), 分别对x,y求偏导数，求得的梯度向量就是$$\left ( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y} \right )^T$$,简称grad $$f(x,y)$$。对于在点$$(x_0,y_0)$$的具体梯度向量就是$$\left ( \frac{\partial f}{\partial x_0},\frac{\partial f}{\partial y_0} \right )^T$$.，如果是3个参数的向量梯度，就是$$\left ( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\right )^T$$,以此类推。
 
-那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数f\(x,y\),在点$$(x_0,y_0)$$，沿着梯度向量的方向就是$$(\frac {\partial f} {\partial x_0}, \frac{\partial f} {\partial y_0})^T$$的方向是f\(x,y\)增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是 $$-(\frac {\partial f} {\partial x_0}, \frac {\partial f} {\partial y_0})^T$$的方向，梯度减少最快，也就是更加容易找到函数的最小值。
+那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数f\(x,y\),在点$$(x_0,y_0)$$，沿着梯度向量的方向就是$$\left ( \frac{\partial f}{\partial x_0},\frac{\partial f}{\partial y_0} \right )^T$$的方向是f\(x,y\)增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是$$-\left ( \frac{\partial f}{\partial x_0},\frac{\partial f}{\partial y_0} \right )^T$$的方向，梯度减少最快，也就是更加容易找到函数的最小值。
 
 ## 2. 梯度下降与梯度上升
 
