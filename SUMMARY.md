@@ -16,9 +16,6 @@
   * [MCMC采样和M-H采样](math/probability/mcmc-mh.md)
   * [Gibbs采样](math/probability/gibbs.md)
 * [第三章 矩阵和线性代数](math/linear-matrix/linear-matrix.md)
-  * [10.向量对向量求导](math/matrix-linear/10xiang-liang-dui-xiang-liang-qiu-dao.md)
-  * 11.标量对向量求导
-  * 12.标量对矩阵求导
 * [第二部分 机器学习](ml/ml.md)
 * [第四章 机器学习基础](ml/pythonml.md)
   * [Python及其数学库](ml/pythonml/pythonji-qi-shu-xue-ku.md)
