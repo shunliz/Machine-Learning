@@ -56,35 +56,36 @@
 
 　　　　这里我们用一个简单的例子来说明矩阵是如何进行奇异值分解的。我们的矩阵A定义为：
 
-$$\mathbf{A} = \left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right)$$
+$$\mathbf{A} = \left( \begin{array}{ccc} 0& 1\\ 1& 1\\ 1&0 \end{array} \right)$$
 
 　　　　我们首先求出$$A^TA$$和$$AA^T$$
 
-$$\mathbf{A^TA} = \left( \begin{array}{ccc} 0& 1 &1\\ 1&1& 0 \end{array} \right) \left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right) = \left( \begin{array}{ccc} 2& 1 \\ 1& 2 \end{array} \right)$$
+$$\mathbf{A^TA} = \left( \begin{array}{ccc} 0& 1 &1\\ 1&1&0 \end{array} \right) \left( \begin{array}{ccc} 0& 1\\ 1& 1\\ 1&0 \end{array} \right) = \left( \begin{array}{ccc} 2& 1 \\ 1&2 \end{array} \right)$$
 
-$$\mathbf{AA^T} =  \left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right) \left( \begin{array}{ccc} 0& 1 &1\\ 1&1& 0 \end{array} \right) = \left( \begin{array}{ccc} 1& 1 & 0\\ 1& 2 & 1\\ 0& 1& 1 \end{array} \right)$$
+$$\mathbf{AA^T} = \left( \begin{array}{ccc} 0& 1\\ 1& 1\\ 1&0 \end{array} \right) \left( \begin{array}{ccc} 0& 1 &1\\ 1&1&0 \end{array} \right) = \left(\begin{array}{ccc} 1& 1 &0\\1& 2 &1\\ 0& 1&1 \end{array} \right)$$
 
- 　　　　进而求出$$A^TA$$的特征值和特征向量：$$\lambda_1= 3; v_1 = \left( \begin{array}{ccc} 1/\sqrt{2} \\ 1/\sqrt{2} \end{array} \right); \lambda_2= 1; v_2 = \left( \begin{array}{ccc} -1/\sqrt{2} \\ 1/\sqrt{2} \end{array} \right)$$
+ 　　　　进而求出$$A^TA$$的特征值和特征向量：$$\lambda_1= 3; v_1 = \left( \begin{array}{ccc} \frac {1} {\sqrt{2}} \\ \frac {1} {\sqrt{2}}\end{array} \right); \lambda_2= 1; v_2 = \left( \begin{array}{ccc} \frac {-1}{\sqrt{2}} \\ \frac {1} {\sqrt{2}}\end{array} \right)$$
 
 　　　　接着求$$AA^T$$的特征值和特征向量：
 
-$$\lambda_1= 3; u_1 = \left( \begin{array}{ccc} 1/\sqrt{6} \\ 2/\sqrt{6} \\ 1/\sqrt{6} \end{array} \right); \lambda_2= 1; u_2 = \left( \begin{array}{ccc} 1/\sqrt{2} \\ 0 \\ -1/\sqrt{2} \end{array} \right);  \lambda_3= 0; u_3 = \left( \begin{array}{ccc} 1/\sqrt{3} \\ -1/\sqrt{3} \\ 1/\sqrt{3} \end{array} \right)$$
+$$\lambda_1= 3; u_1 = \left( \begin{array}{ccc} \frac {1} {\sqrt{6}}\\ \frac {2} {\sqrt{6}} \\ \frac {1} {\sqrt{6}}\end{array} \right); \lambda_2= 1; u_2 = \left( \begin{array}{ccc} \frac {1} {\sqrt{2}} \\ 0 \\ \frac {-1} {\sqrt{2}}\end{array} \right); \lambda_3= 0; u_3 = \left( \begin{array}{ccc} \frac {1} {\sqrt{3}} \\ \frac {-1} {\sqrt{3}}\\ \frac {1} {\sqrt{3}}\end{array} \right)$$
 
 　　　　利用$$Av_i = \sigma_i u_i, i=1,2$$求奇异值：
 
-$$\left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right) \left( \begin{array}{ccc} 1/\sqrt{2} \\ 1/\sqrt{2} \end{array} \right) = \sigma_1 \left( \begin{array}{ccc} 1/\sqrt{6} \\ 2/\sqrt{6} \\ 1/\sqrt{6} \end{array} \right) \Rightarrow  \sigma_1=\sqrt{3}$$
+$$\left(\begin{array}{ccc} 0& 1\\1& 1\\ 1&0 \end{array} \right) \left( \begin{array}{ccc} \frac {1} {\sqrt{2}} \\ \frac {1} 
+ {\sqrt{2}}\end{array} \right) = \sigma_1 \left( \begin{array}{ccc} \frac {1} {\sqrt{6}} \\\frac {2} {\sqrt{6}} \\ \frac {1} {\sqrt{6}}\end{array} \right)\Rightarrow \sigma_1=\sqrt{3}$$
 
-$$\left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right) \left( \begin{array}{ccc} -1/\sqrt{2} \\ 1/\sqrt{2} \end{array} \right) = \sigma_2 \left( \begin{array}{ccc} 1/\sqrt{2} \\ 0 \\ -1/\sqrt{2} \end{array} \right) \Rightarrow  \sigma_2=1$$
+$$\left( \begin{array}{ccc} 0& 1\\1& 1\\1&0 \end{array} \right) \left( \begin{array}{ccc} \frac {-1} {\sqrt{2}}\\ \frac {1} {\sqrt{2}} \end{array} \right) = \sigma_2 \left( \begin{array}{ccc} \frac {1} {\sqrt{2}} \\ 0 \\ \frac {-1} {\sqrt{2}}\end{array} \right)\Rightarrow \sigma_2=1$$
 
 当然，我们也可以用$$\sigma_i = \sqrt{\lambda_i}$$直接求出奇异值为$$\sqrt{3}$$和1.
 
- 最终得到A的奇异值分解为：$$A=U\Sigma V^T = \left( \begin{array}{ccc} 1/\sqrt{6} & 1/\sqrt{2} & 1/\sqrt{3} \\ 2/\sqrt{6} & 0 & -1/\sqrt{3}\\ 1/\sqrt{6} & -1/\sqrt{2} & 1/\sqrt{3} \end{array} \right) \left( \begin{array}{ccc} \sqrt{3} & 0 \\  0 & 1\\ 0 & 0 \end{array} \right) \left( \begin{array}{ccc} 1/\sqrt{2}  & 1/\sqrt{2}  \\ -1/\sqrt{2}  & 1/\sqrt{2}  \end{array} \right)$$
+ 最终得到A的奇异值分解为：$$A=U\Sigma V^T = \left( \begin{array}{ccc} \frac {1} {\sqrt{6}} & \frac {1} {\sqrt{2}} & \frac {1} {\sqrt{3}}\\\frac {2} {\sqrt{6}} & 0 & \frac {-1} {\sqrt{3}}\\ \frac {1} {\sqrt{6}} & \frac {-1} {\sqrt{2}} & \frac {1} {\sqrt{3}}\end{array} \right) \left( \begin{array}{ccc} \sqrt{3} & 0 \\ 0 & 1\\ 0 & 0 \end{array} \right) \left( \begin{array}{ccc} \frac {1} {\sqrt{2}}& \frac {1} {\sqrt{2}}\\ \frac {-1} {\sqrt{2}}& \frac {1} {\sqrt{2}}\end{array} \right)$$
 
 # 4. SVD的一些性质　
 
 　　　　上面几节我们对SVD的定义和计算做了详细的描述，似乎看不出我们费这么大的力气做SVD有什么好处。那么SVD有什么重要的性质值得我们注意呢？
 
-　　　　对于奇异值,它跟我们特征分解中的特征值类似，在奇异值矩阵中也是按照从大到小排列，而且奇异值的减少特别的快，在很多情况下，前10%甚至1%的奇异值的和就占了全部的奇异值之和的99%以上的比例。也就是说，我们也可以用最大的k个的奇异值和对应的左右奇异向量来近似描述矩阵。也就是说：$$A_{m \times n} = U_{m \times m}\Sigma_{m \times n} V^T_{n \times n} \approx U_{m \times k}\Sigma_{k \times k} V^T_{k \times n}$$
+　　　　对于奇异值,它跟我们特征分解中的特征值类似，在奇异值矩阵中也是按照从大到小排列，而且奇异值的减少特别的快，在很多情况下，前10%甚至1%的奇异值的和就占了全部的奇异值之和的99%以上的比例。也就是说，我们也可以用最大的k个的奇异值和对应的左右奇异向量来近似描述矩阵。也就是说：$$A_{m \times n} = U_{m \times m}\Sigma_{m \times n} V^T_{n \times n} \approx U_{m \times k}\Sigma_{k \times k}V^T_{k \times n}$$
 
 　　　　其中k要比n小很多，也就是一个大的矩阵A可以用三个小的矩阵$$U_{m \times k},\Sigma_{k \times k} ,V^T_{k \times n}$$来表示。如下图所示，现在我们的矩阵A只需要灰色的部分的三个小矩阵就可以近似描述了。
 
@@ -100,9 +101,9 @@ $$\left( \begin{array}{ccc} 0& 1\\  1& 1\\   1& 0 \end{array} \right) \left(
 
 　　　　另一方面，注意到PCA仅仅使用了我们SVD的右奇异矩阵，没有使用左奇异矩阵，那么左奇异矩阵有什么用呢？
 
-　　　　假设我们的样本是$$m \times n$$的矩阵X，如果我们通过SVD找到了矩阵$$XX^T$$最大的d个特征向量张成的$$m \times d$$维矩阵U，则我们如果进行如下处理：$$X'_{d \times n} = U_{d \times m}^TX_{m \times n}$$
+　　　　假设我们的样本是$$m \times n$$的矩阵X，如果我们通过SVD找到了矩阵$$XX^T$$最大的d个特征向量张成的$$m\times d$$维矩阵U，则我们如果进行如下处理：$$X'_{d\times n} = U_{d \times m}^TX_{m \times n}$$
 
-　　　　可以得到一个$$d \times n$$的矩阵X‘,这个矩阵和我们原来的$$m \times n$$维样本矩阵X相比，行数从m减到了k，可见对行数进行了压缩。也就是说，左奇异矩阵可以用于行数的压缩。相对的，右奇异矩阵可以用于列数即特征维度的压缩，也就是我们的PCA降维。　　　　
+　　　　可以得到一个$$d \times n$$的矩阵X‘,这个矩阵和我们原来的$$m\times n$$维样本矩阵X相比，行数从m减到了k，可见对行数进行了压缩。也就是说，左奇异矩阵可以用于行数的压缩。相对的，右奇异矩阵可以用于列数即特征维度的压缩，也就是我们的PCA降维。　　　　
 
 # 6. SVD小结　
 
