@@ -40,17 +40,17 @@
 
 　　　　U和V我们都求出来了，现在就剩下奇异值矩阵$$\Sigma$$没有求出了。由于$$\Sigma$$除了对角线上是奇异值其他位置都是0，那我们只需要求出每个奇异值$$\sigma$$就可以了。
 
-　　　　我们注意到:$$A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av_i = \sigma_i u_i  \Rightarrow  \sigma_i =  Av_i / u_i$$
+　　　　我们注意到:$$A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow Av_i = \sigma_i u_i \Rightarrow \sigma_i = \frac {Av_i} {u_i}$$
 
  　　　 这样我们可以求出我们的每个奇异值，进而求出奇异值矩阵$$\Sigma$$。
 
-　　　 上面还有一个问题没有讲，就是我们说$$A^TA$$的特征向量组成的就是我们SVD中的V矩阵，而$$AA^T$$的特征向量组成的就是我们SVD中的U矩阵，这有什么根据吗？这个其实很容易证明，我们以V矩阵的证明为例。$$A=U\Sigma V^T \Rightarrow A^T=V\Sigma U^T \Rightarrow A^TA = V\Sigma U^TU\Sigma V^T = V\Sigma^2V^T$$
+　　　 上面还有一个问题没有讲，就是我们说$$A^TA$$的特征向量组成的就是我们SVD中的V矩阵，而$$AA^T$$的特征向量组成的就是我们SVD中的U矩阵，这有什么根据吗？这个其实很容易证明，我们以V矩阵的证明为例。$$A=U\Sigma V^T \Rightarrow A^T=V\Sigma U^T \Rightarrow A^TA =V\Sigma U^TU\Sigma V^T = V\Sigma^2V^T$$
 
 　　　　上式证明使用了:$$U^TU=I, \Sigma^T=\Sigma$$。可以看出$$A^TA$$的特征向量组成的的确就是我们SVD中的V矩阵。类似的方法可以得到$$AA^T$$的特征向量组成的就是我们SVD中的U矩阵。
 
 　　　　进一步我们还可以看出我们的特征值矩阵等于奇异值矩阵的平方，也就是说特征值和奇异值满足如下关系：$$\sigma_i = \sqrt{\lambda_i}$$
 
-　　　　这样也就是说，我们可以不用$$\sigma_i =  Av_i / u_i$$来计算奇异值，也可以通过求出$$A^TA$$的特征值取平方根来求奇异值。
+　　　　这样也就是说，我们可以不用$$\sigma_i =\frac {Av_i}{u_i}$$来计算奇异值，也可以通过求出$$A^TA$$的特征值取平方根来求奇异值。
 
 # 3. SVD计算举例
 
