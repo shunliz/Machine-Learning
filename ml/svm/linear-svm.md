@@ -63,42 +63,69 @@ $$min \;\; \frac{1}{2}||w||_2^2  \;\; s.t \;\; y_i(w^Tx_i + b)  \geq 1 (i =1,2,.
 从上式中，我们可以先求优化函数对于w和b的极小值。接着再求拉格朗日乘子α的极大值。
 
 首先我们来求w和b的极小值，即$$min(w,b)(\;  L(w,b,\alpha))$$。这个极值我们可以通过对w和b分别求偏导数得到：
+
+
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
 $$
+
+
+
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
 $$
+
+
 从上两式子可以看出，我们已经求得了w和α的关系，只要我们后面接着能够求出优化函数极大化对应的α，就可以求出我们的w了，至于b，由于上两式已经没有b，所以最后的b可以有多个。
 
 好了，既然我们已经求出w和α的关系，就可以带入优化函数L\(w,b,α\)消去w了。我们定义:$$\psi(\alpha) = \underbrace{min}_{w,b}\;  L(w,b,\alpha)$$
 
-现在我们来看将w替换为α的表达式以后的优化函数ψ\(α\)的表达式：
-$$\begin{align} \psi(\alpha) & =  \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1] \\& = \frac{1}{2}w^Tw-\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\& = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i -\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\& = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i  \\& = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i  \\& = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}(\sum\limits_{i=1}^{m}\alpha_iy_ix_i)^T(\sum\limits_{i=1}^{m}\alpha_iy_ix_i) - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i  \\& = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_iy_ix_i^T\alpha_jy_jx_j + \sum\limits_{i=1}^{m}\alpha_i \\& = \sum\limits_{i=1}^{m}\alpha_i  - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j  \end{align}$$
+现在我们来看将w替换为α的表达式以后的优化函数ψ\(α\)的表达式：  
+$$\begin{align} \psi(\alpha) & =  \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1] \\& = \frac{1}{2}w^Tw-\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\& = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i -\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\& = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i  \\& = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i  \\& = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}(\sum\limits_{i=1}^{m}\alpha_iy_ix_i)^T(\sum\limits_{i=1}^{m}\alpha_iy_ix_i) - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i  \\& = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i + \sum\limits_{i=1}^{m}\alpha_i \\& = -\frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_iy_ix_i^T\alpha_jy_jx_j + \sum\limits_{i=1}^{m}\alpha_i \\& = \sum\limits_{i=1}^{m}\alpha_i  - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j  \end{align}$$  
 其中，\(1\)式到\(2\)式用到了范数的定义$$||w||_2^2 =w^Tw$$, \(2\)式到\(3\)式用到了上面的$$w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i$$， \(3\)式到\(4\)式把和样本无关的$$w^T$$提前，\(4\)式到\(5\)式合并了同类项，\(5\)式到\(6\)式把和样本无关的b提前，\(6\)式到\(7\)式继续用到$$w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i$$，（7）式到\(8\)式用到了向量的转置。由于常量的转置是其本身，所有只有向量$$x_i$$被转置，（8）式到\(9\)式用到了上面的$$\sum\limits_{i=1}^{m}\alpha_iy_i = 0$$，（9）式到\(10\)式使用了$$(a+b+c+…)(a+b+c+…)=aa+ab+ac+ba+bb+bc+…$$的乘法运算法则，（10）式到\(11\)式仅仅是位置的调整。
 
 从上面可以看出，通过对w,b极小化以后，我们的优化函数ψ\(α\)仅仅只有α向量做参数。只要我们能够极大化ψ\(α\)，就可以求出此时对应的α，进而求出w,b.
 
 对ψ\(α\)求极大化的数学表达式如下:
+
+
 $$
-\underbrace{max}_{\alpha} -\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) + \sum\limits_{i=1}^{m} \alpha_i
+max(\alpha)\; -\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) + \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
+
+
 可以去掉负号，即为等价的极小化问题如下：
+
+
 $$
-\underbrace{min}_{\alpha} \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
+min(\alpha) \;\;\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
 只要我们可以求出上式极小化时对应的α向量就可以求出w和b了。具体怎么极小化上式得到对应的α，一般需要用到SMO算法，这个算法比较复杂，我们后面会专门来讲。在这里，我们假设通过SMO算法，我们得到了对应的α的值$$\alpha^{*}$$。
 
 那么我们根据$$w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i$$，可以求出对应的w的值$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
@@ -120,15 +147,25 @@ $$
 算法过程如下：
 
 1）构造约束优化问题
+
+
 $$
-\underbrace{min}_{\alpha} \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
+min(\alpha)\;\; \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
+
+
 2）用SMO算法求出上式最小时对应的α向量的值$$\alpha^{*}$$向量.
 
 3\) 计算$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
