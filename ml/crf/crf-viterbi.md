@@ -18,7 +18,7 @@
 
 其中$$\overline{P}(x,y)$$为经验分布，可以从先验知识和训练集样本中得到,这点和最大熵模型类似。为了使用梯度下降法，我们现在极小化$$f(w) = -L(P_w)$$如下：
 
-$$\begin{align}f(w) & = -\sum\limits_{x,y}\overline{P}(x,y)logP_w(y|x) \\ &=  \sum\limits_{x,y}\overline{P}(x,y)logZ_w(x) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y) \\& =  \sum\limits_{x}\overline{P}(x)logZ_w(x) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y) \\& =  \sum\limits_{x}\overline{P}(x)log\sum\limits_{y}exp\sum\limits_{k=1}^Kw_kf_k(x,y) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y)  \end{align}$$
+$$\begin{aligned}f(w) & = -\sum\limits_{x,y}\overline{P}(x,y)logP_w(y|x) \\ &=  \sum\limits_{x,y}\overline{P}(x,y)logZ_w(x) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y) \\& =  \sum\limits_{x}\overline{P}(x)logZ_w(x) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y) \\& =  \sum\limits_{x}\overline{P}(x)log\sum\limits_{y}exp\sum\limits_{k=1}^Kw_kf_k(x,y) - \sum\limits_{x,y}\overline{P}(x,y)\sum\limits_{k=1}^Kw_kf_k(x,y)  \end{aligned}$$
 
 对w求导可以得到：$$\frac{\partial f(w)}{\partial w} = \sum\limits_{x,y}\overline{P}(x)P_w(y|x)f(x,y) -  \sum\limits_{x,y}\overline{P}(x,y)f(x,y)$$
 
@@ -68,7 +68,7 @@ $$y_i^* = \Psi_{i+1}(y_{i+1}^*)\;, i=n-1,n-2,...1$$
 
 下面用一个具体的例子来描述 linear-CRF模型维特比算法，例子的模型和CRF系列第一篇中一样，都来源于《统计学习方法》。
 
-假设输入的都是三个词的句子，即$$X=(X_1,X_2,X_3)$$,输出的词性标记为$$Y=(Y_1,Y_2,Y_3)$$,其中$$Y \in {1(名词)，2(动词)}$$
+假设输入的都是三个词的句子，即$$X=(X_1,X_2,X_3)$$,输出的词性标记为$$Y=(Y_1,Y_2,Y_3)$$,其中$$Y \in $${1(名词)，2(动词)}
 
 这里只标记出取值为1的特征函数如下：
 

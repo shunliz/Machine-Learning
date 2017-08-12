@@ -24,7 +24,7 @@
 
 　　　　第一个局部状态是在时刻t隐藏状态为i所有可能的状态转移路径$$i_1,i_2,...i_t$$中的概率最大值。记为$$\delta_t(i):\delta_t(i) = \max_{i_1,i_2,...i_{t-1}}\;P(i_t=i, i_1,i_2,...i_{t-1},o_t,o_{t-1},...o_1|\lambda),\; i =1,2,...N$$
 
-　　　　由$$\delta_t(i)$$的定义可以得到$$\delta$$的递推表达式：$$\begin{align} \delta_{t+1}(i) & =  \max_{i_1,i_2,...i_{t}}\;P(i_{t+1}=i, i_1,i_2,...i_{t},o_{t+1},o_{t},...o_1|\lambda) \\ & = \max_{1 \leq j \leq N}\;[\delta_t(j)a_{ji}]b_i(o_{t+1})\end{align}$$
+　　　　由$$\delta_t(i)$$的定义可以得到$$\delta$$的递推表达式：$$\begin{aligned} \delta_{t+1}(i) & = \max_{i_1,i_2,...i_{t}}\;P(i_{t+1}=i, i_1,i_2,...i_{t},o_{t+1},o_{t},...o_1|\lambda) \\ & =\max_{1 \leq j \leq N}\;[\delta_t(j)a_{ji}]b_i(o_{t+1})\end{aligned}$$
 
 　　　　第二个局部状态由第一个局部状态递推得到。我们定义在时刻t隐藏状态为i的所有单个状态转移路径$$(i_1,i_2,...,i_{t-1},i)$$中概率最大的转移路径中第t-1个节点的隐藏状态为$$\Psi_t(i)$$,其递推表达式可以表示为：$$\Psi_t(i) = arg \; \max_{1 \leq j \leq N}\;[\delta_{t-1}(j)a_{ji}]$$
 
@@ -44,7 +44,7 @@
 
 　　　　3\) 计算时刻T最大的$$\delta_{T}(i),$$即为最可能隐藏状态序列出现的概率。计算时刻T最大的$$\Psi_t(i),$$即为时刻T最可能的隐藏状态。$$P* = \max_{1 \leq j \leq N}\delta_{T}(i)i_T^* = arg \; \max_{1 \leq j \leq N}\;[\delta_{T}(i)]$$
 
-　　　　4\) 利用局部状态$$\Psi(i)$$开始回溯。对于$$t=T-1,T-2,...,1：i_t^* = \Psi_{t+1}(i_{t+1}^*)$$
+　　　　4\) 利用局部状态$$\Psi(i)$$开始回溯。对于t=T-1,T-2,...,1：$$i_t^* = \Psi_{t+1}(i_{t+1}^*)$$
 
 　　　　最终得到最有可能的隐藏状态序列$$I^*= \{i_1^*,i_2^*,...i_T^*\}$$
 
@@ -62,11 +62,11 @@
 
 　　　　状态转移概率分布矩阵为：
 
-$$A = \left( \begin{array} {ccc} 0.5 & 0.2 & 0.3 \\ 0.3 & 0.5 & 0.2 \\ 0.2 & 0.3 &0.5 \end{array} \right)$$
+$$A = \left( \begin{array} {ccc}0.5 & 0.2 & 0.3 \\0.3 & 0.5 & 0.2 \\ 0.2 & 0.3 &0.5 \end{array} \right)$$
 
  　　　　观测状态概率矩阵为：
 
-$$B = \left( \begin{array} {ccc} 0.5 & 0.5 \\ 0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \right)$$
+$$B = \left( \begin{array} {ccc}0.5 & 0.5 \\0.4 & 0.6 \\ 0.7 & 0.3 \end{array} \right)$$
 
 　　　　球的颜色的观测序列:O=\{红，白，红\}
 
@@ -100,11 +100,11 @@ $$\delta_3(1) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j1}]b_1(o_3) = \max_{1\leq j
 
 $$\Psi_3(1)=2$$
 
-$$\delta_3(2) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j2}]b_2(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.2, 0.0504\times 0.5, 0.042\times 0.3] \times 0.4 = 0.01008$$
+$$\delta_3(2) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j2}]b_2(o_3) = \max_{1\leq j \leq 3}[0.028\times 0.2, 0.0504\times 0.5, 0.042\times 0.3] \times 0.4 = 0.01008$$
 
 $$\Psi_3(2)=2$$
 
-$$\delta_3(3) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j3}]b_3(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.3, 0.0504 \times 0.2, 0.042\times 0.5] \times 0.7 = 0.0147$$
+$$\delta_3(3) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j3}]b_3(o_3) = \max_{1\leq j \leq 3}[0.028\times 0.3, 0.0504 \times 0.2, 0.042\times 0.5] \times 0.7 = 0.0147$$
 
 $$\Psi_3(3)=3$$
 
