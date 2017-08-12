@@ -34,7 +34,7 @@ $$H(Y|X) = -\sum\limits_{i=1}^{n}p(x_i,y_i)logp(y_i|x_i) = \sum\limits_{j=1}^{n}
 
 用特征函数f\(x,y\)描述输入x和输出y之间的关系。定义为：
 
-$$f(x,y)= \begin{cases} 1& {x与y满足某个关系}\\ 0& {否则} \end{cases}$$
+$$f(x,y)= f(x,y)= \begin{cases} 1& {x \; related \;to \; y}\\ 0& {else} \end{cases}$$
 
 可以认为只要出现在训练集中出现的$$(x^{(i)},y^{(i)})$$,其$$f(x^{(i)},y^{(i)}) = 1$$.
 
