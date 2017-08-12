@@ -98,7 +98,7 @@ $$
 
 ## 3.2 多项式核函数
 
-多项式核函数（Polynomial Kernel）是线性不可分SVM常用的核函数之一，表达式为：$$K(x, z) = （\gamma x \bullet z  + r)^d$$
+多项式核函数（Polynomial Kernel）是线性不可分SVM常用的核函数之一，表达式为：$$K(x, z) = (\gamma x \bullet z  + r)^d$$
 
 其中，$$\gamma$$, r, d都需要自己调参定义。
 
