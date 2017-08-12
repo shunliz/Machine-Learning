@@ -170,7 +170,7 @@ $$
 
 3\) 计算$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
 
-4\) 找出所有的S个支持向量,即满足$$\alpha_s > 0对应的样本(x_s,y_s)$$，通过 $$y_s(\sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s+b) = 1$$，计算出每个支持向量$$(x_x, y_s)$$对应的$$b_s^{*}$$,计算出这些$$b_s^{*} = y_s - \sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s$$. 所有的$$b_s^{*}$$对应的平均值即为最终的$$b^{*} = \frac{1}{S}\sum\limits_{i=1}^{S}b_s^{*}$$
+4\) 找出所有的S个支持向量,即满足$$\alpha_s > 0$$对应的样本$$(x_s,y_s)$$，通过 $$y_s(\sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s+b) = 1$$，计算出每个支持向量$$(x_x, y_s)$$对应的$$b_s^{*}$$,计算出这些$$b_s^{*} = y_s - \sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s$$. 所有的$$b_s^{*}$$对应的平均值即为最终的$$b^{*} = \frac{1}{S}\sum\limits_{i=1}^{S}b_s^{*}$$
 
 这样最终的分类超平面为：$$w^{*} \bullet x + b^{*} = 0$$，最终的分类决策函数为：$$f(x) = sign(w^{*} \bullet x + b^{*})$$
 
