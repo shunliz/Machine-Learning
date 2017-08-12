@@ -68,7 +68,7 @@ $$H(P) = -\sum\limits_{x,y}\overline{P}(x)P(y|x)logP(y|x)$$
 
 在上一节我们已经得到了最大熵模型的损失函数H\(P\)。它的定义为:
 
-$$\underbrace{ min }_{P} H(P) = -\sum\limits_{x,y}\overline{P}(x)P(y|x)logP(y|x)$$
+$$min(P)\;\; H(P) = -\sum\limits_{x,y}\overline{P}(x)P(y|x)logP(y|x)$$
 
 约束条件为：
 
@@ -82,19 +82,19 @@ $$L(P,w) \equiv -H(P) + w_0(1 - \sum\limits_yP(y|x)) + \sum\limits_{i=1}^{M}w_i(
 
 其中$$w_i(i=1,2,...m)$$为拉格朗日乘子。如果大家也学习过支持向量机，就会发现这里用到的凸优化理论是一样的，接着用到了拉格朗日对偶也一样。、
 
-我们的拉格朗日函数，即为凸优化的原始问题：$$\underbrace{ min }_{P} \underbrace{ max }_{w}L(P, w)$$
+我们的拉格朗日函数，即为凸优化的原始问题：$$min(P) \;\;max (w)\;\;L(P, w)$$
 
-其对应的拉格朗日对偶问题为：$$\underbrace{ max}_{w} \underbrace{ min }_{P}L(P, w)$$
+其对应的拉格朗日对偶问题为：$$max(w) \;\;min (P)\;\;L(P, w)$$
 
 由于原始问题满足凸优化理论中的KKT条件，因此原始问题的解和对偶问题的解是一致的。这样我们的损失函数的优化变成了拉格朗日对偶问题的优化。
 
-求解对偶问题的第一步就是求$$\underbrace{ min }_{P}L(P, w)$$, 这可以通过求导得到。这样得到的$$\underbrace{ min }_{P}L(P, w)$$是关于w的函数。记为：
+求解对偶问题的第一步就是求$$min (P) \;\;L(P, w)$$, 这可以通过求导得到。这样得到的$$min(P) \;\; L(P, w)$$是关于w的函数。记为：
 
-$$\psi(w) = \underbrace{ min }_{P}L(P, w) = L(P_w, w)$$
+$$\psi(w) = min (P) \;\;L(P, w) = L(P_w, w)$$
 
 ψ\(w\)即为对偶函数，将其解记为：
 
-$$P_w = arg \underbrace{ min }_{P}L(P, w) = P_w(y|x)$$
+$$P_w = arg min (P)L(P, w) = P_w(y|x)$$
 
 具体的是求L\(P,w\)关于P\(y\|x\)的偏导数:
 
