@@ -6,65 +6,41 @@
 
 我们首先回顾下我们的优化目标函数：
 
-
 $$
-\underbrace{ min }_{\alpha}  \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jK(x_i,x_j) - \sum\limits_{i=1}^{m}\alpha_i
+min(\alpha)\;\;  \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jK(x_i,x_j) - \sum\limits_{i=1}^{m}\alpha_i
 $$
-
-
 
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
 
-
-
 $$
 0 \leq \alpha_i \leq C
 $$
 
-
 我们的解要满足的KKT条件的对偶互补条件为：$$\alpha_{i}^{*}(y_i(w^{*} \bullet \phi(x_i) + b^{*}) - 1) = 0$$
 
 根据这个KKT条件的对偶互补条件，我们有：
-
-
 $$
 \alpha_{i}^{*} = 0 \Rightarrow y_i(w^{*} \bullet \phi(x_i) + b) \geq 1
 $$
-
-
-
 $$
 0 \leq \alpha_{i}^{*} \leq C  \Rightarrow y_i(w^{*} \bullet \phi(x_i) + b) = 1
 $$
 
-
-
 $$
 \alpha_{i}^{*}= C \Rightarrow y_i(w^{*} \bullet \phi(x_i) + b) \leq 1
 $$
-
-
 由于$$w^{*} = \sum\limits_{j=1}^{m}\alpha_j^{*}y_j\phi(x_j)$$,我们令$$g(x) = w^{*} \bullet \phi(x) + b =\sum\limits_{j=1}^{m}\alpha_j^{*}y_jK(x, x_j)+ b^{*}$$，则有：
-
-
 $$
 \alpha_{i}^{*} = 0 \Rightarrow y_ig(x_i) \geq 1
 $$
-
-
-
 $$
 0 \leq \alpha_{i}^{*} \leq C  \Rightarrow y_ig(x_i)  = 1
 $$
-
-
-
 $$
 \alpha_{i}^{*}= C \Rightarrow y_ig(x_i)  \leq 1
 $$
-
 
 # 2. SMO算法的基本思想
 
@@ -73,25 +49,15 @@ $$
 为了后面表示方便，我们定义$$K_{ij} = \phi(x_i) \bullet \phi(x_j)$$
 
 由于$$\alpha_3, \alpha_4, ..., \alpha_m$$都成了常量，所有的常量我们都从目标函数去除，这样我们上一节的目标优化函数变成下式：
-
-
 $$
-\;\underbrace{ min }_{\alpha_1, \alpha_1} \frac{1}{2}K_{11}\alpha_1^2 + \frac{1}{2}K_{22}\alpha_2^2 +y_1y_2K_{12}\alpha_1 \alpha_2 -(\alpha_1 + \alpha_2) +y_1\alpha_1\sum\limits_{i=3}^{m}y_i\alpha_iK_{i1} + y_2\alpha_2\sum\limits_{i=3}^{m}y_i\alpha_iK_{i2}
+min(\alpha_1, \alpha_1)\;\; \frac{1}{2}K_{11}\alpha_1^2 + \frac{1}{2}K_{22}\alpha_2^2 +y_1y_2K_{12}\alpha_1 \alpha_2 -(\alpha_1 + \alpha_2) +y_1\alpha_1\sum\limits_{i=3}^{m}y_i\alpha_iK_{i1} + y_2\alpha_2\sum\limits_{i=3}^{m}y_i\alpha_iK_{i2}
 $$
-
-
-
 $$
 s.t. \;\;\alpha_1y_1 +  \alpha_2y_2 = -\sum\limits_{i=3}^{m}y_i\alpha_i = \varsigma
 $$
-
-
-
 $$
 0 \leq \alpha_i \leq C \;\; i =1,2
 $$
-
-
 # 3. SMO算法目标函数的优化
 
 为了求解上面含有这两个变量的目标优化问题，我们首先分析约束条件，所有的$$\alpha_1, \alpha_2$$都要满足约束条件，然后在约束条件下求最小。
@@ -105,21 +71,13 @@ $$
 由于$$\alpha_2^{new}$$必须满足上图中的线段约束。假设L和H分别是上图中$$\alpha_2^{new}$$所在的线段的边界。那么很显然我们有：$$L \leq \alpha_2^{new} \leq H$$
 
 而对于L和H，我们也有限制条件如果是上面左图中的情况，则
-
-
 $$
 L = max(0, \alpha_2^{old}-\alpha_1^{old}) \;\;\;H = min(C, C+\alpha_2^{old}-\alpha_1^{old})
 $$
-
-
 如果是上面右图中的情况，我们有：
-
-
 $$
 L = max(0, \alpha_2^{old}+\alpha_1^{old}-C) \;\;\; H = min(C, \alpha_2^{old}+\alpha_1^{old})
 $$
-
-
 也就是说，假如我们通过求导得到的$$\alpha_2^{new,unc}$$，则最终的$$\alpha_2^{new}$$应该为：
 
 $$\alpha_2^{new}= \begin{cases} H& {L \leq \alpha_2^{new,unc} > H}\\ \alpha_2^{new,unc}& {L \leq \alpha_2^{new,unc} \leq H}\\ L& {\alpha_2^{new,unc} < L} \end{cases}$$
@@ -140,10 +98,9 @@ $$\alpha_2^{new}= \begin{cases} H& {L \leq \alpha_2^{new,unc} > H}\\ \alpha_2^{n
 
 将上式带入我们的目标优化函数，就可以消除$$\alpha_1$$,得到仅仅包含$$\alpha_2$$的式子。$$W(\alpha_2) = \frac{1}{2}K_{11}(\varsigma  - \alpha_2y_2)^2 + \frac{1}{2}K_{22}\alpha_2^2 +y_2K_{12}(\varsigma - \alpha_2y_2) \alpha_2 -(\alpha_1 + \alpha_2) +(\varsigma  - \alpha_2y_2)v_1 +  y_2\alpha_2v_2$$
 
-忙了半天，我们终于可以开始求$$\alpha_2^{new,unc}$$了，现在我们开始通过求偏导数来得到$$\
-alpha_2^{new,unc}。
+忙了半天，我们终于可以开始求$$\alpha_2^{new,unc}$$了，现在我们开始通过求偏导数来得到$$\alpha_2^{new,unc}$$。
 
-\frac{\partial W}{\partial \alpha2} = K{11}\alpha2 + K{22}\alpha2 -2K{12}\alpha2 - K{11}\varsigma y2 + K{12}\varsigma y_2 +y_1y_2 -1 -v_1y_2 +y_2v_2 = 0$$
+$$\frac{\partial W}{\partial \alpha2} = K{11}\alpha2 + K{22}\alpha2 -2K{12}\alpha2 - K{11}\varsigma y2 + K{12}\varsigma y_2 +y_1y_2 -1 -v_1y_2 +y_2v_2 = 0$$
 
 整理上式有：$$(
 K{11} +K{22}-2K{12})\alpha_2 = y_2(y_2-y_1 + \varsigma K{11} - \varsigma K_{12} + v_1 - v_2) $$
@@ -167,26 +124,16 @@ SMO算法需要选择合适的两个变量做迭代，其余的变量做常量�
 ## 4.1 第一个变量的选择
 
 SMO算法称选择第一个变量为外层循环，这个变量需要选择在训练集中违反KKT条件最严重的样本点。对于每个样本点，要满足的KKT条件我们在第一节已经讲到了：
-
-
 $$
 \alpha_{i}^{*} = 0 \Rightarrow y_ig(x_i) \geq 1
 $$
-
-
-
 $$
 0 \leq \alpha_{i}^{*} \leq C \Rightarrow y_ig(x_i) =1
 $$
-
-
-
 $$
 \alpha_{i}^{*}= C \Rightarrow y_ig(x_i) \leq 1
 $$
-
-
-一般来说，我们首先选择违反$$0 \leq \alpha_{i}^{*} \leq C \Rightarrow y_ig(x_i) =1$$这个条件的点。如果这些支持向量都满足KKT条件，再选择违反$$\alpha_{i}^{*} = 0 \Rightarrow y_ig(x_i) \geq 1 和\alpha_{i}^{*}= C \Rightarrow y_ig(x_i) \leq 1$$的点。
+一般来说，我们首先选择违反$$0 \leq \alpha_{i}^{*} \leq C \Rightarrow y_ig(x_i) =1$$这个条件的点。如果这些支持向量都满足KKT条件，再选择违反$$\alpha_{i}^{*} = 0 \Rightarrow y_ig(x_i) \geq 1 $$和$$\alpha_{i}^{*}= C \Rightarrow y_ig(x_i) \leq 1$$的点。
 
 ## 4.2 第二个变量的选择
 
@@ -198,7 +145,7 @@ SMO算法称选择第二个变量为内层循环，假设我们在外层循环�
 
 在每次完成两个变量的优化之后，需要重新计算阈值b。当$$0 \leq \alpha_{1}^{new} \leq C$$时，我们有$$y_1 - \sum\limits_{i=1}^{m}\alpha_iy_iK_{i1} -b_1 = 0$$
 
-于是新的$$b_1^{new}为：b_1^{new} = y_1 - \sum\limits_{i=3}^{m}\alpha_iy_iK_{i1} - \alpha_{1}^{new}y_1K_{11} - \alpha_{2}^{new}y_2K_{21}$$
+于是新的$$b_1^{new}$$为：$$b_1^{new} = y_1 - \sum\limits_{i=3}^{m}\alpha_iy_iK_{i1} - \alpha_{1}^{new}y_1K_{11} - \alpha_{2}^{new}y_2K_{21}$$
 
 计算出$$E_1$$为：$$E_1 = g(x_1) - y_1 = \sum\limits_{i=3}^{m}\alpha_iy_iK_{i1} + \alpha_{1}^{old}y_1K_{11} + \alpha_{2}^{old}y_2K_{21} + b^{old} -y_1$$
 
@@ -233,36 +180,20 @@ $$\alpha_2^{k+1}= \begin{cases} H& {L \leq \alpha_2^{new,unc} > H}\ \alpha_2^{ne
 5\)按照4.3节的方法计算$$b^{k+1}$$和$$E_i$$
 
 6）在精度e范围内检查是否满足如下的终止条件：
-
-
 $$
 \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
-
-
-
 $$
 0 \leq \alpha_i \leq C, i =1,2...m
 $$
-
-
-
 $$
 \alpha_{i}^{k+1} = 0 \Rightarrow y_ig(x_i) \geq 1
 $$
-
-
-
 $$
 0 \leq \alpha_{i}^{k+1} \leq C \Rightarrow y_ig(x_i) = 1
 $$
-
-
-
 $$
 \alpha_{i}^{k+1}= C \Rightarrow y_ig(x_i) \leq 1
 $$
-
-
 7\)如果满足则结束，返回$$\alpha^{k+1}$$,否则转到步骤2）。
 

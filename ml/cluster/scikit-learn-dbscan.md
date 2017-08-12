@@ -22,7 +22,7 @@
 
 　　　　b\) 曼哈顿距离 “manhattan”：$$\sum\limits_{i=1}^{n}|x_i-y_i|$$
 
-　　　　c\) 切比雪夫距离“chebyshev”:$$max|x_i-y_i|  (i = 1,2,...n)$$
+　　　　c\) 切比雪夫距离“chebyshev”:$$max|x_i-y_i| (i = 1,2,...n)$$
 
 　　　　d\) 闵可夫斯基距离 “minkowski”:$$\sqrt[p]{\sum\limits_{i=1}^{n}(|x_i-y_i|)^p}$$p=1为曼哈顿距离， p=2为欧式距离。
 

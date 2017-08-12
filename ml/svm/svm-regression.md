@@ -25,113 +25,70 @@ $$err(x_i,y_i) =  \begin{cases} 0 & {|y_i - w \bullet \phi(x_i ) -b| \leq \epsil
 上一节我们已经得到了我们的损失函数的度量，现在可以可以定义我们的目标函数如下：$$min\;\; \frac{1}{2}||w||_2^2  \;\; s.t \;\; |y_i - w \bullet \phi(x_i ) -b| \leq \epsilon (i =1,2,...m)$$
 
 和SVM分类模型相似，回归模型也可以对每个样本$$(x_i,y_i)$$加入松弛变量$$\xi_i \geq 0$$, 但是由于我们这里用的是绝对值，实际上是两个不等式，也就是说两边都需要松弛变量，我们定义为$$\xi_i^{\lor}, \xi_i^{\land}$$, 则我们SVM回归模型的损失函数度量在加入松弛变量之后变为：
-
-
 $$
 min\;\; \frac{1}{2}||w||_2^2 + C\sum\limits_{i=1}^{m}(\xi_i^{\lor}+ \xi_i^{\land})
 $$
-
-
-
 $$
 s.t. \;\;\; -\epsilon - \xi_i^{\lor} \leq y_i - w \bullet \phi(x_i ) -b \leq \epsilon + \xi_i^{\land}
 $$
-
-
-
 $$
 \xi_i^{\lor} \geq 0,\;\; \xi_i^{\land} \geq 0 \;(i = 1,2,..., m)
 $$
-
-
 依然和SVM分类模型相似，我们可以用拉格朗日函数将目标优化函数变成无约束的形式，也就是拉格朗日函数的原始形式如下：
 
-$$L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land}) = \frac{1}{2}||w||_2^2 + C\sum\limits_{i=1}^{m}(\xi_i^{\lor}+ \xi_i^{\land}) + \sum\limits_{i=1}^{m}\alpha^{\lor}(-\epsilon - \xi_i^{\lor} -y_i + w \bullet \phi(x_i) + b) + \\ \sum\limits_{i=1}^{m}\alpha^{\land}(y_i - w \bullet \phi(x_i ) - b -\epsilon - \xi_i^{\land}) - \sum\limits_{i=1}^{m}\mu^{\lor}\xi_i^{\lor} - \sum\limits_{i=1}^{m}\mu^{\land}\xi_i^{\land}$$
+$$L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land}) = \frac{1}{2}||w||_2^2 + C\sum\limits_{i=1}^{m}(\xi_i^{\lor}+ \xi_i^{\land}) + \sum\limits_{i=1}^{m}\alpha^{\lor}(-\epsilon - \xi_i^{\lor} -y_i + w \bullet \phi(x_i) + b) + \sum\limits_{i=1}^{m}\alpha^{\land}(y_i - w \bullet \phi(x_i ) - b -\epsilon - \xi_i^{\land}) - \sum\limits_{i=1}^{m}\mu^{\lor}\xi_i^{\lor} - \sum\limits_{i=1}^{m}\mu^{\land}\xi_i^{\land}$$
 
 其中$$\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0$$,均为拉格朗日系数。
 
 # 3. SVM回归模型的目标函数的对偶形式
 
-上一节我们讲到了SVM回归模型的目标函数的原始形式,我们的目标是$$\underbrace{min}_{w,b,\xi_i^{\lor}, \xi_i^{\land}}\; \;\;\;\;\;\;\;\;\underbrace{max}_{\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0}\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
+上一节我们讲到了SVM回归模型的目标函数的原始形式,我们的目标是$$min(w,b,\xi_i^{\lor}, \xi_i^{\land})\; \;\;\;\;\;\;\;\;max(\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0)\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
 
-和SVM分类模型一样，这个优化目标也满足KKT条件，也就是说，我们可以通过拉格朗日对偶将我们的优化问题转化为等价的对偶问题来求解如下：$$\underbrace{max}_{\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0}\; \;\;\;\;\;\;\;\;\underbrace{min}_{w,b,\xi_i^{\lor}, \xi_i^{\land}}\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
+和SVM分类模型一样，这个优化目标也满足KKT条件，也就是说，我们可以通过拉格朗日对偶将我们的优化问题转化为等价的对偶问题来求解如下：$$max(\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0)\; \;\;\;\;\;\;\;\;min(w,b,\xi_i^{\lor}, \xi_i^{\land})\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
 
 我们可以先求优化函数对于w,b,$$\xi_i^{\lor}, \xi_i^{\land}$$的极小值, 接着再求拉格朗日乘子$$\alpha^{\lor}, \alpha^{\land}, \mu^{\lor}, \mu^{\land}$$的极大值。
 
 首先我们来求优化函数对于w,b,$$\xi_i^{\lor}, \xi_i^{\land}$$的极小值，这个可以通过求偏导数求得：
-
-
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})\phi(x_i)
 $$
-
-
-
 $$
 \frac{\partial L}{\partial b} = 0 \;\Rightarrow  \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0
 $$
-
-
-
 $$
 \frac{\partial L}{\partial \xi_i^{\lor}} = 0 \;\Rightarrow C-\alpha^{\lor}-\mu^{\lor} = 0
 $$
-
-
-
 $$
 \frac{\partial L}{\partial \xi_i^{\land}} = 0 \;\Rightarrow C-\alpha^{\land}-\mu^{\land} = 0
 $$
-
-
 好了，我们可以把上面4个式子带入$$L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$去消去w,b$$,\xi_i^{\lor}, \xi_i^{\land}$$了。
 
 看似很复杂，其实消除过程和系列第一篇第二篇文章类似，由于式子实在是冗长，这里我就不写出推导过程了，最终得到的对偶形式为：
-
-
 $$
-\underbrace{ max }_{\alpha^{\lor}, \alpha^{\land}}\; \sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}) - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij}
+max(\alpha^{\lor}, \alpha^{\land})\;\; \sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}) - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij}
 $$
-
-
-
 $$
 s.t. \; \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0
 $$
-
-
-
 $$
 0 < \alpha_i^{\lor} < C \; (i =1,2,...m)
 $$
-
-
-
 $$
 0 < \alpha_i^{\land} < C \; (i =1,2,...m)
 $$
-
-
 对目标函数取负号，求最小值可以得到和SVM分类模型类似的求极小值的目标函数如下：
-
-
 $$
-\underbrace{ min}_{\alpha^{\lor}, \alpha^{\land}}\; \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij} - \sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}
+min(\alpha^{\lor}, \alpha^{\land})\; \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij} - \sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}
 $$
-
 $$
 s.t. \; \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0
 $$
-
 $$
 0 < \alpha_i^{\lor} < C \; (i =1,2,...m)
 $$
-
 $$
 0 < \alpha_i^{\land} < C \; (i =1,2,...m)
 $$
-
-
 对于这个目标函数，我们依然可以用第四篇讲到的SMO算法来求出对应的$$\alpha^{\lor}, \alpha^{\land}$$，进而求出我们的回归模型系数w, b。
 
 # 4. SVM回归模型系数的稀疏性
@@ -140,12 +97,9 @@ $$
 $$
 \alpha_i^{\lor}(\epsilon + \xi_i^{\lor} + y_i - w \bullet \phi(x_i ) - b ) = 0
 $$
-
 $$
 \alpha_i^{\land}(\epsilon + \xi_i^{\land} - y_i + w \bullet \phi(x_i ) + b ) = 0
 $$
-
-
 根据松弛变量定义条件，如果$$|y_i - w \bullet \phi(x_i ) -b| < \epsilon$$，我们有$$\xi_i^{\lor} = 0, \xi_i^{\land}= 0$$，此时$$\epsilon + \xi_i^{\lor} + y_i - w \bullet \phi(x_i ) - b \neq 0, \epsilon + \xi_i^{\land} - y_i + w \bullet \phi(x_i ) + b \neq 0$$这样要满足对偶互补条件，只有$$\alpha_i^{\lor} = 0, \alpha_i^{\land} = 0$$。
 
 我们定义样本系数系数$$\beta_i =\alpha_i^{\land}-\alpha_i^{\lor}$$

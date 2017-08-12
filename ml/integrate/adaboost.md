@@ -58,9 +58,9 @@
 
 　　　　然后计算每个样本的相对误差$$e_{ki}= \frac{|y_i - G_k(x_i)|}{E_k}$$
 
-　　　　这里是误差损失为线性时的情况，如果我们用平方误差，则$$e_{ki}= \frac{(y_i - G_k(x_i))^2}{E_k^2},$$如果我们用的是指数误差，则$$e_{ki}= 1 - exp（\frac{-y_i + G_k(x_i))}{E_k}）$$
+　　　　这里是误差损失为线性时的情况，如果我们用平方误差，则$$e_{ki}= \frac{(y_i - G_k(x_i))^2}{E_k^2},$$如果我们用的是指数误差，则$$e_{ki}= 1 - exp(\frac{-y_i + G_k(x_i))}{E_k})$$
 
-　　　　最终得到第k个弱学习器的 误差率$$e_k =  \sum\limits_{i=1}^{m}w_{ki}e_{ki}$$
+　　　　最终得到第k个弱学习器的 误差率$$e_k = \sum\limits_{i=1}^{m}w_{ki}e_{ki}$$
 
 　　　　我们再来看看如何得到弱学习器权重系数$$\alpha$$。这里有：$$\alpha_k =\frac{e_k}{1-e_k}$$
 
@@ -86,21 +86,22 @@
 
 　　　　可见强学习器的确是通过前向分步学习算法一步步而得到的。
 
-　　　　Adaboost损失函数为指数函数，即定义损失函数为$$\underbrace{arg\;min\;}_{\alpha, G} \sum\limits_{i=1}^{m}exp(-y_if_{k}(x))$$
+　　　　Adaboost损失函数为指数函数，即定义损失函数为$$arg\;min\;(\alpha, G)\;\;\sum\limits_{i=1}^{m}exp(-y_if_{k}(x))$$
 
-　　　　利用前向分步学习算法的关系可以得到损失函数为$$(\alpha_k, G_k(x)) = \underbrace{arg\;min\;}_{\alpha, G}\sum\limits_{i=1}^{m}exp[(-y_i) (f_{k-1}(x) + \alpha G(x))]$$
+　　　　利用前向分步学习算法的关系可以得到损失函数为$$(\alpha_k, G_k(x)) = arg\;min\;(\alpha, G)\;\;\sum\limits_{i=1}^{m}exp[(-y_i)(f_{k-1}(x) + \alpha G(x))]$$
 
-　　　　令$$w_{ki}^{’} = exp(-y_if_{k-1}(x))$$, 它的值不依赖于$$\alpha$$, G,因此与最小化无关，仅仅依赖于$$f_{k-1}(x)$$,随着每一轮迭代而改变。
+　　　　令$$w_{ki}^{'} = exp(-y_if_{k-1}(x))$$, 它的值不依赖于$$\alpha$$, G,因此与最小化无关，仅仅依赖于$$f_{k-1}(x)$$,随着每一轮迭代而改变。
 
-　　　　将这个式子带入损失函数,损失函数转化为$$(\alpha_k, G_k(x)) = \underbrace{arg\;min\;}_{\alpha, G}\sum\limits_{i=1}^{m}w_{ki}^{’}exp[-y_i\alpha G(x)]$$
+　　　　将这个式子带入损失函数,损失函数转化为$$(\alpha_k, G_k(x)) = arg\;min\;(\alpha, G)\;\;\sum\limits_{i=1}^{m}w_{ki}^{'}exp[-y_i\alpha G(x)]$$
 
-　　　　首先，我们求$$G_k(x)$$.，可以得到$$G_k(x) = \underbrace{arg\;min\;}_{G}\sum\limits_{i=1}^{m}w_{ki}^{’}I(y_i \neq G(x_i))$$
+　　　　首先，我们求$$G_k(x)$$.，可以得到$$G_k(x) = arg\;min\;(G)\;\;\sum\limits_{i=1}^{m}w_{ki}^{'}I(y_i \neq G(x_i))$$
 
 　　　　将$$G_k(x)$$带入损失函数，并对$$\alpha$$求导，使其等于0，则就得到了$$\alpha_k = \frac{1}{2}log\frac{1-e_k}{e_k}$$
 
-　　　　其中，$$e_k$$即为我们前面的分类误差率。$$e_k = \frac{\sum\limits_{i=1}^{m}w_{ki}^{’}I(y_i \neq G(x_i))}{\sum\limits_{i=1}^{m}w_{ki}^{’}} = \sum\limits_{i=1}^{m}w_{ki}I(y_i \neq G(x_i))$$
+　　　　其中，$$e_k$$即为我们前面的分类误差率。$$e_k = \frac{\sum\limits_{i=1}^{m}w_{ki}^{'}I(y_i \neq G(x_i))}{\sum\limits_{i=1}^{m}w_{ki}^{'}} = \sum\limits_{i=1}^{m}w_{ki}I(y_i \neq G(x_i))$$
 
-　　　　最后看样本权重的更新。利用$$f_{k}(x) = f_{k-1}(x) + \alpha_kG_k(x)和w_{ki}^{’} = exp(-y_if_{k-1}(x))$$，即可得：$$w_{k+1,i}^{’} = w_{ki}^{’}exp[-y_i\alpha_kG_k(x)]$$
+　　　　最后看样本权重的更新。利用$$f_{k}(x) = f_{k-1}(x) + \alpha_kG_k(x)$$和$$w_{ki}^{'} = exp(-y_if_{k-1}(x))$$，即可得：
+$$w_{k+1,i}^{'} = w_{ki}^{'}exp[-y_i\alpha_kG_k(x)]$$
 
 　　　　这样就得到了我们第二节的样本权重更新公式。
 
@@ -156,9 +157,9 @@
 
 　　　　　　　　如果是平方误差，则$$e_{ki}= \frac{(y_i - G_k(x_i))^2}{E_k^2}$$
 
-　　　　　　　　如果是指数误差，则$$e_{ki}= 1 - exp（\frac{-y_i + G_k(x_i))}{E_k}）$$
+　　　　　　　　如果是指数误差，则$$e_{ki}= 1 - exp(\frac{-y_i + G_k(x_i))}{E_k})$$
 
-　　　　　　d\) 计算回归误差率$$e_k =  \sum\limits_{i=1}^{m}w_{ki}e_{ki}$$
+　　　　　　d\) 计算回归误差率$$e_k = \sum\limits_{i=1}^{m}w_{ki}e_{ki}$$
 
 　　　　　　c\) 计算弱学习器的系数$$\alpha_k =\frac{e_k}{1-e_k}$$
 

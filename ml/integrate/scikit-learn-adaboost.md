@@ -26,7 +26,7 @@ AdaBoostClassifier使用了两种Adaboost分类算法的实现，SAMME和SAMME.R
 
 如果是平方误差，则$$e_{ki}= \frac{(y_i - G_k(x_i))^2}{E_k^2}$$，
 
-如果是指数误差，则$$e_{ki}= 1 - exp（\frac{-y_i + G_k(x_i))}{E_k}）$$，
+如果是指数误差，则$$e_{ki}= 1 - exp(\frac{-y_i + G_k(x_i))}{E_k})$$，
 
 $$E_k$$为训练集上的最大误差$$E_k= max|y_i - G_k(x_i)|\;i=1,2...m$$
 
