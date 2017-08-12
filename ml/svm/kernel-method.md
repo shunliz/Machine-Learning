@@ -110,7 +110,7 @@ $$
 
 ## 3.4 Sigmoid核函数
 
-Sigmoid核函数（Sigmoid Kernel）也是线性不可分SVM常用的核函数之一，表达式为：$$K(x, z) = tanh（\gamma x \bullet z  + r)$$
+Sigmoid核函数（Sigmoid Kernel）也是线性不可分SVM常用的核函数之一，表达式为：$$K(x, z) = tanh(\gamma x \bullet z  + r)$$
 
 其中，$$\gamma$$, r都需要自己调参定义。
 
