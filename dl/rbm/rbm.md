@@ -30,13 +30,13 @@ RBM是基于基于能量的概率分布模型。怎么理解呢？分两部分�
 
 有了概率分布，我们现在来看条件分布
 
-$$\begin{align} P(h|v)  & =  \frac{P(h,v)}{P(v)}  \\& =  \frac{1}{P(v)}\frac{1}{Z}exp\{a^Tv + b^Th + h^TWv\} \\& = \frac{1}{Z'}exp\{b^Th + h^TWv\}  \\& =  \frac{1}{Z'}exp\{\sum\limits_{j=1}^{n_h}(b_j^Th_j + h_j^TW_{:,j}v_j)\} \\& =  \frac{1}{Z'} \prod\limits_{j=1}^{n_h}exp\{b_j^Th_j + h_j^TW_{:,j}v_j\} \end{align}$$
+$$\begin{aligned} P(h|v)  & =  \frac{P(h,v)}{P(v)}  \\& =  \frac{1}{P(v)}\frac{1}{Z}exp\{a^Tv + b^Th + h^TWv\} \\& = \frac{1}{Z'}exp\{b^Th + h^TWv\}  \\& =  \frac{1}{Z'}exp\{\sum\limits_{j=1}^{n_h}(b_j^Th_j + h_j^TW_{:,j}v_j)\} \\& =  \frac{1}{Z'} \prod\limits_{j=1}^{n_h}exp\{b_j^Th_j + h_j^TW_{:,j}v_j\} \end{aligned}$$
 
 其中Z'为新的归一化系数，表达式为：$$Z' = \frac{1}{P(v)}\frac{1}{Z}exp{a^Tv}$$
 
 同样的方式，我们也可以求出P\(v\|h\),这里就不再列出了。
 
-有了条件概率分布，现在我们来看看RBM的激活函数，提到神经网络，我们都绕不开激活函数，但是上面我们并没有提到。由于使用的是能量概率模型，RBM的基于条件分布的激活函数是很容易推导出来的。我们以$$P(h_j=1|v)$$为例推导如下。$$\begin{align} P(h_j =1|v)  &  = \frac{P(h_j =1|v)}{P(h_j =1|v) + P(h_j =0|v) } \\& =   \frac{exp\{b_j + W_{:,j}v_j\}}{exp\{0\} + exp\{b_j + W_{:,j}v_j\}} \\& = \frac{1}{1+ exp\{-(b_j + W_{:,j}v_j)\}}\\& = sigmoid(b_j + W_{:,j}v_j) \end{align}$$
+有了条件概率分布，现在我们来看看RBM的激活函数，提到神经网络，我们都绕不开激活函数，但是上面我们并没有提到。由于使用的是能量概率模型，RBM的基于条件分布的激活函数是很容易推导出来的。我们以$$P(h_j=1|v)$$为例推导如下。$$\begin{aligned} P(h_j =1|v)  &  = \frac{P(h_j =1|v)}{P(h_j =1|v) + P(h_j =0|v) } \\& =   \frac{exp\{b_j + W_{:,j}v_j\}}{exp\{0\} + exp\{b_j + W_{:,j}v_j\}} \\& = \frac{1}{1+ exp\{-(b_j + W_{:,j}v_j)\}}\\& = sigmoid(b_j + W_{:,j}v_j) \end{aligned}$$
 
 从上面可以看出， RBM里从可见层到隐藏层用的其实就是sigmoid激活函数。同样的方法，我们也可以得到隐藏层到可见层用的也是sigmoid激活函数。即：$$P(v_j =1|h) = sigmoid(a_j + W_{:,j}h_j)$$
 
@@ -48,11 +48,11 @@ RBM模型的关键就是求出我们模型中的参数W,a,b。如果求出呢？
 
 对于优化过程，我们是首先想到的当然是梯度下降法来迭代求出W,a,b。我们首先来看单个样本的梯度计算, 单个样本的损失函数为：-ln\(P\(v\)\), 我们先看看-ln\(P\(v\)\)具体的内容, ：
 
-$$\begin{align} -ln(P(v))  & = -ln(\frac{1}{Z}\sum\limits_he^{-E(v,h)}) \\& =  lnZ - ln(\sum\limits_he^{-E(v,h)})  \\& = ln(\sum\limits_{v,h}e^{-E(v,h)}) - ln(\sum\limits_he^{-E(v,h)}) \end{align}$$
+$$\begin{aligned} -ln(P(v))  & = -ln(\frac{1}{Z}\sum\limits_he^{-E(v,h)}) \\& =  lnZ - ln(\sum\limits_he^{-E(v,h)})  \\& = ln(\sum\limits_{v,h}e^{-E(v,h)}) - ln(\sum\limits_he^{-E(v,h)}) \end{aligned}$$
 
 我们以$$a_i$$的梯度计算为例：
 
-$$\begin{align}  \frac{\partial (-ln(P(v)))}{\partial a_i} & = \frac{1}{\partial a_i} \partial{ln(\sum\limits_{v,h}e^{-E(v,h)})} -  \frac{1}{\partial a_i}  \partial{ln(\sum\limits_he^{-E(v,h)})} \\& = -\frac{1}{\sum\limits_{v,h}e^{-E(v,h)}}\sum\limits_{v,h}e^{-E(v,h)}\frac{\partial E(v,h)}{\partial a_i} +  \frac{1}{\sum\limits_{h}e^{-E(v,h)}}\sum\limits_{h}e^{-E(v,h)}\frac{\partial E(v,h)}{\partial a_i}  \\& = \sum\limits_{h} P(h|v)\frac{\partial E(v,h)}{\partial a_i}  - \sum\limits_{v,h}P(h,v)\frac{\partial E(v,h)}{\partial a_i} \\& = - \sum\limits_{h} P(h|v)v_i  + \sum\limits_{v,h}P(h,v)v_i \\& = - \sum\limits_{h} P(h|v)v_i  + \sum\limits_{v}P(v)\sum\limits_{h}P(h|v)v_i  \\& = \sum\limits_{v}P(v)v_i - v_i \end{align}$$
+$$\begin{aligned}  \frac{\partial (-ln(P(v)))}{\partial a_i} & = \frac{1}{\partial a_i} \partial{ln(\sum\limits_{v,h}e^{-E(v,h)})} -  \frac{1}{\partial a_i}  \partial{ln(\sum\limits_he^{-E(v,h)})} \\& = -\frac{1}{\sum\limits_{v,h}e^{-E(v,h)}}\sum\limits_{v,h}e^{-E(v,h)}\frac{\partial E(v,h)}{\partial a_i} +  \frac{1}{\sum\limits_{h}e^{-E(v,h)}}\sum\limits_{h}e^{-E(v,h)}\frac{\partial E(v,h)}{\partial a_i}  \\& = \sum\limits_{h} P(h|v)\frac{\partial E(v,h)}{\partial a_i}  - \sum\limits_{v,h}P(h,v)\frac{\partial E(v,h)}{\partial a_i} \\& = - \sum\limits_{h} P(h|v)v_i  + \sum\limits_{v,h}P(h,v)v_i \\& = - \sum\limits_{h} P(h|v)v_i  + \sum\limits_{v}P(v)\sum\limits_{h}P(h|v)v_i  \\& = \sum\limits_{v}P(v)v_i - v_i \end{aligned}$$
 
 其中用到了:$$\sum\limits_{h}P(h|v)=1$$
 
