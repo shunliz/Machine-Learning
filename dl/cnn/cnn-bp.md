@@ -172,9 +172,9 @@ d-3\) 如果当前是池化层：$$\delta^{i,l} =  upsample(\delta^{i,l+1}) \odo
 
 2-2\) for l = 2 to L，根据下面2种情况更新第l层的$$W^l,b^l$$:
 
-2-2-1\) 如果当前是全连接层：$$W^l = W^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}(a^{i, l-1})^T，b^l = b^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}$$
+2-2-1\) 如果当前是全连接层：$$W^l = W^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}(a^{i, l-1})^T$$ $$b^l = b^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}$$
 
-2-2-2\) 如果当前是卷积层，对于每一个卷积核有：$$W^l = W^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}* rot180(a^{i, l-1})，b^l = b^l -\alpha \sum\limits_{i=1}^m \sum\limits_{u,v}(\delta^{i,l})_{u,v}$$
+2-2-2\) 如果当前是卷积层，对于每一个卷积核有：$$W^l = W^l -\alpha \sum\limits_{i=1}^m \delta^{i,l}* rot180(a^{i, l-1}), b^l = b^l -\alpha \sum\limits_{i=1}^m \sum\limits_{u,v}(\delta^{i,l})_{u,v}$$
 
 2-3\) 如果所有W，b的变化值都小于停止迭代阈值$$\epsilon$$，则跳出迭代循环到步骤3。
 
