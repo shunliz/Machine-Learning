@@ -30,7 +30,7 @@
 
 这样求解W,b的梯度就简单了：$$\frac{\partial J(W,b,x,y)}{\partial W^L} = \frac{\partial J(W,b,x,y)}{\partial z^L}\frac{\partial z^L}{\partial W^L} =(a^L-y) (a^{L-1})^T\odot \sigma^{'}(z)$$$$\frac{\partial J(W,b,x,y)}{\partial b^L} = \frac{\partial J(W,b,x,y)}{\partial z^L}\frac{\partial z^L}{\partial b^L} =(a^L-y)\odot \sigma^{'}(z^L)$$
 
-注意上式中有一个符号$$\odot$$,它代表Hadamard积，对于两个维度相同的向量A$$（a_1,a_2,...a_n）^T$$和B$$（b_1,b_2,...b_n）^T$$,则$$A \odot B = (a_1b_1, a_2b_2,...a_nb_n)^T$$。
+注意上式中有一个符号$$\odot$$,它代表Hadamard积，对于两个维度相同的向量A$$(a_1,a_2,...a_n)^T$$和B$$(b_1,b_2,...b_n)^T$$,则$$A \odot B = (a_1b_1, a_2b_2,...a_nb_n)^T$$。
 
 我们注意到在求解输出层的W,b的时候，有公共的部分$$\frac{\partial J(W,b,x,y)}{\partial z^L}$$，因此我们可以把公共的部分即对$$z^L$$先算出来，记为：$$\delta^L = \frac{\partial J(W,b,x,y)}{\partial z^L} = (a^L-y)\odot \sigma^{'}(z^L)$$
 
