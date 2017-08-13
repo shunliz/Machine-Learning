@@ -100,9 +100,9 @@
 
  　　　　　  b\) 如果第l层是池化层,则输出为$$a^l= pool(a^{l-1})$$, 这里的pool指按照池化区域大小k和池化标准将输入张量缩小的过程。
 
-　　　　　　c\) 如果第l层是全连接层,则输出为$$a^l= \sigma(z^l) = \sigma(W^la^{l-1} +b^l)$$
+　　　　　　c\) 如果第l层是全连接层,则输出为$$a^l= \sigma(z^l) =\sigma(W^la^{l-1} +b^l)$$
 
-　　　　4\)对于输出层第L层:$$a^L= softmax(z^L) = softmax(W^La^{L-1} +b^L)$$
+　　　　4\)对于输出层第L层:$$a^L=softmax(z^L)= softmax(W^La^{L-1}+b^L)$$
 
 
 
