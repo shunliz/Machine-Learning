@@ -54,7 +54,7 @@ $$\frac{\partial J(W,b,x,y)}{\partial b^l} = \frac{\partial J(W,b)}{\partial z^l
 
 如果是Average，则进行平均：转换后的矩阵为：$$\left( \begin{array}{ccc} 0.5&0.5&2&2 \\ 0.5&0.5&2&2 \\ 1&1&1.5&1.5 \\ 1&1&1.5&1.5 \end{array} \right)$$
 
-这样我们就得到了上一层 $$\frac{\partial J(W,b)}{\partial a_k^{l-1}}$$的值，要得到$$\delta_k^{l-1}：\delta_k^{l-1} = \frac{\partial J(W,b)}{\partial a_k^{l-1}} \frac{\partial  a_k^{l-1}}{\partial z_k^{l-1}} = upsample(\delta_k^l) \odot \sigma^{'}(z_k^{l-1})$$
+这样我们就得到了上一层 $$\frac{\partial J(W,b)}{\partial a_k^{l-1}}$$的值，要得到$$\delta_k^{l-1}$$：$$\delta_k^{l-1} = \frac{\partial J(W,b)}{\partial a_k^{l-1}} \frac{\partial  a_k^{l-1}}{\partial z_k^{l-1}} = upsample(\delta_k^l) \odot \sigma^{'}(z_k^{l-1})$$
 
 其中，upsample函数完成了池化误差矩阵放大与误差重新分配的逻辑。
 
@@ -96,7 +96,7 @@ $$z_{22} = a_{22}w_{11} + a_{23}w_{12} + a_{32}w_{21} +   a_{33}w_{22}$$
 
 比如对于$$a_{11}$$的梯度，由于在4个等式中$$a_{11}$$只和$$z_{11}$$有乘积关系，从而我们有：$$\nabla a_{11} = \delta_{11}w_{11}$$
 
-对于$$a_{12}$$的梯度，由于在4个等式中$$a_{12}$$和$$z_{12}，z_{11}$$有乘积关系，从而我们有：$$\nabla a_{12} = \delta_{11}w_{12} + \delta_{12}w_{11}$$
+对于$$a_{12}$$的梯度，由于在4个等式中$$a_{12}$$和$$z_{12}, z_{11}$$有乘积关系，从而我们有：$$\nabla a_{12} = \delta_{11}w_{12} + \delta_{12}w_{11}$$
 
 同样的道理我们得到：
 

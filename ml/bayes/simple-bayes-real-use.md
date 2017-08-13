@@ -24,51 +24,51 @@ _3、计算训练样本中每个类别的频率_
 
 用训练样本中真实账号和不真实账号数量分别除以一万，得到：
 
-![](http://latex.codecogs.com/gif.latex?P%28C=0%29=8900/100000=0.89)
+P(C=0)=8900/100000=0.89
 
-![](http://latex.codecogs.com/gif.latex?P%28C=1%29=110/100000=0.11)
+P(C=1)=110/100000=0.11
 
 _4、计算每个类别条件下各个特征属性划分的频率_
 
-![](http://latex.codecogs.com/gif.latex?P%28a_1<=0.05|C=0%29=0.3)
+$$P(a_1<=0.05|C=0)=0.3$$
 
-![](http://latex.codecogs.com/gif.latex?P%280.05<a_1<0.2|C=0%29=0.5)
+$$P(0.05<a_1<0.2|C=0)=0.5$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_1>0.2|C=0%29=0.2)
+$$P(a_1>0.2|C=0)=0.2$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_1<=0.05|C=1%29=0.8)
+$$P(a_1<0.05|C=1)=0.8$$
 
-![](http://latex.codecogs.com/gif.latex?P%280.05<a_1<0.2|C=1%29=0.1)
+$$P(0.05<a_1<0.2|C=1)=0.1$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_1>0.2|C=1%29=0.1)
+$$P(a_1>0.2|C=1)=0.1$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_2<=0.1|C=0%29=0.1)
+$$P(a_2<=0.1|C=0)=0.1$$
 
-![](http://latex.codecogs.com/gif.latex?P%280.1<a_2<0.8|C=0%29=0.7)
+$$P(0.1<a_2<0.8|C=0)=0.7$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_2>0.8|C=0%29=0.2)
+$$P(0.1<a_2>0.8|C=0)=0.2$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_2<=0.1|C=1%29=0.7)
+$$P(a_2<=0.1|C=1)=0.7$$
 
-![](http://latex.codecogs.com/gif.latex?P%280.1<a_2<0.8|C=1%29=0.2)
+$$P(0.1<a_2<=0.8|C=1)=0.2$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_2>0.2|C=1%29=0.1)
+$$P(a_2>0.2|C=1)=0.1$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_3=0|C=0%29=0.2)
+$$P(a_3=0|C=0)=0.2$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_3=1|C=0%29=0.8)
+$$P(a_3=1|C=0)=0.8$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_3=0|C=1%29=0.9)
+$$P(a_3=0|C=1)=0.9$$
 
-![](http://latex.codecogs.com/gif.latex?P%28a_3=1|C=1%29=0.1)
+$$P(a_3=1|C=1)=0.1$$
 
 _5、使用分类器进行鉴别_
 
 下面我们使用上面训练得到的分类器鉴别一个账号，这个账号使用非真实头像，日志数量与注册天数的比率为0.1，好友数与注册天数的比率为0.2。
 
-![](http://latex.codecogs.com/gif.latex?P%28C=0%29P%28x|C=0%29=P%28C=0%29P%280.05<a_1<0.2|C=0%29P%280.1<a_2<0.8|C=0%29P%28a_3=0|C=0%29=0.89*0.5*0.7*0.2=0.0623)
+$$P(C=0)P(x|C=0)=P(C=0)P(0.05<a_1<0.2|C=0)P(0.1<a_2<0.8|C=0)P(a_3=0|C=0)=0.89*0.5*0.7*0.2=0.0623$$
 
-![](http://latex.codecogs.com/gif.latex?P%28C=1%29P%28x|C=1%29=P%28C=1%29P%280.05<a_1<0.2|C=1%29P%280.1<a_2<0.8|C=1%29P%28a_3=0|C=1%29=0.11*0.1*0.2*0.9=0.00198)
+$$P(C=1)P(x|C=1)=P(C=1)P(0.05<a_1<0.2|C=1)P(0.1<a_2<0.8|C=1)P(a_3=0|C=1)=0.11*0.1*0.2*0.9=0.00198$$
 
   可以看到，虽然这个用户没有使用真实头像，但是通过分类器的鉴别，更倾向于将此账号归入真实账号类别。这个例子也展示了当特征属性充分多时，朴素贝叶斯分类对个别属性的抗干扰性。
 
