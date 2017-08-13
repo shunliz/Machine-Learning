@@ -12,7 +12,7 @@
 
 　　　　假如我们的每个样本的损失函数是均方差损失函数,则所有的m个样本的损失函数为：$$J(W,b) = \frac{1}{2m}\sum\limits_{i=1}^{m}||a^L-y||_2^2$$
 
-　　　　则加上了L2正则化后的损失函数是：$$J(W,b) = \frac{1}{2m}\sum\limits_{i=1}^{m}||a^L-y||_2^2 + \frac{\lambda}{2m}\sum\limits_{l=2}^L||w||_2^2$$
+　　　　则加上了L2正则化后的损失函数是：$$J(W,b) =\frac{1}{2m}\sum\limits_{i=1}^{m}||a^L-y||_2^2 + \frac{\lambda}{2m}\sum\limits_{l=2}^L||w||_2^2$$
 
 　　　　其中,$$\lambda$$即我们的正则化超参数，实际使用时需要调参。而w为所有权重矩阵W的所有列向量。
 
