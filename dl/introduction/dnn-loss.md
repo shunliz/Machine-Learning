@@ -28,7 +28,7 @@ $$\sigma(z)$$的函数图像如下：
 
 使用了交叉熵损失函数，就能解决Sigmoid函数导数变化大多数时候反向传播算法慢的问题吗？我们来看看当使用交叉熵时，我们各层$$\delta^l$$的梯度情况。
 
-$$\begin{align} \delta^l  & = \frac{\partial J(W,b,a^l,y)}{\partial z^l} \\& = -y\frac{1}{a^l}(a^l)(1-a^l) + (1-y) \frac{1}{1-a^l}(a^l)(1-a^l) \\& = -y(1-a^l) + (1-y)a^l \\& = a^l-y \end{align}$$
+$$\begin{aligned} \delta^l  & = \frac{\partial J(W,b,a^l,y)}{\partial z^l} \\& = -y\frac{1}{a^l}(a^l)(1-a^l) + (1-y) \frac{1}{1-a^l}(a^l)(1-a^l) \\& = -y(1-a^l) + (1-y)a^l \\& = a^l-y \end{aligned}$$
 
 可见此时我们的$$\delta^l$$梯度表达式里面已经没有了$$\sigma ^{'}(z)$$，作为一个特例，回顾一下我们上一节均方差损失函数时在$$\delta^L$$梯度，$$\frac{\partial J(W,b,x,y)}{\partial z^L} = (a^L-y) \odot \sigma^{'}(z)$$
 
@@ -62,7 +62,7 @@ DNN分类模型要求是输出层神经元输出的值在0到1之间，同时所
 
 其中i即为训练样本真实的类别序号。
 
-可见损失函数只和真实类别对应的输出有关，这样假设真实类别是第i类，则其他不属于第i类序号对应的神经元的梯度导数直接为0。对于真实类别第i类，它的$$W_i^L$$对应的梯度计算为：$$\begin{align} \frac{\partial J(W,b,a^L,y)}{\partial W_i^L}& = \frac{\partial J(W,b,a^L,y)}{\partial a_i^L}\frac{\partial a_i^L}{\partial z_i^L}\frac{\partial z_i^L}{\partial w_i^L} \\& = -\frac{1}{a_i^L}\frac{(e^{z_i^L})\sum\limits_{j=1}^{n_L}e^{z_j^L}-e^{z_i^L}e^{z_i^L}}{(\sum\limits_{j=1}^{n_L}e^{z_j^L)^2}} a_i^{L-1} \\& = -\frac{1}{a_i^L} (\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}-\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}) a_i^{L-1} \& = -\frac{1}{a_i^L} a_i^L(1- a_i^L) a_i^{L-1} \\& = (a_i^L -1)  a_i^{L-1} \end{align}$$
+可见损失函数只和真实类别对应的输出有关，这样假设真实类别是第i类，则其他不属于第i类序号对应的神经元的梯度导数直接为0。对于真实类别第i类，它的$$W_i^L$$对应的梯度计算为：$$\begin{aligned} \frac{\partial J(W,b,a^L,y)}{\partial W_i^L}& = \frac{\partial J(W,b,a^L,y)}{\partial a_i^L}\frac{\partial a_i^L}{\partial z_i^L}\frac{\partial z_i^L}{\partial w_i^L} \\& = -\frac{1}{a_i^L}\frac{(e^{z_i^L})\sum\limits_{j=1}^{n_L}e^{z_j^L}-e^{z_i^L}e^{z_i^L}}{(\sum\limits_{j=1}^{n_L}e^{z_j^L)^2}} a_i^{L-1} \\& = -\frac{1}{a_i^L} (\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}-\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}\frac{e^{z_i^L}}{\sum\limits_{j=1}^{n_L}e^{z_j^L}}) a_i^{L-1} \& = -\frac{1}{a_i^L} a_i^L(1- a_i^L) a_i^{L-1} \\& = (a_i^L -1)  a_i^{L-1} \end{aligned}$$
 
 同样的可以得到$$b_i^L$$的梯度表达式为：$$\frac{\partial J(W,b,a^L,y)}{\partial b_i^L} = a_i^L -1$$
 
