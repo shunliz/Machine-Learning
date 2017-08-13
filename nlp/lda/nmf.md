@@ -20,15 +20,15 @@
 
 # 2. NMF的优化思路
 
-NMF期望找到这样的两个矩阵W,H，使WH的矩阵乘积得到的矩阵对应的每个位置的值和原矩阵A对应位置的值相比误差尽可能的小。用数学的语言表示就是：$$\underbrace{arg\;min}_{W,H}\frac{1}{2}\sum\limits_{i,j}(A_{ij}-(WH)_{ij})^2$$
+NMF期望找到这样的两个矩阵W,H，使WH的矩阵乘积得到的矩阵对应的每个位置的值和原矩阵A对应位置的值相比误差尽可能的小。用数学的语言表示就是：$$arg\;min(W,H)\;\;\frac{1}{2}\sum\limits_{i,j}(A_{ij}-(WH)_{ij})^2$$
 
-如果完全用矩阵表示，则为：$$\underbrace{arg\;min}_{W,H}\frac{1}{2}||A-WH||_{Fro}^2$$
+如果完全用矩阵表示，则为：$$arg\;min(W,H)\;\;\frac{1}{2}||A-WH||_{Fro}^2$$
 
 其中，$$||*||_{Fro}$$为Frobenius$范数。
 
 当然对于这个式子，我们也可以加上L1和L2的正则化项如下：
 
-$$\underbrace{arg\;min}_{W,H}\frac{1}{2}||A-WH||_{Fro}^2 +\alpha\rho|| W||_1+\alpha\rho|| H||_1+\frac{\alpha(1-\rho)}{2}|| W||_{Fro}^2 + \frac{\alpha(1-\rho)}{2}|| H||_{Fro}^2$$
+$$arg\;min(W,H)\;\;\frac{1}{2}||A-WH||_{Fro}^2 +\alpha\rho|| W||_1+\alpha\rho|| H||_1+\frac{\alpha(1-\rho)}{2}|| W||_{Fro}^2 + \frac{\alpha(1-\rho)}{2}|| H||_{Fro}^2$$
 
 其中，$$\alpha$$为L1&L2正则化参数，而$$\rho$$为L1正则化占总正则化项的比例。$$||*||_1$$为L1范数。
 

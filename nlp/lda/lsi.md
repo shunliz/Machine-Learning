@@ -24,7 +24,7 @@ $$A_{m \times n} = U_{m \times m}\Sigma_{m \times n} V^T_{n \times n}$$
 
 　　　　有时为了降低矩阵的维度到k，SVD的分解可以近似的写为：
 
-$$A_{m \times n} \approx U_{m \times k}\Sigma_{k \times k} V^T_{k \times n}$$
+$$A_{m \times n} \approx U_{m \times k}\Sigma_{k \times k}V^T_{k \times n}$$
 
 　　　　如果把上式用到我们的主题模型，则SVD可以这样解释：我们输入的有m个文本，每个文本有n个词。而$$A_{ij}$$则对应第i个文本的第j个词的特征值，这里最常用的是基于预处理后的标准化TF-IDF值。k是我们假设的主题数，一般要比文本数少。SVD分解后，$$U_{il}$$对应第i个文本和第l个主题的相关度。$$V_{jm}$$对应第j个词和第m个词义的相关度。$$\Sigma_{lm}$$对应第l个主题和第m个词义的相关度。
 

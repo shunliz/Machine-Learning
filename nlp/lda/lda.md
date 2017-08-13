@@ -28,19 +28,19 @@
 
 　　　　仔细观察Beta分布和二项分布，可以发现两者的密度函数很相似，区别仅仅在前面的归一化的阶乘项。那么它如何做到先验分布和后验分布的形式一样呢？后验分布$$P(p|n,k,\alpha,\beta)$$推导如下：
 
-$$\begin{align} P(p|n,k,\alpha,\beta) & \propto P(k|n,p)P(p|\alpha,\beta) \\ & = P(k|n,p)P(p|\alpha,\beta) \\& = Binom(k|n,p) Beta(p|\alpha,\beta) \\ &= {n \choose k}p^k(1-p)^{n-k} \times  \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{{\beta-1}} \\& \propto p^{k+\alpha-1}(1-p)^{n-k + \beta -1}　 \end{align}$$
+$$\begin{aligned} P(p|n,k,\alpha,\beta)& \propto P(k|n,p)P(p|\alpha,\beta) \\ & = P(k|n,p)P(p|\alpha,\beta) \\& =Binom(k|n,p) Beta(p|\alpha,\beta) \\ &={n \choose k}p^k(1-p)^{n-k} \times \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{{\beta-1}} \\& \propto p^{k+\alpha-1}(1-p)^{n-k + \beta -1}\end{aligned}$$
 
 　　　　将上面最后的式子归一化以后，得到我们的后验概率为：$$P(p|n,k,\alpha,\beta) = \frac{\Gamma(\alpha + \beta + n)}{\Gamma(\alpha + k)\Gamma(\beta + n - k)}p^{k+\alpha-1}(1-p)^{n-k + \beta -1}$$
 
-　　　　可见我们的后验分布的确是Beta分布，而且我们发现：$$Beta(p|\alpha,\beta) + BinomCount(k,n-k) = Beta(p|\alpha + k,\beta +n-k)$$
+　　　　可见我们的后验分布的确是Beta分布，而且我们发现：$$Beta(p|\alpha,\beta) + BinomCount(k,n-k) =Beta(p|\alpha + k,\beta +n-k)$$
 
 　　　　这个式子完全符合我们在上一节好人坏人例子里的情况，我们的认知会把数据里的好人坏人数分别加到我们的先验分布上，得到后验分布。　
 
-　　　　我们在来看看Beta分布$$Beta(p|\alpha,\beta)$$的期望:$$\begin{align} E(Beta(p|\alpha,\beta)) & = \int_{0}^{1}tBeta(p|\alpha,\beta)dt \\& =  \int_{0}^{1}t \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}t^{\alpha-1}(1-t)^{{\beta-1}}dt \\& = \int_{0}^{1}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}t^{\alpha}(1-t)^{{\beta-1}}dt \end{align}$$
+　　　　我们在来看看Beta分布$$Beta(p|\alpha,\beta)$$的期望:$$\begin{aligned} E(Beta(p|\alpha,\beta)) & = \int_{0}^{1}tBeta(p|\alpha,\beta)dt \\& = \int_{0}^{1}t\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}t^{\alpha-1}(1-t)^{{\beta-1}}dt \\& =\int_{0}^{1}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}t^{\alpha}(1-t)^{{\beta-1}}dt\end{aligned}$$
 
 　　　　由于上式最右边的乘积对应Beta分布$$Beta(p|\alpha+1,\beta),$$因此有：$$\int_{0}^{1}\frac{\Gamma(\alpha + \beta+1)}{\Gamma(\alpha+1)\Gamma(\beta)}p^{\alpha}(1-p)^{{\beta-1}} =1$$
 
-　　　　这样我们的期望可以表达为：$$E(Beta(p|\alpha,\beta)) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha + \beta+1)} =  \frac{\alpha}{\alpha + \beta}$$
+　　　　这样我们的期望可以表达为：$$E(Beta(p|\alpha,\beta)) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}\frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha + \beta+1)} = \frac{\alpha}{\alpha + \beta}$$
 
 　　　　这个结果也很符合我们的思维方式。
 
@@ -56,7 +56,7 @@ $$\begin{align} P(p|n,k,\alpha,\beta) & \propto P(k|n,p)P(p|\alpha,\beta) \\ & 
 
 　　　　一般意义上的K维Dirichlet 分布表达式为：$$Dirichlet(\vec p| \vec \alpha) = \frac{\Gamma(\sum\limits_{k=1}^K\alpha_k)}{\prod_{k=1}^K\Gamma(\alpha_k)}\prod_{k=1}^Kp_k^{\alpha_k-1}$$
 
-　　　　而多项分布和Dirichlet 分布也满足共轭关系，这样我们可以得到和上一节类似的结论：$$Dirichlet(\vec p|\vec \alpha) + MultiCount(\vec m) = Dirichlet(\vec p|\vec \alpha + \vec m)$$
+　　　　而多项分布和Dirichlet 分布也满足共轭关系，这样我们可以得到和上一节类似的结论：$$Dirichlet(\vec p|\vec \alpha) + MultiCount(\vec m) =Dirichlet(\vec p|\vec \alpha + \vec m)$$
 
 　　　　对于Dirichlet 分布的期望，也有和Beta分布类似的性质：$$E(Dirichlet(\vec p|\vec \alpha)) = (\frac{\alpha_1}{\sum\limits_{k=1}^K\alpha_k}, \frac{\alpha_2}{\sum\limits_{k=1}^K\alpha_k},...,\frac{\alpha_K}{\sum\limits_{k=1}^K\alpha_k})$$
 
@@ -72,29 +72,29 @@ $$\begin{align} P(p|n,k,\alpha,\beta) & \propto P(k|n,p)P(p|\alpha,\beta) \\ & 
 
 ![](http://images2015.cnblogs.com/blog/1042406/201705/1042406-20170517134339588-825441177.png)
 
-　　　　LDA假设文档主题的先验分布是Dirichlet分布，即对于任一文档d, 其主题分布$$\theta_d$$为：$$\theta_d = Dirichlet(\vec \alpha)$$
+　　　　LDA假设文档主题的先验分布是Dirichlet分布，即对于任一文档d, 其主题分布$$\theta_d$$为：$$\theta_d =Dirichlet(\vec \alpha)$$
 
 　　　　其中，$$\alpha$$为分布的超参数，是一个K维向量。
 
-　　　　LDA假设主题中词的先验分布是Dirichlet分布，即对于任一主题k, 其词分布$$\beta_k$$为：$$\beta_k= Dirichlet(\vec \eta)$$
+　　　　LDA假设主题中词的先验分布是Dirichlet分布，即对于任一主题k, 其词分布$$\beta_k$$为：$$\beta_k=Dirichlet(\vec \eta)$$
 
 　　　　其中，$$\eta$$为分布的超参数，是一个V维向量。V代表词汇表里所有词的个数。
 
 　　　　对于数据中任一一篇文档d中的第n个词，我们可以从主题分布$$\theta_d$$中得到它的主题编号$$z_{dn}$$的分布为：$$z_{dn} = multi(\theta_d)$$
 
-　　　　而对于该主题编号，得到我们看到的词$$w_{dn}$$的概率分布为：$$ w_{dn} = multi(\beta_{z_{dn}})$$
+　　　　而对于该主题编号，得到我们看到的词$$w_{dn}$$的概率分布为：$$w_{dn} = multi(\beta_{z_{dn}})$$
 
 　　　　理解LDA主题模型的主要任务就是理解上面的这个模型。这个模型里，我们有M个文档主题的Dirichlet分布，而对应的数据有M个主题编号的多项分布，这样$$(\alpha \to \theta_d \to \vec z_{d})$$就组成了Dirichlet-multi共轭，可以使用前面提到的贝叶斯推断的方法得到基于Dirichlet分布的文档主题后验分布。
 
 　　　　如果在第d个文档中，第k个主题的词的个数为：$$n_d^{(k)}$$, 则对应的多项分布的计数可以表示为$$\vec n_d = (n_d^{(1)}, n_d^{(2)},...n_d^{(K)})$$
 
-　　　　利用Dirichlet-multi共轭，得到$$\theta_d$$的后验分布为：$$Dirichlet(\theta_d | \vec \alpha + \vec n_d)$$
+　　　　利用Dirichlet-multi共轭，得到$$\theta_d$$的后验分布为：$$Dirichlet(\theta_d | \vec \alpha +\vec n_d)$$
 
 　　　　同样的道理，对于主题与词的分布，我们有K个主题与词的Dirichlet分布，而对应的数据有K个主题编号的多项分布，这样$$(\eta \to \beta_k \to \vec w_{(k)})$$就组成了Dirichlet-multi共轭，可以使用前面提到的贝叶斯推断的方法得到基于Dirichlet分布的主题词的后验分布。
 
 　　　　如果在第k个主题中，第v个词的个数为：$$n_k^{(v)}$$, 则对应的多项分布的计数可以表示为$$\vec n_k = (n_k^{(1)}, n_k^{(2)},...n_k^{(V)})$$
 
-　　　　利用Dirichlet-multi共轭，得到$$\beta_k$$的后验分布为：$$Dirichlet(\beta_k | \vec \eta+ \vec n_k)$$
+　　　　利用Dirichlet-multi共轭，得到$$\beta_k$$的后验分布为：$$Dirichlet(\beta_k | \vec \eta+\vec n_k)$$
 
 　　　　由于主题产生词不依赖具体某一个文档，因此文档主题分布和主题词分布是独立的。理解了上面这M+K组Dirichlet-multi共轭，就理解了LDA的基本原理了。
 
