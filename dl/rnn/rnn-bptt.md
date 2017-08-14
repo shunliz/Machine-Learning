@@ -38,7 +38,7 @@
 
 　　　　有了上面的模型，RNN的前向传播算法就很容易得到了。
 
-　　　　对于任意一个序列索引号t，我们隐藏状态$$h^{(t)}$$由$$x^{(t)}$$和$$h^{(t-1)}$$得到：$$h^{(t)} = \sigma(z^{(t)}) = \sigma(Ux^{(t)} + Wh^{(t-1)} +b )$$
+　　　　对于任意一个序列索引号t，我们隐藏状态$$h^{(t)}$$由$$x^{(t)}$$和$$h^{(t-1)}$$得到：$$h^{(t)} = \sigma(z^{(t)}) = \sigma(Ux^{(t)} + Wh^{(t-1)} +b)$$
 
 　　　　其中$$\sigma$$为RNN的激活函数，一般为tanh,b为线性关系的偏倚。
 
@@ -72,11 +72,11 @@ $$\frac{\partial L}{\partial V} =\sum\limits_{t=1}^{\tau}\frac{\partial L^{(t)}}
 
 　　　　有了$$\delta^{(t)}$$,计算W,U,b就容易了，这里给出W,U,b的梯度计算表达式：
 
-$$\frac{\partial L}{\partial W} =  \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial W} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}(h^{(t-1)})^T$$
+$$\frac{\partial L}{\partial W} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial W} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}(h^{(t-1)})^T$$
 
-$$\frac{\partial L}{\partial b}= \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial b} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}$$
+$$\frac{\partial L}{\partial b}= \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial b} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}$$
 
-$$\frac{\partial L}{\partial U} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial U} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}(x^{(t)})^T$$
+$$\frac{\partial L}{\partial U} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial h^{(t)}} \frac{\partial h^{(t)}}{\partial U} = \sum\limits_{t=1}^{\tau}diag(1-(h^{(t)})^2)\delta^{(t)}(x^{(t)})^T$$
 
 　　　　除了梯度表达式不同，RNN的反向传播算法和DNN区别不大，因此这里就不再重复总结了。
 

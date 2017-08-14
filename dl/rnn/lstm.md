@@ -114,7 +114,7 @@ $$\delta_h^{(t)}$$的反向推导和RNN中的类似，因为它的梯度误差�
 
 而$$\delta_C^{(t)}$$的反向梯度误差由前一层$$\delta_C^{(t+1)}$$的梯度误差和本层的从$$h^{(t)}$$传回来的梯度误差两部分组成，即：$$\delta_C^{(t)} =\frac{\partial L}{\partial C^{(t+1)}} \frac{\partial C^{(t+1)}}{\partial C^{(t)}} + \frac{\partial L}{\partial h^{(t)}}\frac{\partial h^{(t)}}{\partial C^{(t)}} = \delta_C^{(t+1)}\odot f^{(t+1)} + \delta_h^{(t)} \odot o^{(t)} \odot (1 - tanh^2(C^{(t)}))$$
 
-有了$$\delta_h^{(t)}$$和$$\delta_C^{(t)}$$， 计算这一大堆参数的梯度就很容易了，这里只给出$$W_f$$的梯度计算过程，其他的$$U_f, b_f, W_a, U_a, b_a, W_i, U_i, b_i, W_o, U_o, b_o，V, c$$的梯度大家只要照搬就可以了。$$\frac{\partial L}{\partial W_f} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial C^{(t)}} \frac{\partial C^{(t)}}{\partial f^{(t)}} \frac{\partial f^{(t)}}{\partial W_f} = \delta_C^{(t)} \odot C^{(t-1)} \odot f^{(t)}(1-f^{(t)}) (h^{(t-1)})^T$$
+有了$$\delta_h^{(t)}$$和$$\delta_C^{(t)}$$， 计算这一大堆参数的梯度就很容易了，这里只给出$$W_f$$的梯度计算过程，其他的$$U_f, b_f, W_a, U_a, b_a, W_i, U_i, b_i, W_o, U_o, b_o, V, c$$的梯度大家只要照搬就可以了。$$\frac{\partial L}{\partial W_f} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial C^{(t)}} \frac{\partial C^{(t)}}{\partial f^{(t)}} \frac{\partial f^{(t)}}{\partial W_f} = \delta_C^{(t)} \odot C^{(t-1)} \odot f^{(t)}(1-f^{(t)}) (h^{(t-1)})^T$$
 
 # 5. LSTM小结
 
