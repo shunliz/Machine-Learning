@@ -18,33 +18,31 @@ ICA相比与PCA更能刻画变量的随机统计特性，且能抑制高斯噪�
 
 ![](http://img.blog.csdn.net/20130511200133185)
 
-
-
 ##### 1. 问题：
 
 1、PCA是一种数据降维的方法，但是只对符合高斯分布的样本点比较有效，那么对于其他分布的样本，有没有主元分解的方法呢？
 
-2、经典的鸡尾酒宴会问题（cocktail party problem）。假设在party中有n个人，他们可以同时说话，我们也在房间中一些角落里共放置了n个声音接收器（Microphone）用来记录声音。宴会过后，我们从n个麦克风中得到了一组数据[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610445974.png "clip\_image002")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610442627.png)，i表示采样的时间顺序，也就是说共得到了m组采样，每一组采样都是n维的。我们的目标是单单从这m组采样数据中分辨出每个人说话的信号。
+2、经典的鸡尾酒宴会问题（cocktail party problem）。假设在party中有n个人，他们可以同时说话，我们也在房间中一些角落里共放置了n个声音接收器（Microphone）用来记录声音。宴会过后，我们从n个麦克风中得到了一组数据$$x^{(i)}(x_1^{(i)},x_2^{(i)},....x_n^{(i)});i=1,...,m$$，i表示采样的时间顺序，也就是说共得到了m组采样，每一组采样都是n维的。我们的目标是单单从这m组采样数据中分辨出每个人说话的信号。
 
-将第二个问题细化一下，有n个信号源[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610457577.png "clip\_image004")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610442594.png)，[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610456398.png "clip\_image006")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610458940.png)，每一维都是一个人的声音信号，每个人发出的声音信号独立。A是一个未知的混合矩阵（mixing matrix），用来组合叠加信号s，那么
+将第二个问题细化一下，有n个信号源$$s(s_1,s_2,....,s_n)^T,\;s \in R^n$$，每一维都是一个人的声音信号，每个人发出的声音信号独立。A是一个未知的混合矩阵（mixing matrix），用来组合叠加信号s，那么
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610461316.png "clip\_image008")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610463857.png)
+$$x = As$$
 
-x的意义在上文解释过，这里的x不是一个向量，是一个矩阵。其中每个列向量是[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610478185.png "clip\_image010")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610472363.png)，[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610479788.png "clip\_image012")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610474805.png)
+x的意义在上文解释过，这里的x不是一个向量，是一个矩阵。其中每个列向量是$$x^{(i)}$$，$$x^{(i)}=As^{(i)}$$
 
 表示成图就是
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610509840.jpg "clip\_image014")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610486658.jpg)
+![](/assets/ica2.png)
 
 这张图来自
 
 [http://amouraux.webnode.com/research-interests/research-interests-erp-analysis/blind-source-separation-bss-of-erps-using-independent-component-analysis-ica/](http://amouraux.webnode.com/research-interests/research-interests-erp-analysis/blind-source-separation-bss-of-erps-using-independent-component-analysis-ica/)
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161051264.png "clip\_image033")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610504790.png)
+![](/assets/ica3.png)
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610522117.png "clip\_image035")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610516851.png)的每个分量都由[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610531702.png "clip\_image037")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161052655.png)的分量线性表示。A和s都是未知的，x是已知的，我们要想办法根据x来推出s。这个过程也称作为盲信号分离。
+$$x^{(i)}$$的每个分量都由$$s^{(i)}$$的分量线性表示。A和s都是未知的，x是已知的，我们要想办法根据x来推出s。这个过程也称作为盲信号分离。
 
-令[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610533621.png "clip\_image039")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610535049.png)，那么[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610543588.png "clip\_image041")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610536968.png)
+令$$W=A^{-1}$$，那么[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610536968.png)$$s^{(i)}=A^{-1}x^{(i)}=Wx^{(i)}$$
 
 将W表示成
 
@@ -100,7 +98,7 @@ ICA算法归功于Bell和Sejnowski，这里使用最大似然估计来解释算�
 
 [![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611103823.png "clip\_image096")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161110791.png)
 
- 求导后
+求导后
 
 [![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611105426.png "clip\_image098")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611108806.png)
 
@@ -148,15 +146,15 @@ s=2时的原始信号
 
 ##### 6. 行列式的梯度
 
- 对行列式求导，设矩阵A是n×n的，我们知道行列式与代数余子式有关，
+对行列式求导，设矩阵A是n×n的，我们知道行列式与代数余子式有关，
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161125809.png "clip\_image127")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611257254.png)
+$$|A|=\sum_{i=1}^{n}(-1)^{i+j}A_{ij}|A_{ij}| (for \;\; any \;\;j \in 1,...n)$$
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611267122.png "clip\_image129")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611251300.png)是去掉第i行第j列后的余子式，那么对[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611277580.png "clip\_image131")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611268169.png)求导得
+$$A_{ij}$$是去掉第i行第j列后的余子式，那么对$$A_{kl}$$求导得
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/2011041916112722.png "clip\_image132")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611275595.png)
+$$\frac{\partial }{\partial A_{kl}}|A|=\frac{\partial }{\partial A_{kl}}\sum_{i=1}^{n}(-1)^{i+j}A_{ij}|A_{ij}=(-1)^{k+l}|A_{kl}|=(adj(A))_{lk}$$
 
-adj\(A\)跟我们线性代数中学的[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611288527.png "clip\_image134")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611281069.png)是一个意思，因此
+adj\(A\)跟我们线性代数中学的$$A^{*}$$是一个意思，因此
 
-[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611284350.png "clip\_image135")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611281003.png)
+$$\triangledown_A|A|=(adj(A))^T=|A|A^{-T}$$
 
