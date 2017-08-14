@@ -36,7 +36,7 @@ Negative Sampling也是采用了二元逻辑回归来求解模型参数，通过
 
 和Hierarchical Softmax类似，我们采用随机梯度上升法，仅仅每次只用一个样本更新梯度，来进行迭代更新得到我们需要的$$x_{w_i}, \theta^{w_i},  i=0,1,..neg$$, 这里我们需要求出$$x_{w_i}, \theta^{w_i},  i=0,1,..neg$$的梯度。
 
-首先我们计算$$\theta^{w_i}$$的梯度：$$\begin{align} \frac{\partial L}{\partial \theta^{w_i} } &= y_i(1-  \sigma(x_{w_i}^T\theta^{w_i}))x_{w_i}-(1-y_i)\sigma(x_{w_i}^T\theta^{w_i})x_{w_i} \\ & = (y_i -\sigma(x_{w_i}^T\theta^{w_i})) x_{w_i} \end{align}$$
+首先我们计算$$\theta^{w_i}$$的梯度：$$\begin{aligned} \frac{\partial L}{\partial \theta^{w_i} } &= y_i(1-  \sigma(x_{w_i}^T\theta^{w_i}))x_{w_i}-(1-y_i)\sigma(x_{w_i}^T\theta^{w_i})x_{w_i} \\ & = (y_i -\sigma(x_{w_i}^T\theta^{w_i})) x_{w_i} \end{aligned}$$
 
 同样的方法，我们可以求出$$x_{w_i}$$的梯度如下：$$\frac{\partial L}{\partial x^{w_i} } = (y_i -\sigma(x_{w_i}^T\theta^{w_i}))\theta^{w_i}$$
 

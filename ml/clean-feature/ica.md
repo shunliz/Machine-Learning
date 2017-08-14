@@ -46,23 +46,23 @@ $$x^{(i)}$$的每个分量都由$$s^{(i)}$$的分量线性表示。A和s都是�
 
 将W表示成
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610544111.png)$$W=\begin{bmatrix}
+$$W=\begin{bmatrix}
 ...w_1^T...\\ 
 .......\\ 
 
 ...w_n^T...\end{bmatrix}$$
 
-其中$$w_i \in R^n$$，其实就是将[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610552376.png)$$w_i$$写成行向量形式。那么得到：
+其中$$w_i \in R^n$$，其实就是将$$w_i$$写成行向量形式。那么得到：
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610556454.png)$$s_j^{(i)}=w_j^Tx^{(i)}$$
+$$s_j^{(i)}=w_j^Tx^{(i)}$$
 
 ##### 2. ICA的不确定性（ICA ambiguities）
 
 由于w和s都不确定，那么在没有先验知识的情况下，无法同时确定这两个相关参数。比如上面的公式s=wx。当w扩大两倍时，s只需要同时扩大两倍即可，等式仍然满足，因此无法得到唯一的s。同时如果将人的编号打乱，变成另外一个顺序，如上图的蓝色节点的编号变为3,2,1，那么只需要调换A的列向量顺序即可，因此也无法单独确定s。这两种情况称为原信号不确定。
 
-还有一种ICA不适用的情况，那就是信号不能是高斯分布的。假设只有两个人发出的声音信号符合多值正态分布, $$s\sim N(0, I)$$，I是2\*2的单位矩阵，s的概率密度函数就不用说了吧，以均值0为中心，投影面是椭圆的山峰状（参见多值高斯分布）。因为[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610579604.png "clip\_image052")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610576605.png)，因此，x也是高斯分布的，均值为0，协方差为[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610578175.png)$$E[xx^T]=E[Ass^TA^T]=AA^T$$。
+还有一种ICA不适用的情况，那就是信号不能是高斯分布的。假设只有两个人发出的声音信号符合多值正态分布, $$s\sim N(0, I)$$，I是2\*2的单位矩阵，s的概率密度函数就不用说了吧，以均值0为中心，投影面是椭圆的山峰状（参见多值高斯分布）。因为[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610579604.png "clip\_image052")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191610576605.png)，因此，x也是高斯分布的，均值为0，协方差为$$E[xx^T]=E[Ass^TA^T]=AA^T$$。
 
-令R是正交阵$$RR^T=R^TR=I$$, $$A^{'}=AR$$。如果将A替换成A’。那么$$x^{'}=A^{'}s$$。s分布没变，因此x’仍然是均值为0，协方差[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611008991.png)$$E[x^{'}(x^{'})^T]=E[A^{'}ss^T(A^{'})^T]=E[ARss^T(AR)^T]=ARR^TA^T=AA^T$$。
+令R是正交阵$$RR^T=R^TR=I$$, $$A^{'}=AR$$。如果将A替换成A’。那么$$x^{'}=A^{'}s$$。s分布没变，因此x’仍然是均值为0，协方差$$E[x^{'}(x^{'})^T]=E[A^{'}ss^T(A^{'})^T]=E[ARss^T(AR)^T]=ARR^TA^T=AA^T$$。
 
 因此，不管混合矩阵是A还是A’，x的分布情况是一样的，那么就无法确定混合矩阵，也就无法确定原信号。
 
@@ -72,15 +72,15 @@ $$x^{(i)}$$的每个分量都由$$s^{(i)}$$的分量线性表示。A和s都是�
 
 假设我们的随机变量s有概率密度函数$$P_s(s)$$（连续值是概率密度函数，离散值是概率）。为了简单，我们再假设s是实数，还有一个随机变量x=As，A和x都是实数。令$$P_x$$是x的概率密度，那么怎么求$$P_x$$？
 
-令$$W=A^{-1}$$，首先将式子变换成$$s=Wx$$，然后得到$$p_x(x)=p_s(Ws)$$，求解完毕。可惜这种方法是错误的。比如s符合均匀分布的话（$$s \sim Uniform[0,1]$$），那么s的概率密度是$$p_s(s)=1 \{0<=s<=1\}$$，现在令A=2，即x=2s，也就是说x在\[0,2\]上均匀分布，可知$$p_x(x)=0.5$$。然而，前面的推导会得到[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611051253.png)$$p_x(x)=p_s(0.5s)=1$$。正确的公式应该是
+令$$W=A^{-1}$$，首先将式子变换成$$s=Wx$$，然后得到$$p_x(x)=p_s(Ws)$$，求解完毕。可惜这种方法是错误的。比如s符合均匀分布的话（$$s \sim Uniform[0,1]$$），那么s的概率密度是$$p_s(s)=1 \{0<=s<=1\}$$，现在令A=2，即x=2s，也就是说x在\[0,2\]上均匀分布，可知$$p_x(x)=0.5$$。然而，前面的推导会得到$$p_x(x)=p_s(0.5s)=1$$。正确的公式应该是
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611069269.png)$$p_x(x)=p_s(Ws)|W|$$
+$$p_x(x)=p_s(Ws)|W|$$
 
 推导方法f
 
 $$F_x(x)=P(X<=x)=P(AS<=x)=P(S<=Wx)=F_s(Wx)$$
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611064186.png)$$p_x(x)=F_x^{'}(x)=F_s^{,}(Wx)=p_s(Wx)|W|$$
+$$p_x(x)=F_x^{'}(x)=F_s^{,}(Wx)=p_s(Wx)|W|$$
 
 更一般地，如果s是向量，A可逆的方阵，那么上式子仍然成立。
 
@@ -90,45 +90,45 @@ ICA算法归功于Bell和Sejnowski，这里使用最大似然估计来解释算�
 
 我们假定每个[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611071579.png "clip\_image086")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161107216.png)有概率密度[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611083988.png "clip\_image088")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611082625.png)，那么给定时刻原信号的联合分布就是
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161108608.png)$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$
+$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$
 
 这个公式代表一个假设前提：每个人发出的声音信号各自独立。有了p\(s\)，我们可以求得p\(x\)
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611096430.png)$$p(x)=p_s(Wx)|W|=|W|\prod_{i=1}^{n}p_s(w_i^Tx)$$
+$$p(x)=p_s(Wx)|W|=|W|\prod_{i=1}^{n}p_s(w_i^Tx)$$
 
 左边是每个采样信号x（n维向量）的概率，右边是每个原信号概率的乘积的\|W\|倍。
 
-前面提到过，如果没有先验知识，我们无法求得W和s。因此我们需要知道[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611098349.png)$$p_s(s_i)$$，我们打算选取一个概率密度函数赋给s，但是我们不能选取高斯分布的密度函数。在概率论里我们知道密度函数p\(x\)由累计分布函数（cdf）F\(x\)求导得到。F\(x\)要满足两个性质是：单调递增和在\[0,1\]。我们发现sigmoid函数很适合，定义域负无穷到正无穷，值域0到1，缓慢递增。我们假定s的累积分布函数符合sigmoid函数
+前面提到过，如果没有先验知识，我们无法求得W和s。因此我们需要知道$$p_s(s_i)$$，我们打算选取一个概率密度函数赋给s，但是我们不能选取高斯分布的密度函数。在概率论里我们知道密度函数p\(x\)由累计分布函数（cdf）F\(x\)求导得到。F\(x\)要满足两个性质是：单调递增和在\[0,1\]。我们发现sigmoid函数很适合，定义域负无穷到正无穷，值域0到1，缓慢递增。我们假定s的累积分布函数符合sigmoid函数
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161110791.png)$$g(s)= \frac {1} {1+e^{-s}}$$
+$$g(s)= \frac {1} {1+e^{-s}}$$
 
 求导后
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611108806.png)$$p_s(s)=g^{'}(s)=\frac {e^s} {(1+e^s)^2}$$
+$$p_s(s)=g^{'}(s)=\frac {e^s} {(1+e^s)^2}$$
 
 这就是s的密度函数。这里s是实数。
 
 如果我们预先知道s的分布函数，那就不用假设了，但是在缺失的情况下，sigmoid函数能够在大多数问题上取得不错的效果。由于上式中$$p_s(s)$$是个对称函数，因此E\[s\]=0（s的均值为0），那么E\[x\]=E\[As\]=0，x的均值也是0。
 
-知道了[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611119198.png)$$p_s(s)$$，就剩下W了。给定采样后的训练样本$$x^{(i)}(x_1^{(i)},x_2^{(i)},....x_n^{(i)});i=1,...,m$$，样本对数似然估计如下：
+知道了$$p_s(s)$$，就剩下W了。给定采样后的训练样本$$x^{(i)}(x_1^{(i)},x_2^{(i)},....x_n^{(i)});i=1,...,m$$，样本对数似然估计如下：
 
 使用前面得到的x的概率密度函数，得
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611126067.png)$$l(W)=\sum_{i=1}^{m}(\sum_{j=1}^{n}log \;g^{'}(w_j^Tx^{(i)})+log|W|)$$
+$$l(W)=\sum_{i=1}^{m}(\sum_{j=1}^{n}log \;g^{'}(w_j^Tx^{(i)})+log|W|)$$
 
-大括号里面是[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611137986.png)$$p(x^{(i)})$$。
+大括号里面是$$p(x^{(i)})$$。
 
 接下来就是对W求导了，这里牵涉一个问题是对行列式\|W\|进行求导的方法，属于矩阵微积分。这里先给出结果，在文章最后再给出推导公式。
 
-[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611131541.png)$$$$$$\bigtriangledown _w|W|=|W|(W^{-1})^T$$
+$$\bigtriangledown _w|W|=|W|(W^{-1})^T$$
 
-最终得到的求导后公式如下，$$logg^{'}(s)$$的导数为[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611138443.png)$$1-2g(s)$$（可以自己验证）：
+最终得到的求导后公式如下，$$logg^{'}(s)$$的导数为$$1-2g(s)$$（可以自己验证）：
 
 [![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/20110419161115263.png "clip\_image110")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611148344.png)
 
 其中[![](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611151277.png "clip\_image112")](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611155770.png)是梯度上升速率，人为指定。
 
-当迭代求出W后，便可得到[](http://images.cnblogs.com/cnblogs_com/jerrylead/201104/201104191611154308.png)$$s^{(i)}=Wx^{(i)}$$来还原出原始信号。
+当迭代求出W后，便可得到$$s^{(i)}=Wx^{(i)}$$来还原出原始信号。
 
 **注意：**我们计算最大似然估计时，假设了$$x^{(i)}$$与$$y^{(i)}$$之间是独立的，然而对于语音信号或者其他具有时间连续依赖特性（比如温度）上，这个假设不能成立。但是在数据足够多时，假设独立对效果影响不大，同时如果事先打乱样例，并运行随机梯度上升算法，那么能够加快收敛速度。
 
