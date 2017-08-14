@@ -62,7 +62,7 @@ $$a^{(t)} =tanh(W_ah^{(t-1)} + U_ax^{(t)} + b_a)$$
 
 ![](http://images2015.cnblogs.com/blog/1042406/201703/1042406-20170308144059188-405019449.png)
 
-　　　　细胞状态$$C^{(t)}$$由两部分组成，第一部分是$$C^{(t-1)}$$和遗忘门输出$$f^{(t)}$$的乘积，第二部分是输入门的$$i^{(t)}$$和$$a^{(t)}$$的乘积，即：$$C^{(t)} = C^{(t-1)} \odot f^{(t)} + i^{(t)} \odot a^{(t)}$$
+　　　　细胞状态$$C^{(t)}$$由两部分组成，第一部分是$$C^{(t-1)}$$和遗忘门输出$$f^{(t)}$$的乘积，第二部分是输入门的$$i^{(t)}$$和$$a^{(t)}$$的乘积，即：$$C^{(t)} = C^{(t-1)} \odot f^{(t)} + i^{(t)} \odot a^{(t)}$$
 
 　　　　其中，$$\odot$$为Hadamard积，在DNN中也用到过。
 
@@ -72,7 +72,7 @@ $$a^{(t)} =tanh(W_ah^{(t-1)} + U_ax^{(t)} + b_a)$$
 
 ![](http://images2015.cnblogs.com/blog/1042406/201703/1042406-20170308144613781-388669028.png)
 
-　　　　从图中可以看出，隐藏状态$$h^{(t)}$$的更新由两部分组成，第一部分是$$o^{(t)}$$, 它由上一序列的隐藏状态$$h^{(t-1)}$$和本序列数据$$x^{(t)}$$，以及激活函数sigmoid得到，第二部分由隐藏状态$$C^{(t)}$$和tanh激活函数组成, 即：$$o^{(t)} = \sigma(W_oh^{(t-1)} + U_ox^{(t)} + b_o)h^{(t)} = o^{(t)} \odot tanh(C^{(t)})$$
+　　　　从图中可以看出，隐藏状态$$h^{(t)}$$的更新由两部分组成，第一部分是$$o^{(t)}$$, 它由上一序列的隐藏状态$$h^{(t-1)}$$和本序列数据$$x^{(t)}$$，以及激活函数sigmoid得到，第二部分由隐藏状态$$C^{(t)}$$和tanh激活函数组成, 即：$$o^{(t)} = \sigma(W_oh^{(t-1)} + U_ox^{(t)} + b_o)h^{(t)} = o^{(t)} \odot tanh(C^{(t)})$$
 
 　　　　通过本节的剖析，相信大家对于LSTM的模型结构已经有了解了。当然，有些LSTM的结构和上面的LSTM图稍有不同，但是原理是完全一样的。
 
@@ -100,7 +100,7 @@ $$a^{(t)} =tanh(W_ah^{(t-1)} + U_ax^{(t)} + b_a)$$
 
 $$\delta_h^{(t)} = \frac{\partial L}{\partial h^{(t)}}$$
 
-$$\delta_C^{(t)} = \frac{\partial L}{\partial C^{(t)}}$$
+$$\delta_C^{(t)} = \frac{\partial L}{\partial C^{(t)}}$$
 
 　　　　而在最后的序列索引位置$$\tau$$的$$\delta_h^{(\tau)}$$和$$ \delta_C^{(\tau)}$$为：
 
@@ -112,7 +112,7 @@ $$\delta_C^{(\tau)} =\frac{\partial L}{\partial h^{(\tau)}} \frac{\partial h^{(\
 
 $$\delta_h^{(t)}$$的反向推导和RNN中的类似，因为它的梯度误差由前一层$$\delta_h^{(t+1)}$$的梯度误差和本层的输出梯度误差两部分组成，即：$$\delta_h^{(t)} =\frac{\partial L}{\partial o^{(t)}} \frac{\partial o^{(t)}}{\partial h^{(t)}} + \frac{\partial L}{\partial h^{(t+1)}}\frac{\partial h^{(t+1)}}{\partial h^{(t)}} = V^T(\hat{y}^{(t)} - y^{(t)}) + W^T\delta^{(t+1)}diag(1-(h^{(t+1)})^2)$$
 
-　　　　而$$\delta_C^{(t)}$$的反向梯度误差由前一层$$\delta_C^{(t+1)}$$的梯度误差和本层的从$$h^{(t)}$$传回来的梯度误差两部分组成，即：$$\delta_C^{(t)} =\frac{\partial L}{\partial C^{(t+1)}} \frac{\partial  C^{(t+1)}}{\partial C^{(t)}} + \frac{\partial L}{\partial h^{(t)}}\frac{\partial h^{(t)}}{\partial C^{(t)}} = \delta_C^{(t+1)}\odot f^{(t+1)} + \delta_h^{(t)} \odot  o^{(t)} \odot (1 - tanh^2(C^{(t)}))$$
+　　　　而$$\delta_C^{(t)}$$的反向梯度误差由前一层$$\delta_C^{(t+1)}$$的梯度误差和本层的从$$h^{(t)}$$传回来的梯度误差两部分组成，即：$$\delta_C^{(t)} =\frac{\partial L}{\partial C^{(t+1)}} \frac{\partial C^{(t+1)}}{\partial C^{(t)}} + \frac{\partial L}{\partial h^{(t)}}\frac{\partial h^{(t)}}{\partial C^{(t)}} = \delta_C^{(t+1)}\odot f^{(t+1)} + \delta_h^{(t)} \odot o^{(t)} \odot (1 - tanh^2(C^{(t)}))$$
 
 　　　　有了$$\delta_h^{(t)}$$和$$\delta_C^{(t)}$$， 计算这一大堆参数的梯度就很容易了，这里只给出$$W_f$$的梯度计算过程，其他的$$U_f, b_f, W_a, U_a, b_a, W_i, U_i, b_i, W_o, U_o, b_o，V, c$$的梯度大家只要照搬就可以了。$$\frac{\partial L}{\partial W_f} = \sum\limits_{t=1}^{\tau}\frac{\partial L}{\partial C^{(t)}} \frac{\partial C^{(t)}}{\partial f^{(t)}} \frac{\partial f^{(t)}}{\partial W_f} = \delta_C^{(t)} \odot C^{(t-1)} \odot f^{(t)}(1-f^{(t)}) (h^{(t-1)})^T$$
 
