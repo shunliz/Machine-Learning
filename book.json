@@ -1,7 +1,7 @@
 {
     "title":"机器学习",
     "author": "shunliz",
-	"description":"机器学习原理详解"
+	"description":"机器学习原理详解",
 	"language": "zh",
     "plugins": ["katex", 
                 "image-captions"
