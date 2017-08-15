@@ -1,9 +1,9 @@
 {
     "title":"机器学习",
     "author": "shunliz",
+	"language": "zh",
     "plugins": ["katex", 
-                "image-captions",
-				"-search"
+                "image-captions"
     ],
   "pluginsConfig": {
     "image-captions": {
