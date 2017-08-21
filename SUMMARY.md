@@ -92,6 +92,7 @@
   * [Spark矩阵分解推荐算法](ml/recomand/spark-factor.md)
   * [分解机\(Factorization Machines\)推荐算法原理](ml/recommand/fm.md)
   * [美团推荐算法](ml/recommand/meituan.md)
+  * [MapReduce ItemCF](ml/recommand/mr-itemcf.md)
 * [第十七课：EM算法](ml/em/em.md)
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
