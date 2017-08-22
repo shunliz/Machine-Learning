@@ -26,13 +26,13 @@
 
 ### **半监督式学习：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/semisupercrescent_plot-300x200.png "semisupercrescent\_plot")](http://www.ctocio.com/hotnews/15919.html/attachment/semisupercrescent_plot)
+![](/assets/mlpre3.png)
 
 在此学习方式下，输入数据部分被标识，部分没有被标识，这种学习模型可以用来进行预测，但是模型首先需要学习数据的内在结构以便合理的组织数据来进行预测。应用场景包括分类和回归，算法包括一些对常用监督式学习算法的延伸，这些算法首先试图对未标识数据进行建模，在此基础上再对标识的数据进行预测。如图论推理算法（Graph Inference）或者拉普拉斯支持向量机（Laplacian SVM.）等。
 
 ### **强化学习：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/reinforement-learning-300x176.png "reinforement learning")](http://www.ctocio.com/hotnews/15919.html/attachment/reinforement-learning)
+![](/assets/mlpre4.png)
 
 在这种学习模式下，输入数据作为对模型的反馈，不像监督模型那样，输入数据仅仅是作为一个检查模型对错的方式，在强化学习下，输入数据直接反馈到模型，模型必须对此立刻作出调整。常见的应用场景包括动态系统以及[机器人](http://lib.csdn.net/base/robot)控制等。常见算法包括Q-Learning以及时间差学习（Temporal difference learning）
 
