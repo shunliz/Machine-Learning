@@ -58,13 +58,13 @@
 
 ### **正则化方法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/linregPolyVsRegDemo_12-300x225.png "linregPolyVsRegDemo\_12")](http://www.ctocio.com/hotnews/15919.html/attachment/linregpolyvsregdemo_12)
+![](/assets/mlpre7.png)
 
 正则化方法是其他算法（通常是回归算法）的延伸，根据算法的复杂度对算法进行调整。正则化方法通常对简单模型予以奖励而对复杂算法予以惩罚。常见的算法包括：Ridge Regression， Least Absolute Shrinkage and Selection Operator（LASSO），以及弹性网络（Elastic Net）。
 
 ### **决策树学习**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/CART-300x189.png "CART")](http://www.ctocio.com/hotnews/15919.html/attachment/cart)
+![](/assets/mlpre8.png)
 
 决策树算法根据数据的属性采用树状结构建立决策模型， 决策树模型常常用来解决分类和回归问题。常见的算法包括：分类及回归树（Classification And Regression Tree， CART）， ID3 \(Iterative Dichotomiser 3\)， C4.5， Chi-squared Automatic Interaction Detection\(CHAID\), Decision Stump, 随机森林（Random Forest）， 多元自适应回归样条（MARS）以及梯度推进机（Gradient Boosting Machine， GBM）
 
