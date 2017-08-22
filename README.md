@@ -46,13 +46,13 @@
 
 ### **回归算法：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/regression.jpg "regression")](http://www.ctocio.com/hotnews/15919.html/attachment/regression)
+![](/assets/mlpre5.png)
 
 回归算法是试图采用对误差的衡量来探索变量之间的关系的一类算法。回归算法是统计机器学习的利器。在机器学习领域，人们说起回归，有时候是指一类问题，有时候是指一类算法，这一点常常会使初学者有所困惑。常见的回归算法包括：最小二乘法（Ordinary Least Square），逻辑回归（Logistic Regression），逐步式回归（Stepwise Regression），多元自适应回归样条（Multivariate Adaptive Regression Splines）以及本地散点平滑估计（Locally Estimated Scatterplot Smoothing）
 
 ### **基于实例的算法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/knn.jpg "knn")](http://www.ctocio.com/hotnews/15919.html/attachment/knn)
+![](/assets/mlpre6.png)
 
 基于实例的算法常常用来对决策问题建立模型，这样的模型常常先选取一批样本数据，然后根据某些近似性把新数据与样本数据进行比较。通过这种方式来寻找最佳的匹配。因此，基于实例的算法常常也被称为“赢家通吃”学习或者“基于记忆的学习”。常见的算法包括 k-Nearest Neighbor\(KNN\), 学习矢量量化（Learning Vector Quantization， LVQ），以及自组织映射算法（Self-Organizing Map ， SOM）
 
