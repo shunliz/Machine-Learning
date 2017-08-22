@@ -70,7 +70,7 @@
 
 ### **贝叶斯方法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/2class_gauss_points-300x229.jpg "2class\_gauss\_points")](http://www.ctocio.com/hotnews/15919.html/attachment/2class_gauss_points)
+[![](/assets/mlpre9.png "2class\_gauss\_points")](http://www.ctocio.com/hotnews/15919.html/attachment/2class_gauss_points)
 
 贝叶斯方法算法是基于贝叶斯定理的一类算法，主要用来解决分类和回归问题。常见算法包括：朴素贝叶斯算法，平均单依赖估计（Averaged One-Dependence Estimators， AODE），以及Bayesian Belief Network（BBN）。
 
