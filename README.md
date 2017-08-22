@@ -14,13 +14,13 @@
 
 ### **监督式学习：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/supervised-learning-300x239.jpg "supervised learning")](http://www.ctocio.com/hotnews/15919.html/attachment/supervised-learning)
+![](/assets/mlpre1.png)
 
 在监督式学习下，输入数据被称为“训练数据”，每组训练数据有一个明确的标识或结果，如对防垃圾邮件系统中“垃圾邮件”“非垃圾邮件”，对手写数字识别中的“1“，”2“，”3“，”4“等。在建立预测模型的时候，监督式学习建立一个学习过程，将预测结果与“训练数据”的实际结果进行比较，不断的调整预测模型，直到模型的预测结果达到一个预期的准确率。监督式学习的常见应用场景如分类问题和回归问题。常见算法有逻辑回归（Logistic Regression）和反向传递神经网络（Back Propagation Neural Network）
 
 ### **非监督式学习：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/unsupervised-learning-300x225.png "unsupervised learning")](http://www.ctocio.com/hotnews/15919.html/attachment/unsupervised-learning)
+![](/assets/mlpre2.png)
 
 在非监督式学习中，数据并不被特别标识，学习模型是为了推断出数据的一些内在结构。常见的应用场景包括关联规则的学习以及聚类等。常见算法包括Apriori算法以及k-Means算法。
 
