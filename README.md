@@ -106,13 +106,13 @@
 
 ### **降低维度算法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/PCA-300x284.jpg "PCA")](http://www.ctocio.com/hotnews/15919.html/attachment/pca)
+![](/assets/mlpre16.png)
 
 像聚类算法一样，降低维度算法试图分析数据的内在结构，不过降低维度算法是以非监督学习的方式试图利用较少的信息来归纳或者解释数据。这类算法可以用于高维数据的可视化或者用来简化数据以便监督式学习使用。常见的算法包括：主成份分析（Principle Component Analysis， PCA），偏最小二乘回归（Partial Least Square Regression，PLS）， Sammon映射，多维尺度（Multi-Dimensional Scaling, MDS）,  投影追踪（Projection Pursuit）等。
 
 ### **集成算法：**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/RF-300x182.jpg "RF")](http://www.ctocio.com/hotnews/15919.html/attachment/rf)
+![](/assets/mlpre17.png)
 
 集成算法用一些相对较弱的学习模型独立地就同样的样本进行训练，然后把结果整合起来进行整体预测。集成算法的主要难点在于究竟集成哪些独立的较弱的学习模型以及如何把学习结果整合起来。这是一类非常强大的算法，同时也非常流行。常见的算法包括：Boosting， Bootstrapped Aggregation（Bagging）， AdaBoost，堆叠泛化（Stacked Generalization， Blending），梯度推进机（Gradient Boosting Machine, GBM），随机森林（Random Forest）。
 
