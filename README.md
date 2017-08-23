@@ -100,7 +100,7 @@
 
 ### **深度学习**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/Convolutional_NN-300x153.jpg "Convolutional\_NN")](http://www.ctocio.com/hotnews/15919.html/attachment/convolutional_nn)
+![](/assets/mlpre15.png)
 
 深度学习算法是对人工神经网络的发展。 在近期赢得了很多关注， 特别是[百度也开始发力深度学习后](http://www.ctocio.com/ccnews/15615.html)， 更是在国内引起了很多关注。   在计算能力变得日益廉价的今天，深度学习试图建立大得多也复杂得多的神经网络。很多深度学习的算法是半监督式学习算法，用来处理存在少量未标识数据的[大数据](http://lib.csdn.net/base/hadoop)集。常见的深度学习算法包括：受限波尔兹曼机（Restricted Boltzmann Machine， RBN）， Deep Belief Networks（DBN），卷积网络（Convolutional Network）, 堆栈式自动编码器（Stacked Auto-encoders）。
 
