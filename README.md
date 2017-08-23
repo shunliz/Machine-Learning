@@ -76,13 +76,13 @@
 
 ### **基于核的算法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/SVM-300x238.jpg "SVM")](http://www.ctocio.com/hotnews/15919.html/attachment/svm)
+![](/assets/mlpre11.png)
 
 基于核的算法中最著名的莫过于支持向量机（SVM）了。 基于核的算法把输入数据映射到一个高阶的向量空间， 在这些高阶向量空间里， 有些分类或者回归问题能够更容易的解决。 常见的基于核的算法包括：支持向量机（Support Vector Machine， SVM）， 径向基函数（Radial Basis Function ，RBF\)， 以及线性判别分析（Linear Discriminate Analysis ，LDA\)等
 
 ### **聚类算法**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/kmeans3.png "kmeans3")](http://www.ctocio.com/hotnews/15919.html/attachment/kmeans3)
+![](/assets/mlpre12.png)
 
 聚类，就像回归一样，有时候人们描述的是一类问题，有时候描述的是一类算法。聚类算法通常按照中心点或者分层的方式对输入数据进行归并。所以的聚类算法都试图找到数据的内在结构，以便按照最大的共同点将数据进行归类。常见的聚类算法包括 k-Means算法以及期望最大化算法（Expectation Maximization， EM）。
 
