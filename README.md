@@ -94,7 +94,7 @@
 
 ### **人工神经网络**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/NN-300x240.png "NN")](http://www.ctocio.com/hotnews/15919.html/attachment/nn)
+![](/assets/mlpre14.png)
 
 人工神经网络算法模拟生物神经网络，是一类模式匹配算法。通常用于解决分类和回归问题。人工神经网络是机器学习的一个庞大的分支，有几百种不同的算法。（其中[深度学习](http://lib.csdn.net/base/deeplearning)就是其中的一类算法，我们会单独讨论），重要的人工神经网络算法包括：感知器神经网络（Perceptron Neural Network）, 反向传递（Back Propagation）， Hopfield网络，自组织映射（Self-Organizing Map, SOM）。学习矢量量化（Learning Vector Quantization， LVQ）
 
