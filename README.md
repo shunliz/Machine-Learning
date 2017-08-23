@@ -88,7 +88,7 @@
 
 ### **关联规则学习**
 
-[![](http://www.ctocio.com/wp-content/uploads/2014/06/associative-rule.jpg "associative rule")](http://www.ctocio.com/hotnews/15919.html/attachment/associative-rule)
+![](/assets/mlpre13.png)
 
 关联规则学习通过寻找最能够解释数据变量之间关系的规则，来找出大量多元数据集中有用的关联规则。常见算法包括 Apriori算法和Eclat算法等。
 
