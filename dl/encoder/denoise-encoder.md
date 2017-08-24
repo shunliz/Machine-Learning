@@ -256,7 +256,7 @@ class dA(object):
 
 It is easy now to construct an instance of our`dA`class and train it.
 
-```
+```py
  # allocate symbolic variables for the data
     index = T.lscalar()    # index to a [mini]batch
     x = T.matrix('x')  # the data is presented as rasterized images
