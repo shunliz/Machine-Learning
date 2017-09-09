@@ -171,4 +171,5 @@
   * [基于Negative Sampling的模型](dl/word2vec/negative-sampling.md)
 * [增强学习](Dl/reinforcement/reinforcement.md)
   * [Q-Learning](Dl/reinforcement/q-learning.md)
+  * [基于策略的增强学习](Dl/reinforcement/policy-based.md)
 
