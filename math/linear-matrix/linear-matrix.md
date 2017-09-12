@@ -44,7 +44,13 @@ $$b=\begin{bmatrix}
 
 * 我们用_aij _\(或_Aij，Ai，j_，等\) 表示第_i_行第_j_列的元素：
 
-![](http://images2015.cnblogs.com/blog/725767/201606/725767-20160610231017355-163841704.png)
+$$A = \begin{bmatrix}
+   a_{11} a_{12} ... a_{1n}  \\
+   a_{21} a_{22} ... a_{2n}  \\
+     . \\
+     . \\
+   a_{m1} a_{n2} ... a_{mn}
+\end{bmatrix}$$
 
 * 我们用
   _a_
