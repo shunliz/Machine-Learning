@@ -42,7 +42,7 @@ $$b=\begin{bmatrix}
    x_n
 \end{bmatrix}$$
 
-* 我们用$$a_{ij}$$_ _\(或_Aij，Ai，j_，等\) 表示第_i_行第_j_列的元素：
+* 我们用$$a_{ij}$$_ _\(或$$A_{ij}$$等\) 表示第_i_行第_j_列的元素：
 
 $$A = \begin{bmatrix}
    a_{11} a_{12} ... a_{1n}  \\
