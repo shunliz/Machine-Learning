@@ -56,6 +56,12 @@ $$A = \begin{bmatrix}
 
 ![](http://images2015.cnblogs.com/blog/725767/201606/725767-20160610231017590-1585755759.png)
 
+$$A = \begin{bmatrix}
+  | | | \\
+  a_1 a_2 a_3 \\
+   | | |
+\end{bmatrix}$$
+
 * 我们用_aTi或Ai，:_表示矩阵的第i行元素  
   :
 
