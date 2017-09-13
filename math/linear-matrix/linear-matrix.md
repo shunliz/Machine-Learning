@@ -52,7 +52,7 @@ $$A = \begin{bmatrix}
    a_{m1} a_{n2} ... a_{mn}
 \end{bmatrix}$$
 
-* 我们用_aj _或_A_:_，j_表示A矩阵的第_j_列元素：
+* 我们用$$a_j$$_ _表示A矩阵的第_j_列元素：
 
 $$A = \begin{bmatrix}
   |    |   | \\
