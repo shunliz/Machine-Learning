@@ -60,7 +60,7 @@ $$D(x)=\sqrt {(X-u)^TS^{-1}(X-u)}$$
 
 * # 夹角余弦 {#夹角余弦}
 
-$$cos \theta = \frac {a*b} {|a||b|}$$              $$cos \theta = \frac {\sum_{k=1}^{n}x_{1k}x_{2k}} {\sqrt {\sum_{k=1}^{n}x_{1k}^2}\sqrt {\sum_{k=1}^{n}x_{2k}^2}}$$
+## $$cos \theta = \frac {a*b} {|a||b|}$$              $$cos \theta = \frac {\sum_{k=1}^{n}x_{1k}x_{2k}} {\sqrt {\sum_{k=1}^{n}x_{1k}^2}\sqrt {\sum_{k=1}^{n}x_{2k}^2}}$$
 
 ```
 def moreCos(a,b):
@@ -74,6 +74,75 @@ def moreCos(a,b):
     return sum_fenzi/( sqrt(sum_fenmu_1) * sqrt(sum_fenmu_2) )
 print 'a,b 多维夹角余弦距离：',moreCos((1,1,1,1),(2,2,2,2))
 ```
+
+* # 闵可夫斯基距离 {#闵可夫斯基距离}
+
+$$p\sqrt{\sum_{k=1}^{n}|x_{1k}-x_{2k}|^p}$$
+
+当p=1时，就是曼哈顿距离
+
+当p=2时，就是欧氏距离
+
+当p→∞时，就是切比雪夫距离
+
+
+
+* # 汉明距离 {#汉明距离}
+
+两个等长字符串s1与s2之间的汉明距离定义为将其中一个变为另外一个所需要作的最小替换次数
+
+```
+def hanmingDis(a,b):
+    sumnum = 0
+    for i in range(len(a)):
+        if a[i]!=b[i]:
+            sumnum += 1
+    return sumnum
+
+print 'a,b 汉明距离：',hanmingDis((1,1,2,3),(2,2,1,3))
+```
+
+* # 杰卡德距离 & 杰卡德相似系数 {#杰卡德距离-杰卡德相似系数}
+
+杰卡德距离，杰卡德距离用两个集合中不同元素占所有元素的比例来衡量两个集合的区分度。
+
+![](/assets/jiekadejuli.png)
+
+```
+def jiekadeDis(a,b):
+    set_a = set(a)
+    set_b = set(b)
+    dis = float(len( (set_a | set_b) - (set_a & set_b) ) )/ len(set_a | set_b)
+    return dis
+
+print 'a,b 杰卡德距离：', jiekadeDis((1,2,3),(2,3,4))
+```
+
+杰卡德相似系数
+
+两个集合A和B的交集元素在A，B的并集中所占的比例，称为两个集合的杰卡德相似系数，用符号J\(A,B\)表示。
+
+![](/assets/jiekadexiangsixishu.png)
+
+```
+def jiekadeXSDis(a,b):
+    set_a = set(a)
+    set_b = set(b)
+    dis = float(len(set_a & set_b)  )/ len(set_a | set_b)
+    return dis
+
+print 'a,b 杰卡德相似系数：', jiekadeXSDis((1,2,3),(2,3,4))
+```
+
+* # 相关系数 & 相关距离 {#相关系数-相关距离}
+
+相关 系数
+
+![](/assets/xiangguanxishu.png)
+
+* # 信息熵 {#信息熵}
+
+![](/assets/xinxishang.png)
 
 
 
