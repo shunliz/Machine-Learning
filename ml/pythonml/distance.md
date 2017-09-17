@@ -26,13 +26,30 @@ print 'a,b 多维距离为：',distance((1,1,2,2),(2,2,4,4))
 
 $$D_{12}=\sum_{k=1}^{n}|x_{1k}-x_{2k}|$$
 
-python 实现为：s
+python 实现为：
 
 ```
 def threeMHDdis(a,b):
     return abs(a[0]-b[0])+abs(a[1]-b[1]) + abs(a[2]-b[2])
 
-print 'a,b 三维曼哈顿距离为：', threeMHDdis((1,1,1),(2,2,2)) 
+print 'a,b 三维曼哈顿距离为：', threeMHDdis((1,1,1),(2,2,2))
+```
+
+* # 切比雪夫距离 {#切比雪夫距离}
+
+切比雪夫距离（Chebyshev Distance）的定义为：max\( \| x2-x1 \| , \|y2-y1 \| , … \), 切比雪夫距离用的时候数据的维度必须是三个以上
+
+python 实现为：
+
+```
+def moreQBXFdis(a,b):
+    maxnum = 0
+    for i in range(len(a)):
+        if abs(a[i]-b[i]) > maxnum:
+            maxnum = abs(a[i]-b[i])
+    return maxnum
+
+print 'a,b多维切比雪夫距离：' , moreQBXFdis((1,1,1,1),(3,4,3,4))
 ```
 
 
