@@ -58,21 +58,22 @@ print 'a,b多维切比雪夫距离：' , moreQBXFdis((1,1,1,1),(3,4,3,4))
 
 $$D(x)=\sqrt {(X-u)^TS^{-1}(X-u)}$$
 
-
-
 * # 夹角余弦 {#夹角余弦}
 
+$$cos \theta = \frac {a*b} {|a||b|}$$              $$cos \theta = \frac {\sum_{k=1}^{n}x_{1k}x_{2k}} {\sqrt {\sum_{k=1}^{n}x_{1k}^2}\sqrt {\sum_{k=1}^{n}x_{2k}^2}}$$
 
+```
+def moreCos(a,b):
+    sum_fenzi = 0.0
+    sum_fenmu_1,sum_fenmu_2 = 0,0
+    for i in range(len(a)):
+        sum_fenzi += a[i]*b[i]
+        sum_fenmu_1 += a[i]**2 
+        sum_fenmu_2 += b[i]**2 
 
-
-
-
-
-
-
-
-
-
+    return sum_fenzi/( sqrt(sum_fenmu_1) * sqrt(sum_fenmu_2) )
+print 'a,b 多维夹角余弦距离：',moreCos((1,1,1,1),(2,2,2,2))
+```
 
 
 
