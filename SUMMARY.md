@@ -173,4 +173,5 @@
 * [增强学习](dl/reinforcement/reinforcement.md)
   * [Q-Learning](dl/reinforcement/q-learning.md)
   * [策略网络](dl/reinforcement/policy-network.md)
+  * [bandit算法](dl/reinforcement/banditsuan-fa.md)
 
