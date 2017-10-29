@@ -16,5 +16,19 @@
 choice = numpy.argmax(pymc.rbeta(1 + self.wins, 1 + self.trials - self.wins))
 ```
 
+# Upper Confidence Bound\(置信区间上界\)
 
+先对每一个臂都试一遍
+
+之后，每次选择以下值最大的那个臂
+
+![](/assets/ubc1.png)
+
+其中加号前面是这个臂到目前的收益均值，后面的叫做bonus，本质上是均值的标准差，t是目前的试验次数，Tjt是这个臂被试次数。
+
+这个公式反映：均值越大，标准差越小，被选中的概率会越来越大，起到了exploit的作用；同时哪些被选次数较少的臂也会得到试验机会，起到了explore的作用。
+
+
+
+# Epsilon-Greedy算法
 
