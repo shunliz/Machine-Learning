@@ -28,7 +28,11 @@ choice = numpy.argmax(pymc.rbeta(1 + self.wins, 1 + self.trials - self.wins))
 
 这个公式反映：均值越大，标准差越小，被选中的概率会越来越大，起到了exploit的作用；同时哪些被选次数较少的臂也会得到试验机会，起到了explore的作用。
 
-
-
 # Epsilon-Greedy算法
+
+选一个\(0,1\)之间较小的数epsilon
+
+每次以概率epsilon（产生一个\[0,1\]之间的随机数，比epsilon小）做一件事：所有臂中随机选一个。否则，选择截止当前，平均收益最大的那个臂。
+
+是不是简单粗暴？epsilon的值可以控制对Exploit和Explore的偏好程度。越接近0，越保守，只想花钱不想挣钱。
 
