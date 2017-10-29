@@ -175,4 +175,6 @@
   * [策略网络](dl/reinforcement/policy-network.md)
   * [bandit算法](dl/reinforcement/banditsuan-fa.md)
   * [蒙特卡洛树搜索](dl/reinforcement/meng-te-qia-luo-shu-sou-suo.md)
+* [进化算法](ml/evolution/evolution.md)
+  * [遗传算法](ml/evolution/yichuansuanfa.md)
 
