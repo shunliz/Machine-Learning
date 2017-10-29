@@ -10,17 +10,13 @@ policy：定义了agent在给定时间如何学习。
 
 环境模型
 
-
-
-
-
 ---
 
 增强学习的三大类
 
-* 基于策略的增强学习
-* 基于最优值的增强学习
-* 基于模型的增强学习
+* 基于策略的增强学习 Policy Gradients
+* 基于最优值的增强学习 Q learning  Sarsa  Deep Q network
+* 基于模型的增强学习: model based RL
 
 ：
 
