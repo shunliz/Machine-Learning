@@ -21,5 +21,11 @@
 马尔可夫过程是一个二元组，是一个无记忆的随机过程，是一连串的状态序列具有马尔可夫特性。给出Definition.  
 ![](/assets/markv-mdp2.png)
 
+S是状态的集合，P是转移矩阵。
 
+## 马尔可夫奖励过程\(Markov Reward Process\) {#马尔可夫奖励过程markov-reward-process}
+
+MRP是带有价值的马尔科夫链，相对于马尔可夫过程，添加了Reward函数，和折现因子γ。给出MRP的定义。
+
+![](/assets/markv-mrp1.png)
 
