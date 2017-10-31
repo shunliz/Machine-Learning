@@ -66,5 +66,38 @@ MRP过程相对于MP是增加价值的，那么价值函数就很重要。价值
 
 ![](/assets/markv-bellman3.png)
 
+贝尔曼等式我们可以看出来是一个线性的等式，这样一个等式，可以直接计算，左右移，然后求逆。但是计算是一个复杂度的O\(n3\)过程。所有直接计算只能用于小型的MRP。有许多迭代算法用于大型MRP计算，
+
+* 动态编程
+* 蒙特卡洛 提升
+* 时差学习
+
+## MDP {#mdp}
+
+终于讲到MDP！  
+相比MRP，MDP又加入了动作的有限集合。A Markov decision process \(MDP\) is a Markov reward process with decisions.这句话很好理解。Decison （actions）是决策过程的精髓。所以，奖励函数和转移矩阵都要在动作的条件之上。
+
+![](/assets/markv-mdp11.png)
+
+## policy {#policy}
+
+![](/assets/markv-policy1.png)
+
+这里的policy完全定义了agent的行为，MDP的policy只依赖于当前的状态，同时，他是静态的。  
+给予一个五元组MDP和一个policyπ。整个序列就要加入policy概率。
+
+## Value Function {#value-function}
+
+value function 有两个，一个是state-value,一个是action-value。第一个state-value还是之前的但是意味着在当前的状态下，执行policy的期望回报。  
+第二个以为这，在当前的状态的下，采取actions,这里很关键，following policy的回报。action是很关键的。
+
+![](/assets/markv-mdpvf1.png)
+
+这时，贝尔曼等式同样适用两个value function。
+
+![](/assets/markv-valuefunction2.png)
+
+![](/assets/markv-vaulefunction3.png)
+
 
 
