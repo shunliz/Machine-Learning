@@ -99,5 +99,26 @@ value function 有两个，一个是state-value,一个是action-value。第一�
 
 ![](/assets/markv-vaulefunction3.png)
 
+## 最优价值函数-Optimal Value Function {#最优价值函数-optimal-value-function}
 
+![](/assets/makrv-bestvf.png)
+
+最优价值函数能够直接解决MDP问题，即我们能找到问题最后的最大Reward.  
+我们可以看出来最优价值函数就是找出最大的价值函数。同理，我们也要寻找最优的policy，对于任意一个MDP过程，都存在一个最优政策比其他政策好。所有的最优政策都要获得一样的价值函数，\(因为最优的路可能有很多条，但是他们的价值最优只有一个\)，如何去找最优的政策，在于找到q星。如果他是action-value最优，就去选择做这个动作。  
+同样的，对于最优价值函数，Q和V。我们也可以用贝尔曼方程，推导是一样的。但是过程中，我们要取的最大化。
+
+## Solving the Bellman Optimality Equation {#solving-the-bellman-optimality-equation}
+
+贝尔曼最优等式是非线性的，因为是求最大。同时，没有显式求解方法。这就要迭代取求解。
+
+* Value Iteration
+* Policy Iteration
+* Q-learning
+* Sarsa
+
+整个过程MDP都在于给出基本概念，为了以后找出最优的action，找出最优的policy，在于最大化Reward的过程。在这里有两个问题，一个是如何保证马尔可夫模型的完善性，这在于我们假定现在所处的状态是随机的。第二，如何确定对于未知风险的考量，这个我们需要把无风险的MDP转化为风险MDP，或者直接在Reward中加入对风险的折扣。
+
+### 参考 {#参考}
+
+[http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Teaching.html](http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Teaching.html)
 
