@@ -39,5 +39,12 @@
 
 ![](/assets/mento-carlo3.png)第二种做法：
 
-![](/assets/mento-carlo4.png)
+![](/assets/mento-carlo4.png)两种做法都能够收敛，那么显然第二种做法的速度更快。
+
+那么再改进一点，就是改变greedy policy中ϵ的值，使得不断变小趋于0，这个时候最后得到的policy就是完全的最优policy了。  
+这个算法就叫做GLIE Monte-Carlo Control：![](/assets/mento-carlo5.png)其他变种：
+
+Monte Carlo with Exploring Starts,使用Q\(s,a\)然后使用上面说的第二种做法，一次episode就更新一次policy，而且policy直接使用Q值。
+
+![](/assets/mento-carlo6.png)
 
