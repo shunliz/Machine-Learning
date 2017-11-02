@@ -48,14 +48,9 @@ Monte Carlo with Exploring Starts,使用Q\(s,a\)然后使用上面说的第二�
 
 ![](/assets/mento-carlo6.png)policy的更新使用了ϵ−greedy，目的就是能够更好的探索整个状态空间。
 
-
-
 # ![](/assets/mento-carlo7.png)4 Off Policy Learning
 
-那么上面的方法一直是基于当前的policy，为了探索状态空间，采用一个次优的策略ϵ−greedypolicy来探索。那么是不是可以更直接的使用两个policy。一个policy用来探索空间，也就是behavior policy，另一个policy就是为了达到最优policy，叫做target policy。那么这种方法就叫做off policy learning。On-policy的方法比较简单，off-policy 方法需要更多的概念和标记，比较不好理解，而且，由于behaviour policy和target policy不相关，这种方法比较不容易收敛。但是off-policy更强大，更通用，实际上的on-policy方法就是off-policy方法的一个子集。比如，就可以使用off-policy从人类专家或者传统的控制算法来学习一个增强学习模型。  
+那么上面的方法一直是基于当前的policy，为了探索状态空间，采用一个次优的策略ϵ−greedypolicy来探索。那么是不是可以更直接的使用两个policy。一个policy用来探索空间，也就是behavior policy，另一个policy就是为了达到最优policy，叫做target policy。那么这种方法就叫做off policy learning。On-policy的方法比较简单，off-policy 方法需要更多的概念和标记，比较不好理解，而且，由于behaviour policy和target policy不相关，这种方法比较不容易收敛。但是off-policy更强大，更通用，实际上的on-policy方法就是off-policy方法的一个子集。比如，就可以使用off-policy从人类专家或者传统的控制算法来学习一个增强学习模型。
 
-
-
-
-
+![](/assets/mento-carlo8.png)关键是要找到两个policy之间的权重关系，从而更新Q值。
 
