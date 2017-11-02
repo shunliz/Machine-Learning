@@ -178,6 +178,7 @@
   * [多臂赌博机\(Multi-arm Bandits\)](dl/reinforcement/multi-bandit.md)
   * [马尔可夫决策过程MDP](dl/reinforcement/mdp.md)
   * [动态编程](dl/reinforcement/dynamic-programming.md)
+  * [蒙特卡洛方法](dl/reinforcement/monte-carlo.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
