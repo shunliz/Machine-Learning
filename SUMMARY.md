@@ -179,6 +179,7 @@
   * [马尔可夫决策过程MDP](dl/reinforcement/mdp.md)
   * [动态编程](dl/reinforcement/dynamic-programming.md)
   * [蒙特卡洛方法](dl/reinforcement/monte-carlo.md)
+  * [时序差分学习](dl/reinforcement/shi-xu-cha-fen-xue-xi.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
