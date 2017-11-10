@@ -1,3 +1,11 @@
+Temporal-difference \(TD\) learning可以说是增强学习的中心，它集成了蒙特卡洛思想和动态编程（dynamic programming, DP）思想，像蒙特卡洛方法一样，TD 方法不需要环境的动态模型，直接从经验经历中学习，像 DP 方法一样，TD 方法不需要等到最终的 outcome 才更新模型，它可以基于其他估计值来更新估计值。
+
+## 1、TD Prediction {#1td-prediction}
+
+　　TD 和 蒙特卡洛方法都使用经验来解决预测问题，给定服从规则π的一些经历，两种方法均可更新经历中的每一个非终止的状态St的vπ。粗略的说， Monte Carlo 方法要等到return知道之后才将其设为是V\(St\)的目标值，一个适合非固定环境的简单的 every-visit Monte Carlo 方法为：
+
+
+
 时序差分学习\(Temporal-Difference Learning\)结合了动态规划和蒙特卡洛方法，是强化学习的核心思想。
 
 蒙特卡洛的方法是模拟\(或者经历\)一段序列，在序列结束后，根据序列上各个状态的价值，来估计状态价值。
