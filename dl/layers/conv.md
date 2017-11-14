@@ -38,15 +38,11 @@
 
 `input_shape`参数。例如`input_shape = (3,10,128,128)`代表对10帧128\*128的彩色RGB图像进行卷积。数据的通道位置仍然有`data_format`参数指定。
 
-
-
 ## Cropping1D层 {#cropping1d}
 
 ---
 
 在时间轴（axis1）上对1D输入（即时间序列）进行裁剪
-
-
 
 ## Cropping2D层 {#cropping2d}
 
@@ -54,15 +50,11 @@
 
 对2D输入（图像）进行裁剪，将在空域维度，即宽和高的方向上裁剪
 
-
-
 ## Cropping3D层 {#cropping3d}
 
 ---
 
 对2D输入（图像）进行裁剪
-
-
 
 ## UpSampling1D层 {#upsampling1d}
 
@@ -71,6 +63,46 @@
 在时间轴上，将每个时间步重复`length`次
 
 
+
+## UpSampling2D层 {#upsampling2d}
+
+---
+
+将数据的行和列分别重复size\[0\]和size\[1\]次
+
+
+
+## UpSampling3D层 {#upsampling3d}
+
+---
+
+将数据的三个维度上分别重复size\[0\]、size\[1\]和ize\[2\]次
+
+本层目前只能在使用Theano为后端时可用
+
+## ZeroPadding1D层 {#zeropadding1d}
+
+---
+
+对1D输入的首尾端（如时域序列）填充0，以控制卷积以后向量的长度
+
+
+
+## ZeroPadding2D层 {#zeropadding2d}
+
+---
+
+对2D输入（如图片）的边界填充0，以控制卷积以后特征图的大小
+
+
+
+## ZeroPadding3D层 {#zeropadding3d}
+
+---
+
+将数据的三个维度上填充0
+
+本层目前只能在使用Theano为后端时可用
 
 
 
