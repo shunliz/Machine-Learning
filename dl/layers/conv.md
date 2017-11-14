@@ -24,8 +24,6 @@
 
 当使用该层作为第一层时，应提供`input_shape`参数。例如`input_shape = (3,128,128)`代表128\*128的彩色RGB图像
 
-
-
 ## Conv2DTranspose层 {#conv2dtranspose}
 
 ---
@@ -34,13 +32,45 @@
 
 当使用该层作为第一层时，应提供`input_shape`参数。例如`input_shape = (3,128,128)`代表128\*128的彩色RGB图像
 
-
-
 ## Conv3D层 {#conv3d}
 
 ---
 
 `input_shape`参数。例如`input_shape = (3,10,128,128)`代表对10帧128\*128的彩色RGB图像进行卷积。数据的通道位置仍然有`data_format`参数指定。
+
+
+
+## Cropping1D层 {#cropping1d}
+
+---
+
+在时间轴（axis1）上对1D输入（即时间序列）进行裁剪
+
+
+
+## Cropping2D层 {#cropping2d}
+
+---
+
+对2D输入（图像）进行裁剪，将在空域维度，即宽和高的方向上裁剪
+
+
+
+## Cropping3D层 {#cropping3d}
+
+---
+
+对2D输入（图像）进行裁剪
+
+
+
+## UpSampling1D层 {#upsampling1d}
+
+---
+
+在时间轴上，将每个时间步重复`length`次
+
+
 
 
 
