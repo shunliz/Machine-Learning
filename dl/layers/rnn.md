@@ -60,3 +60,11 @@ LSTM的Cell类
 
 基于CuDNN的快速GRU实现，只能在GPU上运行，只能使用tensoflow为后端
 
+## CuDNNLSTM层 {#cudnnlstm}
+
+---
+
+基于CuDNN的快速LSTM实现，只能在GPU上运行，只能使用tensoflow为后端
+
+
+
