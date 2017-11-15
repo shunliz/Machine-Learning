@@ -2,5 +2,31 @@
 
 ---
 
+这是循环层的抽象类，请不要在模型中直接应用该层（因为它是抽象类，无法实例化任何对象）。请使用它的子类`LSTM`，`GRU`或`SimpleRNN`。
 
+所有的循环层（`LSTM`,`GRU`,`SimpleRNN`）都继承本层，因此下面的参数可以在任何循环层中使用
+
+## SimpleRNN层 {#simplernn}
+
+---
+
+全连接RNN网络，RNN的输出会被回馈到输入
+
+## GRU层 {#gru}
+
+---
+
+门限循环单元
+
+## LSTM层 {#lstm}
+
+---
+
+Keras长短期记忆模型
+
+## ConvLSTM2D层 {#convlstm2d}
+
+---
+
+ConvLSTM2D是一个LSTM网络，但它的输入变换和循环变换是通过卷积实现的
 
