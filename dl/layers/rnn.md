@@ -30,3 +30,15 @@ Keras长短期记忆模型
 
 ConvLSTM2D是一个LSTM网络，但它的输入变换和循环变换是通过卷积实现的
 
+## SimpleRNNCell层 {#simplernncell}
+
+---
+
+SinpleRNN的Cell类
+
+## GRUCell层 {#grucell}
+
+---
+
+GRU的Cell类
+
