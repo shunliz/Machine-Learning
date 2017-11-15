@@ -42,3 +42,21 @@ SinpleRNN的Cell类
 
 GRU的Cell类
 
+## LSTMCell层 {#lstmcell}
+
+---
+
+LSTM的Cell类
+
+## StackedRNNCells层 {#stackedrnncells}
+
+---
+
+这是一个wrapper，用于将多个recurrent cell包装起来，使其行为类型单个cell。该层用于实现搞笑的stacked RNN
+
+## CuDNNGRU层 {#cudnngru}
+
+---
+
+基于CuDNN的快速GRU实现，只能在GPU上运行，只能使用tensoflow为后端
+
