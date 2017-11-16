@@ -4,8 +4,6 @@
 
 层来完成。但对于任何具有可训练权重的定制层，你应该自己来实现。
 
-
-
 ```
 from keras import backend as K
 from keras.engine.topology import Layer
