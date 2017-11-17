@@ -181,6 +181,7 @@
   * [蒙特卡洛方法](dl/reinforcement/monte-carlo.md)
   * [时序差分学习](dl/reinforcement/shi-xu-cha-fen-xue-xi.md)
   * [A3C算法](dl/reinforcement/a3csuan-fa.md)
+  * [Multi-steps bootstraping](dl/reinforcement/multi-steps-bootstraping.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
