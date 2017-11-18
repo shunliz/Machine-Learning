@@ -6,3 +6,9 @@ K分类，第k类的参数为$$\theta_k$$, 组成二维矩阵$$\theta_{k*n}$$
 
 
 
+对数似然：![](/assets/softmax2.png)
+
+
+
+ 随机梯度：![](/assets/softmax3.png)
+
