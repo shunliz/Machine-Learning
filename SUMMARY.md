@@ -43,6 +43,7 @@
   * [线性回归小结](ml/regression/linear-regression-summary.md)
   * [Logistic回归](ml/regression/logistic.md)
   * [Logistic回归小结](ml/regression/logistichui-gui-xiao-jie.md)
+  * [SoftMax回归](ml/regression/softmax.md)
 * [第九课：决策树](ml/decisiontree.md)
   * [ID3](ml/decisiontree/id3.md)
   * [C4.5](ml/decisiontree/c45.md)
