@@ -80,7 +80,7 @@ $$J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)+\alpha ||\theta||_1$$
 
 Lasso回归可以使得一些特征的系数变小，甚至还是一些绝对值较小的系数直接变为0。增强模型的泛化能力。
 
-Lasso回归的求解办法一般有坐标轴下降法（coordinate descent）和最小角回归法（ Least Angle Regression），由于它们比较复杂，在我的这篇文章单独讲述： 线程回归的正则化-Lasso回归小结
+Lasso回归的求解办法一般有坐标轴下降法（coordinate descent）和最小角回归法（ Least Angle Regression），由于它们比较复杂，在我的这篇文章单独讲述： [线性回归的正则化-Lasso回归小结](/ml/regression/linear-regression-summary.md)
 
 线性回归的L2正则化通常称为Ridge回归，它和一般线性回归的区别是在损失函数上增加了一个L2正则化的项，和Lasso回归的区别是Ridge回归的正则化项是L2范数，而Lasso回归的正则化项是L1范数。具体Ridge回归的损失函数表达式如下：
 
