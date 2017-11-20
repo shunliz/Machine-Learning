@@ -63,16 +63,12 @@ $$min \;\; \frac{1}{2}||w||_2^2  \;\; s.t \;\; y_i(w^Tx_i + b)  \geq 1 (i =1,2,.
 从上式中，我们可以先求优化函数对于w和b的极小值。接着再求拉格朗日乘子α的极大值。
 
 首先我们来求w和b的极小值，即$$min(w,b)(\;  L(w,b,\alpha))$$。这个极值我们可以通过对w和b分别求偏导数得到：
-
-
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
 $$
 
-
-
 $$
-\frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
+\frac{\partial L}{\partial b} = 0 \;\Rightarrow 0 = \sum\limits_{i=1}^{m}\alpha_iy_i
 $$
 
 
