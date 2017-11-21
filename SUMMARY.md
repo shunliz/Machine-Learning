@@ -8,6 +8,7 @@
   * [过拟合数学原理与解决方案](math/analytic/overfitting.md)
   * [交叉验证](math/analytic/cross-validation.md)
   * [最小二乘](math/analytic/least-square.md)
+  * [拉格朗日乘子法（Lagrange Multiplier\) 和KKT条件](math/analytic/lagelangri-kkt.md)
 * [第二章 概率论](math/probability.md)
   * [统计学习方法概论](math/probability/prob-methodology.md)
   * [最大似然估计](math/probability/mle.md)
