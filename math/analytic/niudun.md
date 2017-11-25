@@ -1,6 +1,6 @@
-$$f(x_0+\delta x) = f(x_0) + f^{'}(x_0)\delta_x + \frac {f^{''}(x_0)} {2}\delta_x^2 + o(\delta^2_x)= g(\delta_x) +o(\delta_x^2)$$ 
+$$f(x_0+\delta x) = f(x_0) + f^{'}(x_0)\delta_x + \frac {f^{''}(x_0)} {2}\delta_x^2 + o(\delta^2_x)= g(\delta_x) +o(\delta_x^2)$$
 
-关于$$\delta_x$$的二次函数$$g(\delta_x)$$的极值点为$$-\frac {f^{'}(x_0)} {f^{''}(x_0)}$$，那么f\(x\)极值点估计在$$x_0--\frac {f^{'}(x_0)} {f^{''}(x_0)}$$附近。
+关于$$\delta_x$$的二次函数$$g(\delta_x)$$的极值点为$$-\frac {f^{'}(x_0)} {f^{''}(x_0)}$$，那么f\(x\)极值点估计在$$x_0-\frac {f^{'}(x_0)} {f^{''}(x_0)}$$附近。于是定义$$x_1=x_0-\frac {f^{'}(x_0)} {f^{''}(x_0)}$$，重复此步骤得到序列：
 
-
+$$x_n=x_{n-1}-\frac {f^{'}(x_{n-1})} {f^{''}(x_{n-1})}$$
 
