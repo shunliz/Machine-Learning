@@ -4,6 +4,10 @@ Jensen不等式
 
 $$\sum_{i=1}^{n} w_if(x_i)>=f(\sum_{i=1}^{n} w_ix_i)$$
 
+
+
+
+
 拉格朗日对偶函数
 
 $$L(x,\lambda ,v) = f_0(x)+\sum_{i=1}^{m}\lambda _if_i(x)+\sum_{i=1}^{P}v_ih_i(x)$$
