@@ -14,15 +14,13 @@ $$L(x,\lambda ,v) = f_0(x)+\sum_{i=1}^{m}\lambda _if_i(x)+\sum_{i=1}^{P}v_ih_i(x
 
 $$x = y$$$$x = g(\lambda,v)=inf_{x \in D} L(x, \lambda, v)=inf_{x \in D} f_0(x)+\sum_{i=1}^{m}\lambda _if_i(x)+\sum_{i=1}^{P}v_ih_i(x)$$
 
-
-
 ---
 
 对偶问题：
 
 最大化$$g(\lambda,v)$$
 
-不等式条件：$$\lambda_i>=0$$![](/assets/touyuhua1.png)
+不等式条件：$$\lambda_i>=0$$![](/assets/touyuhua1.png)![](/assets/touyouhua2.png)![](/assets/touyouhua3.png)![](/assets/touyouhua4.png)![](/assets/touyouhua5.png)![](/assets/touyouhua6.png)
 
-
+![](/assets/touyouhua7.png)![](/assets/touyouhua8.png)![](/assets/touyouhua9.png)![](/assets/touyouhua10.png)![](/assets/touyouhua11.png)
 
