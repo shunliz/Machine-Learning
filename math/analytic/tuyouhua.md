@@ -8,5 +8,7 @@ $$\sum_{i=1}^{n} w_if(x_i)>=f(\sum_{i=1}^{n} w_ix_i)$$
 
 $$L(x,\lambda ,v) = f_0(x)+\sum_{i=1}^{m}\lambda _if_i(x)+\sum_{i=1}^{P}v_ih_i(x)$$
 
+根据拉个朗日函数，我们定义i拉格朗日对偶函数$$g(\lambda,v):R^{m+p}->R$$
 
+$$x = y$$$$x = g(\lambda,v)=inf_{x \in D} L(x, \lambda, v)=inf_{x \in D} f_0(x)+\sum_{i=1}^{m}\lambda _if_i(x)+\sum_{i=1}^{P}v_ih_i(x)$$
 
