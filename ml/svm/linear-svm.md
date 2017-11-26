@@ -46,7 +46,7 @@ SVM的模型是让所有点到超平面的距离大于一定的距离，也就�
 
 一般我们都取函数间隔γ′为1，这样我们的优化函数定义为：$$max \;\; \frac{1}{||w||_2}  \;\; s.t \;\; y_i(w^Tx_i + b)  \geq 1 (i =1,2,...m)$$
 
-也就是说，我们要在约束条件$$y_i(w^Tx_i + b)  \geq 1 (i =1,2,...m)$$下，最大化$$\frac{1)}{||w||_2}$$。可以看出，这个感知机的优化方式不同，感知机是固定分母优化分子，而SVM是固定分子优化分母，同时加上了支持向量的限制。
+也就是说，我们要在约束条件$$y_i(w^Tx_i + b)  \geq 1 (i =1,2,...m)$$下，最大化$$\frac{1}{||w||_2}$$。可以看出，这个感知机的优化方式不同，感知机是固定分母优化分子，而SVM是固定分子优化分母，同时加上了支持向量的限制。
 
 由于$$\frac{1}{||w||_2}$$的最大化等同于$$\frac{1}{2}||w||_2^2$$的最小化。这样SVM的优化函数等价于：
 
@@ -63,12 +63,19 @@ $$min \;\; \frac{1}{2}||w||_2^2  \;\; s.t \;\; y_i(w^Tx_i + b)  \geq 1 (i =1,2,.
 从上式中，我们可以先求优化函数对于w和b的极小值。接着再求拉格朗日乘子α的极大值。
 
 首先我们来求w和b的极小值，即$$min(w,b)(\;  L(w,b,\alpha))$$。这个极值我们可以通过对w和b分别求偏导数得到：
+
+
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
 $$
+
+
+
 $$
 \frac{\partial L}{\partial b} = 0 \;\Rightarrow 0 = \sum\limits_{i=1}^{m}\alpha_iy_i
 $$
+
+
 从上两式子可以看出，我们已经求得了w和α的关系，只要我们后面接着能够求出优化函数极大化对应的α，就可以求出我们的w了，至于b，由于上两式已经没有b，所以最后的b可以有多个。
 
 好了，既然我们已经求出w和α的关系，就可以带入优化函数L\(w,b,α\)消去w了。我们定义:$$\psi(\alpha) = min(w,b)\;  L(w,b,\alpha)$$
@@ -80,25 +87,45 @@ $$\begin{aligned} \psi(\alpha) & =  \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}
 从上面可以看出，通过对w,b极小化以后，我们的优化函数ψ\(α\)仅仅只有α向量做参数。只要我们能够极大化ψ\(α\)，就可以求出此时对应的α，进而求出w,b.
 
 对ψ\(α\)求极大化的数学表达式如下:
+
+
 $$
 max(\alpha)\; -\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) + \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
+
+
 可以去掉负号，即为等价的极小化问题如下：
+
+
 $$
 min(\alpha) \;\;\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
 只要我们可以求出上式极小化时对应的α向量就可以求出w和b了。具体怎么极小化上式得到对应的α，一般需要用到SMO算法，这个算法比较复杂，我们后面会专门来讲。在这里，我们假设通过SMO算法，我们得到了对应的α的值$$\alpha^{*}$$。
 
 那么我们根据$$w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i$$，可以求出对应的w的值$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
@@ -120,15 +147,25 @@ $$
 算法过程如下：
 
 1）构造约束优化问题
+
+
 $$
 min(\alpha)\;\; \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
+
+
+
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
+
+
+
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
+
+
 2）用SMO算法求出上式最小时对应的α向量的值$$\alpha^{*}$$向量.
 
 3\) 计算$$w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$$
