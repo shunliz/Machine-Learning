@@ -34,7 +34,7 @@ PrefixSpan算法的全称是Prefix-Projected Pattern Growth，即前缀投影的
 
 在PrefixSpan算法中，相同前缀对应的所有后缀的结合我们称为前缀对应的投影数据库。
 
-![](http://images2015.cnblogs.com/blog/1042406/201701/1042406-20170120204305781-1880778940.png)
+![](/assets/prefixspan4.png)
 
 # 4. PrefixSpan算法思想
 
