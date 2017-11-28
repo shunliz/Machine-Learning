@@ -48,7 +48,7 @@ PrefixSpan算法的全称是Prefix-Projected Pattern Growth，即前缀投影的
 
 同样的方法可以得到其他以&lt;a&gt;, &lt;b&gt;, &lt;c&gt;, &lt;e&gt;, &lt;f&gt;为前缀的频繁序列。
 
-![](http://images2015.cnblogs.com/blog/1042406/201701/1042406-20170120222303515-615199517.png)
+![](/assets/prefixspan5.png)
 
 # 5. PrefixSpan算法流程
 
