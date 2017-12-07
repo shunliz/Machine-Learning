@@ -50,9 +50,9 @@ Suppose now that the agent discovers a change in the environment and changes its
 
 **Prioritized sweeping has been found to dramatically increase the speed at which optimal solutions are found in maze tasks, often by a factor of 5 to 10.**
 
-
-
 对于for allS¯ ,A¯ predicted to lead toS ，其实可以只选择一些必要的。
+
+
 
 最后是8.7 Monte Carlo Tree Search，是一个比较大的话题，书中介绍了一些基础概念，很有意思，但是不介绍了。
 
