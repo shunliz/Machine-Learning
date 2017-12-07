@@ -188,6 +188,7 @@
   * [时序差分学习](dl/reinforcement/shi-xu-cha-fen-xue-xi.md)
   * [A3C算法](dl/reinforcement/a3csuan-fa.md)
   * [Multi-steps bootstraping](dl/reinforcement/multi-steps-bootstraping.md)
+  * [Planning and Learning with Tabular Methods](dl/reinforcement/tabular-method.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
