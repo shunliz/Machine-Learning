@@ -4,11 +4,13 @@
 
 现在我们来演示一遍, 观测的信息通过神经网络分析, 选出了左边的行为, 我们直接进行反向传递, 使之下次被选的可能性增加, 但是奖惩信息却告诉我们, 这次的行为是不好的, 那我们的动作可能性增加的幅度 随之被减低. 这样就能靠奖励来左右我们的神经网络反向传递. 我们再来举个例子, 假如这次的观测信息让神经网络选择了右边的行为, 右边的行为随之想要进行反向传递, 使右边的行为下次被多选一点, 这时, 奖惩信息也来了, 告诉我们这是好行为, 那我们就在这次反向传递的时候加大力度, 让它下次被多选的幅度更猛烈! 这就是 Policy Gradients 的核心思想了. 很简单吧.
 
-
-
 Policy gradient 是 RL 中另外一个大家族, 他不像 Value-based 方法 \(Q learning, Sarsa\), 但他也要接受环境信息 \(observation\), 不同的是他要输出不是 action 的 value, 而是具体的那一个 action, 这样 policy gradient 就跳过了 value 这个阶段. 而且个人认为 Policy gradient 最大的一个优势是: 输出的这个 action 可以是一个连续的值, 之前我们说到的 value-based 方法输出的都是不连续的值, 然后再选择值最大的 action. 而 policy gradient 可以在一个连续分布上选取 action.
 
 
 
+## 算法 {#算法}
 
+我们介绍的 policy gradient 的第一个算法是一种基于**整条回合数据**的更新, 也叫**REINFORCE**方法. 这种方法是 policy gradient 的最基本方法, 有了这个的基础, 我们再来做更高级的.
+
+![](/assets/reinforcement-pg1.png)
 
