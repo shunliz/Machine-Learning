@@ -2,7 +2,7 @@
 
 ![](/assets/deeplayer-pooling1.png)
 
-
+通常有最大池化层，平均池化层。最大池化层对每一个小区域选最最大值作为池化结果，平均池化层选取平均值作为池化结果。
 
 ## MaxPooling1D层 {#maxpooling1d}
 
