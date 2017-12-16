@@ -11,6 +11,7 @@
   * [拉格朗日乘子法（Lagrange Multiplier\) 和KKT条件](math/analytic/lagelangri-kkt.md)
   * [牛顿法](math/analytic/niudun.md)
   * [凸优化](math/analytic/tuyouhua.md)
+  * [常用函数](math/analytic/common-function.md)
 * [第二章 概率论](math/probability.md)
   * [统计学习方法概论](math/probability/prob-methodology.md)
   * [最大似然估计](math/probability/mle.md)
