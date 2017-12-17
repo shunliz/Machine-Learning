@@ -2,3 +2,13 @@ Actor 和 Critic, 他们都能用不同的神经网络来代替 . 在 Policy Gra
 
 
 
+**一句话概括 Actor Critic 方法**:
+
+结合了 Policy Gradient \(Actor\) 和 Function Approximation \(Critic\) 的方法.`Actor`基于概率选行为,`Critic`基于`Actor`的行为评判行为的得分,`Actor`根据`Critic`的评分修改选行为的概率.
+
+**Actor Critic 方法的优势**: 可以进行单步更新, 比传统的 Policy Gradient 要快.
+
+**Actor Critic 方法的劣势**: 取决于 Critic 的价值判断, 但是 Critic 难收敛, 再加上 Actor 的更新, 就更难收敛. 为了解决收敛问题, Google Deepmind 提出了`Actor Critic`升级版`Deep Deterministic Policy Gradient`. 后者融合了 DQN 的优势, 解决了收敛难的问题. 我们之后也会要讲到[Deep Deterministic Policy Gradient](https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/6-2-DDPG/). 不过那个是要以`Actor Critic`为基础, 懂了`Actor Critic`, 后面那个就好懂了.
+
+
+
