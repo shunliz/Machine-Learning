@@ -52,3 +52,7 @@ softmax层
 
 ---
 
+$$softmax(x)_i=\frac {exp(x_i)}{\sum_{j}exp(x_j)} $$
+
+tensorflow中定义的基本层，通常是对某一个NN的输出进行转化，转化成各个输出的概率。
+
