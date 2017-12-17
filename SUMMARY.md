@@ -193,6 +193,7 @@
   * [Planning and Learning with Tabular Methods](dl/reinforcement/tabular-method.md)
   * [DQN](dl/reinforcement/dqn.md)
   * [Policy Gridient](dl/reinforcement/policy-gridient.md)
+  * [Actor Critic](dl/reinforcement/actor-critic.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
