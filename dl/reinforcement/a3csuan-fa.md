@@ -4,5 +4,7 @@
 
 **对于中央大脑的好处是:**中央大脑最怕一个人的连续性更新, 不只基于一个人推送更新这种方式能打消这种连续性. 使中央大脑不必有用像`DQN`,`DDPG`那样的记忆库也能很好的更新.
 
-![](/assets/reinforcement-a3c.png)
+![](/assets/reinforcement-a3c.png)为了达到这个目的, 我们要有两套体系, 可以看作中央大脑拥有`global net`和他的参数, 每位玩家有一个`global net`
+
+的副本`local net`, 可以定时向`global net`推送更新, 然后定时从`global net`那获取综合版的更新.
 
