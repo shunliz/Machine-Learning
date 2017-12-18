@@ -195,6 +195,7 @@
   * [Policy Gridient](dl/reinforcement/policy-gridient.md)
   * [Actor Critic](dl/reinforcement/actor-critic.md)
   * [DDPG \(Deep Deterministic Policy Gradient\)](dl/reinforcement/ddpg.md)
+  * [PPO\(Proximal Policy Optimization \)](dl/reinforcement/ppo.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
 
