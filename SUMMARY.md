@@ -198,5 +198,5 @@
   * [LDA求解之Gibbs采样算法](nlp/lda/lda-gibbs.md)
   * [LDA求解之变分推断EM算法](nlp/lda/vi-em.md)
   * [scikit-learn LDA主题模型](nlp/lda/scikit-learn-lda.md)
-* 语音识别
+* [语音识别](voice/introduction.md)
 
