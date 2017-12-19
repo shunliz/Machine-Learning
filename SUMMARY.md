@@ -199,4 +199,5 @@
   * [LDA求解之变分推断EM算法](nlp/lda/vi-em.md)
   * [scikit-learn LDA主题模型](nlp/lda/scikit-learn-lda.md)
 * [语音识别](voice/introduction.md)
+  * [GMM-HMM](voice/gmm-hmm.md)
 
