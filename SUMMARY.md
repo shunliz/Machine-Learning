@@ -187,6 +187,8 @@
   * [PPO\(Proximal Policy Optimization \)](dl/reinforcement/ppo.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
+  * [进化策略](ml/evolution/evolution-strategy.md)
+  * [NEAT](ml/evolution/neat.md)
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
