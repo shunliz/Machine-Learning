@@ -204,4 +204,6 @@
 * [语音识别](voice/introduction.md)
   * [GMM-HMM](voice/gmm-hmm.md)
   * [目录](voice/voicemulumd.md)
+* [第四部分 学习资源](resources/introduction.md)
+  * [机器学习](resources/ml/list.md)
 
