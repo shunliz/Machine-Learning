@@ -206,4 +206,5 @@
   * [目录](voice/voicemulumd.md)
 * [第四部分 学习资源](resources/introduction.md)
   * [机器学习](resources/ml/list.md)
+  * [强化学习](resource/rl/list.md)
 
