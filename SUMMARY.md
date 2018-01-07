@@ -153,8 +153,8 @@
 * [受限波尔兹曼机](dl/rbm/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
 * [RNN](dl/rnn/rnn.md)
-  * Bidirectional RNNs
-  * Deep \(Bidirectional\) RNNs
+  * [Bidirectional RNNs](dl/rnn/bidirectional-rnns.md)
+  * [Deep \(Bidirectional\) RNNs](dl/rnn/deep-bidirectional-rnns.md)
   * [LSTM模型与前向反向传播算法](dl/rnn/lstm.md)
   * [随时间反向传播（BPTT）算法](dl/rnn/bptt.md)
   * [循环神经网络\(RNN\)模型与前向反向传播算法](dl/rnn/rnn-bptt.md)
