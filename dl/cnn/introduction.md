@@ -100,8 +100,6 @@ Authors: Edward Johns, Oisin Mac Aodha, Gabriel J. Brostow
 参考文献二：这是另外一个博主的博客，也是对CVPR的文章进行了整理：  
 [http://blog.csdn.net/jwh\_bupt/article/details/46916653](http://blog.csdn.net/jwh_bupt/article/details/46916653)
 
-
-
 今天要跟大家分享的是一些 Convolutional Neural Networks（CNN）的工作。大家都知道，CNN 最早提出时，是以一定的人眼生理结构为基础，然后逐渐定下来了一些经典的[架构](http://lib.csdn.net/base/architecture)——convolutional 和 pooling 的交替，最后再加上几个 fully-connected layers 用作最后做 prediction 等的输出。然而，如果我们能“反思”经典，深入剖析这些经典架构中的不同 component 的作用，甚至去改进它们，有时候可能有更多的发现。所以，今天分享的内容，便是改进 CNN 的一些工作。
 
 ## Striving For Simplicity：The All Convolutional Net {#striving-for-simplicitythe-all-convolutional-net}
@@ -143,4 +141,10 @@ even after removing the fully connected layers.
 
 如上文所说，文章的 Section 3 很 intuitive，首先说明并解了为什么使用的是 soft version 的 max/argmax 去进行 ”what“ 和 ”where“；第二，讨论了为何加入 reconstruction loss 和这样一个 hybird loss function 更好（generalization 和 robustness\)；第三，说明了 intermediate loss 对于“what”“where”一起学习的重要性。  
 实验结果上来看，这样的 SWWAE 模型 generate 出来的图片更清晰，更“干净”（clearer and cleaner）。
+
+
+
+CNN for NLP
+
+![](/assets/dl-cnn-for-nlp.png)
 
