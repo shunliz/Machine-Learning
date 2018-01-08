@@ -1,2 +1,2 @@
-![](/assets/rbm-yuanli1.png)
+![](/assets/rbm-yunali1.png)
 
