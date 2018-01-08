@@ -154,6 +154,7 @@
 * [受限波尔兹曼机](dl/rbm/rbm.md)
   * [RBM code](dl/rbm/rbm-code.md)
   * [DBN](dl/rbm/dbn.md)
+  * [RBM原理](dl/rbm/rbm-yuanli.md)
 * [RNN](dl/rnn/rnn.md)
   * [Bidirectional RNNs](dl/rnn/bidirectional-rnns.md)
   * [Deep \(Bidirectional\) RNNs](dl/rnn/deep-bidirectional-rnns.md)
