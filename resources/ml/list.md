@@ -67,7 +67,6 @@ R程序语言设计| 暂无 | 暂无
 [统计学习入门](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/about)| Stanford | [An Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/) | [链接](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/about)
 [机器学习入门](https://www.coursera.org/learn/machine-learning) | Coursera | 暂无 | [链接](https://www.coursera.org/learn/machine-learning)
 
-
 ### <h3 id="math_median">数学基础中级</h3>
 
 课程 | 机构 | 参考书 | Notes等其他资料
