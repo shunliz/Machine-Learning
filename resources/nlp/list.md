@@ -61,7 +61,6 @@ Python程序语言设计| [链接](http://cs231n.github.io/python-numpy-tutorial
 :-- | :--: | :--: | :--:
 [机器学习入门](https://www.coursera.org/learn/machine-learning) | Coursera | 暂无 | [链接](https://www.coursera.org/learn/machine-learning)
 
-
 ###<h3 id="nlp_basic">自然语言处理学习初级</h3>
    下面这些课程可以较好的帮助大家认识自然语言处理，了解基本的自然语言处理知识，是很好的入门课程。
    
