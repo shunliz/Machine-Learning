@@ -63,8 +63,8 @@ Python程序语言设计| [链接](http://cs231n.github.io/python-numpy-tutorial
 
 ###<h3 id="nlp_basic">自然语言处理学习初级</h3>
    下面这些课程可以较好的帮助大家认识自然语言处理，了解基本的自然语言处理知识，是很好的入门课程。
-   
-   
+
+  
 课程 | 机构 | 参考书 | Notes等其他资料
 :-- | :--: | :--: | :--:
 [自然语言处理初级1](https://www.youtube.com/watch?v=nfoudtpBV68&list=PLiNErZ5Bus8qNxNsFZFkh-9_CzZRW9iH9)| Stanford |[Speech and Language Processing](https://www.amazon.de/o/ASIN/0131873210/) | [链接](https://suclass.stanford.edu/courses/Engineering/CS224N/Fall2015/about)
