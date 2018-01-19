@@ -74,9 +74,7 @@ word2vec也使用了CBOW与Skip-Gram来训练模型与得到词向量，但是�
 
 在word2vec中，约定编码方式和上面的例子相反，即约定左子树编码为1，右子树编码为0，同时约定左子树的权重不小于右子树的权重。
 
+[https://www.leiphone.com/news/201706/PamWKpfRFEI42McI.html](https://www.leiphone.com/news/201706/PamWKpfRFEI42McI.html)
 
-
-https://www.leiphone.com/news/201706/PamWKpfRFEI42McI.html
-
-https://www.leiphone.com/news/201706/QprrvzsrZCl4S2lw.html
+[https://www.leiphone.com/news/201706/QprrvzsrZCl4S2lw.html](https://www.leiphone.com/news/201706/QprrvzsrZCl4S2lw.html)
 
