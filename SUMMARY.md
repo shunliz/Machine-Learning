@@ -43,6 +43,7 @@
   * [Spark特征提取](ml/clean-feature/spark-fextract.md)
   * [异常数据监测](ml/clean-feature/outlier-detect.md)
   * [数据预处理](ml/clean-feature/datapreprocess.md)
+  * [特征工程](ml/clean-feature/te-zheng-gong-cheng.md)
 * [第七课： 回归](ml/regression/regression.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
