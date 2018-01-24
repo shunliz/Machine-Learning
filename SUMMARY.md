@@ -217,4 +217,5 @@
   * [深度学习](resources/dl/list.md)
 * 流行网络结构
   * [mobilenet](dl/popnet/mobilenet.md)
+  * [ResNet](dl/popnet/resnet.md)
 
