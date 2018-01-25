@@ -191,6 +191,7 @@
   * [Actor Critic](dl/reinforcement/actor-critic.md)
   * [DDPG \(Deep Deterministic Policy Gradient\)](dl/reinforcement/ddpg.md)
   * [PPO\(Proximal Policy Optimization \)](dl/reinforcement/ppo.md)
+  * [Alpha-Beta剪枝算法详解](dl/reinforcement/alpha-beta.md)
 * [进化算法](ml/evolution/evolution.md)
   * [遗传算法](ml/evolution/yichuansuanfa.md)
   * [进化策略](ml/evolution/evolution-strategy.md)
