@@ -82,8 +82,6 @@ Lasso回归可以使得一些特征的系数变小，甚至还是一些绝对值
 
 Lasso回归的损失函数优化方法常用的有两种，坐标轴下降法和最小角回归法。Lasso类采用的是坐标轴下降法，后面讲到的LassoLars类采用的是最小角回归法
 
-
-
 **验证方法：**
 
 Lasso类并没有用到交叉验证之类的验证方法，和Ridge类类似。需要我们自己把数据集分成训练集和测试集，需要自己设置好超参数α。然后训练优化。
@@ -149,6 +147,8 @@ ElasticNet可以看做Lasso和Ridge的中庸化的产物。它也是对普通的
 $$J(\mathbf\theta) = \frac{1}{2m}(\mathbf{X\theta} - \mathbf{Y})^T(\mathbf{X\theta} - \mathbf{Y}) + \alpha\rho||\theta||_1 + \frac{\alpha(1-\rho)}{2}||\theta||_2^2$$
 
 其中α为正则化超参数，ρ为范数权重超参数。
+
+
 
 **损失函数的优化方法：**
 
