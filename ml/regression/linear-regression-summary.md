@@ -10,6 +10,8 @@
 
 LinearRegression类就是我们平时说的最常见普通的线性回归，它的损失函数也是最简单的，如下：
 
+
+
 $$J(\mathbf\theta) = \frac{1}{2}(\mathbf{X\theta} - \mathbf{Y})^T(\mathbf{X\theta} - \mathbf{Y})$$
 
 **损失函数的优化方法：**
