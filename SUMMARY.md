@@ -221,4 +221,5 @@
   * [ResNet](dl/popnet/resnet.md)
 * 并行学习
   * [美团并行学习实践](mei-tuan-bing-xing-xue-xi-shi-jian.md)
+  * [美团推荐排序](mei-tuan-tui-jian-pai-xu.md)
 
