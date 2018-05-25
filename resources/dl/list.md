@@ -39,7 +39,7 @@
 [自然语言处理](https://suclass.stanford.edu/courses/Engineering/CS224N/Fall2015/about)| |[Speech and Language Processing](https://www.amazon.de/o/ASIN/0131873210/) | [链接](http://www.stanford.edu/class/cs224n/syllabus.shtml)
 
 
-##<h2 id="papers_reading">论文专区</h2>
+##论文专区
   恭喜您坚持到了现在，现在您已经拥有了扎实的数学功底，同时经过这么多的练习，也已经掌握了深度学习中的较为经典甚至一些较为前沿的技术，接下来如果您希望继续深造并成为大师并对该领域做出突破贡献，我们唯一能为您提供的就是下面的论文平台，它汇总了最经典的领域论文，领域开源包等等丰富资源，同时会不断更新最新的进展，希望对您有帮助，补充一句：**我们强烈建议您进入高校或者其他研究所进行深造，因为现在您当前的基础已经完全可以支撑您进行进一步研究，如果有好的导师引路，加之努力，将来定会成为大师，希望继续加油！**。
 
 - [深度学习平台](https://github.com/ChristosChristofidis/awesome-deep-learning)
