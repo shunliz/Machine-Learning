@@ -7,7 +7,7 @@
 - [辅助课程](#auxiliary_course)
 - [论文专区](#papers_reading)
 
-##<h2 id="curriculum">课程列表</h2>
+##课程列表
 
 课程 | 机构 | 参考书 | Notes等其他资料
 :-- | :--: | :--: | :--:
@@ -17,7 +17,7 @@
 [自然语言处理](https://suclass.stanford.edu/courses/Engineering/CS224N/Fall2015/about)| |[Speech and Language Processing](https://www.amazon.de/o/ASIN/0131873210/) | [链接](http://www.stanford.edu/class/cs224n/syllabus.shtml)
 
 
-##<h2 id="special_course_learning">专项课程学习</h2>
+##专项课程学习
   下述的课程都是公认的最好的在线学习资料，侧重点不同，但推荐至少修满下面课程中的任意两门，其中，辅助课程可以根据自己情况来定是否需要学习，建议直接进入下列的课程学习，如果感觉需要需要帮助，可以再进入辅助课程区寻找相应资料进行学习：
 
   《卷积神经网络用于视觉识别》偏重于用于视觉方面的卷积神经网络的介绍,有时会需要一些基本的图像处理的知识；
@@ -33,7 +33,7 @@
 [深度学习用于自然语言处理](https://www.youtube.com/watch?v=kZteabVD8sU&list=PLCJlDcMjVoEdtem5GaohTC1o9HTTFtK7_&index=1)| Stanford |暂无 |[链接](http://cs224d.stanford.edu/syllabus.html) | **自然语言处理**
 
 
-##<h2 id="auxiliary_course">辅助课程</h2>
+##辅助课程
 课程 | 机构 | 参考书 | Notes等其他资料 
 :-- | :--: | :--: | :--:
 [自然语言处理](https://suclass.stanford.edu/courses/Engineering/CS224N/Fall2015/about)| |[Speech and Language Processing](https://www.amazon.de/o/ASIN/0131873210/) | [链接](http://www.stanford.edu/class/cs224n/syllabus.shtml)
