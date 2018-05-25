@@ -1,23 +1,14 @@
 # 美团“猜你喜欢”深度学习排序模型实践
 
-绍哲，刘锐·2018-03-29 19:45
+
 
 # 一. 引言 {#-}
 
 推荐作为解决信息过载和挖掘用户潜在需求的技术手段，在美团点评这样业务丰富的生活服务电子商务平台，发挥着重要的作用。在美团App里，首页的“猜你喜欢”、运营区、酒店旅游推荐等重要的业务场景，都是推荐的用武之地。
 
-  
-
-
 ![](https://tech.meituan.com/img/recommend_dnn/iphone_demo_no_kuang.png "arch")
 
-  
-
-
 图1 美团首页“猜你喜欢”场景
-
-  
-
 
 目前，深度学习模型凭借其强大的表达能力和灵活的网络结构在诸多领域取得了重大突破，美团平台拥有海量的用户与商家数据，以及丰富的产品使用场景，也为深度学习的应用提供了必要的条件。本文将主要介绍深度学习模型在美团平台推荐排序场景下的应用和探索。
 
@@ -92,80 +83,35 @@ Multi-task DNN的网络结构如上图所示。线上预测时，我们将Click-
 
 通过离线调研，对于提升模型的训练效果，自适应学习特征缺失值的方法要远优于取零值、取均值的方式，模型离线AUC随训练轮数的变化如下图所示：
 
-  
-
-
 ![](https://tech.meituan.com/img/recommend_dnn/relative-auc-v2.png "arch")
-
-  
-
 
 图6 自适应学习特征缺失值与取0值和均值效果对比
 
-  
-
-
 AUC相对值提升如下表所示：
-
-  
-
 
 ![](https://tech.meituan.com/img/recommend_dnn/default_value_relative_auc_word_v2.png "arch")
 
-  
-
-
 图7 自适应学习特征缺失值AUC相对值提升
-
-  
-
 
 #### KL-divergence Bound {#kl-divergence-bound}
 
 我们同时考虑到，不同的标签会带有不同的Noise，如果能通过物理意义将有关系的Label关联起来，一定程度上可以提高模型学习的鲁棒性，减少单独标签的Noise对训练的影响。例如，可以通过MTL同时学习样本的点击率，下单率和转化率\(下单/点击\)，三者满足**p\(点击\) \* p\(转化\) = p\(下单\)**的意义。因此我们又加入了一个KL散度的Bound，使得预测出来的**p\(点击\) \* p\(转化\)**更接近于**p\(下单\)**。但由于KL散度是非对称的，即**KL\(p\|\|q\) != KL\(q\|\|p\)**，因此真正使用的时候，优化的是**KL\(p\|\|q\) + KL\(q\|\|p\)**。
 
-  
-
-
 ![](https://tech.meituan.com/img/recommend_dnn/KLDivergence.png "arch")
-
-  
-
 
 图8 KL-divergence Bound
 
-  
-
-
 经过上述工作，Multi-tast DNN模型效果稳定超过XGBoost模型，目前已经在美团首页“猜你喜欢”场景全量上线，在线上也取得了点击率的提升：
-
-  
-
 
 ![](https://tech.meituan.com/img/recommend_dnn/ctronline.png "arch")
 
-  
-
-
 图9 线上CTR效果与基线对比图
-
-  
-
 
 线上CTR相对值提升如下表所示：
 
-  
-
-
 ![](https://tech.meituan.com/img/recommend_dnn/online_relative_ctr_word.png "arch")
 
-  
-
-
 图10 线上CTR效果相对值提升
-
-  
-
 
 除了线上效果的提升，Multi-task训练方式也很好的提高了DNN模型的扩展性，模型训练时可以同时考虑多个业务目标，方便我们加入业务约束。
 
@@ -197,18 +143,9 @@ NFM的输出结果为向量形式，很方便和DNN的隐层进行融合。而�
 
 通过离线AUC对比，针对目前的训练数据，Average Pooling的效果为最优的。效果对比如下图所示：
 
-  
-
-
 ![](https://tech.meituan.com/img/recommend_dnn/uemb_click_auc.png "arch")
 
-  
-
-
 图13 不同Pooling方式点击AUC对比
-
-  
-
 
 以上是我们在模型结构方面的优化经验和尝试，下面我们将介绍针对提高模型训练效率所做的框架性能优化工作。
 
@@ -219,11 +156,9 @@ NFM的输出结果为向量形式，很方便和DNN的隐层进行融合。而�
 * PS框架：PS-Lite的设计中可以更好的利用特征的稀疏性，适用于推荐这种有大量离散特征的场景。
 * 封装合理：通信框架和算法解耦，API强大且清晰，集成比较方便。
 
- 
-  ![](https://tech.meituan.com/img/recommend_dnn/ps.png "arch")
- 
-  图14 Parameter Server
- 
+![](https://tech.meituan.com/img/recommend_dnn/ps.png "arch")
+
+图14 Parameter Server
 
 在开发过程中，我们也遇到并解决了一些性能优化问题：
 
@@ -231,11 +166,9 @@ NFM的输出结果为向量形式，很方便和DNN的隐层进行融合。而�
 
 2. 在训练过程中Worker的计算效率受到宿主机实时负载和硬件条件的影响，不同的Worker之间的执行进度可能存在差异\(如下图所示，对于实验测试数据，大部分Worker会在700秒完成一轮训练，而最慢的Worker会耗时900秒\)。而通常每当训练完一个Epoch之后，需要进行模型的Checkpoint、评测指标计算等需要同步的流程，因此最慢的节点会拖慢整个训练的流程。考虑到Worker的执行效率是大致服从高斯分布的，只有小部分的Worker是效率极低的，因此我们在训练流程中添加了一个中断机制：当大部分的机器已经执行完当前Epoch的时候，剩余的Worker进行中断，牺牲少量Worker上的部分训练数据来防止训练流程长时间的阻塞。而中断的Worker在下个Epoch开始时，会从中断时的Batch开始继续训练，保证慢节点也能利用所有的训练数据。
 
- 
-   ![](https://tech.meituan.com/img/recommend_dnn/worker_time_cost.png "arch")
- 
-   图15 Worker耗时分布
- 
+![](https://tech.meituan.com/img/recommend_dnn/worker_time_cost.png "arch")
+
+图15 Worker耗时分布
 
 # 三. 总结与展望 {#-}
 
