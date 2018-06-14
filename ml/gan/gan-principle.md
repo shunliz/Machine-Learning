@@ -18,8 +18,6 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 但是auto-encoder生成image的效果，当然看着很别扭啦，一眼就能看出真假。所以后来还提出了比如VAE这样的生成模型，我对此也不是很了解，在这就不细说。
 
-
-
 上述的这些生成模型，其实有一个非常严重的弊端。比如VAE，它生成的image是希望和input越相似越好，但是model是如何来衡量这个相似呢？model会计算一个loss，采用的大多是MSE，即每一个像素上的均方差。loss小真的表示相似嘛？![](https://pic2.zhimg.com/v2-ff75e66a8b9042bcde8fbd69f570e045_b.png)
 
 比如这两张图，第一张，我们认为是好的生成图片，第二张是差的生成图片，但是对于上述的model来说，这两张图片计算出来的loss是一样大的，所以会认为是一样好的图片。
@@ -42,6 +40,8 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 首先我们知道真实图片集的分布![](http://www.zhihu.com/equation?tex=P_{data}%28x%29 "P\_{data}\(x\)")，x是一个真实图片，可以想象成一个向量，这个向量集合的分布就是![](http://www.zhihu.com/equation?tex=P_{data} "P\_{data}")。我们需要生成一些也在这个分布内的图片，如果直接就是这个分布的话，怕是做不到的。
 
+
+
 我们现在有的generator生成的分布可以假设为![](http://www.zhihu.com/equation?tex=P_G%28x%3B\theta%29 "P\_G\(x;\theta\)")，这是一个由![](http://www.zhihu.com/equation?tex=\theta "\theta")控制的分布，![](http://www.zhihu.com/equation?tex=\theta "\theta")是这个分布的参数（如果是高斯混合模型，那么![](http://www.zhihu.com/equation?tex=\theta "\theta")就是每个高斯分布的平均值和方差）
 
 假设我们在真实分布中取出一些数据，![](http://www.zhihu.com/equation?tex=\{x^1%2C+x^2%2C+\dots%2Cx^m+\} "\{x^1, x^2, \dots,x^m \}")，我们想要计算一个似然![](http://www.zhihu.com/equation?tex=P_G%28x^i%3B\theta%29 "P\_G\(x^i;\theta\)")
@@ -50,27 +50,28 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 我们想要最大化这个似然，等价于让generator生成那些真实图片的概率最大。这就变成了一个最大似然估计的问题了，我们需要找到一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然。
 
-![](http://www.zhihu.com/equation?tex=\begin{align}
-\theta+^*+%26%3D+arg+\max_{\theta}\prod_{i%3D1}^{m}P_G%28x^i%3B\theta%29+\\
-%26%3Darg+\max_{\theta}+log\prod_{i%3D1}^{m}P_G%28x^i%3B\theta%29+\\
-%26%3Darg+\max_{\theta}+\sum_{i%3D1}^{m}logP_G%28x^i%3B\theta%29+\\
-%26+\approx+arg+\max_{\theta}+E_{x\sim+P_{data}}[logP_G%28x%3B\theta%29]+\\
-%26+%3D+arg+\max_{\theta}\int_{x}+P_{data}%28x%29logP_G%28x%3B\theta%29dx+-+\int_{x}P_{data}%28x%29logP_{data}%28x%29dx+\\
-%26%3Darg+\max_{\theta}\int_{x}P_{data}%28x%29%28logP_G%28x%3B\theta%29-logP_{data}%28x%29%29dx+\\
-%26%3Darg+\min_{\theta}\int_{x}P_{data}%28x%29log+\frac{P_{data}%28x%29}{P_G%28x%3B\theta%29}dx+\\
-%26%3Darg+\min_{\theta}+KL%28P_{data}%28x%29||P_G%28x%3B\theta%29%29
+!\[\]\([http://www.zhihu.com/equation?tex=\begin{align}](http://www.zhihu.com/equation?tex=\begin{align})  
+\theta+^\*+%26%3D+arg+\max_{\theta}\prod_{i%3D1}^{m}P_G%28x^i%3B\theta%29+\  
+%26%3Darg+\max_{\theta}+log\prod_{i%3D1}^{m}P\_G%28x^i%3B\theta%29+\  
+%26%3Darg+\max_{\theta}+\sum_{i%3D1}^{m}logP\_G%28x^i%3B\theta%29+\  
+%26+\approx+arg+\max_{\theta}+E_{x\sim+P_{data}}\[logP_G%28x%3B\theta%29\]+\  
+%26+%3D+arg+\max_{\theta}\int_{x}+P_{data}%28x%29logP_G%28x%3B\theta%29dx+-+\int_{x}P_{data}%28x%29logP_{data}%28x%29dx+\  
+%26%3Darg+\max_{\theta}\int_{x}P_{data}%28x%29%28logP\_G%28x%3B\theta%29-logP_{data}%28x%29%29dx+\  
+%26%3Darg+\min_{\theta}\int_{x}P_{data}%28x%29log+\frac{P_{data}%28x%29}{P_G%28x%3B\theta%29}dx+\  
+%26%3Darg+\min_{\theta}+KL%28P\_{data}%28x%29\|\|P\_G%28x%3B\theta%29%29  
 \end{align}
-+ "\begin{align}
-\theta ^\* &amp;= arg \max\_{\theta}\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \\
-&amp;=arg \max\_{\theta} log\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \\
-&amp;=arg \max\_{\theta} \sum\_{i=1}^{m}logP\_G\(x^i;\theta\) \\
-&amp; \approx arg \max\_{\theta} E\_{x\sim P\_{data}}\[logP\_G\(x;\theta\)\] \\
-&amp; = arg \max\_{\theta}\int\_{x} P\_{data}\(x\)logP\_G\(x;\theta\)dx - \int\_{x}P\_{data}\(x\)logP\_{data}\(x\)dx \\
-&amp;=arg \max\_{\theta}\int\_{x}P\_{data}\(x\)\(logP\_G\(x;\theta\)-logP\_{data}\(x\)\)dx \\
-&amp;=arg \min\_{\theta}\int\_{x}P\_{data}\(x\)log \frac{P\_{data}\(x\)}{P\_G\(x;\theta\)}dx \\
-&amp;=arg \min\_{\theta} KL\(P\_{data}\(x\)\|\|P\_G\(x;\theta\)\)
-\end{align}
- ")
+
+* "\begin{align}
+  \theta ^\* &= arg \max\_{\theta}\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \
+  &=arg \max\_{\theta} log\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \
+  &=arg \max\_{\theta} \sum\_{i=1}^{m}logP\_G\(x^i;\theta\) \
+  & \approx arg \max\_{\theta} E\_{x\sim P\_{data}}\[logP\_G\(x;\theta\)\] \
+  & = arg \max\_{\theta}\int\_{x} P\_{data}\(x\)logP\_G\(x;\theta\)dx - \int\_{x}P\_{data}\(x\)logP\_{data}\(x\)dx \
+  &=arg \max\_{\theta}\int\_{x}P\_{data}\(x\)\(logP\_G\(x;\theta\)-logP\_{data}\(x\)\)dx \
+  &=arg \min\_{\theta}\int\_{x}P\_{data}\(x\)log \frac{P\_{data}\(x\)}{P\_G\(x;\theta\)}dx \
+  &=arg \min\_{\theta} KL\(P\_{data}\(x\)\|\|P\_G\(x;\theta\)\)
+  \end{align}
+  "\)
 
 寻找一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然，等价于最大化log似然。因为此时这m个数据，是从真实分布中取的，所以也就约等于，真实分布中的所有x在![](http://www.zhihu.com/equation?tex=P_{G} "P\_{G}")分布中的log似然的期望。
 
