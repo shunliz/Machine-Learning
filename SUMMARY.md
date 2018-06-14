@@ -219,4 +219,9 @@
 * 流行网络结构
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
+* 并行学习
+  * [美团并行学习实践](dl/paralleldl/mei-tuan-bing-xing-xue-xi-shi-jian.md)
+* AI应用
+  * [美团外卖AI技术](dl/dlapp/mei-tuan-wai-mai-ai-ji-zhu.md)
+  * [美团推荐排序](dl/dlapp/mei-tuan-tui-jian-pai-xu.md)
 
