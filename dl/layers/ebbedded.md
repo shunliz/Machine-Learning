@@ -11,6 +11,8 @@ _**嵌入层将正整数（下标）转换为具有固定大小的向量，如\[
 
 哪到底咋转啊，亲？
 
+
+
 这涉及到词向量，具体看可以参考[Word2vec](/dl/word2vec/word2vec.md)
 
 ![](/assets/deeplayerr-embemding1.png)
