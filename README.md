@@ -1,5 +1,16 @@
 # 机器学习原理
 ---
+机器学习原理笔记整理. 
+前半部分关注数学基础，机器学习和深度学习的理论部分，详尽的公式推导。
+后半部分关注工程实践和理论应用部分
+
+[如何贡献](/contribute.md)？
+
+# 赞助
+如果您觉得这个资料还不错，您也可以打赏一下。
+[](asset/mywebchat.png)
+
+---
 * [前言](README.md)
 * [第一部分 数学基础](math/math.md)
 * [第一章 数学分析](math/analytic/introduction.md)
@@ -227,7 +238,6 @@
 
 ---
 
-机器学习原理笔记整理, [如何贡献](/contribute.md)？
 
 ![](/images/machine-learning-classification.jpg)
 
