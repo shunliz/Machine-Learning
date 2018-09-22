@@ -2,7 +2,7 @@
 
 ---
 
-机器学习原理笔记整理.   
+机器学习原理笔记整理. Gitbook地址[https://shunliz.gitbooks.io/machine-learning/content/](https://shunliz.gitbooks.io/machine-learning/content/)  
 前半部分关注数学基础，机器学习和深度学习的理论部分，详尽的公式推导。  
 后半部分关注工程实践和理论应用部分
 
