@@ -170,7 +170,7 @@ $$
 
 
 $$
-J\(\theta\)=\frac{1}{2}\(X\theta-Y\)^T\(X\theta-Y\)
+J(\theta)=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)
 $$
 
 
