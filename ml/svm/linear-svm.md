@@ -64,17 +64,13 @@ $$min \;\; \frac{1}{2}||w||_2^2  \;\; s.t \;\; y_i(w^Tx_i + b)  \geq 1 (i =1,2,.
 
 首先我们来求w和b的极小值，即$$min(w,b)(\;  L(w,b,\alpha))$$。这个极值我们可以通过对w和b分别求偏导数得到：
 
-
 $$
 \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i
 $$
 
-
-
 $$
 \frac{\partial L}{\partial b} = 0 \;\Rightarrow 0 = \sum\limits_{i=1}^{m}\alpha_iy_i
 $$
-
 
 从上两式子可以看出，我们已经求得了w和α的关系，只要我们后面接着能够求出优化函数极大化对应的α，就可以求出我们的w了，至于b，由于上两式已经没有b，所以最后的b可以有多个。
 
@@ -88,43 +84,31 @@ $$\begin{aligned} \psi(\alpha) & =  \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}
 
 对ψ\(α\)求极大化的数学表达式如下:
 
-
 $$
 max(\alpha)\; -\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) + \sum\limits_{i=1}^{m} \alpha_i
 $$
 
-
-
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
-
-
 
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
 
-
 可以去掉负号，即为等价的极小化问题如下：
-
 
 $$
 min(\alpha) \;\;\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
 
-
-
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
 
-
-
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
-
 
 只要我们可以求出上式极小化时对应的α向量就可以求出w和b了。具体怎么极小化上式得到对应的α，一般需要用到SMO算法，这个算法比较复杂，我们后面会专门来讲。在这里，我们假设通过SMO算法，我们得到了对应的α的值$$\alpha^{*}$$。
 
@@ -148,23 +132,17 @@ $$
 
 1）构造约束优化问题
 
-
 $$
 min(\alpha)\;\; \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}\alpha_i\alpha_jy_iy_j(x_i \bullet x_j) -  \sum\limits_{i=1}^{m} \alpha_i
 $$
-
-
 
 $$
 s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0
 $$
 
-
-
 $$
 \alpha_i \geq 0  \; i=1,2,...m
 $$
-
 
 2）用SMO算法求出上式最小时对应的α向量的值$$\alpha^{*}$$向量.
 
