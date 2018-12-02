@@ -170,5 +170,5 @@ KNN的主要缺点有：
 
 以上就是KNN算法原理的一个总结，希望可以帮到朋友们，尤其是在用scikit-learn学习KNN的朋友们。
 
-![](/assets/knncode100.jpg)
+![](/assets/knncode100.png)
 
