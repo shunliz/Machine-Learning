@@ -52,7 +52,7 @@ $$= -\frac{5}{15}(\frac{3}{5}log_2\frac{3}{5} + \frac{2}{5}log_2\frac{2}{5}) - \
 
 6）否则，按特征Ag的不同取值Agi将对应的样本输出D分成不同的类别Di。每个类别产生一个子节点。对应特征值为Agi。返回增加了节点的数T。
 
-7）对于所有的子节点，令D=Di,A=A−{Ag}递归调用2-6步，得到子树TiTi并返回。
+7）对于所有的子节点，令D=Di,A=A−{Ag}递归调用2-6步，得到子树Ti并返回。
 
 # 3. 决策树ID3算法的不足
 
@@ -70,8 +70,7 @@ ID3 算法的作者昆兰基于上述不足，对ID3算法做了改进，这就�
 
 # 4. 示例说明
 
-![](http://img.blog.csdn.net/20160425192843337?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)  
-
+![](http://img.blog.csdn.net/20160425192843337?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 上面的训练集有4个属性，即属性集合A={OUTLOOK, TEMPERATURE, HUMIDITY, WINDY}；而类标签有2个，即类标签集合C={Yes, No}，分别表示适合户外运动和不适合户外运动，其实是一个二分类问题。  
 我们已经计算过信息增益，这里直接列出来，如下所示：  
@@ -100,6 +99,4 @@ I\(D, HUMIDITY\) = H\(D\) - Info\(D\|HUMIDITY\) = 0.940 - 0.789 = 0.151
 I\(D, WINDY\) = H\(D\) - H\(D\|WINDY\) = 0.940 - 0.892 = 0.048
 
 可以看出第一次决策应该以OUTLOOK属性为参考，然后根据OUTLOOK属性将数据集分为三个子集，把三个子集和剩余的属性代入递归的计算，继而求得第二次的分裂属性，依次类推即可
-
-
 
