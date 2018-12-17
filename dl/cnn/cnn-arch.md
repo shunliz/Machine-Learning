@@ -98,7 +98,7 @@ $$s(i,j)$$即卷积核W对应的输出矩阵的对应位置元素的值。
 
 ![](/assets/cnnconv1.png)
 
-
+![](/assets/cnnconv2.png)
 
 # 4. CNN中的池化层
 
