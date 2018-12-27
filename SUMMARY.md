@@ -216,7 +216,7 @@
   * [强化学习](resources/rl/list.md)
   * [自然语言处理](resources/nlp/list.md)
   * [深度学习](resources/dl/list.md)
-* 流行网络结构
+* [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
 * 并行学习
