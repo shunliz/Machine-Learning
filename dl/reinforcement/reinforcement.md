@@ -9,6 +9,8 @@
 4. **环境模型\(model\)**
    ，agent能够根据环境模型预测环境的行为，采用环境模型的强化学习方法称为基于模型\(model-based\)的方法，不采用环境模型的强化学习方法称为model-free方法。
 
+![](/assets/reinforcementlearning1.png)
+
 强化学习因其注重agent在与环境的直接交互中进行学习而有别于其他学习方
 
 ---
