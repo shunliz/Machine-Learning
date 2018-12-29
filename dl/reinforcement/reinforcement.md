@@ -40,6 +40,10 @@ $$s_{t+1} \sim P(\odot|s_t, a_t)$$
 
 ![](/assets/reinforcementlearning4.png)
 
+![](/assets/reinforcementlearing5.png)
+
+![](/assets/reinforcementlearning6.png)
+
 强化学习因其注重agent在与环境的直接交互中进行学习而有别于其他学习方
 
 ---
