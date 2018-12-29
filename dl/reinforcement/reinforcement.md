@@ -21,8 +21,6 @@ Log-Likelihood：计算每一个动作的概率，$$log\pi_\theta(a|s) = log[P_\
 
 Log-Likelihood: $$log\pi_\theta(a|s) = -\frac{1}{2}( \sum_{i=1}^{k}(\frac{(a_i-\mu_i)^2)}{\delta_i^2}))+klog2\pi)$$
 
-
-
 下一步的表示：
 
 $$s_{t+1} = f(s_t,a_t)$$
@@ -39,6 +37,8 @@ $$s_{t+1} \sim P(\odot|s_t, a_t)$$
 5. ![](/assets/reinforcementlearning2.png)
 
 ![](/assets/reinforcementlearning1.png)
+
+![](/assets/reinforcementlearning4.png)
 
 强化学习因其注重agent在与环境的直接交互中进行学习而有别于其他学习方
 
