@@ -10,17 +10,15 @@
 
 为了解决这一问题，机器翻译领域的研究人员就发明了一些自动评价指标比如BLEU，METEOR和NIST等，在这些自动评价指标当中，**BLEU是目前最接近人类评分**的。
 
-
-
 ## BLEU的原理是什么？
 
 为什么BLEU能作为机器翻译的一个评估指标，还是得看看它的原理是什么。
 
 接下来我们逐个这几个概念：
 
-* N-gram
-* 惩罚因子
-* Bleu算法
+* **N-gram**
+* **惩罚因子**
+* **Bleu算法**
 
 **N-gram**
 
@@ -38,15 +36,13 @@ BLEU也是采用了N-gram的匹配规则，通过它能够算出比较译文和�
 
 **1-gram**
 
-![](/assets/mlmodelmetrics15.png)
-
-1-gram
+![](/assets/mlmodelmetrics16.png)
 
 可以看到机器翻译6个词，有5个词命中参考以为，那么它的匹配度为 5/6。
 
 **2-gram**
 
-![](/assets/mlmodelmetrics14.png)
+![](/assets/mlmodelmetrics17.png)
 
 2-gram
 
@@ -54,7 +50,7 @@ BLEU也是采用了N-gram的匹配规则，通过它能够算出比较译文和�
 
 **3-gram**
 
-![](/assets/mlmodelmetrics13.png)
+![](/assets/mlmodemetrics18.png)
 
 3-gram
 
@@ -72,7 +68,7 @@ BLEU也是采用了N-gram的匹配规则，通过它能够算出比较译文和�
 >  机器译文： the the the the the the the.  
 >  参考译文：The cat is on the mat.
 
-![](/assets/mlmodelmetrics12.png)
+![](/assets/mlmodemetrics19.png)
 
 1-gram错误情况
 
@@ -88,21 +84,15 @@ BLEU修正了这个算法，提出取机器翻译译文N-gram的出现次数和�
 
 是时候拿出论文中的计算各阶N-gram的精度计算公式：
 
-![](/assets/mlmodelmetrics10.png)
-
-Pn
+![](/assets/mlmodelmetricsd22.png)
 
 一眼看过去是不是觉得很高大上，看不懂了有木有，解释一下吧：
 
-![](/assets/mlmodelmetrics9.png)
-
-这里写图片描述
+![](/assets/mlmodelmetrics32.png)
 
 > 表示取n-gram在翻译译文和参考译文中出现的最小次数，比如上面的1-gram出现的最小次数是2.
 
-![](/assets/mlmodelmetrics8.png)
-
-这里写图片描述
+![](/assets/mlmodelmetircsd24.png)
 
 > 表示取n-gram在翻译译文中出现次数，比如上面的1-gram出现的次数是7.
 
@@ -117,9 +107,9 @@ ok，到这里你基本清楚bleu中n-gram精度到底是怎么计算的了。
 
 **惩罚因子**
 
-![](/assets/mlmodemetrics7.png)
+![](/assets/mlmodelmetricvs21.png)
 
-BP
+
 
 这里的c是机器译文的词数，r是参考译文的词数，
 
@@ -133,15 +123,11 @@ BP = e^\(1- 6 / 2\) = 7.38905609893065
 
 经过上面的各种改进，BLEU最终的计算公式如下：
 
-![](/assets/mlmodelmetrics3.png)
-
-BLEU
+$$BLEU=BP \odot exp(\sum _{n=1} ^{N} w_nlogp_n)$$
 
 BP我们已经知道了，那么
 
-![](/assets/mlmodelmetrics6.png)
-
-这里写图片描述
+$$exp(\sum _{n=1}^{N} w_n logp_n)$$
 
 又是什么鬼？先不用想这么多，其实就是一些数学运算，它的作用就是让各阶n-gram取**权重服从均匀分布**，就是说不管是1-gram、2-gram、3-gram还是4-gram它们的作用都是同等重要的。由于随着n-gram的增大，总体的精度得分是呈指数下降的，所以一般**N-gram最多取到4-gram**。
 
@@ -165,8 +151,6 @@ P1 = 5 / 6 = 0.833333333333333
 
 加权求和：![](/assets/mlmodemetrics1.png)
 
-加权求和
-
 **第三步：求BP**
 
 机器翻译长度 = 参考译文长度，所以：
@@ -174,8 +158,6 @@ P1 = 5 / 6 = 0.833333333333333
 `BP = 1`
 
 **最后求BLEU**![](/assets/mlmodelmetrics2.png)
-
-BLEU计算
 
 写程序的时候，不用费那么大的劲去实现上面的算法，现成的工具就可以用:
 
