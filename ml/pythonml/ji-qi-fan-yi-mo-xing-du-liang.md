@@ -44,15 +44,11 @@ BLEU也是采用了N-gram的匹配规则，通过它能够算出比较译文和�
 
 ![](/assets/mlmodelmetrics17.png)
 
-2-gram
-
 2元词组的匹配度则是 3/5。
 
 **3-gram**
 
 ![](/assets/mlmodemetrics18.png)
-
-3-gram
 
 3元词组的匹配度是1/4。
 
@@ -77,8 +73,6 @@ BLEU也是采用了N-gram的匹配规则，通过它能够算出比较译文和�
 BLEU修正了这个算法，提出取机器翻译译文N-gram的出现次数和参考译文中N-gram最大出现次数中的最小值的算法，具体如下：
 
 ![](/assets/mlmodelmetrics11.png)
-
-这里写图片描述
 
 所以上面修正后的结果应该是count = 7，Max\_ref\_Count = 2，取它们之间的最小值为2，那么修正后的1-gram的匹配度应该为`2/7`。
 
@@ -108,8 +102,6 @@ ok，到这里你基本清楚bleu中n-gram精度到底是怎么计算的了。
 **惩罚因子**
 
 ![](/assets/mlmodelmetricvs21.png)
-
-
 
 这里的c是机器译文的词数，r是参考译文的词数，
 
