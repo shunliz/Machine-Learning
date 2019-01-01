@@ -62,7 +62,27 @@ Discriminator是一个二元分类器，输入是图像，输出是两类：“�
 $$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_{xP\sim _{data}}logD(x)-\frac {1}{2}E_zlog(1-D(G(z)))$$
 如果是零和博弈，那么Generator的loss就定义为：
 
-$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{eta^{(D)},\theta^{(G)})=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))$$
+
+$$
+J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{\theta^{(D)},\theta^{(G)}}=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$$
+
+
 整个优化问题就是一个minmax博弈
 ![](/images/dl/gan/minmax.png)
 
