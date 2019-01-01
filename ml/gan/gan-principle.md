@@ -129,3 +129,33 @@ $$\theta^* = arg \max_{\theta}\prod_{i=1}^{m}P_G(x^i;\theta)\\=arg \max_{\theta}
 
 这个图很清楚的显示了，如果是第一个KL divergence的写法，为了防止出现无穷大，所以有![](http://www.zhihu.com/equation?tex=P_{data} "P\_{data}")出现的地方都必须要有![](http://www.zhihu.com/equation?tex=P_G "P\_G")覆盖，就不会出现Mode Collapse
 
+
+
+![](/assets/deeplearninggan1.png)
+
+![](/assets/deeplearninggan2.png)
+
+![](/assets/deeplearninggan3.png)
+
+![](/assets/deeplearinggan4.png)
+
+![](/assets/deeplearinggan5.png)
+
+![](/assets/deeplearinggan6.png)
+
+![](/assets/deeplearninggan7.png)
+
+![](/assets/deeplearinggan8.png)
+
+![](/assets/deeplearninggan9.png)
+
+![](/assets/deeplearninggan10.png)
+
+![](/assets/deeplearninggan11.png)
+
+![](/assets/deeplearinginggan13.png)
+
+![](/assets/deeplearninggan14.png)
+
+![](/assets/deeplearninggan17.png)
+
