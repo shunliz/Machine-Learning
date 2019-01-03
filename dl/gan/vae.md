@@ -80,3 +80,17 @@ VAE的最大特点是模仿自动编码机的学习预测机制，在可测函�
 
 Tutorial on Variational Autoencoders. Carl Doersch. arXiv:1606.05908, 2016.
 
+
+
+![](/assets/ganvae1.png)
+
+![](/assets/ganvae2.png)
+
+![](/assets/ganvae3.png)
+
+![](/assets/ganvae4.png)
+
+![](/assets/ganvae5.png)
+
+
+
