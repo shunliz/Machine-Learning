@@ -144,3 +144,7 @@ print 'a,b 杰卡德相似系数：', jiekadeXSDis((1,2,3),(2,3,4))
 
 ![](/assets/xinxishang.png)
 
+
+
+![](/assets/machinelearningdist1.png)![](/assets/machinelearingdist2.png)
+
