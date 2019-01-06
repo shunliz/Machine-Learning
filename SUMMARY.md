@@ -112,6 +112,7 @@
   * [scikit-learn朴素贝叶斯](ml/bayes/scikit-simple-bayes.md)
   * [朴素贝叶斯实际应用](ml/bayes/simple-bayes-real-use.md)
   * [朴素贝叶斯代码](ml/bayes/simple-bayes-code.md)
+  * [变分贝叶斯推断](ml/bayes/bian-fen-bei-xie-si-tui-duan.md)
 * [第二十一课：LDA主题模型](ml/lda/lda.md)
 * [第二十三课：隐马尔科夫模型HMM](ml/hmm/hmm.md)
   * [HMM前向后向算法评估观察序列概率](ml/hmm/hmm-forward-backward.md)
