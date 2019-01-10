@@ -226,6 +226,7 @@
 * AI应用
   * [美团外卖AI技术](dl/dlapp/mei-tuan-wai-mai-ai-ji-zhu.md)
   * [美团推荐排序](dl/dlapp/mei-tuan-tui-jian-pai-xu.md)
+  * [AutoML在推荐系统应用](dl/dlapp/automlzai-tui-jian-xi-tong-ying-yong.md)
 * 参考
   * [AI领域国内创业公司](ailing-yu-guo-nei-chuang-ye-gong-si.md)
 
