@@ -106,6 +106,7 @@
   * [美团推荐算法](ml/recommand/meituan.md)
   * [MapReduce ItemCF](ml/recommand/mr-itemcf.md)
   * [基于标签的用户推荐系统](ml/recommand/label-recommand.md)
+  * [10种传统机器学习算法，阿里工程师总结](ml/recommand/10zhong-chuan-tong-ji-qi-xue-xi-suan-fa-ff0c-a-li-gong-cheng-shi-zong-jie.md)
 * [第十七课：EM算法](ml/em/em.md)
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
