@@ -48,8 +48,8 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 我们想要最大化这个似然，等价于让generator生成那些真实图片的概率最大。这就变成了一个最大似然估计的问题了，我们需要找到一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然。
 
-$$\theta^* = arg \max_{\theta}\prod_{i=1}^{m}P_G(x^i;\theta)\\=arg \max_{\theta} log\prod_{i=1}^{m}P_G(x^i;\theta)=arg \max_{\theta} \sum_{i=1}^{m}logP_G(x^i;\theta) \approx arg \max_{\theta} E_{x\sim P_{data}}[logP_G(x;\theta)] \\
-=  arg \max_{\theta}\int_{x} P_{data}(x)logP_G(x;\theta)dx - \int_{x}P_{data}(x)logP_{data}(x)dx =arg \max_{\theta}\int_{x}P_{data}(x)(logP_G(x;\theta)-logP_{data}(x))dx \\=arg \min_{\theta}\int_{x}P_{data}(x)log {}\frac{P_{data}(x)}{P_G(x;\theta)}dx =arg \min_{\theta} KL(P_{data}(x)||P_G(x;\theta))$$
+$$\theta^* = arg \max_{\theta}\prod_{i=1}^{m}P_G(x^i;\theta)=arg \max_{\theta} log\prod_{i=1}^{m}P_G(x^i;\theta)=arg \max_{\theta} \sum_{i=1}^{m}logP_G(x^i;\theta) \approx arg \max_{\theta} E_{x\sim P_{data}}[logP_G(x;\theta)] 
+=  arg \max_{\theta}\int_{x} P_{data}(x)logP_G(x;\theta)dx - \int_{x}P_{data}(x)logP_{data}(x)dx =arg \max_{\theta}\int_{x}P_{data}(x)(logP_G(x;\theta)-logP_{data}(x))dx =arg \min_{\theta}\int_{x}P_{data}(x)log {}\frac{P_{data}(x)}{P_G(x;\theta)}dx =arg \min_{\theta} KL(P_{data}(x)||P_G(x;\theta))$$
 
 寻找一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然，等价于最大化log似然。因为此时这m个数据，是从真实分布中取的，所以也就约等于，真实分布中的所有x在![](http://www.zhihu.com/equation?tex=P_{G} "P\_{G}")分布中的log似然的期望。
 
