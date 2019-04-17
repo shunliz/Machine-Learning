@@ -17,7 +17,7 @@ Log-Likelihood：计算每一个动作的概率，$$log\pi_\theta(a|s) = log[P_\
 
 **diagonal Gaussian policies 通常用在连续动作空间的场景**
 
-采样阶段，生成随机动作的概率 $$a = \mu_\theta(s) +\delta_\theta(s)\odot z$$    $$z\sim N(0,I)$$
+采样阶段，生成随机动作的概率 $$a = \mu_\theta(s) +\delta_\theta(s)\odot z$$，$$z\sim N(0,I)$$
 
 Log-Likelihood: $$log\pi_\theta(a|s) = -\frac{1}{2}( \sum_{i=1}^{k}(\frac{(a_i-\mu_i)^2)}{\delta_i^2}))+klog2\pi)$$
 
@@ -121,8 +121,4 @@ $$s_{t+1} \sim P(\odot|s_t, a_t)$$
 | [AlphaZero](https://arxiv.org/abs/1712.01815): Silver et al, 2017 |
 | :--- |
 
-
-
-
-[^1]: Enter footnote here.
 
