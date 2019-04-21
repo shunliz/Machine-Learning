@@ -56,12 +56,6 @@ $$s_{t+1} \sim P(\odot|s_t, a_t)$$
 
 ：
 
-
-
-
-
-
-
 | [A2C / A3C](https://arxiv.org/abs/1602.01783)\(Asynchronous Advantage Actor-Critic\): Mnih et al, 2016 |
 | :--- |
 
@@ -120,5 +114,7 @@ $$s_{t+1} \sim P(\odot|s_t, a_t)$$
 
 | [AlphaZero](https://arxiv.org/abs/1712.01815): Silver et al, 2017 |
 | :--- |
+
+
 
 
