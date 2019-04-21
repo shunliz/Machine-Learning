@@ -1,42 +1,56 @@
-除了agent和环境之外，强化学习的要素还包括**策略\(Policy\)**、**奖励\(reward signal\)**、**值函数\(value function\)**、**环境模型\(model\)**，下面对这几种要素进行说明：
+# 强化学习关键概念
 
-1. **策略\(Policy\)**
-   ，策略就是一个从当环境状态到行为的映射；$$$$   
-
-$$a_t = \mu_\theta(s_t)$$   确定型
-
-$$a_t \sim \pi_\theta(\cdot|s_t)$$ 随机型
-
-随机型又分为 **categorical policies 和diagonal Gaussian policies**
-
-**categorical policies 通常用在离散动作空间的场景**
-
-采样阶段，随机生成每一个动作的概率。
-
-Log-Likelihood：计算每一个动作的概率，$$log\pi_\theta(a|s) = log[P_\theta(s)]_a$$
-
-**diagonal Gaussian policies 通常用在连续动作空间的场景**
-
-采样阶段，生成随机动作的概率 $$a = \mu_\theta(s) +\delta_\theta(s)\odot z$$，$$z\sim N(0,I)$$
-
-Log-Likelihood: $$log\pi_\theta(a|s) = -\frac{1}{2}( \sum_{i=1}^{k}(\frac{(a_i-\mu_i)^2)}{\delta_i^2}))+klog2\pi)$$
-
-下一步的表示：
-
-$$s_{t+1} = f(s_t,a_t)$$
-
-$$s_{t+1} \sim P(\odot|s_t, a_t)$$
-
-1. **奖励\(reward signal\)**
-   ，奖励是agent执行一次行为获得的反馈，强化学习系统的目标是最大化累积的奖励，在不同状态下执行同一个行为可能会得到不同的奖励；
-2. **值函数\(value function\)**
-   ，一种状态的value为从当前状态出发到停机状态所获得的累积的奖励；
-3. ![](/assets/reinforcementlearing3.png)
-4. **环境模型\(model\)**
-   ，agent能够根据环境模型预测环境的行为，采用环境模型的强化学习方法称为基于模型\(model-based\)的方法，不采用环境模型的强化学习方法称为model-free方法。
-5. ![](/assets/reinforcementlearning2.png)
+强化学习通常用来突破一些AI问题，比如下围棋的[AlphaGo](https://deepmind.com/research/alphago/)和[Dota](https://blog.openai.com/openai-five/)人机大战。
 
 ![](/assets/reinforcementlearning1.png)
+
+强化学习的两个主要角色就是agent和environment. environment是和agent存在的场所并和agent交互。每一次交互，agent都会收到一个environment的观察值, 然后决定怎么做。当agent做出响应后，环境跟着改变， 同时也可能改变它自己。
+
+agent同时也会从evironment收到一个奖励值， 这个奖励值表明当前的environment有多好或者有多坏。agent的目标就是最大化累计的奖励。强化学习就是agent学习获取最大化回报的学习方法。
+
+谈到强化学习，必须介绍几个相关概念：
+
+* 状态和观测值
+* 动作空间
+* 策略
+* trajectories
+* different formulations of return,
+* 强化学习问题
+* 价值函数
+
+
+
+**状态和观测值**
+
+状态是环境信息的完整描述。没有状态不包含的环境信息。
+
+观测值是部分环境信息，部分信息可能不包含在观测值中。
+
+
+
+**动作空间**
+
+不同的enironment可以有不同的动作，所有可以施加到environment的动作构成动作空间。
+
+有些动作空间是连续的，有些动作空间是离散的。
+
+
+
+**策略**
+
+策略是agent采取动作的规则，可以是确定，表示为：
+
+$$a_t=\mu(s_t)$$
+
+如果是随机的，一般表示为：
+
+$$a_t=\pi(.|s_t)$$
+
+强化学习中我们一般处理参数化的策略。策略的输出是一些包含参数的可计算函数， 我们通过优化算法来调整这些参数，从而改变agent的行为。这时我们通常表示为下边公式：
+
+$$a_t=\mu_\theta(s_t)$$
+
+$$a_t=\pi_|\theta(.|s_t)$$
 
 ![](/assets/reinforcementlearning4.png)
 
