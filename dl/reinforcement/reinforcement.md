@@ -18,23 +18,17 @@ agent同时也会从evironment收到一个奖励值， 这个奖励值表明当�
 * 强化学习问题
 * 价值函数
 
-
-
 **状态和观测值**
 
 状态是环境信息的完整描述。没有状态不包含的环境信息。
 
 观测值是部分环境信息，部分信息可能不包含在观测值中。
 
-
-
 **动作空间**
 
 不同的enironment可以有不同的动作，所有可以施加到environment的动作构成动作空间。
 
 有些动作空间是连续的，有些动作空间是离散的。
-
-
 
 **策略**
 
@@ -51,6 +45,74 @@ $$a_t=\pi(.|s_t)$$
 $$a_t=\mu_\theta(s_t)$$
 
 $$a_t=\pi_|\theta(.|s_t)$$
+
+**确定策略**
+
+```
+obs = tf.placeholder(shape=(None, obs_dim), dtype=tf.float32)
+net = mlp(obs, hidden_dims=(64,64), activation=tf.tanh)
+actions = tf.layers.dense(net, units=act_dim, activation=None)
+```
+
+**随机策略**
+
+随机策略通常分为两大类：类别策略和斜角高斯策略。
+
+类别策略通常用在离散动作空间，斜角高斯策略通常用在连续动作空间。
+
+无论哪种策略，下边两种计算都是十分重要：
+
+* 从策略中采样动作
+* 计算动作之间的相似度, $$log\pi_\theta(a|s)$$
+
+
+
+**trajectories**
+
+一系列状态和动作集合：
+
+$$\tau =(s_0,a_0,s_1,a_1,.....)$$
+
+
+
+**奖励和回报**
+
+奖励和回报对于强化学习十分重要，它由当前环境的状态，刚才采取的动作和环境的下一个状态来决定。
+
+$$r_t=R(s_t,a_t,s_{t+1})$$
+
+
+
+**强化学习问题**
+
+选择一个策略来最大化期望回报。
+
+一个T步的策略轨迹可以表示为：
+
+$$P(\tau|\pi)=\rho_0(s_0)\prod_{t=0}^{T-1} P(s_{t+1}|s_t,a_t)\pi(a_t|s_t))$$
+
+回报表示为：
+
+$$J(\pi)=\int_{\tau}^{} P(\tau|\pi)R(\tau)=E_{T\sim \pi}[R(\tau)]$$
+
+强化学习问题可以表示为：
+
+$$\pi^*=arg max_\pi J(\pi)$$
+
+$$\pi^*$$是优化策略。
+
+
+
+**价值函数**
+
+通常有4中价值函数：
+
+1. on-policy价值函数，从状态s开始，一直使用策略$$\pi$$.    $$V^\pi(s)=E_{\tau\sim\pi}[R(\tau)|s_0=s]$$
+2. on-policy 动作价值函数， 从状态s开始，采用一个动作a，然后之后开始按照策略执行动作。 $$Q^\pi(s,a)=E_{\tau\sim\pi}[R(\tau)|s_0=s,a_0=a]$$
+3. 优化价值函数，从s开始一直使用优化的策略。 $$V^*(s)=max_\pi E_{\tau\sim\pi}[R(\tau)|s_0=s]$$
+4. 优化动作价值函数，从s开始，采取动作a，之后一直采取最优化策略动作。 $$Q^*(s,a)=max_\pi E_{\tau\sim\pi}[R(\tau)|s_0=s,a_0=a]$$
+
+
 
 ![](/assets/reinforcementlearning4.png)
 
