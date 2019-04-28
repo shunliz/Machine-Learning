@@ -60,7 +60,7 @@ $$D(x)=\sqrt {(X-u)^TS^{-1}(X-u)}$$
 
 * # 夹角余弦 {#夹角余弦}
 
-## $$cos \theta = \frac {a*b} {|a||b|}$$              $$cos \theta = \frac {\sum_{k=1}^{n}x_{1k}x_{2k}} {\sqrt {\sum_{k=1}^{n}x_{1k}^2}\sqrt {\sum_{k=1}^{n}x_{2k}^2}}$$
+$$cos \theta = \frac {a*b} {|a||b|}$$  $$cos \theta = \frac {\sum_{k=1}^{n}x_{1k}x_{2k}} {\sqrt {\sum_{k=1}^{n}x_{1k}^2}\sqrt {\sum_{k=1}^{n}x_{2k}^2}}$$
 
 ```
 def moreCos(a,b):
@@ -104,7 +104,7 @@ print 'a,b 汉明距离：',hanmingDis((1,1,2,3),(2,2,1,3))
 
 杰卡德距离，杰卡德距离用两个集合中不同元素占所有元素的比例来衡量两个集合的区分度。
 
-![](/assets/jiekadejuli.png)
+$$J_{\delta}(A, B)=\frac{|A \cup B|-|A \cap B|}{|A \cup B|}$$
 
 ```
 def jiekadeDis(a,b):
@@ -120,7 +120,7 @@ print 'a,b 杰卡德距离：', jiekadeDis((1,2,3),(2,3,4))
 
 两个集合A和B的交集元素在A，B的并集中所占的比例，称为两个集合的杰卡德相似系数，用符号J\(A,B\)表示。
 
-![](/assets/jiekadexiangsixishu.png)
+$$J(A, B)=\frac{|A \cap B|}{|A \cup B|}$$
 
 ```
 def jiekadeXSDis(a,b):
@@ -136,15 +136,13 @@ print 'a,b 杰卡德相似系数：', jiekadeXSDis((1,2,3),(2,3,4))
 
 相关 系数
 
-![](/assets/xiangguanxishu.png)
+$$\rho_{X Y}=\frac{\operatorname{Cov}(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}=\frac{E((X-E X)(Y-E Y))}{\sqrt{D(X)} \sqrt{D(Y)}}$$
 
 * # 信息熵 {#信息熵}
 
 衡量分布的混乱程度或分散程度的一种度量.
 
-![](/assets/xinxishang.png)
-
-
+$$(X)=\sum_{i=1}^{n}-p_{i} \log _{2} p_{i}$$
 
 ![](/assets/machinelearningdist1.png)![](/assets/machinelearingdist2.png)
 
