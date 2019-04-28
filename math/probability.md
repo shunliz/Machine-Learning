@@ -30,15 +30,15 @@
 
 条件概率公式                                         $$P(B | A)=\frac{P(A B)}{P(A)} \quad P(A B)=P(A) P(B | A)=P(B) P(A | B)$$
 
-                                                                $$P(A B C)=P(A) P(B | A) P(C | A B)$$
+```
+                                                            $$P(A B C)=P(A) P(B | A) P(C | A B)$$
+```
 
 全概率公式                                              $$P(A)=\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right)$$
 
 贝叶斯公式                                              $$P\left(B_{i} | A\right)=\frac{P\left(B_{i}\right) P\left(A | B_{i}\right)}{\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right)}$$
 
 两个事件相互独立                                    $$P(A B)=P(A) P(B) ; \quad P(B | A)=P(B) ; \quad P(B | A)=P(B | \overline{A})$$
-
-
 
 ## 随机变量及其分布
 
@@ -58,7 +58,7 @@ $$F(x)=P(X \leq x)=\left\{\begin{array}{ll}{\sum_{x_{2} \leq x} P\left(X=x_{k}\r
 
 分布名称                                    密度函数                                                                      分布函数
 
-均匀分布 $$x \sim U(a, b)$$          $$f(x)=\left\{\begin{array}{ll}{\frac{1}{b-a},} & {a<x<b} \\ 0,   else \end{array}\right.$$          $$F(x)=\left\{\begin{array}{cc}{0,} & {x<a} \\ {\frac{x-a}{b-a}, a} & { \leq x<b} \\ {1,} & {x \geq b}\end{array}\right.$$               $$F(x)=\left\{\begin{array}{cc}{0,} & {x<a} \\ {\frac{x-a}{b-a},} & {a \leq x<b} \\ {1,} & {x \geq b}\end{array}\right.$$                                  
+均匀分布 $$x \sim U(a, b)$$          $$f(x)=\left\{\begin{array}{ll}{\frac{1}{b-a},} & {a<x<b} \\ 0,   else \end{array}\right.$$          $$F(x)=\left\{\begin{array}{cc}{0,} & {x<a} \\ {\frac{x-a}{b-a}, a} & { \leq x<b} \\ {1,} & {x \geq b}\end{array}\right.$$               $$F(x)=\left\{\begin{array}{cc}{0,} & {x<a} \\ {\frac{x-a}{b-a},} & {a \leq x<b} \\ {1,} & {x \geq b}\end{array}\right.$$
 
 指数分布 $$\mathrm{X} \sim \mathrm{E}(\lambda)$$             $$f(x)=\left\{\begin{array}{cc}{\lambda e^{-\lambda x},} & {x>0} \\ {0,} & {x \leq 0}\end{array}\right.$$                                   $$F(x)=\left\{\begin{array}{cc}{1-e^{-j x},} & {x>0} \\ {0,} & {x \leq 0}\end{array}\right.$$
 
@@ -98,7 +98,9 @@ $$f_{Y}(y)=f_{X}(h(y)) \cdot\left|h^{\prime}(y)\right|(x=h(y)$$ h\(y\)是g\(x\)�
 
 分布函数   $$F_{X}(x)=\int_{-\infty}^{x} \int_{-\infty}^{+\infty} f(u, v) d v d u$$                  密度函数         $$f_{X}(x)=\int_{-\infty}^{+\infty} f(x, v) d v$$
 
-                  $$F_{Y}(y)=\int_{-\infty}^{y} \int_{-\infty}^{+\infty} f(u, v) d u d v$$                                            $$f_{Y}(y)=\int_{-\infty}^{+\infty} f(u, y) d u$$
+```
+              $$F_{Y}(y)=\int_{-\infty}^{y} \int_{-\infty}^{+\infty} f(u, v) d u d v$$                                            $$f_{Y}(y)=\int_{-\infty}^{+\infty} f(u, y) d u$$
+```
 
 条件概率密度
 
@@ -174,7 +176,7 @@ $$T=\frac{X}{\sqrt{Y / n}}$$服从自由度为n的t分布， 记为$$T \sim t(n)
 
 性质 $$E(T)=0(n>1), D(T)=\frac{n}{n-2}(n>2)$$
 
-         $$\lim _{n \rightarrow \infty} f_{n}(x)=\varphi(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^{2}}{2}}$$
+$$\lim _{n \rightarrow \infty} f_{n}(x)=\varphi(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^{2}}{2}}$$
 
 c,F分布，设随机变量 $$X \sim \chi^{2}(n_1), Y \sim \chi^{2}(n_2)$$ 且X与Y相互独立，则称随机变量
 
