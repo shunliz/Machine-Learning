@@ -10,33 +10,29 @@ tanh 激励函数的图
 
 argmax是一种函数，函数y=f\(x\)，x0= argmax\(f\(x\)\) 的意思就是参数x0满足f\(x0\)为f\(x\)的最大值；换句话说就是 argmax\(f\(x\)\)是使得 f\(x\)取得最大值所对应的变量x。arg即argument，此处意为“自变量”。
 
-
-
 ### **交叉熵（Cross Entropy）**
 
-是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。语言模型的性能通常用交叉熵和复杂度（perplexity）来衡量。交叉熵的意义是用该模型对文本识别的难度，或者从压缩的角度来看，每个词平均要用几个位来编码。复杂度的意义是用该模型表示这一文本平均的分支数，其倒数可视为每个词的平均概率。平滑是指对没观察到的N元组合赋予一个概率值，以保证词序列总能通过语言模型得到一个概率值。通常使用的平滑技术有 [图灵估计](https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E4%BC%B0%E8%AE%A1/8011740)、删除插值平滑、Katz平滑和Kneser-Ney平滑。
+是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。语言模型的性能通常用交叉熵和复杂度（perplexity）来衡量。交叉熵的意义是用该模型对文本识别的难度，或者从压缩的角度来看，每个词平均要用几个位来编码。复杂度的意义是用该模型表示这一文本平均的分支数，其倒数可视为每个词的平均概率。平滑是指对没观察到的N元组合赋予一个概率值，以保证词序列总能通过语言模型得到一个概率值。通常使用的平滑技术有 [图灵估计](https://baike.baidu.com/item/图灵估计/8011740)、删除插值平滑、Katz平滑和Kneser-Ney平滑。
 
-
-
-将交叉熵引入计算语言学消岐领域，采用语句的真实语义作为交叉熵的训练集的[先验信息](https://baike.baidu.com/item/%E5%85%88%E9%AA%8C%E4%BF%A1%E6%81%AF)，将机器翻译的语义作为测试集后验信息。计算两者的交叉熵，并以交叉熵指导对歧义的辨识和消除。实例表明，该方法简洁有效．易于计算机自适应实现。交叉熵不失为计算语言学消岐的一种较为有效的工具。
+将交叉熵引入计算语言学消岐领域，采用语句的真实语义作为交叉熵的训练集的[先验信息](https://baike.baidu.com/item/先验信息)，将机器翻译的语义作为测试集后验信息。计算两者的交叉熵，并以交叉熵指导对歧义的辨识和消除。实例表明，该方法简洁有效．易于计算机自适应实现。交叉熵不失为计算语言学消岐的一种较为有效的工具。
 
 在信息论中，交叉熵是表示两个概率分布p,q，其中p表示真实分布，q表示非真实分布，在相同的一组事件中，其中，用非真实分布q来表示某个事件发生所需要的平均比特数。从这个定义中，我们很难理解交叉熵的定义。下面举个例子来描述一下：
 
 假设现在有一个样本集中两个概率分布p,q，其中p为真实分布，q为非真实分布。假如，按照真实分布p来衡量识别一个样本所需要的编码长度的期望为：
 
-H\(p\)=![](https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D134/sign=f29c291e4136acaf5de092ff48d98d03/ca1349540923dd546f3dcd4fdb09b3de9c82484e.jpg)
+$$$$$$\mathrm{H}(\mathrm{p})=\sum_{i} p(i) \cdot \log \left(\frac{1}{p(i)}\right) |$$
 
 但是，如果采用错误的分布q来表示来自真实分布p的平均编码长度，则应该是：
 
-H\(p,q\)=![](https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D133/sign=9170a8149b8fa0ec7bc7600e1596594a/37d3d539b6003af3c927b6473f2ac65c1038b67c.jpg)
+$$\mathrm{H}(\mathrm{p}, \mathrm{q})=\sum_{i} p(i) \cdot \log \left(\frac{1}{q(i)}\right)$$
 
 此时就将H\(p,q\)称之为交叉熵。交叉熵的计算方式如下：
 
-对于离散变量采用以下的方式计算：H\(p,q\)=![](https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D138/sign=8fca88ef104c510faac4e61958582528/30adcbef76094b36a4214dcaa9cc7cd98d109d61.jpg)
+对于离散变量采用以下的方式计算：$$\mathrm{H}(\mathrm{p}, \mathrm{q})=\sum_{x} p(x) \cdot \log \left(\frac{1}{q(x)}\right)$$
 
 对于连续变量采用以下的方式计算：
 
-![](https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D263/sign=3dda5d162b3fb80e08d166d105d12ffb/9d82d158ccbf6c81bc397dcfb63eb13533fa408e.jpg)
+$$-\int_{X} P(x) \log Q(x) d r(x)=E_{p}[-\log Q]$$
 
 ## 应用
 
@@ -45,8 +41,4 @@ H\(p,q\)=![](https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D133
 在特征工程中，可以用来衡量两个随机变量之间的相似度。
 
 在语言模型中（NLP）中，由于真实的分布p是未知的，在语言模型中，模型是通过训练集得到的，交叉熵就是衡量这个模型在测试集上的正确率。
-
-
-
-
 
