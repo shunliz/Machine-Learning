@@ -178,6 +178,7 @@
   * [基于Negative Sampling的模型](dl/word2vec/negative-sampling.md)
 * [强化学习](dl/reinforcement/reinforcement.md)
   * [Q-Learning](dl/reinforcement/q-learning.md)
+  * [梯度下降策略优化推导](dl/reinforcement/ti-du-xia-jiang-ce-lve-you-hua-tui-dao.md)
   * [策略网络](dl/reinforcement/policy-network.md)
   * [bandit算法](dl/reinforcement/banditsuan-fa.md)
   * [蒙特卡洛树搜索](dl/reinforcement/meng-te-qia-luo-shu-sou-suo.md)
