@@ -34,12 +34,8 @@ A random variable is a variable that can take on diﬀerent values randomly.
 * Exponential and Laplace Distributions 指数分布和拉普拉斯分布
 * The Dirac Distribution and Empirical Distribution 狄拉克分布和经验分布
 * Mixtures of Distributions 混合分布
-* ## 一些有用的函数 {#一些有用的函数}
-* logistics sigmoid
-* softplus function
-* ## 贝叶斯规则 {#贝叶斯规则}
 
-主要是和条件概率相关的一些事情
+##  {#贝叶斯规则}
 
 ## 连续变量的技术细节 {#连续变量的技术细节}
 
