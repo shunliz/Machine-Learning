@@ -22,8 +22,6 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 比如这两张图，第一张，我们认为是好的生成图片，第二张是差的生成图片，但是对于上述的model来说，这两张图片计算出来的loss是一样大的，所以会认为是一样好的图片。
 
-
-
 这就是上述生成模型的弊端，用来衡量生成图片好坏的标准并不能很好的完成想要实现的目的。于是就有了下面要讲的GAN。
 
 ## 2.GAN
@@ -50,28 +48,8 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 
 我们想要最大化这个似然，等价于让generator生成那些真实图片的概率最大。这就变成了一个最大似然估计的问题了，我们需要找到一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然。
 
-!\[\]\([http://www.zhihu.com/equation?tex=\begin{align}](http://www.zhihu.com/equation?tex=\begin{align})  
-\theta+^\*+%26%3D+arg+\max_{\theta}\prod_{i%3D1}^{m}P_G%28x^i%3B\theta%29+\  
-%26%3Darg+\max_{\theta}+log\prod_{i%3D1}^{m}P\_G%28x^i%3B\theta%29+\  
-%26%3Darg+\max_{\theta}+\sum_{i%3D1}^{m}logP\_G%28x^i%3B\theta%29+\  
-%26+\approx+arg+\max_{\theta}+E_{x\sim+P_{data}}\[logP_G%28x%3B\theta%29\]+\  
-%26+%3D+arg+\max_{\theta}\int_{x}+P_{data}%28x%29logP_G%28x%3B\theta%29dx+-+\int_{x}P_{data}%28x%29logP_{data}%28x%29dx+\  
-%26%3Darg+\max_{\theta}\int_{x}P_{data}%28x%29%28logP\_G%28x%3B\theta%29-logP_{data}%28x%29%29dx+\  
-%26%3Darg+\min_{\theta}\int_{x}P_{data}%28x%29log+\frac{P_{data}%28x%29}{P_G%28x%3B\theta%29}dx+\  
-%26%3Darg+\min_{\theta}+KL%28P\_{data}%28x%29\|\|P\_G%28x%3B\theta%29%29  
-\end{align}
-
-* "\begin{align}
-  \theta ^\* &= arg \max\_{\theta}\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \
-  &=arg \max\_{\theta} log\prod\_{i=1}^{m}P\_G\(x^i;\theta\) \
-  &=arg \max\_{\theta} \sum\_{i=1}^{m}logP\_G\(x^i;\theta\) \
-  & \approx arg \max\_{\theta} E\_{x\sim P\_{data}}\[logP\_G\(x;\theta\)\] \
-  & = arg \max\_{\theta}\int\_{x} P\_{data}\(x\)logP\_G\(x;\theta\)dx - \int\_{x}P\_{data}\(x\)logP\_{data}\(x\)dx \
-  &=arg \max\_{\theta}\int\_{x}P\_{data}\(x\)\(logP\_G\(x;\theta\)-logP\_{data}\(x\)\)dx \
-  &=arg \min\_{\theta}\int\_{x}P\_{data}\(x\)log \frac{P\_{data}\(x\)}{P\_G\(x;\theta\)}dx \
-  &=arg \min\_{\theta} KL\(P\_{data}\(x\)\|\|P\_G\(x;\theta\)\)
-  \end{align}
-  "\)
+$$\theta^* = arg \max_{\theta}\prod_{i=1}^{m}P_G(x^i;\theta)=arg \max_{\theta} log\prod_{i=1}^{m}P_G(x^i;\theta)=arg \max_{\theta} \sum_{i=1}^{m}logP_G(x^i;\theta) \approx arg \max_{\theta} E_{x\sim P_{data}}[logP_G(x;\theta)] 
+=  arg \max_{\theta}\int_{x} P_{data}(x)logP_G(x;\theta)dx - \int_{x}P_{data}(x)logP_{data}(x)dx =arg \max_{\theta}\int_{x}P_{data}(x)(logP_G(x;\theta)-logP_{data}(x))dx =arg \min_{\theta}\int_{x}P_{data}(x)log {}\frac{P_{data}(x)}{P_G(x;\theta)}dx =arg \min_{\theta} KL(P_{data}(x)||P_G(x;\theta))$$
 
 寻找一个![](http://www.zhihu.com/equation?tex=\theta+^* "\theta ^\*")来最大化这个似然，等价于最大化log似然。因为此时这m个数据，是从真实分布中取的，所以也就约等于，真实分布中的所有x在![](http://www.zhihu.com/equation?tex=P_{G} "P\_{G}")分布中的log似然的期望。
 
@@ -150,4 +128,34 @@ Generative Adversarial Network，就是大家耳熟能详的GAN，由Ian Goodfel
 ![](https://pic2.zhimg.com/v2-47e26e6096ef6967f064986c23e373e5_b.png)
 
 这个图很清楚的显示了，如果是第一个KL divergence的写法，为了防止出现无穷大，所以有![](http://www.zhihu.com/equation?tex=P_{data} "P\_{data}")出现的地方都必须要有![](http://www.zhihu.com/equation?tex=P_G "P\_G")覆盖，就不会出现Mode Collapse
+
+
+
+![](/assets/deeplearninggan1.png)
+
+![](/assets/deeplearninggan2.png)
+
+![](/assets/deeplearninggan3.png)
+
+![](/assets/deeplearinggan4.png)
+
+![](/assets/deeplearinggan5.png)
+
+![](/assets/deeplearinggan6.png)
+
+![](/assets/deeplearninggan7.png)
+
+![](/assets/deeplearinggan8.png)
+
+![](/assets/deeplearninggan9.png)
+
+![](/assets/deeplearninggan10.png)
+
+![](/assets/deeplearninggan11.png)
+
+![](/assets/deeplearinginggan13.png)
+
+![](/assets/deeplearninggan14.png)
+
+![](/assets/deeplearninggan17.png)
 

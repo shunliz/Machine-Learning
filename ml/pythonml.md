@@ -6,81 +6,81 @@
 
 # 1. numpy随机数据生成API
 
-　　　　numpy比较适合用来生产一些简单的抽样数据。API都在random类中，常见的API有：
+numpy比较适合用来生产一些简单的抽样数据。API都在random类中，常见的API有：
 
-　　　　1\) rand\(d0, d1, ..., dn\) 用来生成d0xd1x...dn维的数组。数组的值在\[0,1\]之间
+1\) rand\(d0, d1, ..., dn\) 用来生成d0xd1x...dn维的数组。数组的值在\[0,1\]之间
 
-　　　　例如：np.random.rand\(3,2,2\)，输出如下3x2x2的数组
+例如：np.random.rand\(3,2,2\)，输出如下3x2x2的数组
 
-array\(\[\[\[ 0.49042678,  0.60643763\],  
-        \[ 0.18370487,  0.10836908\]\],  
-  
-       \[\[ 0.38269728,  0.66130293\],  
-        \[ 0.5775944 ,  0.52354981\]\],  
-  
-       \[\[ 0.71705929,  0.89453574\],  
-        \[ 0.36245334,  0.37545211\]\]\]\)　　
+array\(\[\[\[ 0.49042678,  0.60643763\],  
+        \[ 0.18370487,  0.10836908\]\],
 
-　　　　2\) randn\(\(d0, d1, ..., dn\), 也是用来生成d0xd1x...dn维的数组。不过数组的值服从N\(0,1\)的标准正态分布。
+```
+\[\[ 0.38269728, 0.66130293\],
+\[ 0.5775944 , 0.52354981\]\],
 
-　　　　例如：np.random.randn\(3,2\)，输出如下3x2的数组，这些值是N\(0,1\)的抽样数据。
+\[\[ 0.71705929, 0.89453574\],
+\[ 0.36245334, 0.37545211\]\]\]\)　　
+```
+
+2\) randn\(\(d0, d1, ..., dn\), 也是用来生成d0xd1x...dn维的数组。不过数组的值服从N\(0,1\)的标准正态分布。
+
+例如：np.random.randn\(3,2\)，输出如下3x2的数组，这些值是N\(0,1\)的抽样数据。
 
 array\(\[\[-0.5889483 , -0.34054626\],  
-       \[-2.03094528, -0.21205145\],  
-       \[-0.20804811, -0.97289898\]\]\)
+       \[-2.03094528, -0.21205145\],  
+       \[-0.20804811, -0.97289898\]\]\)
 
 如果需要服从N\(μ,σ2\)N\(μ,σ2\)的正态分布，只需要在randn上每个生成的值x上做变换σx+μσx+μ即可，例如：
 
 例如：2\*np.random.randn\(3,2\) + 1，输出如下3x2的数组，这些值是N\(1,4\)的抽样数据。
 
-array\(\[\[ 2.32910328, -0.677016  \],  
-       \[-0.09049511,  1.04687598\],  
-       \[ 2.13493001,  3.30025852\]\]\)
+array\(\[\[ 2.32910328, -0.677016  \],  
+       \[-0.09049511,  1.04687598\],  
+       \[ 2.13493001,  3.30025852\]\]\)
 
-3\)randint\(low\[, high, size\]\)，生成随机的大小为size的数据，size可以为整数，为矩阵维数，或者张量的维数。值位于半开区间 \[low, high\)。
+3\)randint\(low\[, high, size\]\)，生成随机的大小为size的数据，size可以为整数，为矩阵维数，或者张量的维数。值位于半开区间 \[low, high\)。
 
-　　　　例如：np.random.randint\(3, size=\[2,3,4\]\)返回维数维2x3x4的数据。取值范围为最大值为3的整数。
+例如：np.random.randint\(3, size=\[2,3,4\]\)返回维数维2x3x4的数据。取值范围为最大值为3的整数。
 
-　　　　　　array\(\[\[\[2, 1, 2, 1\],  
+array\(\[\[\[2, 1, 2, 1\],  
 　　　　　　　　　　\[0, 1, 2, 1\],  
-　　　　　　　　　　\[2, 1, 0, 2\]\],  
-  
-　　　　　　　　　　\[\[0, 1, 0, 0\],  
+　　　　　　　　　　\[2, 1, 0, 2\]\],
+
+\[\[0, 1, 0, 0\],  
 　　　　　　　　　　\[1, 1, 2, 1\],  
 　　　　　　　　　　\[1, 0, 1, 2\]\]\]\)
 
-　　　　再比如： np.random.randint\(3, 6, size=\[2,3\]\) 返回维数为2x3的数据。取值范围为\[3,6\).
+再比如： np.random.randint\(3, 6, size=\[2,3\]\) 返回维数为2x3的数据。取值范围为\[3,6\).
 
-　　　　　　array\(\[\[4, 5, 3\],  
+array\(\[\[4, 5, 3\],  
 　　　　　　　　\[3, 4, 5\]\]\)
 
-　　　　4\) random\_integers\(low\[, high, size\]\),和上面的randint类似，区别在与取值范围是闭区间\[low, high\]。
+4\) random\_integers\(low\[, high, size\]\),和上面的randint类似，区别在与取值范围是闭区间\[low, high\]。
 
-　　　　5\) random\_sample\(\[size\]\), 返回随机的浮点数，在半开区间 \[0.0, 1.0\)。如果是其他区间\[a,b\),可以加以转换\(b - a\) \* random\_sample\(\[size\]\) + a
+5\) random\_sample\(\[size\]\), 返回随机的浮点数，在半开区间 \[0.0, 1.0\)。如果是其他区间\[a,b\),可以加以转换\(b - a\) \* random\_sample\(\[size\]\) + a
 
-　　　　例如： \(5-2\)\*np.random.random\_sample\(3\)+2 返回\[2,5\)之间的3个随机数。
+例如： \(5-2\)\*np.random.random\_sample\(3\)+2 返回\[2,5\)之间的3个随机数。
 
-　　　　　　array\(\[ 2.87037573,  4.33790491,  2.1662832 \]\)
-
-
+array\(\[ 2.87037573,  4.33790491,  2.1662832 \]\)
 
 # 2. scikit-learn随机数据生成API介绍
 
-　　　　scikit-learn生成随机数据的API都在datasets类之中，和numpy比起来，可以用来生成适合特定机器学习模型的数据。常用的API有：
+scikit-learn生成随机数据的API都在datasets类之中，和numpy比起来，可以用来生成适合特定机器学习模型的数据。常用的API有：
 
-　　　　1\) 用make\_regression 生成回归模型的数据
+1\) 用make\_regression 生成回归模型的数据
 
-　　　　2\) 用make\_hastie\_10\_2，make\_classification或者make\_multilabel\_classification生成分类模型数据
+2\) 用make\_hastie\_10\_2，make\_classification或者make\_multilabel\_classification生成分类模型数据
 
-　　　　3\) 用make\_blobs生成聚类模型数据
+3\) 用make\_blobs生成聚类模型数据
 
-　　　　4\) 用make\_gaussian\_quantiles生成分组多维正态分布的数据
+4\) 用make\_gaussian\_quantiles生成分组多维正态分布的数据
 
 # 3. scikit-learn随机数据生成实例
 
 ## 3.1 回归模型随机数据
 
- 　　　　这里我们使用make\_regression生成回归模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数），noise（样本随机噪音）和coef（是否返回回归系数）。例子代码如下：
+这里我们使用make\_regression生成回归模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数），noise（样本随机噪音）和coef（是否返回回归系数）。例子代码如下：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -136,7 +136,7 @@ plt.show()
 
 ## 3.2 分类模型随机数据
 
-　　　　这里我们用make\_classification生成三元分类模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数）， n\_redundant（冗余特征数）和n\_classes（输出的类别数），例子代码如下：
+这里我们用make\_classification生成三元分类模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数）， n\_redundant（冗余特征数）和n\_classes（输出的类别数），例子代码如下：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -181,7 +181,7 @@ plt.show()
 
 ## 3.3 聚类模型随机数据
 
-　　　　这里我们用make\_blobs生成聚类模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数），centers\(簇中心的个数或者自定义的簇中心\)和cluster\_std（簇数据方差，代表簇的聚合程度）。例子如下：
+这里我们用make\_blobs生成聚类模型数据。几个关键参数有n\_samples（生成样本数）， n\_features（样本特征数），centers\(簇中心的个数或者自定义的簇中心\)和cluster\_std（簇数据方差，代表簇的聚合程度）。例子如下：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -223,7 +223,7 @@ plt.show()
 
 ## 3.4 分组正态分布混合数据
 
-　　　　我们用make\_gaussian\_quantiles生成分组多维正态分布的数据。几个关键参数有n\_samples（生成样本数）， n\_features（正态分布的维数），mean（特征均值）， cov（样本协方差的系数）， n\_classes（数据在正态分布中按分位数分配的组数）。 例子如下：
+我们用make\_gaussian\_quantiles生成分组多维正态分布的数据。几个关键参数有n\_samples（生成样本数）， n\_features（正态分布的维数），mean（特征均值）， cov（样本协方差的系数）， n\_classes（数据在正态分布中按分位数分配的组数）。 例子如下：
 
 [![](http://common.cnblogs.com/images/copycode.gif "复制代码")](javascript:void%280%29;)
 
@@ -260,5 +260,5 @@ o
 输出图如下  
 ![](http://images2015.cnblogs.com/blog/1042406/201611/1042406-20161109215901592-1182184468.png)
 
-　　　　以上就是生产随机数据的一个总结，希望可以帮到学习机器学习算法的朋友们。　
+以上就是生产随机数据的一个总结，希望可以帮到学习机器学习算法的朋友们。
 

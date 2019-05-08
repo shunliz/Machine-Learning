@@ -29,6 +29,7 @@
   * [模型度量](ml/pythonml/ml-metrics.md)
   * [生成模型和判别模型](ml/pythonml/gen-descri.md)
   * [机器学习中的距离](ml/pythonml/distance.md)
+  * [机器翻译模型度量](ml/pythonml/ji-qi-fan-yi-mo-xing-du-liang.md)
 * [第六课：数据清洗和特征选择](ml/clean-feature/cleanup-feature.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
@@ -105,12 +106,14 @@
   * [美团推荐算法](ml/recommand/meituan.md)
   * [MapReduce ItemCF](ml/recommand/mr-itemcf.md)
   * [基于标签的用户推荐系统](ml/recommand/label-recommand.md)
+  * [10种传统机器学习算法，阿里工程师总结](ml/recommand/10zhong-chuan-tong-ji-qi-xue-xi-suan-fa-ff0c-a-li-gong-cheng-shi-zong-jie.md)
 * [第十七课：EM算法](ml/em/em.md)
 * [第十九课：贝叶斯网络](ml/bayes.md)
   * [朴素贝叶斯](ml/bayes/po-su-bei-xie-si.md)
   * [scikit-learn朴素贝叶斯](ml/bayes/scikit-simple-bayes.md)
   * [朴素贝叶斯实际应用](ml/bayes/simple-bayes-real-use.md)
   * [朴素贝叶斯代码](ml/bayes/simple-bayes-code.md)
+  * [变分贝叶斯推断](ml/bayes/bian-fen-bei-xie-si-tui-duan.md)
 * [第二十一课：LDA主题模型](ml/lda/lda.md)
 * [第二十三课：隐马尔科夫模型HMM](ml/hmm/hmm.md)
   * [HMM前向后向算法评估观察序列概率](ml/hmm/hmm-forward-backward.md)
@@ -173,8 +176,9 @@
   * [CBOW与Skip-Gram模型基础](dl/word2vec/cbow-skip-n.md)
   * [基于Hierarchical Softmax的模型](dl/word2vec/hierarc-softmax.md)
   * [基于Negative Sampling的模型](dl/word2vec/negative-sampling.md)
-* [增强学习](dl/reinforcement/reinforcement.md)
+* [强化学习](dl/reinforcement/reinforcement.md)
   * [Q-Learning](dl/reinforcement/q-learning.md)
+  * [梯度下降策略优化推导](dl/reinforcement/ti-du-xia-jiang-ce-lve-you-hua-tui-dao.md)
   * [策略网络](dl/reinforcement/policy-network.md)
   * [bandit算法](dl/reinforcement/banditsuan-fa.md)
   * [蒙特卡洛树搜索](dl/reinforcement/meng-te-qia-luo-shu-sou-suo.md)
@@ -216,7 +220,7 @@
   * [强化学习](resources/rl/list.md)
   * [自然语言处理](resources/nlp/list.md)
   * [深度学习](resources/dl/list.md)
-* 流行网络结构
+* [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
 * 并行学习
@@ -224,4 +228,7 @@
 * AI应用
   * [美团外卖AI技术](dl/dlapp/mei-tuan-wai-mai-ai-ji-zhu.md)
   * [美团推荐排序](dl/dlapp/mei-tuan-tui-jian-pai-xu.md)
+  * [AutoML在推荐系统应用](dl/dlapp/automlzai-tui-jian-xi-tong-ying-yong.md)
+* 参考
+  * [AI领域国内创业公司](ailing-yu-guo-nei-chuang-ye-gong-si.md)
 

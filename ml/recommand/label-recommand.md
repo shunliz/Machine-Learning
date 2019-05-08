@@ -47,7 +47,7 @@
 ![](http://img.blog.csdn.net/20160615201103047?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)![](http://img.blog.csdn.net/20160615201112456?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ```
-     将上面的实验进行10次，每次选择不同的测试集，然后将每次实验的准确率和召回率的平均值作为最终的评测结果。为了全面评测个性化推荐的性能，我们同时评测了推荐结果的覆盖率（coverage）、多样性（diversity）和新颖度。覆盖率的计算公式如下：  
+     将上面的实验进行10次，每次选择不同的测试集，然后将每次实验的准确率和召回率的平均值作为最终的评测结果。为了全面评测个性化推荐的性能，我们同时评测了推荐结果的覆盖率（coverage）、多样性（diversity）和新颖度。覆盖率的计算公式如下：
 ```
 
 ![](http://img.blog.csdn.net/20160615201158642?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
@@ -94,29 +94,32 @@ def Diversity(item_tags,recommend_items):
     return ret/(n * 1.0)
 ```
 
- 推荐系统的多样性为所有用户推荐列表多样性的平均值。  
-     至于推荐结果的新颖性，我们简单地用推荐结果的平均热门程度（AveragePopularity）度量。对于物品i，定义它的流行度item\_pop\(i\)为给这个物品打过标签的用户数。而对推荐系统，我们定义它的平均热门度如下：  
-
+推荐系统的多样性为所有用户推荐列表多样性的平均值。  
+     至于推荐结果的新颖性，我们简单地用推荐结果的平均热门程度（AveragePopularity）度量。对于物品i，定义它的流行度item\_pop\(i\)为给这个物品打过标签的用户数。而对推荐系统，我们定义它的平均热门度如下：
 
 ![](http://img.blog.csdn.net/20160615202614522?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ## 2：一个简单的算法
 
-       拿到了用户标签行为数据，相信大家都可以想到一个最简单的个性化推荐算法。这个算法的  
-       描述如下所示。  
-        统计每个用户最常用的标签。  
-        对于每个标签，统计被打过这个标签次数最多的物品。  
-        对于一个用户，首先找到他常用的标签，然后找到具有这些标签的最热门物品推荐给这个用户。  
-       对于上面的算法，用户u对物品i的兴趣公式如下：
+```
+   拿到了用户标签行为数据，相信大家都可以想到一个最简单的个性化推荐算法。这个算法的  
+   描述如下所示。  
+    统计每个用户最常用的标签。  
+    对于每个标签，统计被打过这个标签次数最多的物品。  
+    对于一个用户，首先找到他常用的标签，然后找到具有这些标签的最热门物品推荐给这个用户。  
+   对于上面的算法，用户u对物品i的兴趣公式如下：
+```
 
 ![](http://img.blog.csdn.net/20160615202805852?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-        这里，B\(u\)是用户u打过的标签集合，B\(i\)是物品i被打过的标签集合，nu,b是用户u打过标签b的次数，nb,i是物品i被打过标签b的次数。本章用SimpleTagBased标记这个算法。  
-        在Python中，我们遵循如下约定：  
-         用 records 存储标签数据的三元组，其中records\[i\] = \[user, item, tag\];  
-         用 user\_tags 存储nu,b，其中user\_tags\[u\]\[b\] = nu,b;  
-         用 tag\_items存储nb,i，其中tag\_items\[b\]\[i\] = nb,i。  
-        如下程序可以从records中统计出user\_tags和tag\_items：
+```
+    这里，B\(u\)是用户u打过的标签集合，B\(i\)是物品i被打过的标签集合，nu,b是用户u打过标签b的次数，nb,i是物品i被打过标签b的次数。本章用SimpleTagBased标记这个算法。  
+    在Python中，我们遵循如下约定：  
+     用 records 存储标签数据的三元组，其中records\[i\] = \[user, item, tag\];  
+     用 user\_tags 存储nu,b，其中user\_tags\[u\]\[b\] = nu,b;  
+     用 tag\_items存储nb,i，其中tag\_items\[b\]\[i\] = nb,i。  
+    如下程序可以从records中统计出user\_tags和tag\_items：
+```
 
 ```py
 #从records中统计出user_tags和tag_items
@@ -146,53 +149,59 @@ def Recommend(user):
                 recommend_items[item] = wut * wti  
             else:  
                 recommend_items[item] += wut * wti  
-    return recommend_items  
+    return recommend_items
 ```
 
 # 算法的改进
 
-
-
-      再次回顾四中提出的简单算法
+```
+  再次回顾四中提出的简单算法
+```
 
 ![](http://img.blog.csdn.net/20160615202805852?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-     该算法存在许多缺点，比如说对于热门商品的处理，数据洗漱性的处理等，这也是在推荐系统中经常会遇见的问题
+```
+ 该算法存在许多缺点，比如说对于热门商品的处理，数据洗漱性的处理等，这也是在推荐系统中经常会遇见的问题
+```
 
 ## 1：TF-IDF
 
-      前面这个公式倾向于给热门标签对应的热门物品很大的权重，因此会造成推荐热门的物品给用户，从而降低推荐结果的新颖性。另外，这个公式利用用户的标签向量对用户兴趣建模，其中每个标签都是用户使用过的标签，而标签的权重是用户使用该标签的次数。这种建模方法的缺点是给热门标签过大的权重，从而不能反应用户个性化的兴趣。这里我们可以借鉴TF-IDF的思想，对这一公式进行改进：
+```
+  前面这个公式倾向于给热门标签对应的热门物品很大的权重，因此会造成推荐热门的物品给用户，从而降低推荐结果的新颖性。另外，这个公式利用用户的标签向量对用户兴趣建模，其中每个标签都是用户使用过的标签，而标签的权重是用户使用该标签的次数。这种建模方法的缺点是给热门标签过大的权重，从而不能反应用户个性化的兴趣。这里我们可以借鉴TF-IDF的思想，对这一公式进行改进：
+```
 
 ![](http://img.blog.csdn.net/20160615204649888?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-         这里，![](http://img.blog.csdn.net/20160615204731232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)记录了标签b被多少个不同的用户使用过。这个算法记为TagBasedTFIDF。  
+```
+     这里，![](http://img.blog.csdn.net/20160615204731232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)记录了标签b被多少个不同的用户使用过。这个算法记为TagBasedTFIDF。  
 
 
-         同理，我们也可以借鉴TF-IDF的思想对热门物品进行惩罚，从而得到如下公式：
-
-  
-
+     同理，我们也可以借鉴TF-IDF的思想对热门物品进行惩罚，从而得到如下公式：
+```
 
 ![](http://img.blog.csdn.net/20160615204812279?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-         其中， 
+```
+     其中， 
+```
 
 ![](http://img.blog.csdn.net/20160615204853944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 记录了物品i被多少个不同的用户打过标签。这个算法记为TagBasedTFIDF++。
 
-  
-
-
 ## 2：数据稀疏性
 
-          在前边的算法中，用户兴趣和物品的联系是通过
+```
+      在前边的算法中，用户兴趣和物品的联系是通过
+```
 
 B\(u\) B\(i\)
 
 交集得到的，但是对于新用户，这个交集的结果将会非常小，为了提高推荐结果的可靠性，这里我们要对标签进行扩展，，比如若用户曾经用过“推荐系统”这个标签，我们可以将这个标签的相似标签也加入到用户标签集合中，比如“个性化”、“协同过滤”等标签。
 
-          进行标签扩展的方法有很多，比如说话题模型（
+```
+      进行标签扩展的方法有很多，比如说话题模型（
+```
 
 [参考博客](http://www.jianshu.com/p/50295398d802)
 
@@ -200,30 +209,29 @@ B\(u\) B\(i\)
 
 标签扩展的本质是找到与他相似的标签，也就是计算标签之间的相似度。最简单的相似度可以是同义词。如果有一个同义词词典，就可以根据这个词典进行标签扩展。如果没有这个词典，我们可以从数据中统计出标签的相似度。
 
-          如果认为同一个物品上的不同标签具有某种相似度，那么当两个标签同时出现在很多物品的标签集合中时，我们就可以认为这两个标签具有较大的相似度。对于标签b，令N\(b\)为有标签b的物品的集合，n\_{b,i}为给物品i打上标签b的用户数，我们可以通过如下余弦相似度公式计算标签b和标签b'的相似度：
+```
+      如果认为同一个物品上的不同标签具有某种相似度，那么当两个标签同时出现在很多物品的标签集合中时，我们就可以认为这两个标签具有较大的相似度。对于标签b，令N\(b\)为有标签b的物品的集合，n\_{b,i}为给物品i打上标签b的用户数，我们可以通过如下余弦相似度公式计算标签b和标签b'的相似度：
+```
 
 ![](http://img.blog.csdn.net/20160615210249049?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-  
+## 3：标签清理
 
+```
+      不是所有标签都能反应用户的兴趣。比如，在一个视频网站中，用户可能对一个视频打了一个表示情绪的标签，比如“不好笑”，但我们不能因此认为用户对“不好笑”有兴趣，并且给用户推荐其他具有“不好笑”这个标签的视频。相反，如果用户对视频打过“成龙”这个标签，我们可以据此认为用户对成龙的电影感兴趣，从而给用户推荐成龙其他的电影。同时，标签系统里经常出现词形不同、词义相同的标签，比如recommender system和recommendation engine就是两个同义词。
 
-##  3：标签清理
+      标签清理的另一个重要意义在于将标签作为推荐解释。如果我们要把标签呈现给用户，将其作为给用户推荐某一个物品的解释，对标签的质量要求就很高。首先，这些标签不能包含没有意义的停止词或者表示情绪的词，其次这些推荐解释里不能包含很多意义相同的词语。
 
-          不是所有标签都能反应用户的兴趣。比如，在一个视频网站中，用户可能对一个视频打了一个表示情绪的标签，比如“不好笑”，但我们不能因此认为用户对“不好笑”有兴趣，并且给用户推荐其他具有“不好笑”这个标签的视频。相反，如果用户对视频打过“成龙”这个标签，我们可以据此认为用户对成龙的电影感兴趣，从而给用户推荐成龙其他的电影。同时，标签系统里经常出现词形不同、词义相同的标签，比如recommender system和recommendation engine就是两个同义词。
+      一般来说有如下标签清理方法：
 
-          标签清理的另一个重要意义在于将标签作为推荐解释。如果我们要把标签呈现给用户，将其作为给用户推荐某一个物品的解释，对标签的质量要求就很高。首先，这些标签不能包含没有意义的停止词或者表示情绪的词，其次这些推荐解释里不能包含很多意义相同的词语。
+      去除词频很高的停止词；
 
-          一般来说有如下标签清理方法：
+      去除因词根不同造成的同义词，比如 recommender system和recommendation system；
 
-          去除词频很高的停止词；
+      去除因分隔符造成的同义词，比如 collaborative\_filtering和collaborative-filtering。
 
-          去除因词根不同造成的同义词，比如 recommender system和recommendation system；
-
-          去除因分隔符造成的同义词，比如 collaborative\_filtering和collaborative-filtering。
-
-        为了控制标签的质量，很多网站也采用了让用户进行反馈的思想，即让用户告诉系统某个标签是否合适。
-
-
+    为了控制标签的质量，很多网站也采用了让用户进行反馈的思想，即让用户告诉系统某个标签是否合适。
+```
 
 ```
 #!/usr/bin/env python
@@ -239,12 +247,12 @@ def addValueToMat(theMat,key,value,incr):
             theMat[key][value]=incr;  
         else:  
             theMat[key][value]+=incr;#若有值，则递增  
-  
+
 user_tags = dict();  
 tag_items = dict();  
 user_items = dict();  
 user_items_test = dict();#测试集数据字典  
-  
+
 #初始化，进行各种统计  
 def InitStat():  
     data_file = open('delicious.dat')  
@@ -262,7 +270,7 @@ def InitStat():
         else:  
             addValueToMat(user_items_test,user,item,1)  
     data_file.close();     
-    
+
 #推荐算法  
 def Recommend(usr):  
     recommend_list = dict();  
@@ -287,18 +295,20 @@ for recommend in recommend_list[:10]:  #兴趣度最高的十个itemid
 
 当用户浏览某个物品时，标签系统非常希望用户能够给这个物品打上高质量的标签，这样才能促进标签系统的良性循环。因此，很多标签系统都设计了标签推荐模块给用户推荐标签。
 
-       1：为什么给用户推荐标签
+```
+   1：为什么给用户推荐标签
 
-             方便用户输入标签 让用户从键盘输入标签无疑会增加用户打标签的难度，这样很多用户不愿意给物品打标签，因此我们需要一个辅助工具来减小用户打标签的难度，从而提高用户打标签的参与度。
-
-  
+         方便用户输入标签 让用户从键盘输入标签无疑会增加用户打标签的难度，这样很多用户不愿意给物品打标签，因此我们需要一个辅助工具来减小用户打标签的难度，从而提高用户打标签的参与度。
 
 
-            提高标签质量 同一个语义不同的用户可能用不同的词语来表示。这些同义词会使标签的词表变得很庞大，而且会使计算相似度不太准确。而使用推荐标签时，我们可以对词表进行选择，首先保证词表不出现太多的同义词，同时保证出现的词都是一些比较热门的、有代表性的词。
 
-      2：标签推荐的四种简单算法
 
-       a：给用户u推荐整个系统里最热门的标签（这里将这个算法称为PopularTags）令tags\[b\]为标签b的热门程度，那么这个算法的实现如下：
+        提高标签质量 同一个语义不同的用户可能用不同的词语来表示。这些同义词会使标签的词表变得很庞大，而且会使计算相似度不太准确。而使用推荐标签时，我们可以对词表进行选择，首先保证词表不出现太多的同义词，同时保证出现的词都是一些比较热门的、有代表性的词。
+
+  2：标签推荐的四种简单算法
+
+   a：给用户u推荐整个系统里最热门的标签（这里将这个算法称为PopularTags）令tags\[b\]为标签b的热门程度，那么这个算法的实现如下：
+```
 
 ```
 def RecommendPopularTags(user,item, tags, N):  
@@ -319,14 +329,14 @@ def RecommendUserPopularTags(user,item, user_tags, N):
     return sorted(user_tags[user].items(), key=itemgetter(1), reverse=True)[0:N]
 ```
 
- d：前面两种的融合（这里记为HybridPopularTags），该方法通过一个系数将上面的推荐结果线性加权，然后生成最终的推荐结果。
+d：前面两种的融合（这里记为HybridPopularTags），该方法通过一个系数将上面的推荐结果线性加权，然后生成最终的推荐结果。
 
 ```
 def RecommendHybridPopularTags(user,item, user_tags, item_tags, alpha, N):  
     max_user_tag_weight = max(user_tags[user].values())  
     for tag, weight in user_tags[user].items():  
         ret[tag] = (1 – alpha) * weight / max_user_tag_weight
-        
+
     max_item_tag_weight = max(item_tags[item].values())  
     for tag, weight in item_tags[item].items():  
         if tag not in ret:  

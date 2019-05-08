@@ -59,15 +59,31 @@ Generator和Discriminator具体怎么做可以自己定义。
 Discriminator是一个二元分类器，输入是图像，输出是两类：“自然”图像/Generator产生的图像。这里说的“自然”图像并不一定是自然图像，可以是合成的图像，人眼看上去图像是自然的。二元分类器有很多种，卷积神经网络是一个不错的选择。
 
 其次，要定义loss function才能训练。前面说了，GANs可以看成一个博弈，那么博弈双方都会有cost（代价），如果是零和博弈，那么双方的cost之和为0。Discriminator是一个分类器，它的loss可以定义用交叉熵来定义：
-
 $$J^{(D)}(\theta^{(D)},\theta^{(G)})=-\frac {1}{2}E_{xP\sim _{data}}logD(x)-\frac {1}{2}E_zlog(1-D(G(z)))$$
-
 如果是零和博弈，那么Generator的loss就定义为：
 
-$$J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{(D)}(\theta^{(D)},\theta^{(G)})=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))$$
 
-整个优化问题就是一个minmax博弈：
+$$
+J^{(D)}(\theta^{(D)},\theta^{(G)})=-J^{\theta^{(D)},\theta^{(G)}}=\frac {1}{2}E_{xP\sim _{data}}logD(x)+\frac {1}{2}E_zlog(1-D(G(z)))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$$
+
+
+整个优化问题就是一个minmax博弈
 ![](/images/dl/gan/minmax.png)
 
 Goodfellow在2014年的论文中证明了在理想情况下（博弈双方的学习能够足够强、拥有足够的数据、每次迭代过程中，固定Generator，Discriminator总能达到最优），这样构造的GANs会收敛到纳什均衡解。基于此，在2014年的论文里面，作者提出的算法是，每次迭代过程包括两个步骤：更新k次Discriminator（k&gt;=1）；更新1次Generator。也就是，应该让Discriminator学得更充分一些。PS：2016 NIPS tutorial中，作者指出，每次迭代对博弈双方同时进行（随机）梯度下降，在实际操作中效果最好。
