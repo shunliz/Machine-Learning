@@ -12,7 +12,7 @@
   * [牛顿法](math/analytic/niudun.md)
   * [凸优化](math/analytic/tuyouhua.md)
   * [常用函数](math/analytic/common-function.md)
-* [第二章 概率论](math/probability.md)
+* [第二章 概率论和统计](math/probability.md)
   * [统计学习方法概论](math/probability/prob-methodology.md)
   * [最大似然估计](math/probability/mle.md)
   * [蒙特卡罗方法](math/probability/mcmc1.md)
