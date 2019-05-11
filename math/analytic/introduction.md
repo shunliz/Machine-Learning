@@ -119,7 +119,7 @@ $$\frac{\partial f}{\partial l}=\frac{\partial f}{\partial x} \cos \varphi+\frac
 
 # **洛必达法则**
 
-**法则Ⅰ \(**$$\frac{0}{0}$$$$$$**型\) **
+**法则Ⅰ \(**$$\frac{0}{0}$$**型\) **
 
 设函数f\(x\), g\(x\)满足条件：$$\lim _{x \rightarrow x_{0}} f(x)=0, \lim _{x \rightarrow x_{0}} g(x)=0$$;
 
