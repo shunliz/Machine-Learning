@@ -39,7 +39,7 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 1. $$y=c$$                   $$y^{\prime}=0 $$                    $$d y=0$$
 2. $$y=x^{\alpha}$$                $$y^{\prime}=\alpha x^{\alpha-1}$$          $$d y=\alpha x^{\alpha-1} d x$$
 3. $$y=a^{x} $$                 $$y^{\prime}=a^{x}   \ln a$$         $$ d y=a^{x} \ln a d x$$                       特例  $$\left(e^{x}\right)^{\prime}=e^{x} $$     $$d\left(e^{x}\right)=e^{x} d x$$
-4.  $$y=\ln _{a} x$$            $$y^{\prime}=\frac{1}{x \ln a}$$            $$d y=\frac{1}{x \ln a} d x$$                          特例   $$y=\ln x$$        $$(\ln x)^{\prime}=\frac{1}{x}$$              $$d(\ln x)=\frac{1}{x} d x$$
+4. $$y=\ln _{a} x$$            $$y^{\prime}=\frac{1}{x \ln a}$$            $$d y=\frac{1}{x \ln a} d x$$                          特例   $$y=\ln x$$        $$(\ln x)^{\prime}=\frac{1}{x}$$              $$d(\ln x)=\frac{1}{x} d x$$
 5. $$y=\sin x$$             $$y^{\prime}=\cos x$$             $$d(\sin x)=\cos x d x$$
 6. $$y=\cos x$$             $$y^{\prime}=-\sin x$$         $$d(\cos x)=-\sin x d x$$
 7. $$y=\tan x$$             $$y^{\prime}=\frac{1}{\cos ^{2} x}=\sec ^{2} x$$     $$d(\tan x)=\sec ^{2} x d x$$
@@ -53,7 +53,23 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 
 # **复合函数，反函数，隐函数以及参数方程所确定的函数的微分法**
 
- \(1\) 反函数的运算法则: 设y=f\(x\)在点x的某邻域内单调连续，在点x处可导且$$f^{\prime}(x) \neq 0$$，则其反函数在点x所对应的y处可导，并且有$$\frac{d y}{d x}=\frac{1}{\frac{d x}{d y}}$$
+\(1\) 反函数的运算法则: 设y=f\(x\)在点x的某邻域内单调连续，在点x处可导且$$f^{\prime}(x) \neq 0$$，则其反函数在点x所对应的y处可导，并且有$$\frac{d y}{d x}=\frac{1}{\frac{d x}{d y}}$$
+
+\(2\) 复合函数的运算法则:若$$\mu=\varphi(x)$$在点x可导,而$$y=f(\mu)$$在对应点$$\mu(\mu=\varphi(x))$$可导,则复合函数$$y=f(\varphi(x))$$在点x可导,且$$y^{\prime}=f^{\prime}(\mu) \cdot \varphi^{\prime}(x)$$
+
+\(3\) 隐函数导数$$\frac{d y}{d x}$$的求法一般有三种方法： 
+
+   1\)方程两边对x求导，要记住y是x的函数，则y的函数是x的复合函数.例如$$\frac{1}{y}, y^{2}, \ln y, e^{y}$$等均是x的复合函数. 对x求导应按复合函数连锁法则做. 
+
+   2\)公式法.由F\(x,y\)=0 知$$\frac{d y}{d x}=-\frac{F_{x}^{\prime}(x, y)}{F_{y}^{\prime}(x, y)}$$,其中，$$F_{x}^{\prime}(x, y), \quad F_{y}^{\prime}(x, y)$$分别表示F\(x,y\)对x和y的偏导数 
+
+   3\)利用微分形式不变性
+
+# **常用高阶导数公式**
+
+1. $$\left(a^{x}\right)^{(n)}=a^{x} \ln ^{n} a \quad(a>0)$$
+2. $$\left(e^{x}\right)^{(n)}=e^{x}$$
+3. $$(\sin k x)^{(n)}=k^{n} \sin \left(k x+n \cdot \frac{\pi}{2}\right)$$
 
 
 
