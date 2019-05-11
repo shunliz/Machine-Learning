@@ -151,7 +151,7 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 
 设函数f\(x\)在点$$x_0$$处的某邻域内具有n+1阶导数，则对该邻域内异于$$x_0$$的任意点x，在$$x_0$$与x之间至少存在 一个$$\xi$$，使得$$f(x)=f\left(x_{0}\right)+f^{\prime}\left(x_{0}\right)\left(x-x_{0}\right)+\frac{1}{2 !} f^{\prime \prime}\left(x_{0}\right)\left(x-x_{0}\right)^{2}+\cdots+\frac{f^{(n)}\left(x_{0}\right)}{n !}\left(x-x_{0}\right)^{n}+R_{n}(x)$$：其中$$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !}\left(x-x_{0}\right)^{n+1}$$称为f\(x\)在点$$x_0$$处的n阶泰勒余项。
 
-令$$x_0=0$$，则n阶泰勒公式$$f(x)=f(0)+f^{\prime}(0) x+\frac{1}{2 !} f^{\prime \prime}(0) x^{2}+\cdots+\frac{f^{(n)}(0)}{n !} x^{n}+R_{n}(x) \dots (1)$$ 其中$$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} x^{n+1}$$，$$\xi$$在0与x之间.\(1\)式称为麦克劳林公式
+令$$x_0=0$$，则n阶泰勒公式$$f(x)=f(0)+f^{\prime}(0) x+\frac{1}{2 !} f^{\prime \prime}(0) x^{2}+\cdots+\frac{f^{(n)}(0)}{n !} x^{n}+R_{n}(x)$$ .........\(1\)其中$$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} x^{n+1}$$，$$\xi$$在0与x之间.式称为麦克劳林公式
 
 **常用五种函数在**$$x_0=0$$**处的泰勒公式**
 

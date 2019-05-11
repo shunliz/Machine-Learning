@@ -42,5 +42,10 @@ $$D_{n}=\left| \begin{array}{cccc}{1} & {1} & {\ldots} & {1} \\ {x_{1}} & {x_{2}
 
 设$$A=\left(a_{i j}\right)$$是mxn矩阵，$$B=\left(b_{i j}\right)$$是nxs矩阵，那么mxs矩阵$$C=\left(c_{i j}\right)$$，其中$$c_{i j}=a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^{n} a_{i k} b_{k j}$$称为AB的乘积，记为C=AB。
 
+**4.**$$A^T$$**、**$$A^{-1}$$**、**$$A^*$$**三者之间的关系**
+
+1. $$\left(A^{T}\right)^{T}=A,(A B)^{T}=B^{T} A^{T},(k A)^{T}=k A^{T},(A \pm B)^{T}=A^{T} \pm B^{T}$$
+2. $$\left(A^{-1}\right)^{-1}=A,(A B)^{-1}=B^{-1} A^{-1},(k A)^{-1}=\frac{1}{k} A^{-1}$$  但 $$(A \pm B)^{-1}=A^{-1} \pm B^{-1}$$不一定成立。
+3. 
 
 
