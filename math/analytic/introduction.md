@@ -74,6 +74,10 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 5. $$(\ln x)^{(n)}=(-1)^{(n-1)} \frac{(n-1) !}{x^{n}}$$
 6. 莱布尼兹公式：若u\(x\),v\(x\)均n阶可导，则$$(u v)^{(n)}=\sum_{i=0}^{n} c_{n}^{i} u^{(i)} v^{(n-i)}$$，其中$$u^{(0)}=u, v^{(0)}=v$$
 
+# **方向导数**
+
+$$\frac{\partial f}{\partial l}=\frac{\partial f}{\partial x} \cos \varphi+\frac{\partial f}{\partial y} \sin \varphi$$
+
 # **微分中值定理，泰勒公式**
 
 **Th1:\(费马定理\)**
@@ -106,7 +110,7 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 
 **Th4:\(柯西中值定理\)**
 
-设函数f\(x\)，g\(x\)满足条件： 
+设函数f\(x\)，g\(x\)满足条件：
 
 \(1\) 在\[a,b\]上连续；
 
@@ -166,7 +170,7 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 
 **Th3:**（取极值的第一充分条件）设函数f\(x\)在$$x_0$$的某一邻域内可微，且$$f^{\prime}\left(x_{0}\right)=0$$（或f\(x\)在$$x_0$$处连续，但$$f^{\prime}\left(x_{0}\right)$$不存在。）
 
- \(1\)若当x经过$$x_0$$时，f\(x\)由“+”变“-”，则为极大值； \(2\)若当x经过$$x_0$$时，由“-”变“+”，则为极小值； \(3\)若$$f^{\prime}(x)$$经过$$x = x_0$$的两侧不变号，则不是极值。
+\(1\)若当x经过$$x_0$$时，f\(x\)由“+”变“-”，则为极大值； \(2\)若当x经过$$x_0$$时，由“-”变“+”，则为极小值； \(3\)若$$f^{\prime}(x)$$经过$$x = x_0$$的两侧不变号，则不是极值。
 
 **Th4:**\(取极值的第二充分条件\)设f\(x\)在点$$x_0$$处有$$f^{\prime \prime}(x) \neq 0$$，且$$f^{\prime}\left(x_{0}\right)=0$$，则$$f^{\prime \prime} \left(x_{0}\right)<0$$ 当时，$$f(x_0)$$为极大值； 当$$f^{\prime \prime}\left(x_{0}\right)>0$$时，$$f(x_0)$$为极小值。 注：如果$$f^{\prime \prime}\left(x_{0}\right)=0$$，此方法失效。
 
@@ -177,6 +181,20 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 **Th2:**\(拐点的判别定理1\)若在$$x_0$$处$$f^{\prime \prime}(x)=0$$，（或$$f^{\prime \prime}(x)$$不存在），当x变动经过$$x_0$$时，$$f^{\prime \prime}(x)$$变号，则$$(x_0, f(x_0))$$为拐点。
 
 **Th3:**\(拐点的判别定理2\)设f\(x\)在点$$x_0$$的某邻域内有三阶导数，且$$f^{\prime \prime}(x)=0$$，$$f^{\prime \prime \prime}(x) \neq 0$$，则$$(x_0,f(x_0))$$为拐点。
+
+# Jensen不等式：若f是凸函数
+
+$$\begin{array}{l}{\theta_{1}, \ldots, \theta_{k} \geq 0, \theta_{1}+\cdots+\theta_{k}=1} \\ {f\left(\theta_{1} x_{1}+\cdots+\theta_{k} x_{k}\right) \leq \theta_{1} f\left(x_{1}\right)+\cdots+\theta_{k} f\left(x_{k}\right)}\end{array}$$
+
+
+
+$$p(x) \geq 0 \text { on } S \subseteq \operatorname{dom} f, \int_{S} p(x) d x=1$$
+
+$$f\left(\int_{S} p(x) x d x\right) \leq \int_{S} f(x) p(x) d x$$
+
+
+
+$$f(\mathbf{E} x) \leq \mathbf{E} f(x)$$
 
 # **弧微分**
 
@@ -190,9 +208,25 @@ $$d S=\sqrt{1+y^{\prime 2}} d x$$
 
 曲线在点M处的曲率$$k(k \neq 0)$$与曲线在点M处的曲率半径$$\rho$$有如下关系：$$\rho=\frac{1}{k}$$
 
-。
+# 微分应用
 
-。
+1， 已知函数f\(x\)=x^x，x&gt;0,求f\(x\)的最小值
+
+$$\begin{array}{l}{t(x)=x^{x}} \\ {\Rightarrow \ln t=x \ln x}\end{array}$$
+
+两边对x求导 $$\frac{1}{t} t^{\prime}=\ln x+1$$
+
+令$$t'=0$$,        $$\ln x+1=0$$  
+
+$$\begin{array}{l}{\Rightarrow x=e^{-1}} \\ {\Rightarrow t=e^{-\frac{1}{e}}}\end{array}$$
+
+# 积分应用
+
+$$N \rightarrow \infty \Rightarrow \ln N ! \rightarrow N(\ln N-1)$$
+
+$$\begin{array}{l}{\ln N !=\sum_{i=1}^{N} \ln i \approx \int_{1}^{N} \ln x d x} \\ {=x \ln \left.x\right|_{1} ^{N}-\int_{1}^{N} x d \ln x} \\ {=N \ln N-\int_{1}^{N} x \cdot \frac{1}{x} d x} \\ {=N \ln N-\left.x\right|_{1} ^{N}} \\ {=N \ln N-N+1} \\ {\rightarrow N \ln N-N}\end{array}$$
+
+
 
 
 
