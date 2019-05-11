@@ -57,19 +57,30 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 
 \(2\) 复合函数的运算法则:若$$\mu=\varphi(x)$$在点x可导,而$$y=f(\mu)$$在对应点$$\mu(\mu=\varphi(x))$$可导,则复合函数$$y=f(\varphi(x))$$在点x可导,且$$y^{\prime}=f^{\prime}(\mu) \cdot \varphi^{\prime}(x)$$
 
-\(3\) 隐函数导数$$\frac{d y}{d x}$$的求法一般有三种方法： 
+\(3\) 隐函数导数$$\frac{d y}{d x}$$的求法一般有三种方法：
 
-   1\)方程两边对x求导，要记住y是x的函数，则y的函数是x的复合函数.例如$$\frac{1}{y}, y^{2}, \ln y, e^{y}$$等均是x的复合函数. 对x求导应按复合函数连锁法则做. 
+1\)方程两边对x求导，要记住y是x的函数，则y的函数是x的复合函数.例如$$\frac{1}{y}, y^{2}, \ln y, e^{y}$$等均是x的复合函数. 对x求导应按复合函数连锁法则做.
 
-   2\)公式法.由F\(x,y\)=0 知$$\frac{d y}{d x}=-\frac{F_{x}^{\prime}(x, y)}{F_{y}^{\prime}(x, y)}$$,其中，$$F_{x}^{\prime}(x, y), \quad F_{y}^{\prime}(x, y)$$分别表示F\(x,y\)对x和y的偏导数 
+2\)公式法.由F\(x,y\)=0 知$$\frac{d y}{d x}=-\frac{F_{x}^{\prime}(x, y)}{F_{y}^{\prime}(x, y)}$$,其中，$$F_{x}^{\prime}(x, y), \quad F_{y}^{\prime}(x, y)$$分别表示F\(x,y\)对x和y的偏导数
 
-   3\)利用微分形式不变性
+3\)利用微分形式不变性
 
 # **常用高阶导数公式**
 
 1. $$\left(a^{x}\right)^{(n)}=a^{x} \ln ^{n} a \quad(a>0)$$
 2. $$\left(e^{x}\right)^{(n)}=e^{x}$$
 3. $$(\sin k x)^{(n)}=k^{n} \sin \left(k x+n \cdot \frac{\pi}{2}\right)$$
+4. $$(\cos k x)^{(n)}=k^{n} \cos \left(k x+n \cdot \frac{\pi}{2}\right)$$
+5. $$(\ln x)^{(n)}=(-1)^{(n-1)} \frac{(n-1) !}{x^{n}}$$
+6. 莱布尼兹公式：若u\(x\),v\(x\)均n阶可导，则$$(u v)^{(n)}=\sum_{i=0}^{n} c_{n}^{i} u^{(i)} v^{(n-i)}$$，其中$$u^{(0)}=u, v^{(0)}=v$$
+
+# **微分中值定理，泰勒公式**
+
+**Th1:**\(费马定理\)
+
+若函数f\(x\)满足条件： \(1\)函数f\(x\)在$$x_0$$的某邻域内有定义，并且在此邻域内恒有$$f(x) \leq f\left(x_{0}\right)$$或$$f(x) \geq f\left(x_{0}\right)$$,
+
+\(2\)f\(x\)在$$x_0$$处可导,则有$$f^{\prime}\left(x_{0}\right)=0$$
 
 
 
