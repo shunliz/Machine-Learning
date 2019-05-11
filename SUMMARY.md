@@ -19,7 +19,7 @@
   * [马尔科夫链](math/probability/markov-chain.md)
   * [MCMC采样和M-H采样](math/probability/mcmc-mh.md)
   * [Gibbs采样](math/probability/gibbs.md)
-* [第三章 矩阵和线性代数](math/linear-matrix/linear-matrix.md)
+* [第三章 线性代数和矩阵](math/linear-matrix/linear-matrix.md)
   * [LAPACK](math/linear-matrix/lapack.md)
   * [特征值与特征向量](math/linear-matrix/tezhengzhihetezhengxiangliang.md)
 * [第二部分 机器学习](ml/ml.md)
