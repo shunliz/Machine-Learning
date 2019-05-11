@@ -40,5 +40,7 @@ $$D_{n}=\left| \begin{array}{cccc}{1} & {1} & {\ldots} & {1} \\ {x_{1}} & {x_{2}
 
 **3.矩阵的乘法**
 
+设$$A=\left(a_{i j}\right)$$是mxn矩阵，$$B=\left(b_{i j}\right)$$是nxs矩阵，那么mxs矩阵$$C=\left(c_{i j}\right)$$，其中$$c_{i j}=a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^{n} a_{i k} b_{k j}$$称为AB的乘积，记为C=AB。
+
 
 
