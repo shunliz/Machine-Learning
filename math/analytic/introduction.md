@@ -49,7 +49,6 @@ $$(3)\left(\frac{u}{v}\right)^{\prime}=\frac{v u^{\prime}-u v^{\prime}}{v^{2}}(v
 11. $$y=\arcsin x$$          $$y^{\prime}=\frac{1}{\sqrt{1-x^{2}}}$$                        $$d(\arcsin x)=\frac{1}{\sqrt{1-x^{2}}} d x$$
 12. $$y=\arccos x$$          $$y^{\prime}=-\frac{1}{\sqrt{1-x^{2}}}$$                     $$d(\arccos x)=-\frac{1}{\sqrt{1-x^{2}}} d x$$
 13. $$y=\arctan x$$          $$y^{\prime}=\frac{1}{1+x^{2}}$$                            $$d(\arctan x)=\frac{1}{1+x^{2}} d x$$
-14. $$y=\operatorname{arccot} x$$           $$y^{\prime}=-\frac{1}{1+x^{2}}$$                         $$d(\operatorname{arccot} x)=-\frac{1}{1+x^{2}} d x$$
 
 # **复合函数，反函数，隐函数以及参数方程所确定的函数的微分法**
 
@@ -186,13 +185,9 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 
 $$\begin{array}{l}{\theta_{1}, \ldots, \theta_{k} \geq 0, \theta_{1}+\cdots+\theta_{k}=1} \\ {f\left(\theta_{1} x_{1}+\cdots+\theta_{k} x_{k}\right) \leq \theta_{1} f\left(x_{1}\right)+\cdots+\theta_{k} f\left(x_{k}\right)}\end{array}$$
 
-
-
 $$p(x) \geq 0 \text { on } S \subseteq \operatorname{dom} f, \int_{S} p(x) d x=1$$
 
 $$f\left(\int_{S} p(x) x d x\right) \leq \int_{S} f(x) p(x) d x$$
-
-
 
 $$f(\mathbf{E} x) \leq \mathbf{E} f(x)$$
 
@@ -216,7 +211,7 @@ $$\begin{array}{l}{t(x)=x^{x}} \\ {\Rightarrow \ln t=x \ln x}\end{array}$$
 
 两边对x求导 $$\frac{1}{t} t^{\prime}=\ln x+1$$
 
-令$$t'=0$$,        $$\ln x+1=0$$  
+令$$t'=0$$,        $$\ln x+1=0$$
 
 $$\begin{array}{l}{\Rightarrow x=e^{-1}} \\ {\Rightarrow t=e^{-\frac{1}{e}}}\end{array}$$
 
@@ -225,8 +220,4 @@ $$\begin{array}{l}{\Rightarrow x=e^{-1}} \\ {\Rightarrow t=e^{-\frac{1}{e}}}\end
 $$N \rightarrow \infty \Rightarrow \ln N ! \rightarrow N(\ln N-1)$$
 
 $$\begin{array}{l}{\ln N !=\sum_{i=1}^{N} \ln i \approx \int_{1}^{N} \ln x d x} \\ {=x \ln \left.x\right|_{1} ^{N}-\int_{1}^{N} x d \ln x} \\ {=N \ln N-\int_{1}^{N} x \cdot \frac{1}{x} d x} \\ {=N \ln N-\left.x\right|_{1} ^{N}} \\ {=N \ln N-N+1} \\ {\rightarrow N \ln N-N}\end{array}$$
-
-
-
-
 
