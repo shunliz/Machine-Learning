@@ -29,7 +29,7 @@ $$\ln P(A)=7 \ln P(A)+3 \ln (1-P(A))$$
 
 对上式求导，整理得：
 
-$$\frac{\operatorname{dln}(P(A))}{d P(A)}=\frac{7}{P(A)}-\frac{3}{(1-P(A))}$$
+$$\frac{dln(P(A))}{d P(A)}=\frac{7}{P(A)}-\frac{3}{(1-P(A))}$$
 
 令该导数为零，可得式子：
 
@@ -57,7 +57,7 @@ $$L(\hat{\theta})=\max _{\theta \in \Theta} L(\theta)=\max _{\theta \in \Theta} 
 
 1. 写出似然函数 $$L(\theta)=L\left(x_{1}, x_{2}, \cdots, x_{n} ; \theta\right)$$ ；
 2. 对似然函数取对数（视情况而定）；
-3. 求对数似然函数对未知参数的导函数 $$\frac{\operatorname{dln} L(\theta)}{d \theta}_{ ; x=y}$$
+3. 求对数似然函数对未知参数的导函数 $$\frac{dln L(\theta)}{d \theta}_{ ; x=y}$$
 4. 令导函数为 0，方程的解即为极大似然解；
 
 
