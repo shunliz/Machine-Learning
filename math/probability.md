@@ -119,7 +119,7 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 
 定义：$$D(X)=E\left[(X-E(X))^{2}\right]=E\left(X^{2}\right)-E^{2}(X)$$
 
-性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2\operatorname{Cov}(X, Y)$$
+性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2Cov(X, Y)$$
 
 当X, Y相互独立时 $$D(X \pm Y)=D(X)+D(Y)$$
 
