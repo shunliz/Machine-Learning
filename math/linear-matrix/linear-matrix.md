@@ -46,6 +46,17 @@ $$D_{n}=\left| \begin{array}{cccc}{1} & {1} & {\ldots} & {1} \\ {x_{1}} & {x_{2}
 
 1. $$\left(A^{T}\right)^{T}=A,(A B)^{T}=B^{T} A^{T},(k A)^{T}=k A^{T},(A \pm B)^{T}=A^{T} \pm B^{T}$$
 2. $$\left(A^{-1}\right)^{-1}=A,(A B)^{-1}=B^{-1} A^{-1},(k A)^{-1}=\frac{1}{k} A^{-1}$$  但 $$(A \pm B)^{-1}=A^{-1} \pm B^{-1}$$不一定成立。
-3. 
+3. $$\left(A^{*}\right)^{*}=|A|^{n-2} A(n \geq 3),(A B)^{*}=B^{*} A^{*},(k A)^{*}=k^{n-1} A^{*}(n \geq 2)$$ 但 $$(A \pm B)^{*}=A^{*} \pm B^{*}$$不一定成立。
+
+4. $$\left(A^{-1}\right)^{T}=\left(A^{T}\right)^{-1},\left(A^{-1}\right)^{*}=\left(A A^{*}\right)^{-1},\left(A^{*}\right)^{T}=\left(A^{T}\right)^{*}$$
+
+**5.有关**$$A^*$$**的结论**
+
+1. $$A A^{*}=A^{*} A=|A| E$$
+2. $$\left|A^{*}\right|=|A|^{n-1}(n \geq 2), \quad(k A)^{*}=k^{n-1} A^{*}, \quad\left(A^{*}\right)^{*}=|A|^{n-2} A(n \geq 3)$$
+3. 若A可逆，则$$A^{*}=|A| A^{-1},\left(A^{*}\right)^{*}=\frac{1}{|A|} A$$
+
+4. 若A为n阶方阵，则：$$r\left(A^{*}\right)=\left\{\begin{array}{ll}{n,} & {r(A)=n} \\ {1,} & {r(A)=n-1} \\ {0,} & {r(A)<n-1}\end{array}\right.$$
+
 
 

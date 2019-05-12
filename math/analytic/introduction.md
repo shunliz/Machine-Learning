@@ -185,7 +185,7 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 
 $$\begin{array}{l}{\theta_{1}, \ldots, \theta_{k} \geq 0, \theta_{1}+\cdots+\theta_{k}=1} \\ {f\left(\theta_{1} x_{1}+\cdots+\theta_{k} x_{k}\right) \leq \theta_{1} f\left(x_{1}\right)+\cdots+\theta_{k} f\left(x_{k}\right)}\end{array}$$
 
-$$p(x) \geq 0 \text { on } S \subseteq \operatorname{dom} f, \int_{S} p(x) d x=1$$
+$$p(x) \geq 0 \text { on } S \subseteq dom f, \int_{S} p(x) d x=1$$
 
 $$f\left(\int_{S} p(x) x d x\right) \leq \int_{S} f(x) p(x) d x$$
 
