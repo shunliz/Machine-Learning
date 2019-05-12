@@ -43,14 +43,14 @@ $$\begin{array}{c}{w \rightarrow\left(1-\frac{\eta \lambda}{n}\right) w-\frac{\e
 $$C=C_{0}+\frac{\lambda}{n} \sum_{w}|w|$$
 
 同样先计算导数：  
-$$\frac{\partial C}{\partial w}=\frac{\partial C_{0}}{\partial w}+\frac{\lambda}{n} \operatorname{sgn}(w)$$
+$$\frac{\partial C}{\partial w}=\frac{\partial C_{0}}{\partial w}+\frac{\lambda}{n} sgn\,w$$
 
 上式中sgn\(w\)表示w的符号。那么权重w的更新规则为：  
-$$w \rightarrow w^{\prime}=w-\frac{\eta \lambda}{n} \operatorname{sgn}(w)-\eta \frac{\partial C_{0}}{\partial w}$$
+$$w \rightarrow w^{\prime}=w-\frac{\eta \lambda}{n} sgn\,w-\eta \frac{\partial C_{0}}{\partial w}$$
 
 比原始的更新规则多出了η \* λ \* sgn\(w\)/n这一项。当w为正时，更新后的w变小。当w为负时，更新后的w变大——因此它的效果就是让w往0靠，使网络中的权重尽可能为0，也就相当于减小了网络复杂度，防止过拟合。
 
-另外，上面没有提到一个问题，当w为0时怎么办？当w等于0时，\|W\|是不可导的，所以我们只能按照原始的未经正则化的方法去更新w，这就相当于去掉η\*λ\*sgn\(w\)/n这一项，所以我们可以规定sgn\(0\)=0，这样就把w=0的情况也统一进来了。（在编程的时候，令sgn\(0\)=0,sgn\(w&gt;0\)=1,sgn\(w&lt;0\)=-1）
+另外，上面没有提到一个问题，当w为0时怎么办？当w等于0时，\|W\|是不可导的，所以我们只能按照原始的未经正则化的方法去更新w，这就相当于去掉η\*λ\*sgn\(w\)/n这一项，所以我们可以规定sgn\(0\)=0，这样就把w=0的情况也统一进来了。（在编程的时候，令sgn\(0\)=0,sgn\(w&gt;0\)=1,sgn\(w&lt;0\)=-1 $$$$
 
 ## Early stopping {#early-stopping}
 
