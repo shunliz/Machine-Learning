@@ -28,8 +28,8 @@
 
 减法公式                                                $$P(A-B)=P(A)-P(A B), B \subset A$$时$$P(A-B)=P(A)-P(B)$$
 
-条件概率公式                                         $$P(B | A)=\frac{P(A B)}{P(A)} \quad P(A B)=P(A) P(B | A)=P(B) P(A | B)$$
-$$P(A B C)=P(A) P(B | A) P(C | A B)$$
+条件概率公式                                         $$P(B | A)=\frac{P(A B)}{P(A)} \quad P(A B)=P(A) P(B | A)=P(B) P(A | B)$$  
+$$P(A B C)=P(A) P(B | A) P(C | A B)$$  
 全概率公式                                              $$P(A)=\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right)$$
 
 贝叶斯公式                                              $$P\left(B_{i} | A\right)=\frac{P\left(B_{i}\right) P\left(A | B_{i}\right)}{\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right)}$$
@@ -92,7 +92,7 @@ $$f_{Y}(y)=f_{X}(h(y)) \cdot\left|h^{\prime}(y)\right|(x=h(y)$$ h\(y\)是g\(x\)�
 
 边缘分布函数与边缘密度函数
 
-分布函数   $$F_{X}(x)=\int_{-\infty}^{x} \int_{-\infty}^{+\infty} f(u, v) d v d u$$                  密度函数         $$f_{X}(x)=\int_{-\infty}^{+\infty} f(x, v) d v$$
+分布函数   $$F_{X}(x)=\int_{-\infty}^{x} \int_{-\infty}^{+\infty} f(u, v) d v d u$$                  密度函数         $$f_{X}(x)=\int_{-\infty}^{+\infty} f(x, v) d v$$  
 $$F_{Y}(y)=\int_{-\infty}^{y} \int_{-\infty}^{+\infty} f(u, v) d u d v$$                                            $$f_{Y}(y)=\int_{-\infty}^{+\infty} f(u, y) d u$$
 
 条件概率密度
@@ -119,13 +119,13 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 
 定义：$$D(X)=E\left[(X-E(X))^{2}\right]=E\left(X^{2}\right)-E^{2}(X)$$
 
-性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2 \operatorname{Cov}(X, Y)$$
+性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2\operatorname{Cov}(X, Y)$$
 
 当X, Y相互独立时 $$D(X \pm Y)=D(X)+D(Y)$$
 
 3，协方差与相关系数
 
-协方差 $$\operatorname{Cov}(X, Y)=E(X Y)-E(X) E(Y)$$  当X,Y相互独立时 $$\operatorname{Cov}(X, Y)=0$$
+协方差 $$Cov\,(X, Y)=E(X Y)-E(X) E(Y)$$  当X,Y相互独立时 $$Cov\,(X, Y)=0$$
 
 相关系数 $$\rho_{x \gamma}=\frac{\operatorname{cov}(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$$   当X,Y相互独立时 $$\rho_{X Y}=0$$ X,Y不相关
 
