@@ -127,7 +127,7 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 
 协方差 $$Cov\,(X, Y)=E(X Y)-E(X) E(Y)$$  当X,Y相互独立时 $$Cov\,(X, Y)=0$$
 
-相关系数 $$\rho_{x \gamma}=\frac{\operatorname{cov}(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$$   当X,Y相互独立时 $$\rho_{X Y}=0$$ X,Y不相关
+相关系数 $$\rho_{x \gamma}=\frac{Cov(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$$   当X,Y相互独立时 $$\rho_{X Y}=0$$ X,Y不相关
 
 协方差和相关系数的性质 $$\operatorname{cov}(X, X)=D(X), \quad \operatorname{Cov}(X, Y)=\operatorname{Cov}(Y, X)$$
 
