@@ -58,5 +58,93 @@ $$D_{n}=\left| \begin{array}{cccc}{1} & {1} & {\ldots} & {1} \\ {x_{1}} & {x_{2}
 
 4. 若A为n阶方阵，则：$$r\left(A^{*}\right)=\left\{\begin{array}{ll}{n,} & {r(A)=n} \\ {1,} & {r(A)=n-1} \\ {0,} & {r(A)<n-1}\end{array}\right.$$
 
+**6.有关**$$A^{-1}$$**的结论**
+
+A可逆$$\Leftrightarrow A B=E ; \Leftrightarrow|A| \neq 0 ; \Leftrightarrow r(A)=n$$$$\Leftrightarrow A$$可以表示为初等矩阵的乘积；$$\Leftrightarrow A ; \Leftrightarrow A x=0$$。
+
+**7.有关矩阵秩的结论**
+
+1. 秩$$r(A)$$=行秩=列秩；
+
+2. $$r\left(A_{m \times n}\right) \leq \min (m, n)$$
+
+3. $$r\left(A_{m \times n}\right) \leq \min (m, n)$$
+
+4. $$r(A \pm B) \leq r(A)+r(B)$$
+
+5. 初等变换不改变矩阵的秩
+
+6. $$r(A)+r(B)-n \leq r(A B) \leq \min (r(A), r(B))$$特别若$$A B=O$$则：$$r(A)+r(B) \leq n$$
+
+7. 若$$A^{-1}$$存在$$\Rightarrow r(A B)=r(B)$$;若$$B^{-1}$$存在$$\Rightarrow r(A B)=r(A)$$. 若$$r\left(A_{m \times n}\right)=n \Rightarrow r(A B)=r(B)$$ 若$$r\left(A_{m \times s}\right)=n \Rightarrow r(A B)=r(A)$$。
+
+8. $$r\left(A_{m \times s}\right)=n \Leftrightarrow A x=0$$只有零解
+
+**8.分块求逆公式**
+
+$$\begin{array}{ll}{\left( \begin{array}{cc}{A} & {O} \\ {O} & {B}\end{array}\right)^{-1}=\left( \begin{array}{cc}{A^{-1}} & {O} \\ {O} & {B^{-1}}\end{array}\right) ; \left( \begin{array}{cc}{A} & {C} \\ {O} & {B}\end{array}\right)^{-1}=\left( \begin{array}{cc}{A} & {B^{-1} C B^{-1}} \\ {O} & {B^{-1}}\end{array}\right)} \\ {\left( \begin{array}{cc}{A} & {O} \\ {C} & {B}\end{array}\right)^{-1}=\left( \begin{array}{cc}{A^{-1}} & {O} \\ {-B^{-1} C A^{-1}} & {B^{-1}}\end{array}\right) ; \left( \begin{array}{cc}{O} & {A} \\ {B} & {O}\end{array}\right)^{-1}=\left( \begin{array}{cc}{O} & {B^{-1}} \\ {A^{-1}} & {O}\end{array}\right)}\end{array}$$
+
+这里A，B均为可逆方阵。
+
+# 向量
+
+## **1.有关向量组的线性表示**
+
+1. $$\alpha_{1}, \alpha_{2}, \cdots, \alpha_{s}$$线性相关$$\Leftrightarrow$$至少有一个向量可以用其余向量线性表示。
+
+2. $$\alpha_{2}, \cdots, \alpha_{s}$$线性无关，$$\alpha_{2}, \cdots, \alpha_{s}$$，$$\beta$$线性相关$$\Leftrightarrow$$$$\beta$$可以由$$\alpha_{2}, \cdots, \alpha_{s}$$唯一线性表示。
+
+3. $$\beta$$可以由$$\alpha_{2}, \cdots, \alpha_{s}$$线性表示$$\Leftrightarrow r\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{s}\right)=r\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{s}, \beta\right)$$
+
+## **2.有关向量组的线性相关性**
+
+1. 部分相关，整体相关；整体无关，部分无关.
+
+2. \(1\) n个n维向量$$\alpha_{1}, \alpha_{2} \cdots \alpha_{n}$$线性无关$$\Leftrightarrow\left|\left[\alpha_{1} \alpha_{2} \cdots \alpha_{n}\right]\right| \neq 0$$，n个n维向量$$\alpha_{1}, \alpha_{2} \cdots \alpha_{n}$$线性相关$$\Leftrightarrow\left|\left[\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n}\right]\right|=0$$。 \(2\) n+1个n维向量线性相关。 \(3\)若$$\alpha_{2}, \cdots, \alpha_{s}$$线性无关，则添加分量后仍线性无关；或一组向量线性相关，去掉某些分量后仍线性相关。
+
+## 3**.向量组的秩与矩阵的秩之间的关系**
+
+设$$r\left(A_{m \times n}\right)=r$$，则A的秩r\(A\)与A的行列向量组的线性相关性关系为：
+
+* 若$$r\left(A_{m \times n}\right)=r=m$$，则A的行向量组线性无关
+
+* 若$$r\left(A_{m \times n}\right)=r<m$$，则A的行向量组线性相关
+
+* 若$$r\left(A_{m \times n}\right)=r=n$$，则A的行向量组线性无关
+
+* 若$$r\left(A_{m \times n}\right)=r<n$$，则A的行向量组线性相关
+
+## 4**.n维向量空间的基变换公式及过渡矩阵**
+
+若$$\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n}$$与$$\beta_{1}, \beta_{2}, \cdots, \beta_{n}$$是向量空间V的两组基，则基变换公式为：
+
+$$\left(\beta_{1}, \beta_{2}, \cdots, \beta_{n}\right)=\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n}\right) \left[ \begin{array}{cccc}{c_{11}} & {c_{12}} & {\cdots} & {c_{1 n}} \\ {c_{21}} & {c_{22}} & {\cdots} & {c_{2 n}} \\ {\ldots} & {\cdots} & {\cdots} & {\cdots} \\ {c_{n 1}} & {c_{n 2}} & {\cdots} & {c_{n n}}\end{array}\right]=\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n}\right) C$$
+
+其中C是可逆矩阵，称为由基$$\alpha_{2}, \cdots, \alpha_{n}$$到基$$\beta_{2}, \cdots, \beta_{n}$$的过渡矩阵。
+
+## 5**.坐标变换公式**
+
+若向量$$\gamma$$在基$$\alpha_{2}, \cdots, \alpha_{n}$$与基$$\beta_{2}, \cdots, \beta_{n}$$的坐标分别是，$$X=\left(x_{1}, x_{2}, \cdots, x_{n}\right)^{T}$$,$$Y=\left(y_{1}, y_{2}, \cdots, y_{n}\right)^{T}$$
+
+即：$$\gamma=x_{1} \alpha_{1}+x_{2} \alpha_{2}+\cdots+x_{n} \alpha_{n}=y_{1} \beta_{1}+y_{2} \beta_{2}+\cdots+y_{n} \beta_{n}$$，则向量坐标变换公式为X=CY或$$Y=C^{-1}X$$，其中C是从基$$\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n}$$到基$$\beta_{2}, \cdots, \beta_{n}$$的过渡矩阵。
+
+## 6**.向量的内积**
+
+$$(\alpha, \beta)=a_{1} b_{1}+a_{2} b_{2}+\cdots+a_{n} b_{n}=\alpha^{T} \beta=\beta^{T} \alpha$$
+
+## 7**.Schmidt正交化**
+
+若$$\alpha_{1}, \alpha_{2}, \cdots, \alpha_{s}$$线性无关，则可构造$$\beta_{1}, \beta_{2}, \cdots, \beta_{s}$$使其两两正交，且$$\beta_i$$仅是$$\alpha_{1}, \alpha_{2}, \cdots, \alpha_{i}$$的线性组合$$(i=1,2, \cdots, n)$$，再把$$\beta_i$$单位化，记$$\gamma_{i}=\frac{\beta_{i}}{\left|\beta_{i}\right|}$$，则$$\gamma_{1}, \gamma_{2}, \cdots, \gamma_{i}$$是规范正交向量组。其中
+
+$$\beta_{1}=\alpha_{1},\beta_{2}=\alpha_{2}-\frac{\left(\alpha_{2}, \beta_{1}\right)}{\left(\beta_{1}, \beta_{1}\right)} \beta_{1}, \quad \beta_{3}=\alpha_{3}-\frac{\left(\alpha_{3}, \beta_{1}\right)}{\left(\beta_{1}, \beta_{1}\right)} \beta_{1}-\frac{\left(\alpha_{3}, \beta_{2}\right)}{\left(\beta_{2}, \beta_{2}\right)} \beta_{2}$$
+
+....................................................
+
+$$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}, \beta_{1}\right)} \beta_{1}-\frac{\left(\alpha_{s}, \beta_{2}\right)}{\left(\beta_{2}, \beta_{2}\right)} \beta_{2}-\dots-\frac{\left(\alpha_{s}, \beta_{s-1}\right)}{\left(\beta_{s-1}, \beta_{s-1}\right)} \beta_{s-1}$$
+
+## 8**.正交基及规范正交基**
+
+向量空间一组基中的向量如果两两正交，就称为正交基；若正交基中每个向量都是单位向量，就称其为规范正交基。
+
 
 
