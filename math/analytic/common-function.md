@@ -20,7 +20,7 @@ argmax是一种函数，函数y=f\(x\)，x0= argmax\(f\(x\)\) 的意思就是参
 
 假设现在有一个样本集中两个概率分布p,q，其中p为真实分布，q为非真实分布。假如，按照真实分布p来衡量识别一个样本所需要的编码长度的期望为：
 
-$$$$$$\mathrm{H}(\mathrm{p})=\sum_{i} p(i) \cdot \log \left(\frac{1}{p(i)}\right) |$$
+$$\mathrm{H}(\mathrm{p})=\sum_{i} p(i) \cdot \log \left(\frac{1}{p(i)}\right) |$$
 
 但是，如果采用错误的分布q来表示来自真实分布p的平均编码长度，则应该是：
 
