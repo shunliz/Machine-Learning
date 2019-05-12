@@ -129,11 +129,11 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 
 相关系数 $$\rho_{x \gamma}=\frac{Cov(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$$   当X,Y相互独立时 $$\rho_{X Y}=0$$ X,Y不相关
 
-协方差和相关系数的性质 $$\operatorname{cov}(X, X)=D(X), \quad \operatorname{Cov}(X, Y)=\operatorname{Cov}(Y, X)$$
+协方差和相关系数的性质 $$cov(X, X)=D(X), \quad Cov(X, Y)=Cov(Y, X)$$
 
-$$\operatorname{cov}\left(X_{1}+X_{2}, Y\right)=\operatorname{Cov}\left(X_{1}, Y\right)+\operatorname{Cov}\left(X_{2}, Y\right), \quad \operatorname{Cov}(a X+c, b Y+\alpha)=a b \operatorname{Cov}(X, Y)$$
+$$cov\left(X_{1}+X_{2}, Y\right)=Cov\left(X_{1}, Y\right)+Cov\left(X_{2}, Y\right), \quad Cov(a X+c, b Y+\alpha)=a b Cov(X, Y)$$
 
-$$\operatorname{Cov}(x, a)=0$$ a为常数   $$D(a X \pm b Y)=a^{2} D(X)+b^{2} D(Y) \pm 2 a b \operatorname{Cov}(X, Y)$$
+$$Cov(x, a)=0$$ a为常数   $$D(a X \pm b Y)=a^{2} D(X)+b^{2} D(Y) \pm 2 a b Cov(X, Y)$$
 
 4，常见随机变量分布的数学期望和方差
 
