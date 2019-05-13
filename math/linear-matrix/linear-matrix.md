@@ -176,3 +176,19 @@ $$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}
 
 3\)$$Ax = 0$$的任一解都可以由$$\eta_{1}, \eta_{2}, \cdots, \eta_{t}$$线性表出$$k_{1} \eta_{1}+k_{2} \eta_{2}+\cdots+k_{t} \eta_{t}$$.是$$Ax = 0$$的通解，其中$$k_{1}, k_{2}, \cdots, k_{t}$$是任意常数。
 
+# 矩阵的特征值和特征向量
+
+## **1.矩阵的特征值和特征向量的概念及性质**
+
+1. 设$$\lambda$$是Am的一个特征值，则$$kA,aA+bE,A^2,f(A),A^T,A^{-1},A^*$$有一个特征值分别为$$k\lambda,a\lambda+b,\lambda^2,\lambda^m,f(\lambda),\lambda,\lambda^{-1},\frac{|A|}{\lambda}$$且对应特征向量相同（例外）。
+
+   \(2\)若为的个特征值，则,从而没有特征值。
+
+   \(3\)设为的个特征值，对应特征向量为，
+
+   若:,
+
+   则:。
+
+
+
