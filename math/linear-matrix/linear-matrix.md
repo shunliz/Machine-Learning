@@ -146,5 +146,21 @@ $$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}
 
 向量空间一组基中的向量如果两两正交，就称为正交基；若正交基中每个向量都是单位向量，就称其为规范正交基。
 
+# 线性方程组
 
+## **1．克莱姆法则**
+
+线性方程组$$\left\{\begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}=b_{1}} \\ {a_{21} x_{1}+a_{22} x_{2}+\cdots+a_{2 n} x_{n}=b_{2}} \\ {\ldots \ldots \ldots \ldots \ldots+a_{2 n} x_{n}=b_{2}} \\ {a_{n 1} x_{1}+a_{n 2} x_{2}+\cdots+a_{n n} x_{n}=b_{n}}\end{array}\right.$$，如果系数行列式$$D=|A| \neq 0$$，则方程组有唯一解，$$x_{1}=\frac{D_{1}}{D}, x_{2}=\frac{D_{2}}{D}, \cdots, x_{n}=\frac{D_{n}}{D}$$，其中$$D_j$$是把D中第j列元素换成方程组右端的常数列所得的行列式。
+
+## **2.**
+
+**n**阶矩阵A可逆$$\Leftrightarrow A x=0$$只有零解$$\Leftrightarrow \forall b, A x=b$$总有唯一解，一般地，$$r\left(A_{m \times n}\right)=n \Leftrightarrow A x=0$$只有零解。
+
+## **3.非奇次线性方程组有解的充分必要条件，线性方程组解的性质和解的结构**
+
+\(1\) 设A为mxn矩阵，若$$r\left(A_{m \times n}\right)=m$$，则对$$Ax = b$$而言必有$$r(A)=r(A : b)=m$$，从而$$A x=b$$有解。
+
+\(2\) 设$$x_{1}, x_{2}, \cdots \cdot x_{s}$$为$$A x=b$$的解，则$$k_{1} x_{1}+k_{2} x_{2} \cdots+k_{s} x_{s}$$当$$k_{1}+k_{2}+\cdots+k_{s}=1$$时仍为$$Ax = b$$的解；但当$$k_{1}+k_{2}+\cdots+k_{s}=0$$时，则为$$Ax = 0$$的解。特别$$\frac{x_{1}+x_{2}}{2}$$为$$Ax = b$$的解；$$2 x_{3}-\left(x_{1}+x_{2}\right)$$为$$Ax = 0$$的解。
+
+\(3\) 非齐次线性方程组无解不能由的列向量线性表示。
 
