@@ -180,15 +180,15 @@ $$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}
 
 ## **1.矩阵的特征值和特征向量的概念及性质**
 
-1. 设$$\lambda$$是Am的一个特征值，则$$kA,aA+bE,A^2,f(A),A^T,A^{-1},A^*$$有一个特征值分别为$$k\lambda,a\lambda+b,\lambda^2,\lambda^m,f(\lambda),\lambda,\lambda^{-1},\frac{|A|}{\lambda}$$且对应特征向量相同（例外）。
+1. 设$$\lambda$$是Am的一个特征值，则$$kA,aA+bE,A^2,f(A),A^T,A^{-1},A^*$$有一个特征值分别为$$k\lambda,a\lambda+b,\lambda^2,\lambda^m,f(\lambda),\lambda,\lambda^{-1},\frac{|A|}{\lambda}$$且对应特征向量相同（$$A^T$$例外）。
 
-   \(2\)若为的个特征值，则,从而没有特征值。
+   \(2\)若$$\lambda_1,\lambda_2,\dots,\lambda_n$$为A的n个特征值，则$$\sum_{i=1}^{n}\lambda_i=\sum_{i=1}^{n}a_{ii},\prod_{i=1}^{n}\lambda_i=|A|$$,从而$$|A| \neq 0 \Leftrightarrow A$$没有特征值。
 
-   \(3\)设为的个特征值，对应特征向量为，
+   \(3\)设$$\lambda_1,\lambda_2,\dots,\lambda_s$$为A的s个特征值，对应特征向量为$$\alpha_{1}, \alpha_{2} \cdots \alpha_{s}$$，
 
-   若:,
+   若:,$$\alpha=k_1\alpha_1+k_2\alpha_2+\dots+k_s\alpha_s$$
 
-   则:。
+   则:$$A^n\alpha=k_1A^n\alpha_1+k_2A^n\alpha_2+\dots+k_sA^n\alpha_s=k_1\lambda_1^n\alpha_1+k_2\lambda_2^n\alpha_2+\dots+k_s\lambda_s^n\alpha_s$$。
 
 
 
