@@ -190,5 +190,13 @@ $$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}
 
    则:$$A^n\alpha=k_1A^n\alpha_1+k_2A^n\alpha_2+\dots+k_sA^n\alpha_s=k_1\lambda_1^n\alpha_1+k_2\lambda_2^n\alpha_2+\dots+k_s\lambda_s^n\alpha_s$$。
 
+## **2.相似变换、相似矩阵的概念及性质**
 
+若$$A \sim B$$，则
+
+1\)$$A^T \sim B^T, A^{-1} \sim B^{-1},A^* \sim B^*$$
+
+2\)$$|A|=|B|, \sum_{i=1}^{n} A_{ii}=\sum_{i=1}^{n} B_{ii}, r(A)=r(B)$$
+
+3\)$$|\lambda E-A|=|\lambda E-B|$$，对$$\forall \lambda$$成立
 
