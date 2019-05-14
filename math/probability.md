@@ -34,7 +34,15 @@ $$P(A B C)=P(A) P(B | A) P(C | A B)$$
 
 贝叶斯公式                                              $$P\left(B_{i} | A\right)=\frac{P\left(B_{i}\right) P\left(A | B_{i}\right)}{\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right)}$$
 
+乘法公式                                                  $$P\left(A_{1} A_{2}\right)=P\left(A_{1}\right) P\left(A_{2} | A_{1}\right)=P\left(A_{2}\right) P\left(A_{1} | A_{2}\right)$$  
+                                                                $$P\left(A_{1} A_{2} \cdots A_{n}\right)=P\left(A_{1}\right) P\left(A_{2} | A_{1}\right) P\left(A_{3} | A_{1} A_{2}\right) \cdots P\left(A_{n} | A_{1} A_{2} \cdots A_{n-1}\right)$$
+
 两个事件相互独立                                    $$P(A B)=P(A) P(B) ; \quad P(B | A)=P(B) ; \quad P(B | A)=P(B | \overline{A})$$
+
+三个事件独立性
+
+1. A,B,C两两独立$$\Leftrightarrow P(A B)=P(A) P(B);P(B C)=P(B) P(C) ; P(A C)=P(A) P(C)$$
+2. A,B,C相互独立$$\Leftrightarrow P(A B)=P(A) P(B);P(B C)=P(B) P(C) ; P(A C)=P(A) P(C) ; P(A B C)=P(A) P(B) P(C)$$
 
 ## 随机变量及其分布
 
