@@ -200,3 +200,81 @@ $$\beta_{s}=\alpha_{s}-\frac{\left(\alpha_{s}, \beta_{1}\right)}{\left(\beta_{1}
 
 3\)$$|\lambda E-A|=|\lambda E-B|$$，对$$\forall \lambda$$成立
 
+## **3.矩阵可相似对角化的充分必要条件**
+
+\(1\)设A为n阶方阵，则A可对角化$$\Leftrightarrow$$对每个$$k_i$$重根特征值，有$$n-r\left(\lambda_{i} E-A\right)=k_{i}$$
+
+\(2\) 设A可对角化，则由$$P^{-1} A P=\Lambda$$有$$A=P \Lambda P^{-1}$$，从而$$A^{n}=P \Lambda^{n} P^{-1}$$
+
+\(3\) 重要结论
+
+1\) 若$$A \sim B, C \sim D$$，则$$\left[ \begin{array}{ll}{A} & {O} \\ {O} & {C}\end{array}\right] \sim \left[ \begin{array}{ll}{B} & {O} \\ {O} & {D}\end{array}\right]$$.
+
+2\) 若$$A \sim B$$，则$$f(A) \sim f(B)$$，$$|f(A)| \sim |f(B)|$$其中$$f(A)$$为关于n阶方阵A的多项式。
+
+3\) 若A为可对角化矩阵，则其非零特征值的个数\(重根重复计算\)＝秩\(A\)
+
+## **4.实对称矩阵的特征值、特征向量及相似对角阵**
+
+\(1\)相似矩阵：设A,B为两个n阶方阵，如果存在一个可逆矩阵P，使得$$B=P^{-1} A P$$成立，则称矩阵A与B相似，记为$$A \sim B$$。
+
+\(2\)相似矩阵的性质：如果则有$$A \sim B$$：
+
+1\)$$A^{T} \sim B^{T}$$
+
+2\)$$A^{-1} \sim B^{-1}$$（A若，B均可逆）
+
+3\)$$A^{k} \sim B^{k}$$（k为正整数）
+
+4\)$$|\lambda E-A|=|\lambda E-B|$$，从而A,B有相同的特征值
+
+5\)$$|A|=|B|$$，从而A,B同时可逆或者不可逆
+
+6\) 秩\(A\)=秩\(B\)，$$|\lambda E-A|=|\lambda E-B|$$, A,B不一定相似
+
+# 二次型
+
+## **1.n个变量**$$\mathbf{x}_{1}, \mathbf{x}_{2}, \cdots, \mathbf{x}_{\mathbf{n}}$$**的二次齐次函数**
+
+$$f\left(x_{1}, x_{2}, \cdots, x_{n}\right)=\sum_{i=1}^{n} \sum_{j=1}^{n} a_{i j} x_{i} y_{j}$$，其中$$a_{i j}=a_{j i}(i, j=1,2, \cdots, n)$$，称为n元二次型，简称二次型. 若令$$x=\left[ \begin{array}{c}{x_{1}} \\ {x_{1}} \\ {\vdots} \\ {x_{n}}\end{array}\right], A=\left[ \begin{array}{cccc}{a_{11}} & {a_{12}} & {\cdots} & {a_{1 n}} \\ {a_{21}} & {a_{22}} & {\cdots} & {a_{2 n}} \\ {\cdots} & {\cdots} & {\cdots} & {\cdots} \\ {a_{n 1}} & {a_{n 2}} & {\cdots} & {a_{n n}}\end{array}\right]$$,这二次型f可改写成矩阵向量形式$$f=x^{T} A x$$。其中A称为二次型矩阵，因为$$a_{i j}=a_{j i}(i, j=1,2, \cdots, n)$$，所以二次型矩阵均为对称矩阵，且二次型与对称矩阵一一对应，并把矩阵A的秩称为二次型的秩。
+
+## **2.惯性定理，二次型的标准形和规范形**
+
+\(1\) 惯性定理
+
+对于任一二次型，不论选取怎样的合同变换使它化为仅含平方项的标准型，其正负惯性指数与所选变换无关，这就是所谓的惯性定理。
+
+\(2\) 标准形
+
+二次型$$f=\left(x_{1}, x_{2}, \cdots, x_{n}\right)=x^{T} A x$$经过合同变换$$x =C y$$化为$$f=x^{T} A x=y^{T} C^{T} A C$$
+
+$$y=\sum_{i=1}^{r} d_{i} y_{i}^{2}$$称为$$f(r \leq n)$$的标准形。在一般的数域内，二次型的标准形不是唯一的，与所作的合同变换有关，但系数不为零的平方项的个数由r\(A\)唯一确定。
+
+\(3\) 规范形
+
+任一实二次型f都可经过合同变换化为规范形$$f=z_{1}^{2}+z_{2}^{2}+\cdots z_{p}^{2}-z_{p+1}^{2}-\cdots-z_{r}^{2}$$，其中r为A的秩，p为正惯性指数，r-p为负惯性指数，且规范型唯一。
+
+## **3.用正交变换和配方法化二次型为标准形，二次型及其矩阵的正定性**
+
+设A正定$$\Rightarrow k A(k>0), A^{T}, A^{-1}, A^{*}$$正定；$$|A|>0$$,可逆；$$a_{ii} > 0$$，且$$\left|A_{i i}\right|>0$$
+
+A,B正定$$\Rightarrow A+B$$正定，但AB，BA不一定正定
+
+A正定$$\Leftrightarrow f(x)=x^{T} A x>0, \forall x \neq 0$$
+
+$$\Leftrightarrow$$A的各阶顺序主子式全大于零
+
+$$\Leftrightarrow$$A的所有特征值大于零
+
+$$\Leftrightarrow$$A的正惯性指数为n
+
+$$\Leftrightarrow$$存在可逆阵P使$$A=P^{T} P$$
+
+$$\Leftrightarrow$$存在正交矩阵Q，使$$Q^{T} A Q=Q^{-1} A Q=\begin{pmatrix}
+ \lambda_1&  & \\ 
+ &  \dots& \\ 
+ &  & \lambda_n
+\end{pmatrix}$$
+
+其中$$\lambda_{i}>0, i=1,2, \cdots, n$$正定$$\Rightarrow k A(k>0), A^{T}, A^{-1}, A^{*}$$正定；$$|A|>0,A$$可逆；$$a_{ii}>0$$，且$$|A_{ii}|>0$$。
+
