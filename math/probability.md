@@ -50,6 +50,11 @@ $$P(A B C)=P(A) P(B | A) P(C | A B)$$
 
 $$F(x)=P(X \leq x)=\left\{\begin{array}{ll}{\sum_{x_{2} \leq x} P\left(X=x_{k}\right)} \\ {\int_{-\infty}^{x} f(t) d t}\end{array}\right. \quad P(a<X \leq b)=F(b)-F(a)$$
 
+* $$0 \leq F(x) \leq 1$$
+* F\(x\)单调不减
+* 右连续$$F(x+0)=F(x)$$
+* $$F(-\infty)=0, F(+\infty)=1$$
+
 **2， 离散型随机变量及其分布**
 
 0-1分布  $$\mathrm{X} \sim \mathrm{b}(1, \mathrm{p})$$                                               $$P(X=k)=p^{k}(1-p)^{1-k}, \quad k=0,1$$
@@ -69,6 +74,20 @@ $$F(x)=P(X \leq x)=\left\{\begin{array}{ll}{\sum_{x_{2} \leq x} P\left(X=x_{k}\r
 正态分布 $$\mathrm{x} \sim \mathrm{N}\left(\mu, \sigma^{2}\right)$$      $$\begin{aligned} f(x)=& \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^{2}}{2 c^{2}}} \\ &-\infty<x<+\infty \end{aligned}$$                                  $$F(x)=\frac{1}{\sqrt{2 \pi} \sigma} \int_{-\infty}^{x} e^{-\frac{(t-\mu)^{2}}{2 \sigma^{2}}} \mathrm{d} t$$
 
 标准正太分布 $$\mathrm{x} \sim \mathrm{N}(0,1)$$     $$\begin{array}{r}{\varphi(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^{2}}{2}}} \\ {-\infty<x<+\infty}\end{array}$$                                                $$\Phi(x)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-\frac{1}{2} t^{2}} d t$$
+
+几何分布  $$x \sim G(p)$$                 $$P(X=k)=(1-p)^{k-1} p, 0<p<1, k=1,2, \cdots$$
+
+超几何分布: $$H(N, M, n) : P(X=k)=\frac{C_{M}^{k} C_{N-l l}^{n-k}}{C_{N}^{n}}, k=0,1, \cdots, \min (n, M)$$
+
+**重要公式与结论**
+
+* $$X \sim N(0,1) \Rightarrow \varphi(0)=\frac{1}{\sqrt{2 \pi}}, \Phi(0)=\frac{1}{2}, \Phi(-a)=P(X \leq-a)=1-\Phi(a)$$
+* $$X \sim N\left(\mu, \sigma^{2}\right) \Rightarrow \frac{X-\mu}{\sigma} \sim N(0,1), P(X \leq a)=\Phi\left(\frac{a-\mu}{\sigma}\right)$$
+* $$X \sim E(\lambda) \Rightarrow P(X>s+t | X>s)=P(X>t)$$
+* $$X \sim G(p) \Rightarrow P(X=m+k | X>m)=P(X=k)$$
+* 离散型随机变量的分布函数为阶梯间断函数；连续型随机变量的分布函数为连续函数，但不一定为处处可导函数
+
+* 存在既非离散也非连续型随机变量
 
 **分布函数**
 
@@ -112,6 +131,14 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 离散型  $$P\left(Z=z_{k}\right)=\sum_{x_i+y_j=z_k} P\left(X=x_{i}, Y=y_{j}\right)$$ 注意部分可加性
 
 连续性  $$f_{z}(z)=\int_{-\infty}^{+\infty} f(x, z-x) d x=\int_{-\infty}^{\infty} f(z-y, y) d y$$
+
+**常见二维随机变量的联合分布**
+
+\(1\) 二维均匀分布：$$(x, y) \sim U(D), f(x, y)=\left\{\begin{array}{l}{\frac{1}{S(D)},(x, y) \in D} \\ 0, else \end{array}\right.$$
+
+\(2\) 二维正态分布: $$(X, Y) \sim N\left(\mu_{1}, \mu_{2}, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right),(X, Y) \sim N\left(\mu_{1}, \mu_{2}, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right)$$
+
+$$f(x, y)=\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} \cdot \exp \left\{\frac{-1}{2\left(1-\rho^{2}\right)}\left[\frac{\left(x-\mu_{1}\right)^{2}}{\sigma_{1}^{2}}-2 \rho \frac{\left(x-\mu_{1}\right)\left(y-\mu_{2}\right)}{\sigma_{1} \sigma_{2}}+\frac{\left(y-\mu_{3}\right)^{2}}{\sigma_{2}^{2}}\right]\right\}$$
 
 ## 随机变量的数字特征
 
