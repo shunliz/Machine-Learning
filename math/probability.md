@@ -140,6 +140,22 @@ $$f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)},-\infty<y<+\infty$$          $$f_{X 
 
 $$f(x, y)=\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} \cdot \exp \left\{\frac{-1}{2\left(1-\rho^{2}\right)}\left[\frac{\left(x-\mu_{1}\right)^{2}}{\sigma_{1}^{2}}-2 \rho \frac{\left(x-\mu_{1}\right)\left(y-\mu_{2}\right)}{\sigma_{1} \sigma_{2}}+\frac{\left(y-\mu_{3}\right)^{2}}{\sigma_{2}^{2}}\right]\right\}$$
 
+若\(X,Y\)服从二维正态分布$$N\left(\mu_{1}, \mu_{2}, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right)$$则有：
+
+* $$X \sim N\left(\mu_{1}, \sigma_{1}^{2}\right), Y \sim N\left(\mu_{2}, \sigma_{2}^{2}\right)$$
+
+* X与Y相互独立$$\Leftrightarrow \rho=0$$，即X与Y不相关
+
+* $$C_{1} X+C_{2} Y \sim N\left(C_{1} \mu_{1}+C_{2} \mu_{2}, C_{1}^{2} \sigma_{1}^{2}+C_{2}^{2} \sigma_{2}^{2}+2 C_{1} C_{2} \sigma_{1} \sigma_{2} \rho\right)$$
+
+* X关于Y=y的条件分布为：$$N\left(\mu_{1}+\rho \frac{\sigma_{1}}{\sigma_{2}}\left(y-\mu_{2}\right), \sigma_{1}^{2}\left(1-\rho^{2}\right)\right)$$
+
+* Y关于X=x的条件分布为：$$N\left(\mu_{2}+\rho \frac{\sigma_{2}}{\sigma_{1}}\left(x-\mu_{1}\right), \sigma_{2}^{2}\left(1-\rho^{2}\right)\right)$$
+
+* 若X与Y独立，且分别服从$$N\left(\mu_{1}, \sigma_{1}^{2}\right), N\left(\mu_{1}, \sigma_{2}^{2}\right)$$ 则：$$(X, Y) \sim N\left(\mu_{1}, \mu_{2}, \sigma_{1}^{2}, \sigma_{2}^{2}, 0\right)$$    $$C_{1} X+C_{2} Y_{\sim} N\left(C_{1} \mu_{1}+C_{2} \mu_{2}, C_{1}^{2} \sigma_{1}^{2} C_{2}^{2} \sigma_{2}^{2}\right)$$
+
+* 若X与Y相互独立，f\(x\)和g\(x\)为连续函数， 则f\(X\)和g\(Y\)也相互独立。
+
 ## 随机变量的数字特征
 
 1，数学期望
