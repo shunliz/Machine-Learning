@@ -242,6 +242,16 @@ $$F=\frac{\sum_{i=1}^{n_{1}} X_{i}^{2}}{n_{1}} / \frac{\sum_{i=1}^{n_{2}} Y_{i}^
 
 4\)$$\frac{\overline{X}-\mu}{S / \sqrt{n}} \sim t(n-1)$$
 
+### 5**.重要公式与结论**
+
+\(1\) 对于$$\chi^{2} \sim \chi^{2}(n)$$，有$$E\left(\chi^{2}(n)\right)=n, D\left(\chi^{2}(n)\right)=2 n$$
+
+\(2\) 对于$$T \sim t(n)$$，有；$$E(T)=0, D(T)=\frac{n}{n-2}(n>2)$$
+
+\(3\) 对于$$F_{\sim} F(m, n)$$，有$$\frac{1}{F} \sim F(n, m), F_{a / 2}(m, n)=\frac{1}{F_{1-a / 2}(n, m)}$$
+
+\(4\) 对于任意总体X，有$$E(\overline{X})=E(X), E\left(S^{2}\right)=D(X), D(\overline{X})=\frac{D(X)}{n}$$
+
 ## Information Theory {#information-theory}
 
 信息理论是应用数学的一个分支，主要是来围绕着定量的分析a signal中包含了多少信息。最开始是用来研究通过噪声通道发送离散字母的信息发送问题，例如通过无线电的通信。在这个context中，信息论能告诉我们怎么就优化编码，计算预期的消息长度并从特定采样的概率分布使用不同的编码方案，在机器学习当中，可以将信息论应用于连续变量，消息的长度解释（message length interpretations）并未应用于这些变量的情况下\*\*  
