@@ -198,11 +198,11 @@ $$Cov(x, a)=0$$ a为常数   $$D(a X \pm b Y)=a^{2} D(X)+b^{2} D(Y) \pm 2 a b Co
 
 ## 数理统计的基本概念
 
-1，总体和样本的分布函数
+### 1，总体和样本的分布函数
 
 设总体$$X\sim F(x)$$,则样本的联合分布函数$$F\left(x_{1}, x_{2} \cdots x_{n}\right)=\prod_{k=1}^{n} F\left(x_{\hat{\varepsilon}}\right)$$
 
-2， 统计量
+### 2， 统计量
 
 样本均值 $$\overline{X}=\frac{1}{n} \sum_{i=1}^{n} X_{i}$$   样本方差 $$S^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}^{2}-n \overline{X}^{2}\right)$$
 
@@ -210,7 +210,7 @@ $$Cov(x, a)=0$$ a为常数   $$D(a X \pm b Y)=a^{2} D(X)+b^{2} D(Y) \pm 2 a b Co
 
 样本的k阶中心距 $$B_{k}=\frac{1}{n} \sum_{i=1}^{\kappa}\left(X_{i}-\overline{X}\right)^{*}, k=1,2,3 \cdots$$
 
-3，三大抽样分布
+### 3，三大抽样分布
 
 a, $$\chi^2$$分布：设随机变量 $$\mathrm{X} \sim \mathrm{B}(0,1)(i=1,2, \cdots, n)$$且相互独立，则称统计量
 
@@ -229,6 +229,18 @@ $$\lim _{n \rightarrow \infty} f_{n}(x)=\varphi(x)=\frac{1}{\sqrt{2 \pi}} e^{-\f
 c,F分布，设随机变量 $$X \sim \chi^{2}(n_1), Y \sim \chi^{2}(n_2)$$ 且X与Y相互独立，则称随机变量
 
 $$F=\frac{\sum_{i=1}^{n_{1}} X_{i}^{2}}{n_{1}} / \frac{\sum_{i=1}^{n_{2}} Y_{i}^{2}}{n_{2}}$$ 服从自由度n1和n2的F分布。
+
+### 4**.正态总体的常用样本分布**
+
+\(1\) 设$$X_{1}, X_{2} \cdots, X_{n}$$为来自正态总体$$N\left(\mu, \sigma^{2}\right)$$的样本，$$\overline{X}=\frac{1}{n} \sum_{i=1}^{n} X_{i}, S^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}$$，则：
+
+1\)$$\overline{X} \sim N\left(\mu, \frac{\sigma^{2}}{n}\right)$$或者$$\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)$$
+
+2\)$$\frac{(n-1) S^{2}}{\sigma^{2}}=\frac{1}{\sigma^{2}} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2} \sim \chi^{2}(n-1)$$
+
+3\)$$\frac{1}{\sigma^{2}} \sum_{i=1}^{n}\left(X_{i}-\mu\right)^{2} \sim \chi^{2}(n)$$
+
+4\)$$\frac{\overline{X}-\mu}{S / \sqrt{n}} \sim t(n-1)$$
 
 ## Information Theory {#information-theory}
 
