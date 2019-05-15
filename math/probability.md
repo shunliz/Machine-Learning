@@ -170,7 +170,7 @@ $$f(x, y)=\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} \cdot \exp \le
 
 定义：$$D(X)=E\left[(X-E(X))^{2}\right]=E\left(X^{2}\right)-E^{2}(X)$$
 
-性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2Cov(X, Y)$$
+性质 $$D(C)=0, D(a X \pm b)=a^{2} D(X), \quad D(X \pm Y)=D(X)+D(Y) \pm 2Cov(X, Y)$$  $$D(X)<E(X-C)^{2}, C \neq E(X)$$            $$D(X)=0 \Leftrightarrow P\{X=C\}=1$$
 
 当X, Y相互独立时 $$D(X \pm Y)=D(X)+D(Y)$$
 
@@ -179,6 +179,10 @@ $$f(x, y)=\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} \cdot \exp \le
 协方差 $$Cov\,(X, Y)=E(X Y)-E(X) E(Y)$$  当X,Y相互独立时 $$Cov\,(X, Y)=0$$
 
 相关系数 $$\rho_{x \gamma}=\frac{Cov(X, Y)}{\sqrt{D(X)} \sqrt{D(Y)}}$$   当X,Y相互独立时 $$\rho_{X Y}=0$$ X,Y不相关
+
+k阶原点矩$$E(X^k)$$
+
+k阶中心距$$E\left\{[X-E(X)]^{k}\right\}$$
 
 协方差和相关系数的性质 $$cov(X, X)=D(X), \quad Cov(X, Y)=Cov(Y, X)$$
 
