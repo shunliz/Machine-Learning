@@ -181,7 +181,9 @@ $$\lim _{x \rightarrow x_{0}} \frac{f^{\prime}(x)}{g^{\prime}(x)}$$存在\(或$$
 
 **Th3:**\(拐点的判别定理2\)设f\(x\)在点$$x_0$$的某邻域内有三阶导数，且$$f^{\prime \prime}(x)=0$$，$$f^{\prime \prime \prime}(x) \neq 0$$，则$$(x_0,f(x_0))$$为拐点。
 
-# Jensen不等式：若f是凸函数
+# Jensen不等式：
+
+若f是凸函数
 
 $$\begin{array}{l}{\theta_{1}, \ldots, \theta_{k} \geq 0, \theta_{1}+\cdots+\theta_{k}=1} \\ {f\left(\theta_{1} x_{1}+\cdots+\theta_{k} x_{k}\right) \leq \theta_{1} f\left(x_{1}\right)+\cdots+\theta_{k} f\left(x_{k}\right)}\end{array}$$
 
@@ -220,4 +222,10 @@ $$\begin{array}{l}{\Rightarrow x=e^{-1}} \\ {\Rightarrow t=e^{-\frac{1}{e}}}\end
 $$N \rightarrow \infty \Rightarrow \ln N ! \rightarrow N(\ln N-1)$$
 
 $$\begin{array}{l}{\ln N !=\sum_{i=1}^{N} \ln i \approx \int_{1}^{N} \ln x d x} \\ {=x \ln \left.x\right|_{1} ^{N}-\int_{1}^{N} x d \ln x} \\ {=N \ln N-\int_{1}^{N} x \cdot \frac{1}{x} d x} \\ {=N \ln N-\left.x\right|_{1} ^{N}} \\ {=N \ln N-N+1} \\ {\rightarrow N \ln N-N}\end{array}$$
+
+# **最优化**
+
+
+
+
 
