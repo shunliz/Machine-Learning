@@ -2,7 +2,7 @@
 
 ![](/assets/commonf-rleu.png)
 
-tanh 激励函数的图
+## tanh 激励函数的图
 
 ![](/assets/commonf-tanh.png)
 
