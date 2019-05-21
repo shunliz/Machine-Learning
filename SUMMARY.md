@@ -23,7 +23,7 @@
 * [第二部分 机器学习](ml/ml.md)
 * [第四章 机器学习基础](ml/pythonml.md)
   * [Python及其数学库](ml/pythonml/pythonji-qi-shu-xue-ku.md)
-  * [机器学习库](ml/pythonml/ji-qi-xue-xi-ku.md)
+  * [机器学习库（numpy, keras, tensorflow,pyspark....）](ml/pythonml/ji-qi-xue-xi-ku.md)
   * [模型度量](ml/pythonml/ml-metrics.md)
   * [交叉验证](math/analytic/cross-validation.md)
   * [生成模型和判别模型](ml/pythonml/gen-descri.md)
