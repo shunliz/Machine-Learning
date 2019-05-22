@@ -173,7 +173,9 @@ print np.c_[a,d]
 ```
 
 # Scikit-learn
+
 ---
+
 基本的scikit-learn操作代码
 
 ```python
@@ -194,22 +196,21 @@ accuracy_score(y_test, y_pred)
 
 Normalization这个名词在很多地方都会出现，但是对于数据却有两种截然不同且容易混淆的处理过程。对于某个多特征的机器学习数据集来说，第一种Normalization是对于将数据进行预处理时进行的操作，是对于数据集的各个特征分别进行处理，主要包括min-max normalization、Z-score normalization、 log函数转换和atan函数转换等。第二种Normalization对于每个样本缩放到单位范数（每个样本的范数为1），主要有L1-normalization（L1范数）、L2-normalization（L2范数）等，可以用于SVM等应用
 
-第一种 Normalization
-数据的标准化（normalization）是将数据按比例缩放，使之落入一个小的特定区间。在某些比较和评价的指标处理中经常会用到，去除数据的单位限制，将其转化为无量纲的纯数值，便于不同单位或量级的指标能够进行比较和加权。其中最典型的就是数据的标准化处理，即将数据统一映射到[0,1]区间上。标准化在0-1之间是统计的概率分布，标准化在某个区间上是统计的坐标分布。目前数据标准化方法有多种。不同的标准化方法，对系统的评价结果会产生不同的影响，然而不幸的是，在数据标准化方法的选择上，还没有通用的法则可以遵循。
+第一种 Normalization  
+数据的标准化（normalization）是将数据按比例缩放，使之落入一个小的特定区间。在某些比较和评价的指标处理中经常会用到，去除数据的单位限制，将其转化为无量纲的纯数值，便于不同单位或量级的指标能够进行比较和加权。其中最典型的就是数据的标准化处理，即将数据统一映射到\[0,1\]区间上。标准化在0-1之间是统计的概率分布，标准化在某个区间上是统计的坐标分布。目前数据标准化方法有多种。不同的标准化方法，对系统的评价结果会产生不同的影响，然而不幸的是，在数据标准化方法的选择上，还没有通用的法则可以遵循。
 
-标准化（normalization）的目的：
+标准化（normalization）的目的：  
 在数据分析之前，我们通常需要先将数据标准化（normalization），利用标准化后的数据进行数据分析。数据标准化处理主要包括数据同趋化处理和无量纲化处理两个方面。数据同趋化处理主要解决不同性质数据问题，对不同性质指标直接加总不能正确反映不同作用力的综合结果，须先考虑改变逆指标数据性质，使所有指标对测评方案的作用力同趋化，再加总才能得出正确结果。数据无量纲化处理主要解决数据的可比性。经过上述标准化处理，原始数据均转换为无量纲化指标测评值，即各指标值都处于同一个数量级别上，可以进行综合测评分析。也就说标准化（normalization）的目的是：
 
 把特征的各个维度标准化到特定的区间
 
 把有量纲表达式变为无量纲表达式
 
-归一化后有两个好处：
-1. 加快基于梯度下降法或随机梯度下降法模型的收敛速度
+归一化后有两个好处：  
+1. 加快基于梯度下降法或随机梯度下降法模型的收敛速度  
 2. 提升模型的精度
 
 数据预处理：标准化 $$x={x-u}/\delta$$
-
 
 ```python
 from sklearn.preprocessing import StandardScaler
@@ -217,7 +218,6 @@ scaler = StandardScaler().fit(X_train)
 standardized_X = scaler.transform(X_train)
 standardized_X_test = scaler.transform(X_test)
 ```
-
 
 ```python
 from sklearn.preprocessing import Normalizer
@@ -227,7 +227,6 @@ normalized_X_test = scaler.transform(X_test)
 ```
 
 二值化
-
 
 ```python
 from sklearn.preprocessing import Binarizer
@@ -242,7 +241,6 @@ binarizer.transform(X)
 
 模型初始化
 
-
 ```python
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression(normalize=True)
@@ -256,7 +254,6 @@ knn = neighbors.KNeighborsClassifier(n_neighbors=5)
 
 模型训练
 
-
 ```python
 lr.fit(X, y)
 knn.fit(X_train, y_train)
@@ -267,7 +264,6 @@ k_means.fit(X_train)
 
 预测
 
-
 ```python
 y_pred = svc.predict(np.random.radom((2,5)))
 y_pred = lr.predict(X_test)
@@ -275,7 +271,6 @@ y_pred = knn.predict_proba(X_test)
 ```
 
 数据预处理
-
 
 ```python
 #Standardization
@@ -313,7 +308,6 @@ poly.fit_transform(X)
 
 评价你的模型：分类算法的指标
 
-
 ```python
 #Accuracy Score
 knn.score(X_test, y_test)
@@ -331,7 +325,6 @@ print(confusion_matrix(y_test, y_pred))
 
 评价你的模型：回归算法的指标
 
-
 ```python
 #Mean Absolute Error
 from sklearn.metrics import mean_absolute_error
@@ -347,7 +340,6 @@ r2_score(y_true, y_pred)
 
 评价你的模型：聚类算法的指标
 
-
 ```python
 #Adjusted Rand Index
 from sklearn.metrics import adjusted_rand_score
@@ -362,7 +354,6 @@ metrics.v_measure_score(y_true, y_pred)
 
 评价你的模型：交叉验证
 
-
 ```python
 #Cross-Validation
 from sklearn.cross_validation import cross_val_score
@@ -371,7 +362,6 @@ print(cross_val_score(lr, X, y, cv=2))
 ```
 
 训练模型
-
 
 ```python
 #监督学习
@@ -385,14 +375,12 @@ pca_model = pca.fit_transform(X_train)
 
 训练和测试
 
-
 ```python
 from sklearn.cross validation import train_test_split
 X train, X test, y train, y test - train_test_split(X,y,random state-0)
 ```
 
 模型调优
-
 
 ```python
 #Grid Search
@@ -410,15 +398,6 @@ rsearch = RandomizedSearchCV(estimator=knn,param_distributions=params,cv=4,n_ite
 rsearch.fit(X_train, y_train)
 print(rsearch.best_score_)
 ```
-
-
-# pySpark
-
-# Pandas
-
-# tensorflow
-
-# 
 
 
 
