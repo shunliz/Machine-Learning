@@ -22,7 +22,7 @@
   * [特征值与特征向量](math/linear-matrix/tezhengzhihetezhengxiangliang.md)
 * [第二部分 机器学习](ml/ml.md)
 * [第四章 机器学习基础](ml/pythonml.md)
-  * [机器学习库（numpy,scikit）](ml/pythonml/ji-qi-xue-xi-ku.md)
+  * [机器学习库（numpy,scikit,scipy）](ml/pythonml/ji-qi-xue-xi-ku.md)
   * [机器学习库（Pandas,pySpark）](ml/pythonml/ji-qi-xue-xi-ku2.md)
   * [机器学习库（tensorflow, keras）](ml/pythonml/ji-qi-xue-xi-ku3.md)
   * [模型度量](ml/pythonml/ml-metrics.md)
