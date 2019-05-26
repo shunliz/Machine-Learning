@@ -25,12 +25,12 @@
   * [机器学习库（numpy,scikit,scipy）](ml/pythonml/ji-qi-xue-xi-ku.md)
   * [机器学习库（Pandas,pySpark）](ml/pythonml/ji-qi-xue-xi-ku2.md)
   * [机器学习库（tensorflow, keras）](ml/pythonml/ji-qi-xue-xi-ku3.md)
+  * [机器学习库（scipy,matplotlib）](ml/pythonml/ji-qi-xue-xi-ku-ff08-scipy-matplotlib.md)
   * [模型度量](ml/pythonml/ml-metrics.md)
   * [交叉验证](math/analytic/cross-validation.md)
   * [生成模型和判别模型](ml/pythonml/gen-descri.md)
   * [机器学习中的距离](ml/pythonml/distance.md)
   * [机器翻译模型度量](ml/pythonml/ji-qi-fan-yi-mo-xing-du-liang.md)
-  * 机器学习库（tensorflow, keras）
 * [第六课：数据清洗和特征选择](ml/clean-feature/cleanup-feature.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
