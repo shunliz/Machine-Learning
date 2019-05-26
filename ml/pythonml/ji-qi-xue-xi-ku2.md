@@ -117,9 +117,6 @@ s.drop(['a','c'])
 df.drop('Country', axis=1)
 ```
 
-
-
-
 <div>
 <style>
     .dataframe thead tr:only-child th {
