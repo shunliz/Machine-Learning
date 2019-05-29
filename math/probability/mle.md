@@ -6,7 +6,7 @@
 似然函数不是概率，是概率密度函数在x固定时候，$$\theta$$的可能性的函数。  
 假设$$x = (x_1,.....x_n)$$是样本的观测值，那么整体样本的似然函数就是：  
 $$L_x(\theta)=\coprod_{i=1}^{n} L_{x_i}(\theta)$$  
-这是 一个关于$$\theta$$的函数，选取是的$$L_x(\theta)$$的最大化的$$\theta^{'}$$作为$$\theta$$的估计量。  
+这是 一个关于$$\theta$$的函数，选取使得$$L_x(\theta)$$的最大化的$$\theta^{'}$$作为$$\theta$$的估计量。  
 最大化 似然函数，相当于最大化似然函数的对数$$lx(\theta)=ln(Lx(\theta))$$,一般我们求解似然函数或者对数似然函数的驻点的方程  
 $$\frac{\mathrm{d} l_x(\theta))}{\mathrm{d} \theta}=0$$或者$$\frac{\mathrm{d} L_x(\theta))}{\mathrm{d} \theta}=0$$ 由于$$L_x(\theta)$$中包含连乘，转化对数好求解。  
 然后判断整个驻点是否是最大点（求解驻点可以采用牛顿法或者梯度下降法）。
@@ -37,15 +37,15 @@ $$\frac{7}{P(A)}=\frac{3}{(1-P(A))}$$
 
 解得$$P(A)=0.7$$
 
-从这个例子中我们可以得到和《概率论与数理统计》一书中相匹配的抽象结果：设总体 X 为离散型随机变量，且它的概率分布为$$P\{X=x\}=p\left\{x_{i} ; \theta\right\}$$， 其中 θ 为未知参数$$X_{1}, X_{2}, \cdots, X_{n}$$和$$x_{1}, x_{2}, \cdot \cdot \cdot, x_{n}$$分别为 X 的一组样本和样本观察值。则参数 θ 的取值应该使得概率：
+从这个例子中我们可以得到和《概率论与数理统计》一书中相匹配的抽象结果：设总体 X 为离散型随机变量，且它的概率分布为$$P\{X=x\}=p\left\{x_{i} ; \theta\right\}$$， 其中 θ 为未知参数$$X_{1}, X_{2}, \cdots, X_{n}$$和$$x_{1}, x_{2}, \cdot \cdot \cdot, x_{n}$$分别为 X 的一组样本和样本观察值。则参数 θ 的取值应该使得概率：
 
 $$\begin{aligned} P\left\{X_{1}=x_{1}, X_{2}=x_{2},\right.& \cdots, X_{n}=x_{n} \}=P\left\{X_{1}=x_{1}\right\} * P\left\{X_{2}=x_{2}\right\} * \cdots \\ * & P\left\{X_{n}=x_{n}\right\}=\prod_{i=1}^{n} p\left\{x_{i} ; \theta\right\} \end{aligned}$$
 
-达到最大值，今后我们称 θ 的函数：
+达到最大值，今后我们称 θ 的函数：
 
 $$L(\theta)=\prod_{i=1}^{n} p\left\{x_{i} ; \theta\right\}$$
 
-为 θ 的似然函数，上式是其样本取对应观察值的概率。同时，如果有 
+为 θ 的似然函数，上式是其样本取对应观察值的概率。同时，如果有
 
 $$\exists \hat{\theta}=\hat{\theta}\left(X_{1}, X_{2}, \cdots, X_{n}\right)$$
 
@@ -53,14 +53,12 @@ $$\exists \hat{\theta}=\hat{\theta}\left(X_{1}, X_{2}, \cdots, X_{n}\right)$$
 
 $$L(\hat{\theta})=\max _{\theta \in \Theta} L(\theta)=\max _{\theta \in \Theta} \prod_{i=1}^{n} p\left\{x_{i} ; \theta\right\}$$
 
-则称 $$\hat{\theta}$$为 θ 的极大似然估计量。从上述一般结果的抽象描述中，我们可以剥离出求解 $$\hat{\theta}$$的一般步骤：
+则称 $$\hat{\theta}$$为 θ 的极大似然估计量。从上述一般结果的抽象描述中，我们可以剥离出求解 $$\hat{\theta}$$的一般步骤：
 
-1. 写出似然函数 $$L(\theta)=L\left(x_{1}, x_{2}, \cdots, x_{n} ; \theta\right)$$ ；
+1. 写出似然函数 $$L(\theta)=L\left(x_{1}, x_{2}, \cdots, x_{n} ; \theta\right)$$ ；
 2. 对似然函数取对数（视情况而定）；
-3. 求对数似然函数对未知参数的导函数 $$\frac{dln L(\theta)}{d \theta}_{ ; x=y}$$
-4. 令导函数为 0，方程的解即为极大似然解；
-
-
+3. 求对数似然函数对未知参数的导函数 $$\frac{dln L(\theta)}{d \theta}_{ ; x=y}$$
+4. 令导函数为 0，方程的解即为极大似然解；
 
 
 
