@@ -52,5 +52,3 @@ $$F_\beta=\frac {1+\beta^2*P*R}{\beta^2*P+R}$$
 
 
 
-
-
