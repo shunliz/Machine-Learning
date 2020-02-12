@@ -32,6 +32,7 @@
   * [机器学习中的距离](ml/pythonml/distance.md)
   * [机器翻译模型度量](ml/pythonml/ji-qi-fan-yi-mo-xing-du-liang.md)
   * [模型选择](ml/pythonml/mo-xing-xuan-ze.md)
+  * [常用激活函数总结](ml/pythonml/chang-yong-ji-huo-han-shu-zong-jie.md)
 * [第六课：数据清洗和特征选择](ml/clean-feature/cleanup-feature.md)
   * [PCA](ml/clean-feature/pca.md)
   * [ICA](ml/clean-feature/ica.md)
