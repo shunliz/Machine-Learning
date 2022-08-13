@@ -1,19 +1,10 @@
-  
-
-
-离散型变量编码的Python库
+# 离散型变量编码的Python库
 
 首先我要介绍这个关于离散型编码的Python库，里面封装了十几种（包括文中的所有方法）对于离散型特征的编码方法，接口接近于Sklearn通用接口，非常实用。
 
 下面是这个库的链接：
 
-  
-
-
-http://contrib.scikit-learn.org/categorical-encoding/
-
-  
-
+[http://contrib.scikit-learn.org/categorical-encoding/](http://contrib.scikit-learn.org/categorical-encoding/)
 
 **1.Label Encoder / Ordered Encoder**
 
@@ -23,28 +14,21 @@ http://contrib.scikit-learn.org/categorical-encoding/
 
 2.OneHot Encoder / Dummy Encoder / OHE
 
-  
-
-
 大家熟知的OneHot方法就避免了对特征排序的缺点。对于一列有N种取值的特征，Onehot方法会创建出对应的N列特征，其中每列代表该样本是否为该特征的某一种取值。因为生成的每一列有值的都是1，所以这个方法起名为Onehot特征。Dummy特征也是一样，只是少了一列，因为第N列可以看做是前N-1列的线性组合。但是在离散特征的特征值过多的时候不宜使用，因为会导致生成特征的数量太多且过于稀疏。
 
-  
-
-
-3. Sum Encoder \(Deviation Encoder, Effect Encoder\)  
-
+1. Sum Encoder \(Deviation Encoder, Effect Encoder\)  
 
 求和编码通过比较某一特征取值下对应标签（或其他相关变量）的均值与标签的均值之间的差别来对特征进行编码。但是据我所知 ，如果做不好细节，这个方法非常容易出现过拟合，所以需要配合留一法或者五折交叉验证进行特征的编码。还有根据方差加入惩罚项防止过拟合的方法，如果有兴趣的话我以后会更。
 
-4. Helmet Encoder
+1. Helmet Encoder
 
 Helmet编码是仅次于OHE和SumEncoder使用最广泛的编码方法，与SumEncoder不同的是，它比较的是某一特征取值下对应标签（或其他相关变量）的均值与他之前特征的均值之间的差异，而不是和所有特征的均值比较。这个特征同样容易出现过拟合的情况。不知道Helmet这个词是指的什么方面……使用标签时容易出现过拟合。
 
-5. Frequency Encoder / Count Encoder
+1. Frequency Encoder / Count Encoder
 
 这个方法统计训练集中每个特征出现的频率，在某些场景下非常有用（例如推荐系统中商品被购买的次数，直接反映了商品的流行程度），也不容易出现过拟合，但是缺点是在每个特征的取值数分布比较均匀时会遗漏大量的信息。
 
-6. Target Encoder
+1. Target Encoder
 
 以下是计算公式：
 
@@ -62,10 +46,7 @@ Helmet编码是仅次于OHE和SumEncoder使用最广泛的编码方法，与SumE
 
 * 使用交叉验证
 
-  
-
-
-7. M-Estimate Encoder
+1. M-Estimate Encoder
 
 M-Estimate Encoder相当于 一个简化版的Target Encoder
 
@@ -73,27 +54,19 @@ M-Estimate Encoder相当于 一个简化版的Target Encoder
 
 其中y+代表所有正Label的个数，m是一个调参的参数，m越大过拟合的程度就会越小，同洋的在处理连续值时n+可以换成label的求和，y+换成所有label的求和。
 
-  
-
-
-8. James-Stein Encoder  
-
+1. James-Stein Encoder  
 
 James-Stein Encoder 同样是基于target的一种算法。算法的思想很简单，对于特征的每个取值 k 可以根据下面的公式获得：
 
 ![](https://mmbiz.qpic.cn/mmbiz_png/vI9nYe94fsGDSjBP5lKJeaJhUheOZtXMu4MrSwlCUxKjoCmckcnIqT67Kgz98jhByEC4pL1S4NA9biaXlpstvFw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-其中B由以下公式估计：  
-
+其中B由以下公式估计：
 
 ![](https://mmbiz.qpic.cn/mmbiz_png/vI9nYe94fsGDSjBP5lKJeaJhUheOZtXMtqH8qYZdY1dZyGHTFYafAa6KgHLTAj3m0xCK3TmkWXBqm0jbU7y3Xg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 但是它有一个要求是target必须符合正态分布，这对于分类问题是不可能的，因此可以把y先转化成概率的形式。或者在实际操作中，使用grid search的方法选择一个比较好的B值。
 
-  
-
-
-9. Weight of Evidence Encoder
+1. Weight of Evidence Encoder
 
 Weight Of Evidence同样是基于target的方法。
 
@@ -107,11 +80,7 @@ Weight Of Evidence同样是基于target的方法。
 
 WoE = ln\(nomiinator / denominator}\)
 
-  
-
-
-10 . Leave-one-out Encoder \(LOO or LOOE\)  
-
+10 . Leave-one-out Encoder \(LOO or LOOE\)
 
 这个方法类似于SUM的方法，只是在计算训练集每个样本的特征值转换时都要把该样本排除\(消除特征某取值下样本太少导致的严重过拟合\)，在计算测试集每个样本特征值转换时与SUM相同。可见以下公式：
 
@@ -121,54 +90,75 @@ WoE = ln\(nomiinator / denominator}\)
 
 是Catboost中的encode方法，这个方法据说效果非常好，而且可以避免过拟合，可能有些复杂，在我写Catboost模型的时候会把它也写出来，这里就先不写了。
 
-  
-
-
 效果分析与讨论
 
 数据集使用了八个存在离散型变量的数据集，最后的结果加权如下：
 
 不使用交叉验证的情况：
 
-HelmertEncoder        0.9517 SumEncoder        0.9434 FrequencyEncoder 0.9176 CatBoostEncoder        0.5728 TargetEncoder        0.5174 JamesSteinEncoder 0.5162 OrdinalEncoder        0.4964 WOEEncoder        0.4905 MEstimateEncoder 0.4501 BackwardDifferenceEncode0.4128 LeaveOneOutEncoder 0.0697
-
-  
-
+HelmertEncoder        0.9517 SumEncoder        0.9434 FrequencyEncoder 0.9176 CatBoostEncoder        0.5728 TargetEncoder        0.5174 JamesSteinEncoder 0.5162 OrdinalEncoder        0.4964 WOEEncoder        0.4905 MEstimateEncoder 0.4501 BackwardDifferenceEncode0.4128 LeaveOneOutEncoder 0.0697
 
 使用交叉验证的情况：
 
-  
-
-
 CatBoostEncoder 0.9726 OrdinalEncoder 0.9694 HelmertEncoder 0.9558 SumEncoder 0.9434 WOEEncoder 0.9326 FrequencyEncoder 0.9315 BackwardDifferenceEncode0.9108 TargetEncoder 0.8915 JamesSteinEncoder 0.8555 MEstimateEncoder 0.8189 LeaveOneOutEncoder 0.0729
 
-  
-
-
 下面是Kaggle上大佬们给出的一些建议，具体原因尚未分析，希望有大神在评论区可以给出解释。
-
-  
-
 
 对于无序的离散特征，实战中使用 OneHot, Hashing, LeaveOneOut, and Target encoding 方法效果较好，但是使用OneHot时要避免高基类别的特征以及基于决策树的模型，理由如下图所示：
 
 ![](https://mmbiz.qpic.cn/mmbiz_jpg/vI9nYe94fsGDSjBP5lKJeaJhUheOZtXMKZjlG0UCswbm0Ym6ZWCfXuNqXtZVte2W1E7VHbBk86ephicaEznLXFA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-但是在实战中，我发现使用Xgboost处理高维稀疏的问题效果并不会很差。例如在IJCAI-18商铺中用户定位比赛中，一个很好的baseline就是把高维稀疏的wifi信号向量直接当做特征放到Xgboost里面，也可以获得很好的预测结果。不知道是不是因为Xgboost对于稀疏特征的优化导致。  
-
-
-  
-
+但是在实战中，我发现使用Xgboost处理高维稀疏的问题效果并不会很差。例如在IJCAI-18商铺中用户定位比赛中，一个很好的baseline就是把高维稀疏的wifi信号向量直接当做特征放到Xgboost里面，也可以获得很好的预测结果。不知道是不是因为Xgboost对于稀疏特征的优化导致。
 
 对于有序离散特征，尝试 Ordinal \(Integer\), Binary, OneHot, LeaveOneOut, and Target. Helmert, Sum, BackwardDifference and Polynomial 基本没啥用，但是当你有确切的原因或者对于业务的理解的话，可以进行尝试。
 
-  
-
-
 对于回归问题而言，Target 与 LeaveOneOut 方法可能不会有比较好的效果。
 
-  
-
-
 LeaveOneOut、WeightOfEvidence、James-Stein、M-estimator 适合用来处理高基数特征。Helmert、Sum、Backward Difference、Polynomial 在机器学习问题里的效果往往不是很好\(过拟合的原因\)。
+
+
+
+## WOE
+
+WOE（Weight Of Evidence）用来衡量特征的预测强度，要使用WOE的话，首先要对特征进行分箱（分组：将一种特征的组成元素进行分组），分箱之后，对于其中第i组的WOE值公式如下：
+
+![](https://img-blog.csdnimg.cn/20210401165729595.png)
+
+其中，pyi表示该组中的正例占负例样本的比例，pni表示整体的正例占负例样本的比例。
+
+根据ln函数的特性，就是当这个组中响应样本的比例比总体的响应比例小时为负数，相等时为0，大于时为正数。
+
+我们可以把所有分组的WOE值的绝对值加起来，这个可以在一定程度上表示这个变量的预测能力，但是我们一般不会这么做，因为对于分组中的样本数量相差悬殊的场景，WOE值可能不能很好的表示出这个变量的预测能力，我们一般会用到另一个值：IV值。这个值在计算的时候，比WOE值多考虑了一层该变量下该分组占该变量下所有样本的比例。
+
+## IV
+
+IV值的计算公式是在WOE的基础上多乘了一个\(py\_i-pn\_i\)
+
+![](https://img-blog.csdnimg.cn/20210401172149795.png)
+
+把分组计算出来的所有IV值加起来，就是这个变量的IV值，然后把所有变量的IV值都算出来，就可以根据IV值的大小来看出变量的预测能力。
+
+## 分箱
+
+
+
+数据分箱（也称为离散分箱或分段）是一种数据预处理技术，用于减少次要观察误差的影响，是一种将多个连续值分组为较少数量的“分箱”的方法。说白了就是将连续型特征进行离散化。
+
+例如，如果我们有一组关于人年龄的数据，我们可以设置一些条件将他们的年龄分组到更少的间隔中。
+
+对连续性特征进行离散化
+
+
+
+## 注意：
+
+分箱的数据比一定必须是数字，它们可以是任意类型的值，如“狗”，“猫”，“仓鼠”等。分箱也用于图像处理，通过将相邻像素组合成单个像素，它可用于减少数据量。
+
+分箱的作用和意义
+
+离散特征的增加和减少都很容易，易于模型的快速迭代，提升计算速度。
+
+特征离散化后，模型会更稳定，比如如果对用户年龄离散化，20-30作为一个区间，不会因为一个用户年龄长了一岁就变成一个完全不同的人。
+
+特征离散化以后，起到了简化了模型的作用，可以适当降低了模型过拟合的风险。
 
