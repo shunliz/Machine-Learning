@@ -10,13 +10,11 @@
 
 **源域样本和目标域样本分布有区别，目标域样本数量又不够。**
 
-
-
 ## 迁移学习常见三类算法
 
 1. 赋予源域中的样本某种权重，使其分布靠近目标域， TrAdaBoost\(Transfer AdaBoost\)
 2. 寻找一个低维子空间，使得源域和目标域的数据样本在映射到该子空间后服从相同的或者相近的分布， 联合分布适配法（Joint Distribution Adaptation）
 3. 利用低秩矩阵重构数据点，实现域之间的鲁棒自适应。迁移极限学习机（Domain Transfer Extreme Learning Machine）
 
-
+![](/assets/asdfasdf231412431324234asdf.png)![](/assets/zxcvsdafdsfawerqewrsadf.png)
 
