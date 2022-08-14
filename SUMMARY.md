@@ -210,6 +210,8 @@
   * [NEAT](ml/evolution/neat.md)
 * [迁移学习](ml/transfer/qian-yi-xue-xi.md)
   * [TrAdaBoost](ml/transfer/tradaboost.md)
+  * [JDA](ml/transfer/jda.md)
+  * DTELM
 * [自然语言处理](nlp/nlp.md)
   * [文本挖掘的分词原理](nlp/text-mine.md)
   * [HashTrick](nlp/hashtrick.md)
