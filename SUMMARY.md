@@ -43,7 +43,6 @@
   * [奇异值分解\(SVD\)原理与在降维中的应用](ml/clean-feature/svd.md)
   * [局部线性嵌入\(LLE\)原理](ml/clean-feature/lle.md)
   * [scikit-learn LLE](ml/clean-feature/scikit-lle.md)
-
   * [Spark特征提取](ml/clean-feature/spark-fextract.md)
   * [异常数据监测](ml/clean-feature/outlier-detect.md)
   * [数据预处理](ml/clean-feature/datapreprocess.md)
