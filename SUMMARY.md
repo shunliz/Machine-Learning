@@ -58,7 +58,10 @@
     * [Best-KS分箱方法](ml/clean-feature/bian-liang-fen-xiang-fang-fa/best-ksfen-xiang-fang-fa.md)
     * [最优IV分箱方法](ml/clean-feature/bian-liang-fen-xiang-fang-fa/zuiyou-iv-fen-xiang-fang-fa.md)
     * [基于树的最优分箱方法](ml/clean-feature/bian-liang-fen-xiang-fang-fa/ji-yu-shu-de-zui-you-fen-xiang-fang-fa.md)
-  * 变量选择
+  * [变量选择](ml/clean-feature/bian-liang-xuan-ze.md)
+    * [过滤法](ml/clean-feature/bian-liang-xuan-ze/guo-lv-fa.md)
+    * [包装法](ml/clean-feature/bian-liang-xuan-ze/bao-zhuang-fa.md)
+    * [嵌入法](ml/clean-feature/bian-liang-xuan-ze/qian-ru-fa.md)
 * [第七课： 回归](ml/regression/regression.md)
   * [1.  线性回归](ml/regression/linear-regression.md)
   * [10.最大熵模型](ml/regression/max-entropy.md)
