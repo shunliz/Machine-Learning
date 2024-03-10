@@ -242,6 +242,7 @@
     * [Transformer输入](bm/transformer/transformershu-ru.md)
     * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
     * [Encoder 结构](bm/transformer/encoder-jie-gou.md)
+    * [Decoder结构](bm/transformer/decoderjie-gou.md)
   * [MOE](bm/moe.md)
   * [BERT](bm/bert.md)
   * [GPT](bm/GPT.md)
