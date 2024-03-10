@@ -248,6 +248,7 @@
   * [BERT](bm/bert.md)
   * [GPT](bm/GPT.md)
   * [Stable Diffusion](bm/sd.md)
+  * LoRA
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
