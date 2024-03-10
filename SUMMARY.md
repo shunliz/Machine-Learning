@@ -239,15 +239,11 @@
   * [目录](voice/voicemulumd.md)
 * [大模型](bm/bm.md)
   * [Transformer](bm/transformer.md)
+    * [Transformer输入](bm/transformer/transformershu-ru.md)
   * [MOE](bm/moe.md)
   * [BERT](bm/bert.md)
   * [GPT](bm/GPT.md)
   * [Stable Diffusion](bm/sd.md)
-* * [第四部分 学习资源](resources/introduction.md)
-  * [机器学习](resources/ml/list.md)
-  * [强化学习](resources/rl/list.md)
-  * [自然语言处理](resources/nlp/list.md)
-  * [深度学习](resources/dl/list.md)
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
@@ -260,6 +256,4 @@
 * [参考](can-kao.md)
   * [AI领域国内创业公司](ailing-yu-guo-nei-chuang-ye-gong-si.md)
   * [面试题目1](mian-shi-ti-mu-1.md)
-
-
 
