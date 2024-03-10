@@ -240,6 +240,7 @@
 * [大模型](bm/bm.md)
   * [Transformer](bm/transformer.md)
     * [Transformer输入](bm/transformer/transformershu-ru.md)
+    * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
   * [MOE](bm/moe.md)
   * [BERT](bm/bert.md)
   * [GPT](bm/GPT.md)
