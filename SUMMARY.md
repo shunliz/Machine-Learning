@@ -238,6 +238,7 @@
   * [GMM-HMM](voice/gmm-hmm.md)
   * [目录](voice/voicemulumd.md)
 * [大模型](bm/bm.md)
+  * [seq2seq](bm/seq2seq.md)
   * [Transformer](bm/transformer.md)
     * [Transformer输入](bm/transformer/transformershu-ru.md)
     * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
