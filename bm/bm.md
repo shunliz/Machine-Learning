@@ -10,9 +10,9 @@
 
 **「数据源层」**：FinGPT 管道的起点是数据源层，它协调从各种在线资源中获取大量财务数据。 该层通过整合来自新闻网站、社交媒体平台、财务报表、市场趋势等的数据来确保全面的市场覆盖。 目标是捕捉市场的每一个细微差别，从而解决金融数据固有的时间敏感性问题。
 
-**「数据处理层」**：该层专注于NLP数据的实时处理，以应对金融数据固有的高时间敏感性和低[信噪比](https://www.zhihu.com/search?q=信噪比&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761})的挑战。 它结合了最先进的 NLP 技术来过滤噪音并突出显示最重要的信息。
+**「数据处理层」**：该层专注于NLP数据的实时处理，以应对金融数据固有的高时间敏感性和低\[信噪比\]\([https://www.zhihu.com/search?q=信噪比&search\_source=Entity&hybrid\_search\_source=Entity&hybrid\_search\_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}\)的挑战。](https://www.zhihu.com/search?q=信噪比&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}%29的挑战。) 它结合了最先进的 NLP 技术来过滤噪音并突出显示最重要的信息。
 
-**「**[**LLMs层**](https://www.zhihu.com/search?q=LLMs层&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761})**」**：处于核心位置，它包含各种微调方法，优先考虑[轻量级适应](https://www.zhihu.com/search?q=轻量级适应&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761})，以保持模型的更新和相关性。 通过维护更新的模型，FinGPT 可以处理金融数据的高度动态特性，确保其响应与当前的金融环境同步。
+**「**\[**LLMs层**\]\([https://www.zhihu.com/search?q=LLMs层&search\_source=Entity&hybrid\_search\_source=Entity&hybrid\_search\_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}\)\*\*」\*\*：处于核心位置，它包含各种微调方法，优先考虑\[轻量级适应\]\(https://www.zhihu.com/search?q=轻量级适应&search\_source=Entity&hybrid\_search\_source=Entity&hybrid\_search\_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}\)，以保持模型的更新和相关性。](https://www.zhihu.com/search?q=LLMs层&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}%29**」**：处于核心位置，它包含各种微调方法，优先考虑[轻量级适应]%28https://www.zhihu.com/search?q=轻量级适应&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A3080830761}%29，以保持模型的更新和相关性。) 通过维护更新的模型，FinGPT 可以处理金融数据的高度动态特性，确保其响应与当前的金融环境同步。
 
 **「应用层」**：FinGPT 的最后一个组成部分是应用层，旨在展示FinGPT 的实际适用性。 它为金融任务提供实践教程和演示应用程序，包括机器人咨询服务、量化交易和低代码开发。 这些实际演示不仅可以作为潜在用户的指南，还可以强调 LLM 在金融领域的变革潜力。
 
@@ -33,8 +33,6 @@
 * 11.**「低代码开发」**：通过用户友好的界面促进软件开发，减少对传统编程的依赖。
 * 12.**「金融教育」**：作为AI导师，简化复杂的金融概念，提高金融识别度。
 
-
-
 ### 教育
 
 大模型在教育行业的应用广泛且深入，涵盖了多个方面。
@@ -53,15 +51,28 @@
 
 
 
+### 医疗健康
+
+医疗健康方面的应用十分广泛且深入，主要可以划分为以下几个领域：
+
+1. **影像诊断**
+   ：AIGC通过对医学影像数据的分析和识别，辅助医生进行快速准确的疾病诊断。它能够分析CT扫描、MRI和X射线图像等医学图像数据，帮助医生识别病变和异常，进而用于肿瘤检测和分期、病理分析和辅助手术规划等。
+2. **疾病预测与监测**
+   ：AIGC可以通过对患者的临床数据和生理参数进行分析，提供个性化的疾病风险评估和预测。此外，它还可以监测患者的健康状况，及时发现潜在的健康问题。
+3. **智能药物管理**
+   ：AIGC可以辅助患者正确使用药物，防止药物错误使用和交叉不良反应。通过对药物标签和药物包装的图像识别，它能为患者提供用药指导和提醒。
+4. **医疗服务优化**
+   ：AIGC能够分析和理解患者的需求，提供个性化的医疗服务。通过对患者的语音、面部表情和姿态等数据进行分析，AIGC可以识别患者的情绪和疼痛程度，并据此提供相应的情感支持和疼痛管理。
+5. **精准医疗**
+   ：AIGC通过分析患者的基因、生活习惯和疾病史等多维数据，为患者提供个性化的预防、诊断和治疗建议。这种个性化的治疗方案有助于提高治疗效果，减少不良反应的风险。
+6. **AI虚拟医生和AI虚拟药师**
+   ：借助大数据和机器学习算法，AI虚拟医生可以根据患者的病历、症状和疾病历史进行诊断和治疗。而AI虚拟药师则通过整合多种数据来源，如基因、病史、影像等，进行精准的诊断和治疗方案定制。
+7. **患者咨询与健康管理**
+   ：AIGC可以作为智能问答系统，回答患者关于病情、药物副作用、预防措施等方面的问题。同时，它还可以提供个性化的健康管理和跟踪服务，帮助患者实现全面的健康管理。
+
 ### AIGC
 
 画图
 
 生成视频
-
-
-
-
-
-
 
