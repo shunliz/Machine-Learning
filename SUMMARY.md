@@ -234,6 +234,9 @@
   * [LDA求解之Gibbs采样算法](nlp/lda/lda-gibbs.md)
   * [LDA求解之变分推断EM算法](nlp/lda/vi-em.md)
   * [scikit-learn LDA主题模型](nlp/lda/scikit-learn-lda.md)
+  * [beam search](nlp/beamsearch.md)
+  * [词向量Glove](nlp/词向量glove.md)
+  * [ELMo](nlp/ELMo.md)
 * [语音识别](voice/introduction.md)
   * [GMM-HMM](voice/gmm-hmm.md)
   * [目录](voice/voicemulumd.md)
@@ -246,7 +249,7 @@
     * [Decoder结构](bm/transformer/decoderjie-gou.md)
   * [MOE](bm/moe.md)
   * [BERT](bm/bert.md)
-  * [GPT](bm/GPT.md)
+  * [GPT](bm/chatGPT.md)
   * [Stable Diffusion](bm/sd.md)
   * LoRA
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
