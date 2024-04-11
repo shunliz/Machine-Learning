@@ -247,8 +247,8 @@
     * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
     * [Encoder 结构](bm/transformer/encoder-jie-gou.md)
     * [Decoder结构](bm/transformer/decoderjie-gou.md)
-  * [MOE](bm/moe.md)
   * [BERT](bm/bert.md)
+  * [MOE](bm/moe.md)
   * [GPT](bm/chatGPT.md)
   * [Stable Diffusion](bm/sd.md)
   * LoRA
