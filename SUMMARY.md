@@ -255,7 +255,7 @@
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
   * [ResNet](dl/popnet/resnet.md)
-* 并行学习
+* [并行学习](bing-xing-xue-xi.md)
   * [美团并行学习实践](dl/paralleldl/mei-tuan-bing-xing-xue-xi-shi-jian.md)
 * AI应用
   * [美团外卖AI技术](dl/dlapp/mei-tuan-wai-mai-ai-ji-zhu.md)
