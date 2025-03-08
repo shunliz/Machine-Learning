@@ -54,7 +54,8 @@
         * 知识蒸馏
         * 量化方法
         * 并行训练
-        * LLMOPS
+        * 提示词Prompt Engineering
+        * MLOPS
         * 存储
         * 网络
     * BERT
@@ -65,6 +66,7 @@
     * RAG
     * 大模型应用
         * 推荐
-        * 
+        * 量化投资
+        * 机器人RPA
     
 
