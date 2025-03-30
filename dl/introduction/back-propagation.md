@@ -38,7 +38,11 @@ $$
 
 如果J\(w,b\)加权重的平方，是为了减小权重的大小，防止过拟合。神经网络的训练目标就是寻找合适的w,b使得损失函数J\(w,b\)最小。因而可以使用梯度下降法确定w,b.
 
-$$w_{ij}^{(l)}=w{ij}^{(l)}-\frac{\partial J(w,b)}{\partial w_{ij}^{(l)}}$$
+
+$$
+w_{ij}^{(l)}=w{ij}^{(l)}-\frac{\partial J(w,b)}{\partial w_{ij}^{(l)}}
+$$
+
 
 $$w_{ij}^{(l)}=w{ij}^{(l)}-\frac {1}{m}\sum_{i=1}^{m}\frac{\partial J(x^{(i)},y^{(i)};w,b)}{\partial w_{ij}^{(l)}}-\lambda w_{ji}^{(l)}$$
 
