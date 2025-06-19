@@ -252,8 +252,8 @@
   * [MOE](bm/moe.md)
   * [GPT](bm/chatGPT.md)
   * [Stable Diffusion](bm/sd.md)
-    * [SFT](bm/sft.md)
-  * [LoRA](bm/lora.md)
+  * [SFT](bm/sft.md)
+    * [LoRA](bm/lora.md)
   * RLHF
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
