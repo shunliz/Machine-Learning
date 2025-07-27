@@ -256,6 +256,7 @@
     * [LoRA](bm/lora.md)
   * RLHF
   * PTQ
+  * [模型量化](bm/quantization.md)
   * [模型合并](bm/modelmerge.md)
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
