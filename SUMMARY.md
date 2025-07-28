@@ -255,6 +255,7 @@
   * [Stable Diffusion](bm/sd.md)
   * [SFT](bm/sft.md)
     * [LoRA](bm/lora.md)
+    * [Unsloth](bm/unsloth.md)
   * RLHF
   * MCP
   * Agent
