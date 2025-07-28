@@ -250,7 +250,7 @@
     * [Decoder结构](bm/transformer/decoderjie-gou.md)
   * [BERT](bm/bert.md)
   * [MOE](bm/moe.md)
-  * ViT
+  * [ViT](bm/vit.md)
   * [GPT](bm/chatGPT.md)
   * [Stable Diffusion](bm/sd.md)
   * [SFT](bm/sft.md)
