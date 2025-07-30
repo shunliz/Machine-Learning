@@ -257,16 +257,16 @@
     * [LoRA](bm/lora.md)
     * [Unsloth](bm/unsloth.md)
   * RLHF
-  * MCP
-  * Agent
+  * [MCP](bm/MCP.md)
+  * [Agent](bm/agent.md)
   * [RAG](bm/rag.md)
   * langchain
   * defiy
   * vllm
-  * llmafactory
+  * [llmafactory](bm/llmafactory.md)
   * [模型量化](bm/quantization.md)
   * [模型合并](bm/modelmerge.md)
-  * 模型蒸馏
+  * [模型蒸馏](bm/distill.md)
   * 大模型应用
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
