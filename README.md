@@ -273,6 +273,7 @@
     * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
     * [Encoder 结构](bm/transformer/encoder-jie-gou.md)
     * [Decoder结构](bm/transformer/decoderjie-gou.md)
+  * FlashAttention
   * [BERT](bm/bert.md)
   * [MOE](bm/moe.md)
   * [ViT](bm/vit.md)
@@ -282,10 +283,13 @@
     * [LoRA](bm/lora.md)
     * [Unsloth](bm/unsloth.md)
   * RLHF
+    * DPO
+    * DDPO
   * [MCP](bm/MCP.md)
   * [Agent](bm/agent.md)
   * [RAG](bm/rag.md)
-  * langchain
+  * [langchain](bm/langchain.md)
+  * [transformers](bm/transformers.md)
   * defiy
   * vllm
   * [llmafactory](bm/llmafactory.md)

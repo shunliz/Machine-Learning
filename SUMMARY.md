@@ -248,6 +248,7 @@
     * [Attention注意力机制](bm/transformer/attentionzhu-yi-li-ji-zhi.md)
     * [Encoder 结构](bm/transformer/encoder-jie-gou.md)
     * [Decoder结构](bm/transformer/decoderjie-gou.md)
+  * FlashAttention
   * [BERT](bm/bert.md)
   * [MOE](bm/moe.md)
   * [ViT](bm/vit.md)
@@ -257,16 +258,19 @@
     * [LoRA](bm/lora.md)
     * [Unsloth](bm/unsloth.md)
   * RLHF
+    * DPO
+    * DDPO
   * [MCP](bm/MCP.md)
   * [Agent](bm/agent.md)
   * [RAG](bm/rag.md)
-  * langchain
-  * defiy
-  * vllm
+  * [langchain](bm/langchain.md)
+  * [transformer库](bm/transformers.md)
+  * [vllm](bm/vllm.md)
   * [llmafactory](bm/llmafactory.md)
   * [模型量化](bm/quantization.md)
   * [模型合并](bm/modelmerge.md)
   * [模型蒸馏](bm/distill.md)
+  * [模型并行](bm/parallel.md)
   * 大模型应用
 * [流行网络结构](liu-xing-wang-luo-jie-gou.md)
   * [mobilenet](dl/popnet/mobilenet.md)
